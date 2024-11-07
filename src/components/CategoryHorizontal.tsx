@@ -21,6 +21,8 @@ const CategoryHorizontal: FunctionComponent<CategoryHorizontalProps> = ({
   const [hasScrolled, setHasScrolled] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
 
+  console.log("working")
+
   useEffect(() => {
     const scrollContainer = scrollContainerRef.current;
 
