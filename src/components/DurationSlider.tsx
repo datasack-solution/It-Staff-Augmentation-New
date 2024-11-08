@@ -115,7 +115,9 @@ const MySlider = () => {
 
     return (
         <div className="w-full mx-auto">
-            <h2 className="text-lg font-semibold mb-2">Duration</h2>
+            <h2 className="text-lg font-semibold mb-2">Duration
+            <div className="w-20 h-0.5 mt-1 bg-gradient-to-r from-[rgba(238,123,34,1)] to-[rgba(218,218,218,1)] rounded-lg"></div>
+            </h2>
 
             <div className="relative w-full flex justify-between items-center text-gray-600 text-sm mb-4">
                 <span>1 Month</span>

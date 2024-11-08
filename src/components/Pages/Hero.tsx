@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import RightArrow from '@/components/RightArrow';
-import Star from '@/components/Start';
 import ChatBotIcon from '@/components/ChatBotIcon';
-import MessageIcon from '@/components/MessageIcon';
-import WhatsappIcon from '@/components/WhatsappIcon';
-import LightToggle from '@/components/LightToggle';
 import DarkToggle from '@/components/DarkToggle';
 import HomeIcon_Light from '@/components/HomeIcon_Light';
-import WhatsappIcon_Light from '@/components/WhatsappIcon_Light';
+import LightToggle from '@/components/LightToggle';
+import MessageIcon from '@/components/MessageIcon';
+import RightArrow from '@/components/RightArrow';
 import RightArrow_Light from '@/components/RightArrow_Light';
+import Star from '@/components/Start';
+import WhatsappIcon from '@/components/WhatsappIcon';
+import WhatsappIcon_Light from '@/components/WhatsappIcon_Light';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useState } from 'react';
 import HomeIcon from '../HomeIcon';
 
 const HomePage = () => {
   const [darkMode, setDarkMode] = useState(false);
-  
+
   const toggleDarkMode = () => {
     if (darkMode) {
       document.documentElement.classList.remove('dark');
@@ -25,7 +25,7 @@ const HomePage = () => {
     setDarkMode(!darkMode);
   };
 
-  const banks = ['alinma_bank.png', 'alrajhi_bank.png', 'bank_albilad.png', 'future_generali.png', 'nibav.png', 'olam.png', 'reliance_capital.png','enjaz.png']
+  const banks = ['alinma_bank.png', 'alrajhi_bank.png', 'bank_albilad.png', 'future_generali.png', 'nibav.png', 'olam.png', 'reliance_capital.png', 'enjaz.png']
   return (
     <div className='bg-white'>
       <div
@@ -36,7 +36,7 @@ const HomePage = () => {
     `
         }}
       />
-      <ChatBotIcon className='fixed right-5 rounded-full bg-gray-700 p-2 bottom-10' />
+      <ChatBotIcon className='fixed right-5 z-50 rounded-full bg-gray-700 p-2 bottom-10' />
 
       <div className="
       fixed
@@ -87,47 +87,45 @@ const HomePage = () => {
       </div>
 
       <div className='fixed w-full bg-white  bg-opacity-50 z-40 backdrop-blur-lg top-0'>
-            <div className='flex justify-between align-middle w-full bg-transparent'>
-              <div className='p-3'>
-                <Link href="/" >
-                  <Image
-                    src="https://bunny-wp-pullzone-dgpgtislbk.b-cdn.net/wp-content/uploads/2024/01/Datasack_tech_logo-web.png"
-                    alt="DataSack Solutions Logo"
-                    width={120}
-                    height={10}
-                    className="cursor-pointer w-auto h-auto"
-                  />
-                </Link>
-              </div>
+        <div className='flex justify-between align-middle w-full bg-transparent'>
+          <div className='p-3'>
+            <Link href="/" >
+              <Image
+                src="https://bunny-wp-pullzone-dgpgtislbk.b-cdn.net/wp-content/uploads/2024/01/Datasack_tech_logo-web.png"
+                alt="DataSack Solutions Logo"
+                width={120}
+                height={10}
+                className="cursor-pointer w-auto h-auto"
+              />
+            </Link>
+          </div>
 
-{/* dark:text-gray-100 */}
-              <div className='hidden text-sm sm:text-xs md:text-sm lg:text-lg xl:text-lg 2xl:text-lg w-fit sm:flex gap-14 text-purple-100 sm:text-blue-100 mr-2 justify-around align-middle p-7'>
-                <Link href="/pricing" className="text-gray-800  py-1  hover:text-orange-500 uppercase font-semibold">
-                  Get Pricing
-                </Link>
-                {/* dark:text-gray-100 */}
-                <Link href="/manage-service" className="text-gray-800  py-1  hover:text-orange-500 uppercase font-semibold">
-                  Manage Service
-                </Link>
-                <div
-                  className="flex items-center bg-orange-500 text-white font-semibold px-4 py-1 rounded-full hover:bg-orange-600 cursor-pointer"
-                >
-                  <svg width="16" height="16" style={{ marginRight: '0.5rem' }} viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M4.18 7.27L10.684 13.73C11.381 12.923 15.794 8.192 18 14.654C18 14.654 17.768 18 13.006 18C9.639 18 6.155 13.962 3.716 11.654C1.626 9.692 0 7.154 0 4.846C0 0.116 3.252 0 3.252 0C10.684 2.538 4.181 7.27 4.181 7.27" fill="white" />
-                  </svg>
+          <div className='hidden text-sm sm:text-xs md:text-sm lg:text-lg xl:text-lg 2xl:text-lg w-fit sm:flex gap-14 text-purple-100 sm:text-blue-100 mr-2 justify-around align-middle p-7'>
+            <Link href="/pricing" className="text-gray-800  py-1  hover:text-orange-500 uppercase font-semibold">
+              Get Pricing
+            </Link>
+            <Link href="/manage-service" className="text-gray-800  py-1  hover:text-orange-500 uppercase font-semibold">
+              Manage Service
+            </Link>
+            <div
+              className="flex items-center bg-orange-500 text-white font-semibold px-4 py-1 rounded-full hover:bg-orange-600 cursor-pointer"
+            >
+              <svg width="16" height="16" style={{ marginRight: '0.5rem' }} viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4.18 7.27L10.684 13.73C11.381 12.923 15.794 8.192 18 14.654C18 14.654 17.768 18 13.006 18C9.639 18 6.155 13.962 3.716 11.654C1.626 9.692 0 7.154 0 4.846C0 0.116 3.252 0 3.252 0C10.684 2.538 4.181 7.27 4.181 7.27" fill="white" />
+              </svg>
 
-                  Contact us
-                </div>
-              </div>
-
-              <div className='flex sm:hidden md:hidden lg:hidden xl:hidden 2xl:hidden gap-14 text-purple-100 sm:text-blue-100 mr-2 justify-around align-middle p-7'>
-                  <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20 17.5C20.3852 17.5002 20.7556 17.6486 21.0344 17.9144C21.3132 18.1802 21.479 18.5431 21.4975 18.9279C21.516 19.3127 21.3858 19.6898 21.1338 19.9812C20.8818 20.2726 20.5274 20.4558 20.144 20.493L20 20.5H4C3.61478 20.4998 3.24441 20.3514 2.96561 20.0856C2.68682 19.8198 2.52099 19.4569 2.50248 19.0721C2.48396 18.6873 2.61419 18.3102 2.86618 18.0188C3.11816 17.7274 3.47258 17.5442 3.856 17.507L4 17.5H20ZM20 10.5C20.3978 10.5 20.7794 10.658 21.0607 10.9393C21.342 11.2206 21.5 11.6022 21.5 12C21.5 12.3978 21.342 12.7794 21.0607 13.0607C20.7794 13.342 20.3978 13.5 20 13.5H4C3.60218 13.5 3.22064 13.342 2.93934 13.0607C2.65804 12.7794 2.5 12.3978 2.5 12C2.5 11.6022 2.65804 11.2206 2.93934 10.9393C3.22064 10.658 3.60218 10.5 4 10.5H20ZM20 3.5C20.3978 3.5 20.7794 3.65804 21.0607 3.93934C21.342 4.22064 21.5 4.60218 21.5 5C21.5 5.39782 21.342 5.77936 21.0607 6.06066C20.7794 6.34196 20.3978 6.5 20 6.5H4C3.60218 6.5 3.22064 6.34196 2.93934 6.06066C2.65804 5.77936 2.5 5.39782 2.5 5C2.5 4.60218 2.65804 4.22064 2.93934 3.93934C3.22064 3.65804 3.60218 3.5 4 3.5H20Z"
-                      fill={darkMode ? 'white' : 'black'} />
-                  </svg>
-              </div>
+              Contact us
             </div>
           </div>
+
+          <div className='flex sm:hidden md:hidden lg:hidden xl:hidden 2xl:hidden gap-14 text-purple-100 sm:text-blue-100 mr-2 justify-around align-middle p-7'>
+            <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 17.5C20.3852 17.5002 20.7556 17.6486 21.0344 17.9144C21.3132 18.1802 21.479 18.5431 21.4975 18.9279C21.516 19.3127 21.3858 19.6898 21.1338 19.9812C20.8818 20.2726 20.5274 20.4558 20.144 20.493L20 20.5H4C3.61478 20.4998 3.24441 20.3514 2.96561 20.0856C2.68682 19.8198 2.52099 19.4569 2.50248 19.0721C2.48396 18.6873 2.61419 18.3102 2.86618 18.0188C3.11816 17.7274 3.47258 17.5442 3.856 17.507L4 17.5H20ZM20 10.5C20.3978 10.5 20.7794 10.658 21.0607 10.9393C21.342 11.2206 21.5 11.6022 21.5 12C21.5 12.3978 21.342 12.7794 21.0607 13.0607C20.7794 13.342 20.3978 13.5 20 13.5H4C3.60218 13.5 3.22064 13.342 2.93934 13.0607C2.65804 12.7794 2.5 12.3978 2.5 12C2.5 11.6022 2.65804 11.2206 2.93934 10.9393C3.22064 10.658 3.60218 10.5 4 10.5H20ZM20 3.5C20.3978 3.5 20.7794 3.65804 21.0607 3.93934C21.342 4.22064 21.5 4.60218 21.5 5C21.5 5.39782 21.342 5.77936 21.0607 6.06066C20.7794 6.34196 20.3978 6.5 20 6.5H4C3.60218 6.5 3.22064 6.34196 2.93934 6.06066C2.65804 5.77936 2.5 5.39782 2.5 5C2.5 4.60218 2.65804 4.22064 2.93934 3.93934C3.22064 3.65804 3.60218 3.5 4 3.5H20Z"
+                fill={darkMode ? 'white' : 'black'} />
+            </svg>
+          </div>
+        </div>
+      </div>
 
       <div className="relative h-screen w-screen overflow-y bg-opacity-50 mt-28">
         <div className="
@@ -142,7 +140,7 @@ const HomePage = () => {
         text-black 
         ">
 
-      
+
 
           <div className="bg-[rgba(238,123,34,0.3)] rounded-full w-auto max-w-80 p-1 m-auto flex my-10 ">
             <div className="rounded-full w-full bg-[rgba(238,123,34,0.3)] drop-shadow-lg shadow-orange-900 flex p-1">
@@ -220,8 +218,8 @@ const HomePage = () => {
 
 
 
-          <div className="my-10 align-middle m-auto bg-white bg-opacity-50 rounded-3xl shadow-lg w-4/5">
-            <p className="pt-5  text-sm sm:text-sm md:text-sm lg:text-lg xl:text-lg 2xl:text-lg text-black font-semibold text-center">Trusted by 100+ Companies</p>
+          <div className="my-2 md:my-10 lg:my-10 xl:my-10 2xl:my-10 align-middle m-auto bg-white bg-opacity-50 rounded-3xl shadow-lg w-4/5 h-fit">
+            <p className="pt-3 text-sm sm:text-sm md:text-sm lg:text-lg xl:text-lg 2xl:text-lg text-black font-semibold text-center">Trusted by 100+ Companies</p>
 
             <div
               x-data="{}"
@@ -230,7 +228,7 @@ const HomePage = () => {
       ul.insertAdjacentHTML('afterend', ul.outerHTML);
       ul.nextSibling.setAttribute('aria-hidden', 'true');
     })"
-              className="w-full p-5 sm:p-5 md:p-6 lg:p-7 xl:p-7 2xl:p-7 inline-flex flex-nowrap overflow-hidden 
+              className="w-full sm:p-5 md:p-6 lg:p-7 xl:p-7 2xl:p-7 inline-flex flex-nowrap overflow-hidden 
                [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-100px),transparent_100%)]">
 
               <ul className="flex items-center justify-center md:justify-start [&_li]:mx-4 [&_img]:max-w-none animate-infinite-scroll">
@@ -271,4 +269,7 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
+
+
 

@@ -195,11 +195,13 @@ const Pricing = () => {
 
                 <CategoryHorizontal handleCategoryClick={handleCategoryClick} selectedCategory={selectedCategory} quantities={quantities} />
 
-                <div className="lg:w-2/3 p-14 bg-gray-50 rounded-lg shadow">
+                <div className="lg:w-2/3 p-3 bg-gray-50 rounded-lg shadow">
                     <div className='flex justify-between mb-2 cursor-pointer gap-5'>
                         <h3 className="text-xl font-semibold mb-4">
                             {selectedCategory ? `${selectedCategory} Technologies` : "Select a Category"}
+                            <div className="w-full h-0.5 mt-1 bg-gradient-to-r from-[rgba(238,123,34,1)] to-[rgba(218,218,218,1)] rounded-lg"></div>
                         </h3>
+
 
                         <div onClick={() => setModalOpen(true)} className='group h-fit text-nowrap border-2 inline-block border-red-100 max-h-14 rounded-lg bg-orange-400 md:bg-transparent lg:bg-transparent xl:bg-transparent 2xl:bg-transparent hover:bg-orange-500 hover:rounded-full justify-center align-middle'>
                             <PlusIcon className='size-10 invisible hidden md:inline-block lg:inline-block xl:inline-block 2xl:inline-block md:visible lg:visible xl:visible 2xl:visible group-hover:invisible group-hover:hidden' />
@@ -218,23 +220,46 @@ const Pricing = () => {
                     {selectedCategory ? (
                         <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
                             {technologies[selectedCategory].map((tech, index) => (
-                                <div key={index} className="flex items-center justify-between p-4 bg-white shadow rounded-lg">
+                                <div key={index} className="flex items-center justify-between p-4 shadow rounded-lg ">
                                     <span>{tech}</span>
-                                    <div className="flex items-center space-x-2">
+                                  {/* <div className="flex items-center space-x-2 bg-white rounded-full ">
                                         <button
                                             onClick={() => { handleDecreaseQuantity(selectedCategory, tech) }}
-                                            className="border border-orange-500 hover:bg-orange-400 hover:text-white rounded-full w-8 h-8 text-center"
+                                            className="  hover:bg-orange-400 hover:text-white rounded-full w-8 h-8 text-center"
                                         >
                                             -
                                         </button>
                                         <span>{quantities[selectedCategory]?.[tech] || 0}</span>
                                         <button
                                             onClick={() => { handleIncreaseQuantity(selectedCategory, tech) }}
-                                            className="border border-orange-500 hover:bg-orange-400 hover:text-white rounded-full w-8 h-8 text-center"
+                                            className="  hover:bg-orange-400 hover:text-white rounded-full w-8 h-8 text-center"
                                         >
                                             +
                                         </button>
-                                    </div>
+                                    </div> */}
+
+<div className="relative flex items-center justify-center p-0.5 rounded-full">
+    <div className="absolute inset-0 bg-gradient-to-r from-orange-200 via-transparent to-orange-50 rounded-full"></div>
+    
+    <div className="relative flex items-center bg-white rounded-full px-1">
+        <button
+            onClick={() => { handleDecreaseQuantity(selectedCategory, tech) }}
+            className="hover:bg-orange-400 hover:text-white rounded-full w-8 h-8 text-center p-0"
+        >
+            -
+        </button>
+        
+        <span className="text-black rounded-full w-5 h-5 text-center justify-center bg-[rgba(238,123,34,0.14)]">{quantities[selectedCategory]?.[tech] || 0}</span>
+        
+        <button
+            onClick={() => { handleIncreaseQuantity(selectedCategory, tech) }}
+            className="hover:bg-orange-400 hover:text-white rounded-full w-8 h-8 text-center"
+        >
+            +
+        </button>
+    </div>
+</div>
+
                                 </div>
                             ))}
                         </ul>
