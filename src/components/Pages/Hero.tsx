@@ -95,7 +95,7 @@ const HomePage = () => {
                     alt="DataSack Solutions Logo"
                     width={120}
                     height={10}
-                    className="cursor-pointer"
+                    className="cursor-pointer w-auto h-auto"
                   />
                 </Link>
               </div>
@@ -195,7 +195,7 @@ const HomePage = () => {
           justify-center
           space-y-5
           mb-6
-          text-xs
+          text-sm
           sm:text-base
           md:text-lg 
           lg:text-xl 
@@ -221,7 +221,7 @@ const HomePage = () => {
 
 
           <div className="my-10 align-middle m-auto bg-white bg-opacity-50 rounded-3xl shadow-lg w-4/5">
-            <p className="pt-5 text-xs sm:text-sm md:text-sm lg:text-lg xl:text-lg 2xl:text-lg -mb-5 text-black font-semibold text-center">Trusted by 100+ Companies</p>
+            <p className="pt-5  text-sm sm:text-sm md:text-sm lg:text-lg xl:text-lg 2xl:text-lg text-black font-semibold text-center">Trusted by 100+ Companies</p>
 
             <div
               x-data="{}"
@@ -241,7 +241,7 @@ const HomePage = () => {
                       alt="DataSack Solutions Logo"
                       width={100}
                       height={80}
-                      className="cursor-pointer w-16 sm:w-20 md:w-28 lg:w-36 xl:w-40 h-auto"
+                      className="cursor-pointer w-24 sm:w-20 md:w-28 lg:w-36 xl:w-40 h-auto"
                     />
                   </li>
                 ))}
@@ -255,7 +255,7 @@ const HomePage = () => {
                       alt="DataSack Solutions Logo"
                       width={100}
                       height={80}
-                      className="cursor-pointer w-16 sm:w-20 md:w-28 lg:w-36 xl:w-40 h-auto"
+                      className="cursor-pointer w-24 sm:w-20 md:w-28 lg:w-36 xl:w-40 h-auto"
                     />
                   </li>
                 ))}

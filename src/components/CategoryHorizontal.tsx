@@ -62,12 +62,12 @@ const CategoryHorizontal: FunctionComponent<CategoryHorizontalProps> = ({
         2xl:hidden
         "
     >
-      {Object.keys(technologies).map((category) => (
-        <div className='relative mt-2'>
+      {Object.keys(technologies).map((category,index) => (
+        <div className='relative mt-2' key={index}>
           <button
             key={category}
             onClick={() => handleCategoryClick(category as keyof typeof technologies)}
-            className={`border w-fit mb-2 whitespace-nowrap border-orange-500 py-2 px-4 rounded-full transition-colors ${selectedCategory === category ? "bg-orange-500 text-white" : "bg-white text-black"
+            className={`border w-fit mb-2 whitespace-nowrap border-orange-500 py-2 px-4 rounded-full transition-colors ${selectedCategory === category ? "bg-orange-500 text-white" : "text-black"
               } ${quantities[category] &&
               Object.values(quantities[category]).some(quantity => quantity > 0) && 'bg-red-300 text-white'}   hover:bg-orange-500`}
           >
@@ -76,7 +76,7 @@ const CategoryHorizontal: FunctionComponent<CategoryHorizontalProps> = ({
 
           {quantities[category] &&
             Object.values(quantities[category]).some(quantity => quantity > 0) && (
-              <div className='w-5 h-5 border border-orange-500 bg-white rounded-full absolute -top-1 right-0 z-[60]'>
+              <div className='w-5 h-5 border border-orange-500 bg-white rounded-full absolute -top-1 right-0'>
                 <p className='text-center rounded-full text-xxs text-black'>
                   {Object.values(quantities[category]).filter(quantity => quantity > 0).length}
                 </p>
