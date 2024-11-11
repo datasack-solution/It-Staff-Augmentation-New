@@ -41,7 +41,7 @@ const Benefits = () => {
             IT Staff Augmentation Services Riyadh provided by Datasack Solutions are advantageous as they offer the following benefits.
         </p>
 
-        <div className="relative flex items-center justify-center p-[3] rounded-full">
+        <div className="relative flex items-center justify-center p-[3px] rounded-full">
             <div className="absolute inset-0 bg-gradient-to-b from-orange-300 via-transparent to-orange-300 rounded-3xl"></div>
 
             {/* <div className="relative bg-white grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-2 md:grid-cols-2 gap-10 p-10 rounded-3xl">
@@ -55,11 +55,12 @@ const Benefits = () => {
                     </div>
                     </div>
                 })}
-
             </div> */}
+
+
             <div className="relative bg-white grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-6 p-6 md:p-10 rounded-3xl">
-                {benefits.map((benefit, index) => (
-                    <div key={index} className="relative flex items-center justify-center p-[1] rounded-full">
+                {benefits.map((benefit) => (
+                    <div key={benefit.title} className="relative flex items-center justify-center p-[1px] rounded-full">
                         <div className="absolute inset-0 bg-gradient-to-b from-orange-300 via-transparent to-orange-300 rounded-3xl"></div>
 
                         <div className="relative p-5 bg-white max-h-80 h-full flex flex-col items-center overflow-auto  rounded-3xl shadow-md">

@@ -51,8 +51,8 @@ const HomePage = () => {
       -mt-24 
       w-14
       z-20
-      px-[1.5] 
-      py-[1]
+      px-[1.5px] 
+      py-[1px]
       bg-gradient-to-b 
       from-[rgba(238,123,34,1)] via-[rgba(238,123,34,0)] to-[rgba(238,123,34,0.3)] 
       rounded-3xl">
