@@ -35,7 +35,7 @@ const HomePage = () => {
         className="absolute inset-0 w-screen h-screen bg-cover opacity-70 sm:opacity-80 md:opacity-90 lg:opacity-90 xl:opacity-90 2xl:opacity-90"
         style={{
           backgroundImage: `
-      url('/background_new.png')
+      url('/BG-Upscale.jpg')
     `
         }}
       />
