@@ -17,7 +17,7 @@ const config: Config = {
       animation: {
         'infinite-scroll': 'infinite-scroll 25s linear infinite',
         slideoutdown: 'slide-out-down 0.2s ease-in-out 0.1s 1',
-        slideinleft: 'slide-in-left 5s ease-in-out 0.25s infinite',
+        slideinleft: 'slide-in-left 1s ease-in-out 0.25s 1',
         'bounce-right': 'bounceRight 3s infinite',
         'slide-right': 'slideRight 1s ease-in-out infinite',
         flyinup: 'fly-in-up 0.5s ease-in-out 0s 1',
@@ -48,7 +48,7 @@ const config: Config = {
         "slide-in-left": {
           "0%": {
             visibility: "visible",
-            transform: "translate3d(-100%, 0, 0)",
+            transform: "translate3d(100%, 0, 0)",
           },
           "100%": {
             transform: "translate3d(0, 0, 0)",

@@ -7,6 +7,7 @@ const IndexPage = () => {
   <HomePage/>
   <PricingPage/>
   <Benefits/>
+  <Benefits/>
   </div>
 }
 
