@@ -39,7 +39,7 @@ const AddTechModal: FunctionComponent<AddTechModalProps> = ({
    
 
     if (isModalOpen) {
-        return <div className="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        return <div className="relative z-10 text-black" aria-labelledby="modal-title" role="dialog" aria-modal="true">
             <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
 
             <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
@@ -91,12 +91,10 @@ const AddTechModal: FunctionComponent<AddTechModalProps> = ({
                                         <button disabled={err!=null} onClick={()=>{
                                                 onSave();
                                                 onConfirm()
-                                        }} className={`p-3 text-white bg-orange-500 ${err!=null && 'bg-orange-200'}  rounded-full w-fit justify-center align-middle self-center`}>Add Tech</button>
+                                        }} className={`p-3 text-white  ${err!==null ?'bg-orange-200':'bg-orange-500'} rounded-full w-fit justify-center align-middle self-center`}>Add Tech</button>
 
                                     </div>
-
                                 </div>
-
 
                             </div>
                         </div>

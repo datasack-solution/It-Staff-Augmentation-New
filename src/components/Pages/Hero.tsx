@@ -10,11 +10,14 @@ import WhatsappIcon from '@/components/WhatsappIcon';
 import WhatsappIcon_Light from '@/components/WhatsappIcon_Light';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import HomeIcon from '../HomeIcon';
+import CallUsModal from '../CallUsModal';
+import { useCallUsModalState } from '../CallUsContext';
 
 const HomePage = () => {
   const [darkMode, setDarkMode] = useState(false);
+  const { isCallUsModalOpen, setIsCallUsModalOpen } = useCallUsModalState()
 
   const toggleDarkMode = () => {
     if (darkMode) {
@@ -27,9 +30,9 @@ const HomePage = () => {
 
   const banks = ['alinma_bank.png', 'alrajhi_bank.png', 'bank_albilad.png', 'future_generali.png', 'nibav.png', 'olam.png', 'reliance_capital.png', 'enjaz.png']
   return (
-    <div className='bg-white'>
+    <div className='bg-white overflow-hidden'>
       <div
-        className="absolute inset-0 w-screen h-screen bg-cover opacity-60 sm:opacity-45 md:opacity-90 lg:opacity-90 xl:opacity-90 2xl:opacity-90"
+        className="absolute inset-0 w-screen h-screen bg-cover opacity-70 sm:opacity-80 md:opacity-90 lg:opacity-90 xl:opacity-90 2xl:opacity-90"
         style={{
           backgroundImage: `
       url('/background_new.png')
@@ -38,26 +41,29 @@ const HomePage = () => {
       />
       <ChatBotIcon className='fixed right-5 z-50 rounded-full bg-gray-700 p-2 bottom-10' />
 
+      {isCallUsModalOpen && <CallUsModal isModalOpen={isCallUsModalOpen} onConfirm={() => setIsCallUsModalOpen(false)} />}
+
       <div className="
       fixed
       hidden sm:block md:block lg:block xlg:block 2xl:block
       right-5 
       top-2/4 
       -mt-24 
-      w-16
+      w-14
       z-20
-      px-1 
+      px-[1.5] 
+      py-[1]
       bg-gradient-to-b 
       from-[rgba(238,123,34,1)] via-[rgba(238,123,34,0)] to-[rgba(238,123,34,0.3)] 
-      
       rounded-3xl">
         <div className="
-        bg-white 
+        bg-white
         py-4
         z-100
         gap-7
-        bg-opacity-70     
-        backdrop-blur-lg 
+        bg-opacity-50     
+        backdrop-blur-3xl 
+        backdrop-brightness-75
         rounded-3xl 
         flex
         flex-col
@@ -68,7 +74,7 @@ const HomePage = () => {
           {!darkMode && <HomeIcon className='size-7 m-auto cursor-pointer' />}
           {darkMode && <HomeIcon_Light className='size-7 m-auto cursor-pointer' />}
           <MessageIcon className='m-auto cursor-pointer' />
-          {!darkMode && <WhatsappIcon className='size-7 m-auto cursor-pointer' />}
+          {!darkMode && <WhatsappIcon className='size-9 m-auto cursor-pointer' />}
           {darkMode && <WhatsappIcon_Light className='size-7 m-auto cursor-pointer' />}
           <div className=''>
             {!darkMode &&
@@ -101,13 +107,15 @@ const HomePage = () => {
           </div>
 
           <div className='hidden text-sm sm:text-xs md:text-sm lg:text-lg xl:text-lg 2xl:text-lg w-fit sm:flex gap-14 text-purple-100 sm:text-blue-100 mr-2 justify-around align-middle p-7'>
-            <Link href="/pricing" className="text-gray-800  py-1  hover:text-orange-500 uppercase font-semibold">
+            <div onClick={() => document.getElementById('pricing-section')?.scrollIntoView({ behavior: 'smooth' })
+            } className="text-gray-800  py-1 cursor-pointer  hover:text-orange-500 uppercase font-semibold">
               Get Pricing
-            </Link>
-            <Link href="/manage-service" className="text-gray-800  py-1  hover:text-orange-500 uppercase font-semibold">
+            </div>
+            <div className="text-gray-800  py-1 cursor-pointer  hover:text-orange-500 uppercase font-semibold">
               Manage Service
-            </Link>
+            </div>
             <div
+              onClick={() => setIsCallUsModalOpen(true)}
               className="flex items-center bg-orange-500 text-white font-semibold px-4 py-1 rounded-full hover:bg-orange-600 cursor-pointer"
             >
               <svg width="16" height="16" style={{ marginRight: '0.5rem' }} viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -210,12 +218,10 @@ const HomePage = () => {
             </p>
           </div>
 
-          <button className="px-6 py-3 bg-orange-500 rounded-full text-white font-semibold transition hover:bg-orange-600 flex m-auto gap-1 mt-10">
+          <button onClick={() => setIsCallUsModalOpen(true)} className="px-6 py-3 animate-bounce-right bg-orange-500 rounded-full text-white font-semibold transition hover:bg-orange-600 flex m-auto gap-1 mt-10">
             <Star className='' />
-            <p className='text-sm sm:text-sm md:text-lg lg:text-sm xl:text-lg'>Book For Demo</p>
+            <p className='text-sm  sm:text-sm md:text-lg lg:text-sm xl:text-lg'>Book For Demo</p>
           </button>
-
-
 
 
           <div className="my-2 md:my-10 lg:my-10 xl:my-10 2xl:my-10 align-middle m-auto bg-white bg-opacity-50 rounded-3xl shadow-lg w-4/5 h-fit">
