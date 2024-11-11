@@ -65,7 +65,7 @@ const Benefits = () => {
 
                         <div className="relative p-5 bg-white max-h-80 h-full flex flex-col items-center overflow-auto  rounded-3xl shadow-md">
                             <h2 className="text-center font-bold py-3 text-lg">{benefit.title}</h2>
-                            <p className="text-center text-base text-gray-700">{benefit.description}</p>
+                            <p className="text-center text-sm sm:text-sm md:text-base lg:text-base xl:text-base 2xl:text-base text-gray-700">{benefit.description}</p>
                         </div>
                     </div>
                 ))}
