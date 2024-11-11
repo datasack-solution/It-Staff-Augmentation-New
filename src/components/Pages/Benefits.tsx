@@ -81,7 +81,7 @@ const Benefits = () => {
 
             <div className="relative flex flex-col  gap-8 md:hidden lg:hidden xl:hidden 2xl:hidden p-2 rounded-3xl  bg-white">
                 {benefits.map((benefit, index) => {
-                    return <div>
+                    return <div key={index}>
                         <div className="rounded-full inline-block  text-center align-middle">
                             <p className=" rounded-full text-center text-5xl font-light text-gray-400">0{index + 1}</p>
                         </div>
