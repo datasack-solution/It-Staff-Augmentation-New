@@ -33,7 +33,7 @@ const benefits = [
 ]
 
 const Benefits = () => {
-    return <div className="container p-10 m-auto text-black">
+    return <div className="container p-5 m-auto text-black">
         <h2 className="text-lg sm:text-lg md:text-2xl lg:text-2xl xl:text-3xl 2xl:text-4xl text-black font-bold text-center">
             Benefits of Choosing Us - <span className="text-orange-500">Advanced IT Recruitment Agency in Riyadh</span>
         </h2>

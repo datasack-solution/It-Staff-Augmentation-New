@@ -285,7 +285,7 @@ const Pricing = () => {
             </div>}
 
 
-            <div className="flex flex-col lg:flex-row p-6 gap-8">
+            <div className="flex flex-col lg:flex-row p-3 gap-8">
 
                 {/* category vertical for larger screens */}
                 {/*  md:grid
