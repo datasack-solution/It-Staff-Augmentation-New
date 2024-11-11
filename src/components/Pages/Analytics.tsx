@@ -47,7 +47,7 @@ const AnalyticsPage = () => {
         2xl:flex m-auto justify-between p-5 bg-white">
                     <div className="grid xl:grid-cols-2 gap-5">
                         {analytics.map((analytic, index) => {
-                            return <button onClick={() => { setContent(index) }}
+                            return <button key={index} onClick={() => { setContent(index) }}
                                 className={`p-2 
                                 xl:h-16
                                 2xl:h-14
