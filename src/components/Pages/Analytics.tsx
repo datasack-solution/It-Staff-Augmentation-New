@@ -89,7 +89,7 @@ const AnalyticsPage = () => {
 
 
             </div>
-            <div className=" w-[40%] lg:mt-16">
+            <div className=" w-[40%]">
                 <Image alt="illustration" src={'/steps.png'} width={550} height={400} className="mt-10" />
             </div>
         </div>
