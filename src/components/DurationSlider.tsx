@@ -109,9 +109,6 @@ const marks: SliderSingleProps['marks'] = {
 const MySlider = () => {
     const [durationIndex, setDurationIndex] = useState(6);
 
-    const handleDurationChange = (value: number) => {
-        setDurationIndex(value);
-    };
 
     return (
         <div className="w-full mx-auto">

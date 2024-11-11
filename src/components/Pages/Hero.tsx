@@ -10,10 +10,10 @@ import WhatsappIcon from '@/components/WhatsappIcon';
 import WhatsappIcon_Light from '@/components/WhatsappIcon_Light';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import HomeIcon from '../HomeIcon';
-import CallUsModal from '../CallUsModal';
+import { useState } from 'react';
 import { useCallUsModalState } from '../CallUsContext';
+import CallUsModal from '../CallUsModal';
+import HomeIcon from '../HomeIcon';
 
 const HomePage = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -154,7 +154,7 @@ const HomePage = () => {
             <div className="rounded-full w-full bg-[rgba(238,123,34,0.3)] drop-shadow-lg shadow-orange-900 flex p-1">
 
               <div className="rounded-full bg-[#EE7B22] w-3/12 h-full"></div>
-              <p className='m-auto   
+              <p className='m-auto text-black  
           text-sm text-nowrap font-medium'
               >Check out more about us</p>
               {!darkMode && <RightArrow className='m-auto' />}

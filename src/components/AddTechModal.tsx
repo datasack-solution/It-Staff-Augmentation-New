@@ -50,11 +50,11 @@ const AddTechModal: FunctionComponent<AddTechModalProps> = ({
 
                                 <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left w-full">
                                     <div className="flex justify-between">
-                                        <h3 className="text-base font-semibold  text-gray-900" id="modal-title">Do you want to add custom tech's for {selectedCategory} ?</h3>
+                                        <h3 className="text-base font-semibold  text-gray-900" id="modal-title">Do you want to add custom tech&apos;s for {selectedCategory} ?</h3>
                                         <svg className="cursor-pointer" onClick={()=>{
                                             setErr(null)
                                             onConfirm()}} width="20" height="20" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M18 0.5C8.25 0.5 0.5 8.25 0.5 18C0.5 27.75 8.25 35.5 18 35.5C27.75 35.5 35.5 27.75 35.5 18C35.5 8.25 27.75 0.5 18 0.5ZM24.75 26.75L18 20L11.25 26.75L9.25 24.75L16 18L9.25 11.25L11.25 9.25L18 16L24.75 9.25L26.75 11.25L20 18L26.75 24.75L24.75 26.75Z" fill="black" fill-opacity="0.4" />
+                                            <path d="M18 0.5C8.25 0.5 0.5 8.25 0.5 18C0.5 27.75 8.25 35.5 18 35.5C27.75 35.5 35.5 27.75 35.5 18C35.5 8.25 27.75 0.5 18 0.5ZM24.75 26.75L18 20L11.25 26.75L9.25 24.75L16 18L9.25 11.25L11.25 9.25L18 16L24.75 9.25L26.75 11.25L20 18L26.75 24.75L24.75 26.75Z" fill="black" fillOpacity="0.4" />
                                         </svg>
                                     </div>
 

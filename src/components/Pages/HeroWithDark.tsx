@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import RightArrow from '@/components/RightArrow';
-import Star from '@/components/Start';
 import ChatBotIcon from '@/components/ChatBotIcon';
-import MessageIcon from '@/components/MessageIcon';
-import WhatsappIcon from '@/components/WhatsappIcon';
-import LightToggle from '@/components/LightToggle';
 import DarkToggle from '@/components/DarkToggle';
 import HomeIcon_Light from '@/components/HomeIcon_Light';
-import WhatsappIcon_Light from '@/components/WhatsappIcon_Light';
+import LightToggle from '@/components/LightToggle';
+import MessageIcon from '@/components/MessageIcon';
+import RightArrow from '@/components/RightArrow';
 import RightArrow_Light from '@/components/RightArrow_Light';
+import Star from '@/components/Start';
+import WhatsappIcon from '@/components/WhatsappIcon';
+import WhatsappIcon_Light from '@/components/WhatsappIcon_Light';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useState } from 'react';
 import HomeIcon from '../HomeIcon';
 
 const HomePage = () => {

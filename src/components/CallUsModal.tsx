@@ -1,7 +1,6 @@
-import { Dispatch, FunctionComponent, SetStateAction, useState } from "react"
-import { Technologies, technologies } from "./Pages/Pricing"
+import { FunctionComponent } from "react"
 
-import PhoneInput, { CountryData } from 'react-phone-input-2'
+import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 
 
@@ -11,7 +10,6 @@ export interface AddTechModalProps {
 }
 
 const CallUsModal: FunctionComponent<AddTechModalProps> = ({
-    isModalOpen,
     onConfirm,
 }) => {
 
@@ -50,8 +48,8 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
                             <PhoneInput
                                 country={'sa'}
                                 value={'966'}
-                                onChange={(phone, data: CountryData) => {
-                                    const countryCodeLength = data.dialCode.length
+                                onChange={() => {
+                                    // const countryCodeLength = data.dialCode.length
                                     // if (phone == '' || phone.length == countryCodeLength) {
                                     //     setError('phone', {
                                     //         message: 'Phone Number required'

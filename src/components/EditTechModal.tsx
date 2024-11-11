@@ -1,5 +1,6 @@
 import { Dispatch, FunctionComponent, SetStateAction, useState } from "react"
-import { Technologies, technologies } from "./Pages/Pricing"
+import { Technologies } from "./Pages/Pricing"
+import { useCallUsModalState } from "./CallUsContext"
 
 export interface AddTechModalProps {
     isModalOpen: boolean
@@ -20,8 +21,6 @@ export interface AddTechModalProps {
 const EditTechModal: FunctionComponent<AddTechModalProps> = ({
     isModalOpen,
     onConfirm,
-    selectedCategory,
-    setQuantities,
     quantities,
     techs,
     removeTech,
@@ -29,22 +28,23 @@ const EditTechModal: FunctionComponent<AddTechModalProps> = ({
     decreaseTechQuantity
 }) => {
 
-    const [customTech, setCustomTech] = useState('')
-    const [quantity, setQuantity] = useState<number>(0)
+    // const [customTech, setCustomTech] = useState('')
+    // const [quantity, setQuantity] = useState<number>(0)
     const [err, setErr] = useState<string | null>(null)
+    const {setIsCallUsModalOpen} = useCallUsModalState()
 
-    const onSave = () => {
-        if (selectedCategory) {
-            technologies[selectedCategory].push(customTech)
-            setQuantities(prev => ({
-                ...prev,
-                [selectedCategory]: {
-                    ...prev[selectedCategory],
-                    [customTech]: quantity,
-                },
-            }));
-        }
-    }
+    // const onSave = () => {
+    //     if (selectedCategory) {
+    //         technologies[selectedCategory].push(customTech)
+    //         setQuantities(prev => ({
+    //             ...prev,
+    //             [selectedCategory]: {
+    //                 ...prev[selectedCategory],
+    //                 [customTech]: quantity,
+    //             },
+    //         }));
+    //     }
+    // }
 
 
     if (isModalOpen && techs.length > 0) {
@@ -66,7 +66,7 @@ const EditTechModal: FunctionComponent<AddTechModalProps> = ({
                                             setErr(null)
                                             onConfirm()
                                         }} width="20" height="20" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M18 0.5C8.25 0.5 0.5 8.25 0.5 18C0.5 27.75 8.25 35.5 18 35.5C27.75 35.5 35.5 27.75 35.5 18C35.5 8.25 27.75 0.5 18 0.5ZM24.75 26.75L18 20L11.25 26.75L9.25 24.75L16 18L9.25 11.25L11.25 9.25L18 16L24.75 9.25L26.75 11.25L20 18L26.75 24.75L24.75 26.75Z" fill="black" fill-opacity="0.4" />
+                                            <path d="M18 0.5C8.25 0.5 0.5 8.25 0.5 18C0.5 27.75 8.25 35.5 18 35.5C27.75 35.5 35.5 27.75 35.5 18C35.5 8.25 27.75 0.5 18 0.5ZM24.75 26.75L18 20L11.25 26.75L9.25 24.75L16 18L9.25 11.25L11.25 9.25L18 16L24.75 9.25L26.75 11.25L20 18L26.75 24.75L24.75 26.75Z" fill="black" fillOpacity="0.4" />
                                         </svg>
                                     </div>
 
@@ -76,7 +76,7 @@ const EditTechModal: FunctionComponent<AddTechModalProps> = ({
                                     <div className='flex gap-5 mt-2 overflow-x-hidden w-full flex-wrap max-h-96 justify-start'>
                                         {techs.map((item, index) => {
                                             return (
-                                                <div className="relative flex items-center justify-center p-0.5 rounded-full w-full">
+                                                <div key={index} className="relative flex items-center justify-center p-0.5 rounded-full w-full">
                                                     <div className="absolute inset-0 bg-gradient-to-r from-orange-200 via-transparent to-orange-50 rounded-full"></div>
 
                                                     <div className="relative items-center justify-center rounded-full w-full">
@@ -104,7 +104,7 @@ const EditTechModal: FunctionComponent<AddTechModalProps> = ({
                                                                 </button>
 
                                                                 <svg onClick={() => removeTech(item)} className="cursor-pointer" width="20" height="20" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                <path d="M18 0.5C8.25 0.5 0.5 8.25 0.5 18C0.5 27.75 8.25 35.5 18 35.5C27.75 35.5 35.5 27.75 35.5 18C35.5 8.25 27.75 0.5 18 0.5ZM24.75 26.75L18 20L11.25 26.75L9.25 24.75L16 18L9.25 11.25L11.25 9.25L18 16L24.75 9.25L26.75 11.25L20 18L26.75 24.75L24.75 26.75Z" fill="black" fill-opacity="0.3" />
+                                                                <path d="M18 0.5C8.25 0.5 0.5 8.25 0.5 18C0.5 27.75 8.25 35.5 18 35.5C27.75 35.5 35.5 27.75 35.5 18C35.5 8.25 27.75 0.5 18 0.5ZM24.75 26.75L18 20L11.25 26.75L9.25 24.75L16 18L9.25 11.25L11.25 9.25L18 16L24.75 9.25L26.75 11.25L20 18L26.75 24.75L24.75 26.75Z" fill="black" fillOpacity="0.3" />
                                                             </svg>
                                                             </div>
                                                            
@@ -116,7 +116,7 @@ const EditTechModal: FunctionComponent<AddTechModalProps> = ({
                                         })}
                                     </div>
 
-                                    <div className="pt-5 inline-block m-auto w-fit">
+                                    <div onClick={()=>setIsCallUsModalOpen(true)} className="pt-5 inline-block m-auto w-fit">
                                         <div className='animate-bounce-right cursor-pointer mr-5 border w-fit p-3 text-white bg-orange-500 rounded-full text-xs font-semibold'>Get Pricing</div>
                                     </div>
 

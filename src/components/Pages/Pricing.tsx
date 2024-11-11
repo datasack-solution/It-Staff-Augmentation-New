@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 import AddTechModal from '../AddTechModal';
+import { useCallUsModalState } from '../CallUsContext';
 import CategoryHorizontal from '../CategoryHorizontal';
-import PlusIcon from '../PlusIcon';
-import { Slider, RangeSlider } from 'rsuite'
 import DurationRangeSelector from '../DurationSlider';
 import EditTechModal from '../EditTechModal';
-import { useCallUsModalState } from '../CallUsContext';
+import PlusIcon from '../PlusIcon';
 
 
 export type Technologies = {
@@ -93,7 +92,7 @@ const Pricing = () => {
     const [quantities, setQuantities] = useState<{ [category: string]: { [tech: string]: number } }>({});
     const [isEditModalOpen, setEditModalOpen] = useState(false)
     const [isModalOpen, setModalOpen] = useState<boolean>(false)
-    const {isCallUsModalOpen,setIsCallUsModalOpen}=useCallUsModalState()
+    const { setIsCallUsModalOpen } = useCallUsModalState()
 
     const techs = Object.values(quantities).flatMap(r => { return Object.keys(r) })
     const techQuantities = Object.values(quantities).flatMap(r => Object.values(r))
@@ -113,7 +112,7 @@ const Pricing = () => {
         return () => {
             document.body.classList.remove('overflow-hidden');
         };
-    }, [isEditModalOpen, isModalOpen, quantities]);
+    }, [isEditModalOpen, isModalOpen, quantities, techs.length]);
 
 
     const handleIncreaseQuantity = (category: keyof Technologies, tech: string) => {
@@ -132,6 +131,7 @@ const Pricing = () => {
             const currentQuantity = currentCategory[tech] || 0;
 
             if (currentQuantity <= 1) {
+                // eslint-disable-next-line @typescript-eslint/no-unused-vars
                 const { [tech]: _, ...updatedCategory } = currentCategory;
                 return {
                     ...prev,
@@ -156,6 +156,7 @@ const Pricing = () => {
 
             for (const category in updatedQuantities) {
                 if (updatedQuantities[category][tech] !== undefined) {
+                    // eslint-disable-next-line @typescript-eslint/no-unused-vars
                     const { [tech]: _, ...updatedCategory } = updatedQuantities[category];
                     updatedQuantities[category] = updatedCategory;
                 }
@@ -211,7 +212,7 @@ const Pricing = () => {
 
 
     return (
-        <div id='pricing-section'  className={`container mx-auto lg:p-10 -mt-20 ${isEditModalOpen && 'overflow-y-hidden'}`}>
+        <div id='pricing-section' className={`container mx-auto lg:p-10 -mt-20 ${isEditModalOpen && 'overflow-y-hidden'}`}>
             {techs.length > 0 && <div
                 className="skill-footer text-black animate-flyinup sm:fixed md:fixed lg:fixed xl:fixed 2xl:fixed w-screen z-50 bg-gray-50 bottom-0 left-0 p-4 font-sans text-sm font-normal break-words whitespace-normal  border shadow-lg border-blue-gray-50 text-blue-gray-500 shadow-blue-gray-500/10 focus:outline-none">
                 <div className='flex justify-between'>
@@ -221,14 +222,14 @@ const Pricing = () => {
                     </div>
 
                     <svg onClick={removeAllTech} className="cursor-pointer mr-5" width="20" height="20" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M18 0.5C8.25 0.5 0.5 8.25 0.5 18C0.5 27.75 8.25 35.5 18 35.5C27.75 35.5 35.5 27.75 35.5 18C35.5 8.25 27.75 0.5 18 0.5ZM24.75 26.75L18 20L11.25 26.75L9.25 24.75L16 18L9.25 11.25L11.25 9.25L18 16L24.75 9.25L26.75 11.25L20 18L26.75 24.75L24.75 26.75Z" fill="black" fill-opacity="0.4" />
+                        <path d="M18 0.5C8.25 0.5 0.5 8.25 0.5 18C0.5 27.75 8.25 35.5 18 35.5C27.75 35.5 35.5 27.75 35.5 18C35.5 8.25 27.75 0.5 18 0.5ZM24.75 26.75L18 20L11.25 26.75L9.25 24.75L16 18L9.25 11.25L11.25 9.25L18 16L24.75 9.25L26.75 11.25L20 18L26.75 24.75L24.75 26.75Z" fill="black" fillOpacity="0.4" />
                     </svg>
                 </div>
 
                 <div className='flex gap-5 mt-2 overflow-x-hidden w-full flex-wrap max-h-28 text-black'>
                     {techs.map((item, index) => {
                         return (
-                            <div className="animate-bounce-right relative flex items-center justify-center p-0.5 rounded-full">
+                            <div key={index} className="animate-bounce-right relative flex items-center justify-center p-0.5 rounded-full">
                                 <div className="absolute inset-0 bg-gradient-to-r from-orange-200 via-transparent to-orange-50 rounded-full"></div>
 
                                 <div className="relative items-center justify-center rounded-full">
@@ -241,7 +242,7 @@ const Pricing = () => {
 
 
                                         <svg onClick={() => removeTech(item)} className="cursor-pointer mr-5" width="20" height="20" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M18 0.5C8.25 0.5 0.5 8.25 0.5 18C0.5 27.75 8.25 35.5 18 35.5C27.75 35.5 35.5 27.75 35.5 18C35.5 8.25 27.75 0.5 18 0.5ZM24.75 26.75L18 20L11.25 26.75L9.25 24.75L16 18L9.25 11.25L11.25 9.25L18 16L24.75 9.25L26.75 11.25L20 18L26.75 24.75L24.75 26.75Z" fill="black" fill-opacity="0.3" />
+                                            <path d="M18 0.5C8.25 0.5 0.5 8.25 0.5 18C0.5 27.75 8.25 35.5 18 35.5C27.75 35.5 35.5 27.75 35.5 18C35.5 8.25 27.75 0.5 18 0.5ZM24.75 26.75L18 20L11.25 26.75L9.25 24.75L16 18L9.25 11.25L11.25 9.25L18 16L24.75 9.25L26.75 11.25L20 18L26.75 24.75L24.75 26.75Z" fill="black" fillOpacity="0.3" />
                                         </svg>
 
                                     </div>
@@ -251,7 +252,7 @@ const Pricing = () => {
                     })}
                 </div>
 
-                <div onClick={()=>setIsCallUsModalOpen(true)} className='animate-jiggle cursor-pointer float-right mr-5 border w-fit p-3 flex justify-end text-white bg-orange-500 rounded-full text-xs font-semibold'>Get Pricing</div>
+                <div onClick={() => setIsCallUsModalOpen(true)} className='animate-jiggle cursor-pointer float-right mr-5 border w-fit p-3 flex justify-end text-white bg-orange-500 rounded-full text-xs font-semibold'>Get Pricing</div>
             </div>}
 
             <h2 className="text-2xl sm:text-lg md:text-2xl lg:text-2xl xl:text-3xl 2xl:text-5xl text-black font-bold text-center">
@@ -315,14 +316,14 @@ const Pricing = () => {
                                 onClick={() => handleCategoryClick(category as keyof typeof technologies)}
                                 className={`border max-h-fit w-full text-black border-orange-500 py-2 px-4 rounded-full transition-colors ${selectedCategory === category ? "bg-orange-500 text-white" : "text-black"
                                     } ${quantities[category] &&
-                                    (Object.values(quantities[category]).some(quantity => quantity > 0) && selectedCategory==category) ? 'bg-orange-500 text-black':'text-black'} hover:bg-orange-500`}
+                                        (Object.values(quantities[category]).some(quantity => quantity > 0) && selectedCategory == category) ? 'bg-orange-500 text-black' : 'text-black'} hover:bg-orange-500`}
                             >
                                 {category}
                             </button>
 
                             {quantities[category] &&
                                 Object.values(quantities[category]).some(quantity => quantity > 0) && (
-                                    <div className={`w-5 h-5 border border-orange-500 bg-orange-500 rounded-full absolute -top-1 right-0 ${selectedCategory===category ? 'bg-white text-black':'text-white'}`}>
+                                    <div className={`w-5 h-5 border border-orange-500 bg-orange-500 rounded-full absolute -top-1 right-0 ${selectedCategory === category ? 'bg-white text-black' : 'text-white'}`}>
                                         <p className='text-center rounded-full text-sm'>
                                             {Object.values(quantities[category]).filter(quantity => quantity > 0).length}
                                         </p>
@@ -410,7 +411,7 @@ const Pricing = () => {
                         <DurationRangeSelector />
 
                         {techs.length > 0 && <div className="pt-5 m-auto">
-                            <div className='animate-bounce-right m-auto cursor-pointer border w-fit p-3 text-white bg-orange-500 rounded-full text-xs font-semibold'>Get Pricing</div>
+                            <div onClick={()=>setIsCallUsModalOpen(true)} className='animate-bounce-right m-auto cursor-pointer border w-fit p-3 text-white bg-orange-500 rounded-full text-xs font-semibold'>Get Pricing</div>
                         </div>}
                     </div>
                 </div>
