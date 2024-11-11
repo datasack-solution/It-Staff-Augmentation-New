@@ -32,7 +32,7 @@ const HomePage = () => {
   return (
     <div className='bg-white overflow-hidden'>
       <div
-        className="absolute inset-0 w-screen h-screen bg-cover opacity-70 sm:opacity-80 md:opacity-90 lg:opacity-90 xl:opacity-90 2xl:opacity-90"
+        className="absolute inset-0 w-screen h-screen bg-cover opacity-45 sm:opacity-80 md:opacity-90 lg:opacity-90 xl:opacity-90 2xl:opacity-90"
         style={{
           backgroundImage: `
       url('/BG-Upscale.jpg')

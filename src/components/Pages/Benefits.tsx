@@ -41,7 +41,7 @@ const Benefits = () => {
             IT Staff Augmentation Services Riyadh provided by Datasack Solutions are advantageous as they offer the following benefits.
         </p>
 
-        <div className="relative flex items-center justify-center p-[3px] rounded-full">
+        <div className="hide-scrollbar relative flex items-center justify-center p-[3px] rounded-full">
             <div className="absolute inset-0 bg-gradient-to-b from-orange-300 via-transparent to-orange-300 rounded-3xl"></div>
 
             {/* <div className="relative bg-white grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-2 md:grid-cols-2 gap-10 p-10 rounded-3xl">
@@ -58,18 +58,50 @@ const Benefits = () => {
             </div> */}
 
 
-            <div className="relative bg-white grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-6 p-6 md:p-10 rounded-3xl">
-                {benefits.map((benefit) => (
+            <div className="hidden md:relative lg:relative xl:relative 2xl:relative  md:grid lg:grid xl:grid 2xl:grid bg-white  2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-6 p-6 md:p-10 rounded-3xl">
+                {benefits.map((benefit, index) => (
                     <div key={benefit.title} className="relative flex items-center justify-center p-[1px] rounded-full">
                         <div className="absolute inset-0 bg-gradient-to-b from-orange-300 via-transparent to-orange-300 rounded-3xl"></div>
 
-                        <div className="relative p-5 bg-white max-h-80 h-full flex flex-col items-center overflow-auto  rounded-3xl shadow-md">
-                            <h2 className="text-center font-bold py-3 text-lg">{benefit.title}</h2>
+                        <div className="relative p-5 bg-white max-h-80 h-full flex flex-col items-center overflow-auto hide-scrollbar rounded-3xl shadow-md">
+                            <div className="rounded-full p-1 bg-gray-200 w-10 h-10 text-center align-middle">
+                                <p className="mt-auto text-lg text-black">{index + 1}</p>
+                            </div>
+                            
+                            <div className="w-fit inline-block py-3">
+                            <h2 className="text-center font-bold text-lg">{benefit.title}</h2>
+                            {/* <div className="w-full h-[1px] mt-1 bg-gradient-to-r from-[rgba(238,123,34,1)] to-[rgba(218,218,218,1)] rounded-lg"></div> */}
+                            </div>
+
                             <p className="text-center text-sm sm:text-sm md:text-base lg:text-base xl:text-base 2xl:text-base text-gray-700">{benefit.description}</p>
                         </div>
                     </div>
                 ))}
             </div>
+
+            <div className="relative flex flex-col  gap-8 md:hidden lg:hidden xl:hidden 2xl:hidden p-2 rounded-3xl  bg-white">
+                {benefits.map((benefit, index) => {
+                    return <div>
+                        <div className="rounded-full inline-block  text-center align-middle">
+                            <p className=" rounded-full text-center text-5xl font-light text-gray-400">0{index + 1}</p>
+                        </div>
+
+                        <div className="flex flex-col gap-2">
+                            <div className="inline-block w-fit">
+                                <h2 className="uppercase font-semibold">{benefit.title}</h2>
+                                {/* <div className="w-full h-0.5 mt-1 bg-gradient-to-r from-[rgba(238,123,34,1)] to-[rgba(218,218,218,1)] rounded-lg"></div> */}
+                            </div>
+
+                            <div className="rounded-lg text-sm text-justify text-pretty">
+                                {benefit.description}
+                            </div>
+                        </div>
+
+
+                    </div>
+                })}
+            </div>
+
         </div>
 
     </div>
