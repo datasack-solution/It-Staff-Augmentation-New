@@ -42,7 +42,7 @@ const CategoryHorizontal: FunctionComponent<CategoryHorizontalProps> = ({
     {!hasScrolled && (
       <div className="transform -translate-y-1/2 mb-2 animate-slide-right flex items-center text-orange-500 text-sm font-semibold">
         <span className="mr-1 text-xs">Scroll Right</span>
-        <ChevronDoubleRightIcon className="w-4 h-4 animate-pulse" />
+        <ChevronDoubleRightIcon className="w-4 h-4 animate-slide-right" />
       </div>
     )}
 
