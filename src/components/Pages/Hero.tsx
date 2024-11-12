@@ -57,7 +57,7 @@ const HomePage = () => {
   return (
     <div className='bg-red-white overflow-hidden h-[800px] mb-10'>
       <div
-        className="absolute inset-0 w-screen h-[800px] bg-cover opacity-45 sm:opacity-80 md:opacity-90 lg:opacity-90 xl:opacity-90 2xl:opacity-90"
+        className="absolute inset-0 w-screen h-[800px] bg-cover opacity-45 sm:opacity-80 md:opacity-70 lg:opacity-70 xl:opacity-70 2xl:opacity-90"
         style={{
           backgroundImage: `
       url('/BG-Upscale.jpg')
@@ -65,7 +65,8 @@ const HomePage = () => {
         }}
       />
       <ChatBotIcon className='fixed right-5 z-50
-      sm:size-10
+      size-12
+      sm:size-12
       md:size-12
       lg:size-14
       xl:size-14
@@ -182,7 +183,7 @@ const HomePage = () => {
                 <p>Close</p>
                 <div className='inline-block text-center m-auto'>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-5">
-                  <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                  <path fillRule="evenodd" d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
                 </svg>
                 </div>
               </div>
@@ -216,7 +217,7 @@ const HomePage = () => {
 
       </div>
 
-      <div className="relative h-screen w-screen overflow-y bg-opacity-50 mt-28">
+      <div className="relative h-screen w-screen overflow-y bg-opacity-50 mt-28 px-5">
         <div className="
         relative 
         z-10 

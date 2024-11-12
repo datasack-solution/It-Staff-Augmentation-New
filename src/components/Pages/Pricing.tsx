@@ -32,7 +32,7 @@ export const technologies: Technologies = {
         "Oracle Financial Services Analytical Applications",
     ],
     "SAP": [
-        "SAP Consultant (if applicable, specify module like SAP FI, SAP MM, etc.)",
+        "SAP Consultant (SAP FI, SAP MM, etc.)",
         "SAP ABAP Developer",
         "SAP Basis Administrator",
         "SAP Solution Architect",
@@ -87,11 +87,18 @@ export const technologies: Technologies = {
     ]
 };
 
+const durationScale = [
+    '', '1 month', '2 months', '3 months', '4 months', '5 months', '6 months',
+    '7 months', '8 months', '9 months', '10 months', '11 months',
+    '1 year', '1.2 years', '1.5 years', '1.7 years', '2+ years'
+];
+
 const Pricing = () => {
     const [selectedCategory, setSelectedCategory] = useState<keyof typeof technologies | null>('SAP');
     const [quantities, setQuantities] = useState<{ [category: string]: { [tech: string]: number } }>({});
     const [isEditModalOpen, setEditModalOpen] = useState(false)
     const [isModalOpen, setModalOpen] = useState<boolean>(false)
+    const [durationIndex, setDurationIndex] = useState<number>(6)
     const { setIsCallUsModalOpen } = useCallUsModalState()
 
     const techs = Object.values(quantities).flatMap(r => { return Object.keys(r) })
@@ -167,17 +174,6 @@ const Pricing = () => {
 
 
     const increasingTechQuantity = (tech: string) => {
-        // setQuantities(prev => {
-        //     const updatedQuantities = { ...prev };
-
-        //     for (const category in updatedQuantities) {
-        //         // if (updatedQuantities[category][tech] !== undefined) {                    
-        //         //     const updatedCategory ={...prev[category], [tech]:(prev[category]?.[tech]||0)+1}
-        //         //     updatedQuantities[category]=updatedCategory
-        //         // }
-        //     }
-        //     return updatedQuantities;
-        // });
         for (const category in quantities) {
             if (quantities[category][tech] !== undefined) {
                 handleIncreaseQuantity(category as keyof Technologies, tech)
@@ -186,13 +182,6 @@ const Pricing = () => {
     }
 
     const decreasingTechQuantity = (tech: string) => {
-        // setQuantities(prev => {
-        //     const updatedQuantities = { ...prev };
-
-
-        //     return updatedQuantities;
-        // });
-
         for (const category in quantities) {
             if (quantities[category][tech] !== undefined) {
                 handleDecreaseQuantity(category as keyof Technologies, tech)
@@ -218,7 +207,7 @@ const Pricing = () => {
                 <div className='flex justify-between'>
                     <div className='flex gap-5'>
                         <h2 className='text-orange-500 font-semibold text-lg'>Selected Technologies</h2>
-                        <p className='text-sm mt-1'>Duration</p>
+                        <p className='text-sm mt-1'>Duration: <span className='font-semibold'>{durationScale[durationIndex]}</span></p>
                     </div>
 
                     <svg onClick={removeAllTech} className="cursor-pointer mr-5" width="20" height="20" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -255,7 +244,7 @@ const Pricing = () => {
                 <div onClick={() => setIsCallUsModalOpen(true)} className='animate-jiggle cursor-pointer float-right mr-5 border w-fit p-3 flex justify-end text-white bg-orange-500 rounded-full text-xs font-semibold'>Get Pricing</div>
             </div>}
 
-            <h2 className="text-2xl sm:text-lg md:text-2xl lg:text-2xl xl:text-3xl 2xl:text-5xl text-black font-bold text-center">
+            <h2 className="text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl 2xl:text-4xl text-black font-bold text-center">
                 Craft your own <span className="text-orange-500">pricing</span>
             </h2>
             <p className="text-center my-10 px-3 text-gray-600">
@@ -270,6 +259,7 @@ const Pricing = () => {
                 removeTech={removeTech}
                 increaseTechQuantity={increasingTechQuantity}
                 decreaseTechQuantity={decreasingTechQuantity}
+                duration={durationScale[durationIndex]}
             />
 
             {techs.length > 0 && <div onClick={() => { setEditModalOpen(true) }} className='fixed animate-flyinup z-50 bottom-10 w-full sm:hidden md:hidden lg:hidden xl:hidden 2xl:hidden'>
@@ -286,10 +276,6 @@ const Pricing = () => {
 
 
             <div className="flex flex-col lg:flex-row p-3 gap-8">
-
-                {/* category vertical for larger screens */}
-                {/*  md:grid
-                md:grid-cols-2 */}
 
                 <div className="
                 h-fit
@@ -362,21 +348,6 @@ const Pricing = () => {
                             {technologies[selectedCategory].map((tech, index) => (
                                 <div key={index} className="flex items-center justify-between p-4 shadow rounded-lg ">
                                     <span>{tech}</span>
-                                    {/* <div className="flex items-center space-x-2 bg-white rounded-full ">
-                                        <button
-                                            onClick={() => { handleDecreaseQuantity(selectedCategory, tech) }}
-                                            className="  hover:bg-orange-400 hover:text-white rounded-full w-8 h-8 text-center"
-                                        >
-                                            -
-                                        </button>
-                                        <span>{quantities[selectedCategory]?.[tech] || 0}</span>
-                                        <button
-                                            onClick={() => { handleIncreaseQuantity(selectedCategory, tech) }}
-                                            className="  hover:bg-orange-400 hover:text-white rounded-full w-8 h-8 text-center"
-                                        >
-                                            +
-                                        </button>
-                                    </div> */}
 
                                     <div className="relative flex items-center justify-center p-0.5 rounded-full">
                                         <div className="absolute inset-0 bg-gradient-to-r from-orange-200 via-transparent to-orange-50 rounded-full"></div>
@@ -384,7 +355,7 @@ const Pricing = () => {
                                         <div className="relative flex items-center bg-white rounded-full px-1">
                                             <button
                                                 onClick={() => { handleDecreaseQuantity(selectedCategory, tech) }}
-                                                className="hover:bg-orange-400 hover:text-white rounded-full w-8 h-8 text-center p-0"
+                                                className="  rounded-full w-8 h-8 text-center p-0"
                                             >
                                                 -
                                             </button>
@@ -393,7 +364,7 @@ const Pricing = () => {
 
                                             <button
                                                 onClick={() => { handleIncreaseQuantity(selectedCategory, tech) }}
-                                                className="hover:bg-orange-400 hover:text-white rounded-full w-8 h-8 text-center"
+                                                className="  rounded-full w-8 h-8 text-center"
                                             >
                                                 +
                                             </button>
@@ -408,7 +379,7 @@ const Pricing = () => {
                     )}
 
                     <div className='mb-28 mt-8 text-black'>
-                        <DurationRangeSelector />
+                        <DurationRangeSelector onChange={setDurationIndex}/>
 
                         {techs.length > 0 && <div className="pt-5 m-auto">
                             <div onClick={()=>setIsCallUsModalOpen(true)} className='animate-bounce-right m-auto cursor-pointer border w-fit p-3 text-white bg-orange-500 rounded-full text-xs font-semibold'>Get Pricing</div>

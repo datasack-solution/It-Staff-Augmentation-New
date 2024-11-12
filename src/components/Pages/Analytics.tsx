@@ -1,6 +1,26 @@
 import Image from "next/image"
 import { useState } from "react"
+import React, { useRef } from 'react';
+import { motion } from 'framer-motion';
+import Slider, { Settings } from 'react-slick';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import AnalyticsDeskCardSvg from "../AnalyticsDescCardSvg";
+import AnalyticsMobilePointSvg from "../AnalyticsMobilePointSvg";
 
+interface Step {
+    id: number;
+    title: string;
+    description: string;
+}
+
+const steps: Step[] = [
+    { id: 1, title: "Contract Staffing", description: "Access Skilled IT contractors to meet your project-based needs." },
+    { id: 2, title: "Key Statistics", description: "Experts ready in 2 weeks, 8% available to join instantly—rated 4.9/5 on Clutch." },
+    { id: 3, title: "Remote Hiring", description: "Source and onboard talented IT professionals from anywhere in the world." },
+    { id: 4, title: "Global Mobility", description: "Facilitate seamless employee relocation and cross-based assignments." },
+    { id: 5, title: "Payroll Outsourcing", description: "Simplify payroll administration and ensure compliance." }
+];
 
 const analytics = [
     {
@@ -24,6 +44,23 @@ const analytics = [
 
 const AnalyticsPage = () => {
     const [content, setContent] = useState(0)
+    const sliderRef = useRef<Slider | null>(null);
+    const [activeIndex, setActiveIndex] = useState<number>(0);
+
+    const settings: Settings = {
+        dots: false,
+        infinite: false,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        beforeChange: (_, next) => setActiveIndex(next),
+    };
+
+    const handleClickStep = (index: number) => {
+        setActiveIndex(index);
+        sliderRef.current?.slickGoTo(index);
+    };
+
+
 
     return <div className=" text-black">
         <div className="container
@@ -33,7 +70,7 @@ const AnalyticsPage = () => {
         2xl:flex bg-white h-screen m-auto">
             <div className="w-[60%] mt-16 lg:mt-10">
                 <div className="w-1/2 m-auto">
-                    <h2 className="mt text-lg sm:text-lg md:text-2xl lg:text-2xl xl:text-3xl 2xl:text-4xl pt text-black font-bold text-center mt-10">
+                    <h2 className="mt text-xl sm:text-xl md:text-2xl lg:text-3xl text-nowrap xl:text-3xl 2xl:text-4xl pt text-black font-bold text-center mt-10">
                         IT Staff <span className="text-orange-500">Augmentation</span>
                     </h2>
                     <p className="text-center mt-10 px-3 mb-10 text-gray-600">
@@ -41,11 +78,20 @@ const AnalyticsPage = () => {
                     </p>
                 </div>
 
-                <div className=" align-middle  hidden
-        lg:flex
-        xl:flex
-        2xl:flex m-auto justify-between p-5 bg-white">
-                    <div className="grid xl:grid-cols-2 gap-5">
+                <div className="
+                align-middle  
+                hidden
+                lg:flex
+                xl:flex
+                2xl:flex 
+                m-auto 
+                justify-between 
+                p-5 
+                bg-white">
+                    <div className="
+                    grid 
+                    xl:grid-cols-2 
+                    gap-5">
                         {analytics.map((analytic, index) => {
                             return <button key={index} onClick={() => { setContent(index) }}
                                 className={`p-2 
@@ -59,24 +105,13 @@ const AnalyticsPage = () => {
                         })}
                     </div>
 
-                    <div className="flex relative ">
+                    <div className="flex relative lg:mt-20 xl:mt-10 2xl:mt-0">
                         <div className=" w-full">
-                            <svg width="398" height="182" viewBox="0 0 398 182" fill="none" xmlns="http://www.w3.org/2000/svg" className=" h-36">
-                                <mask id="path-1-inside-1_162_660" fill="white">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M22 0C9.84974 0 0 9.84973 0 22V160C0 172.15 9.84975 182 22 182H360.164C371.435 182 380.883 173.481 382.046 162.269L382.09 161.843C383.135 151.771 374.578 143.326 364.521 144.503C348.68 146.357 340.366 126.256 352.887 116.378L381.197 94.0447C386.714 89.692 390.236 83.2923 390.961 76.3021L394 47L397.241 25.2408C399.221 11.9466 388.922 0 375.481 0H22Z" />
-                                </mask>
-                                <path d="M382.046 162.269L384.035 162.476L382.046 162.269ZM394 47L392.022 46.7054L392.015 46.7494L392.011 46.7937L394 47ZM397.241 25.2408L399.219 25.5355V25.5355L397.241 25.2408ZM390.961 76.3021L388.972 76.0958L390.961 76.3021ZM352.887 116.378L354.126 117.948L352.887 116.378ZM382.09 161.843L384.08 162.049L382.09 161.843ZM2 22C2 10.9543 10.9543 2 22 2V-2C8.74517 -2 -2 8.74516 -2 22H2ZM2 160V22H-2V160H2ZM22 180C10.9543 180 2 171.046 2 160H-2C-2 173.255 8.74518 184 22 184V180ZM360.164 180H22V184H360.164V180ZM380.057 162.063C379 172.255 370.41 180 360.164 180V184C372.46 184 382.767 174.706 384.035 162.476L380.057 162.063ZM380.101 161.636L380.057 162.063L384.035 162.476L384.08 162.049L380.101 161.636ZM354.126 117.948L382.436 95.6149L379.958 92.4745L351.649 114.808L354.126 117.948ZM392.011 46.7937L388.972 76.0958L392.951 76.5084L395.989 47.2063L392.011 46.7937ZM395.263 24.9462L392.022 46.7054L395.978 47.2946L399.219 25.5355L395.263 24.9462ZM375.481 2C387.7 2 397.063 12.8606 395.263 24.9462L399.219 25.5355C401.379 11.0327 390.143 -2 375.481 -2V2ZM22 2H375.481V-2H22V2ZM382.436 95.6149C388.377 90.9276 392.17 84.036 392.951 76.5084L388.972 76.0958C388.303 82.5487 385.052 88.4564 379.958 92.4745L382.436 95.6149ZM364.289 142.516C350.451 144.136 343.188 126.577 354.126 117.948L351.649 114.808C337.544 125.935 346.91 148.577 364.754 146.489L364.289 142.516ZM384.08 162.049C385.256 150.704 375.617 141.191 364.289 142.516L364.754 146.489C373.539 145.461 381.013 152.838 380.101 161.636L384.08 162.049Z" fill="url(#paint0_linear_162_660)" mask="url(#path-1-inside-1_162_660)" />
-                                <defs>
-                                    <linearGradient id="paint0_linear_162_660" x1="0" y1="91" x2="397" y2="91" gradientUnits="userSpaceOnUse">
-                                        <stop stop-color="#EE7B22" />
-                                        <stop offset="1" stop-color="#732A09" />
-                                    </linearGradient>
-                                </defs>
-                            </svg>
+                            <AnalyticsDeskCardSvg />
                         </div>
-                        <div className="absolute left-14 text-lg w-3/4 text-wrap mt-5 p-2 
+                        <div className="absolute left-14 text-base w-3/4 text-wrap mt-5 p-2
                          bg-gradient-to-t from-[rgba(0,0,0,1)] to-[rgba(0,0,0,0.5)] bg-clip-text text-transparent
-                        font-semibold ">
+                         ">
                             {analytics[content].description}
                         </div>
 
@@ -85,10 +120,89 @@ const AnalyticsPage = () => {
                 </div>
 
             </div>
-            <div className=" w-[40%]">
+            <div className=" w-[40%] lg:mt-20 xl:mt-10">
                 <Image alt="illustration" src={'/steps.png'} width={550} height={400} className="mt-10" />
             </div>
         </div>
+
+
+        {/* mobile support */}
+        <div className="container relative
+        lg:hidden
+        xl:hidden
+        2xl:hidden p-5 m-auto text-white">
+            {/* <h2 className="text-2xl text-black font-semibold mb-6">Our IT Staff Augmentation Process</h2> */}
+
+            <h2 className="text-xl sm:text-xl md:text-2xl lg:text-3xl text-black font-bold text-center mt-5 mb-10">
+                IT Staff <span className="text-orange-500">Augmentation</span>
+            </h2>
+            <p className="text-center mt-5 px-3 mb-5 text-gray-600">
+                Augment your software team with IT professionals from the IT outsourcing company Riyadh.
+            </p>
+
+            {/* #ffdbbb */}
+
+            <div className="relative flex flex-col gap-4 mb-8">
+                {steps.map((step, index) => (
+                    <motion.div
+                        key={step.id}
+                        className={`flex items-center cursor-pointer ${index === activeIndex ? 'opacity-100' : 'opacity-50'}`}
+                        onClick={() => handleClickStep(index)}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: index === activeIndex ? 1 : 0.5 }}
+                        transition={{ duration: 0.3 }}
+                    >
+
+                        <AnalyticsMobilePointSvg activeIndex={activeIndex} currentIndex={index} />
+
+                        <div className={`flex-grow h-px ${index === activeIndex ? 'border-orange-600' : 'border-gray-500'} border-dotted border-b-2`}></div>
+                        <span className={`px-4 py-1 rounded-full text-sm ${index === activeIndex ? 'bg-orange-600 text-white' : 'bg-gray-700'}`}>
+                            {`0${index + 1}. ${step.title}`}
+                        </span>
+                    </motion.div>
+                ))}
+            </div>
+
+            <Slider {...settings} ref={sliderRef} className="mb-6 -mt-10">
+                {steps.map((step) => (
+                    <div key={step.id} className="p-4">
+                        <h3 className="text-lg font-semibold">{`0${step.id}. ${step.title}`}</h3>
+                        <p className="text-gray-400 mt-2">{step.description}</p>
+                    </div>
+                ))}
+            </Slider>
+
+            <div className="flex justify-between items-center">
+                <button
+                    onClick={() => sliderRef.current?.slickPrev()}
+                    className="p-2 bg-orange-500 rounded-full"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+
+                <div className="flex space-x-2">
+                    {steps.map((_, index) => (
+                        <span
+                            key={index}
+                            onClick={() => handleClickStep(index)}
+                            className={`w-2.5 h-2.5 ${index === activeIndex ? 'bg-orange-600' : 'bg-gray-500'} rounded-full cursor-pointer`}
+                        ></span>
+                    ))}
+                </div>
+
+                <button
+                    onClick={() => sliderRef.current?.slickNext()}
+                    className="p-2 bg-orange-500 rounded-full"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
     </div>
 }
 

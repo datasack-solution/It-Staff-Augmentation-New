@@ -104,10 +104,10 @@ const SideFloat:FunctionComponent<{className:string}> = ({className}) => {
     <feBlend mode="normal" in2="effect1_innerShadow_13_2142" result="effect2_innerShadow_13_2142"/>
     </filter>
     <linearGradient id="paint0_linear_13_2142" x1="-26.5294" y1="26.1707" x2="73.7317" y2="283.161" gradientUnits="userSpaceOnUse">
-    <stop stop-color="#EE7B22"/>
-    <stop offset="0.368352" stop-color="#EE7B22" stop-opacity="0.01"/>
-    <stop offset="0.574372" stop-color="#EE7B22" stop-opacity="0.01"/>
-    <stop offset="1" stop-color="#EE7B22" stop-opacity="0.3"/>
+    <stop stopColor="#EE7B22"/>
+    <stop offset="0.368352" stopColor="#EE7B22" stop-opacity="0.01"/>
+    <stop offset="0.574372" stopColor="#EE7B22" stop-opacity="0.01"/>
+    <stop offset="1" stopColor="#EE7B22" stop-opacity="0.3"/>
     </linearGradient>
     <clipPath id="clip0_13_2142">
     <rect x="16" y="224" width="50" height="20" rx="10" fill="white"/>

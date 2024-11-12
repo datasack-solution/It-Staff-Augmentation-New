@@ -1,6 +1,6 @@
 import { Dispatch, FunctionComponent, SetStateAction, useState } from "react"
-import { Technologies } from "./Pages/Pricing"
 import { useCallUsModalState } from "./CallUsContext"
+import { Technologies } from "./Pages/Pricing"
 
 export interface AddTechModalProps {
     isModalOpen: boolean
@@ -16,6 +16,7 @@ export interface AddTechModalProps {
     removeTech: (tech: string) => void
     increaseTechQuantity: (tech: string) => void
     decreaseTechQuantity: (tech: string) => void
+    duration:string
 }
 
 const EditTechModal: FunctionComponent<AddTechModalProps> = ({
@@ -25,7 +26,8 @@ const EditTechModal: FunctionComponent<AddTechModalProps> = ({
     techs,
     removeTech,
     increaseTechQuantity,
-    decreaseTechQuantity
+    decreaseTechQuantity,
+    duration
 }) => {
 
     // const [customTech, setCustomTech] = useState('')
@@ -73,6 +75,7 @@ const EditTechModal: FunctionComponent<AddTechModalProps> = ({
                                     {err && <p className="text-red-500 text-sm">{err}</p>}
 
 
+
                                     <div className='flex gap-5 mt-2 overflow-x-hidden w-full flex-wrap max-h-96 justify-start'>
                                         {techs.map((item, index) => {
                                             return (
@@ -116,11 +119,14 @@ const EditTechModal: FunctionComponent<AddTechModalProps> = ({
                                         })}
                                     </div>
 
+
                                     <div onClick={()=>setIsCallUsModalOpen(true)} className="pt-5 inline-block m-auto w-fit">
                                         <div className='animate-bounce-right cursor-pointer mr-5 border w-fit p-3 text-white bg-orange-500 rounded-full text-xs font-semibold'>Get Pricing</div>
                                     </div>
 
                                 </div>
+                                <p className="text-sm mt-3">Duration: <span className="font-semibold text-orange-500">{duration}</span></p>
+
 
 
                             </div>
