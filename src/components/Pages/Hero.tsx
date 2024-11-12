@@ -57,16 +57,22 @@ const HomePage = () => {
 
   const banks = ['alinma_bank.png', 'alrajhi_bank.png', 'bank_albilad.png', 'future_generali.png', 'nibav.png', 'olam.png', 'reliance_capital.png', 'enjaz.png']
   return (
-    <div className='bg-white overflow-hidden'>
+    <div className='bg-red-white overflow-hidden h-[800px] mb-10'>
       <div
-        className="absolute inset-0 w-screen h-screen bg-cover opacity-45 sm:opacity-80 md:opacity-90 lg:opacity-90 xl:opacity-90 2xl:opacity-90"
+        className="absolute inset-0 w-screen h-[800px] bg-cover opacity-45 sm:opacity-80 md:opacity-90 lg:opacity-90 xl:opacity-90 2xl:opacity-90"
         style={{
           backgroundImage: `
       url('/BG-Upscale.jpg')
     `
         }}
       />
-      <ChatBotIcon className='fixed right-5 z-50 rounded-full bg-gray-700 p-2 bottom-10' />
+      <ChatBotIcon className='fixed right-5 z-50
+      sm:size-10
+      md:size-12
+      lg:size-14
+      xl:size-14
+      2xl:size-16
+      rounded-full bg-gray-700 p-2 bottom-10' />
 
       {isCallUsModalOpen && <CallUsModal isModalOpen={isCallUsModalOpen} onConfirm={() => setIsCallUsModalOpen(false)} />}
 
@@ -87,7 +93,7 @@ const HomePage = () => {
         bg-white
         py-4
         z-100
-        gap-7
+        space-y-4
         bg-opacity-50     
         backdrop-blur-3xl 
         backdrop-brightness-75
@@ -98,28 +104,26 @@ const HomePage = () => {
         m-auto
         h-full">
 
-          {!darkMode && <HomeIcon className='size-7 m-auto cursor-pointer' />}
-          {darkMode && <HomeIcon_Light className='size-7 m-auto cursor-pointer' />}
-          <MessageIcon className='m-auto cursor-pointer' />
-          {!darkMode && <WhatsappIcon className='size-9 m-auto cursor-pointer' />}
-          {darkMode && <WhatsappIcon_Light className='size-7 m-auto cursor-pointer' />}
-          <div className=''>
+          { <HomeIcon className='2xl:size-6 xl:size-5 lg:size-5 md:size-5 sm:size-5 m-auto cursor-pointer' />}
+          <MessageIcon className='m-auto cursor-pointer 2xl:size-10 xl:size-8 lg:size-7 md:size-7 sm:size-7' />
+          { <WhatsappIcon className='2xl:size-8 xl:size-7 lg:size-7 md:size-7 sm:size-7 m-auto cursor-pointer' />}
+         
+          <div>
             {!darkMode &&
               <div>
-                <LightToggle className='m-auto cursor-pointer' onClick={toggleDarkMode} />
-                <p className='text-center'>Light</p>
+                <LightToggle className='m-auto cursor-pointer 2xl:size-10 xl:size-8 lg:size-7 md:size-7 sm:size-7' onClick={toggleDarkMode} />
+                <p className='text-center text-xs'>Light</p>
               </div>}
             {darkMode &&
               <div>
-                <DarkToggle className='m-auto cursor-pointer' onClick={toggleDarkMode} />
-                <p className='text-center'>Dark</p>
+                <DarkToggle className='m-auto cursor-pointer 2xl:size-10 xl:size-8 lg:size-7 md:size-7 sm:size-7' onClick={toggleDarkMode} />
+                <p className='text-center text-xs'>Dark</p>
               </div>
             }
           </div>
         </div>
       </div>
 
-      {/* <div className='fixed w-full bg-white  bg-opacity-50 z-40 backdrop-blur-lg top-0'> */}
       <div className={`fixed w-full bg-white  bg-opacity-50 backdrop-blur-lg z-40 top-0 transition-transform duration-500 ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}>
         <div className='flex justify-between align-middle w-full bg-transparent'>
           <div className='p-3'>

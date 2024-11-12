@@ -212,7 +212,7 @@ const Pricing = () => {
 
 
     return (
-        <div id='pricing-section' className={`container mx-auto lg:p-10 -mt-20 ${isEditModalOpen && 'overflow-y-hidden'}`}>
+        <div id='pricing-section' className={`container mx-auto lg:p-10 ${isEditModalOpen && 'overflow-y-hidden'}`}>
             {techs.length > 0 && <div
                 className="skill-footer text-black animate-flyinup sm:fixed md:fixed lg:fixed xl:fixed 2xl:fixed w-screen z-50 bg-gray-50 bottom-0 left-0 p-4 font-sans text-sm font-normal break-words whitespace-normal  border shadow-lg border-blue-gray-50 text-blue-gray-500 shadow-blue-gray-500/10 focus:outline-none">
                 <div className='flex justify-between'>
@@ -258,7 +258,7 @@ const Pricing = () => {
             <h2 className="text-2xl sm:text-lg md:text-2xl lg:text-2xl xl:text-3xl 2xl:text-5xl text-black font-bold text-center">
                 Craft your own <span className="text-orange-500">pricing</span>
             </h2>
-            <p className="text-center mt-10 px-3 text-gray-600">
+            <p className="text-center my-10 px-3 text-gray-600">
                 Customize your plan with chosen technologies, with pricing calculated monthly to fit your needs.
             </p>
 
