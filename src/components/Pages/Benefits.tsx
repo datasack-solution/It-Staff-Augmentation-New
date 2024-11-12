@@ -33,7 +33,8 @@ const benefits = [
 ]
 
 const Benefits = () => {
-    return <div className="container p-5 m-auto text-black">
+    return <div className="bg-[#F2F2F2]">
+    <div className="container p-5 m-auto text-black bg-[#F2F2F2]">
         <h2 className="text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl 2xl:text-4xl text-black font-bold text-center">
             Benefits of Choosing Us - <span className="text-orange-500">Advanced IT Recruitment Agency in Riyadh</span>
         </h2>
@@ -58,7 +59,7 @@ const Benefits = () => {
                                 <h2 className="text-center font-bold text-lg">{benefit.title}</h2>
                             </div>
 
-                            <p className="text-center text-sm sm:text-sm md:text-base lg:text-base xl:text-base 2xl:text-base text-gray-700">{benefit.description}</p>
+                            <p className="text-justify py-5 text-sm sm:text-sm md:text-base lg:text-base xl:text-base 2xl:text-base text-gray-700">{benefit.description}</p>
                         </div>
                     </div>
                 ))}
@@ -88,6 +89,7 @@ const Benefits = () => {
 
         </div>
 
+    </div>
     </div>
 }
 

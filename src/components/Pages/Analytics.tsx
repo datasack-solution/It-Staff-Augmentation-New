@@ -93,15 +93,21 @@ const AnalyticsPage = () => {
                     xl:grid-cols-2 
                     gap-5">
                         {analytics.map((analytic, index) => {
-                            return <button key={index} onClick={() => { setContent(index) }}
-                                className={`p-2 
+                            return <div key={index} className="relative flex items-center justify-center p-[1.5px] rounded-full">
+                                <div className="absolute inset-0 bg-gradient-to-r from-[#EE7B22]  to-[#732A09] rounded-full"></div>
+
+                                <button key={index} onClick={() => { setContent(index) }}
+                                    className={`p-2 
+                                    relative
+                                    w-full
                                 xl:h-16
                                 2xl:h-14
                                 text-center
                                  rounded-full 
-                                 border-2 
-                                 ${content == index ? 'bg-orange-400 text-white' : 'bg-transparent text-black'}
-                                 border-orange-500`}>{analytic.title}</button>
+
+                                 ${content == index ? 'bg-orange-500 text-white' : 'bg-white text-black'}
+                                 `}>{analytic.title}</button>
+                            </div>
                         })}
                     </div>
 
