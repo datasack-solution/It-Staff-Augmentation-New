@@ -1,13 +1,11 @@
 import ChatBotIcon from '@/components/ChatBotIcon';
 import DarkToggle from '@/components/DarkToggle';
-import HomeIcon_Light from '@/components/HomeIcon_Light';
 import LightToggle from '@/components/LightToggle';
 import MessageIcon from '@/components/MessageIcon';
 import RightArrow from '@/components/RightArrow';
 import RightArrow_Light from '@/components/RightArrow_Light';
 import Star from '@/components/Start';
 import WhatsappIcon from '@/components/WhatsappIcon';
-import WhatsappIcon_Light from '@/components/WhatsappIcon_Light';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
