@@ -67,7 +67,7 @@ const AnalyticsPage = () => {
         hidden
         lg:flex
         xl:flex
-        2xl:flex bg-white h-screen m-auto">
+        2xl:flex bg-white  mb-10 m-auto">
             <div className="w-[60%] mt-16 lg:mt-10">
                 <div className="w-1/2 m-auto">
                     <h2 className="mt text-xl sm:text-xl md:text-2xl lg:text-3xl text-nowrap xl:text-3xl 2xl:text-4xl pt text-black font-bold text-center mt-10">

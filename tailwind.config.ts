@@ -22,6 +22,7 @@ const config: Config = {
         'slide-right': 'slideRight 1s ease-in-out infinite',
         flyinup: 'fly-in-up 0.5s ease-in-out 0s 1',
         jiggle: 'jiggle 1.5s ease-in-out 2s 5',
+        'jiggle-infinity': 'jiggle 1.5s ease-in-out 0.2s infinite'
       },
       keyframes: {
         'infinite-scroll': {

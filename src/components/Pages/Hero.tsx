@@ -57,7 +57,7 @@ const HomePage = () => {
   return (
     <div className='bg-red-white overflow-hidden h-[800px] mb-10'>
       <div
-        className="absolute inset-0 w-screen h-[800px] bg-cover opacity-45 sm:opacity-80 md:opacity-70 lg:opacity-70 xl:opacity-70 2xl:opacity-90"
+        className="absolute inset-0 w-screen h-[800px] bg-cover opacity-40 blur-[1px] sm:opacity-80 md:opacity-70 lg:opacity-70 xl:opacity-70 2xl:opacity-90"
         style={{
           backgroundImage: `
       url('/BG-Upscale.jpg')
@@ -149,7 +149,7 @@ const HomePage = () => {
               onClick={() => setIsCallUsModalOpen(true)}
               className="flex items-center bg-orange-500 text-white font-semibold px-4 py-1 rounded-full hover:bg-orange-600 cursor-pointer"
             >
-              <svg width="16" height="16" style={{ marginRight: '0.5rem' }} viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg className='animate-jiggle-infinity' width="16" height="16" style={{ marginRight: '0.5rem' }} viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M4.18 7.27L10.684 13.73C11.381 12.923 15.794 8.192 18 14.654C18 14.654 17.768 18 13.006 18C9.639 18 6.155 13.962 3.716 11.654C1.626 9.692 0 7.154 0 4.846C0 0.116 3.252 0 3.252 0C10.684 2.538 4.181 7.27 4.181 7.27" fill="white" />
               </svg>
 
@@ -233,12 +233,12 @@ const HomePage = () => {
 
 
           <div className="bg-[rgba(238,123,34,0.3)] rounded-full w-auto max-w-80 p-1 m-auto flex my-10 ">
-            <div className="rounded-full w-full bg-[rgba(238,123,34,0.3)] drop-shadow-lg shadow-orange-900 flex p-1">
+            <div className="rounded-full  animate-pulse w-full bg-[rgba(238,123,34,0.3)] drop-shadow-lg shadow-orange-900 flex p-1">
 
               <div className="rounded-full bg-[#EE7B22] w-3/12 h-full"></div>
-              <p className='m-auto text-black  
+              <button className='m-auto text-black  
           text-sm text-nowrap font-medium'
-              >Check out more about us</p>
+              >Check out more about us</button>
               {!darkMode && <RightArrow className='m-auto' />}
               {darkMode && <RightArrow_Light className='m-auto' />}
             </div>

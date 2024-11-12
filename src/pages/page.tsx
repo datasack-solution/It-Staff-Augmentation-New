@@ -1,14 +1,16 @@
 import AnalyticsPage from "@/components/Pages/Analytics"
-import Benefits from "@/components/Pages/Benefits"
+import BenefitsPage from "@/components/Pages/Benefits"
 import HomePage from "@/components/Pages/Hero"
+import ManageServicePage from "@/components/Pages/ManageService"
 import PricingPage from "@/components/Pages/Pricing"
 
 const IndexPage = () => {
   return <div className="bg-white">
   <HomePage/>
   <PricingPage/>
-  <Benefits/>
+  <BenefitsPage/>
   <AnalyticsPage />
+  <ManageServicePage/>
   </div>
 }
 
