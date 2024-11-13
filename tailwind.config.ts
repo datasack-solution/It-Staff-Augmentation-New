@@ -11,6 +11,11 @@ const config: Config = {
   // darkMode: "class",
   theme: {
     extend: {
+      screens:{
+        xs:{
+          max:'641px'
+        }
+      },
       fontSize: {
         'xxs': '0.625rem',
       },

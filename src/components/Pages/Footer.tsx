@@ -2,9 +2,9 @@ import Image from "next/image"
 
 const Footer = () => {
     return (
-        <div className="bg-black text-white 2xl:h-[800px] xl:h-[900px] lg:h-[900px] md:h-[700px] sm:h-[650px] h-[800px]w-screen relative overflow-hidden">
+        <div className="bg-black text-white 2xl:h-[850px] xl:h-[800px] lg:h-[750px] md:h-[700px] sm:h-[650px] h-[800px]w-screen relative overflow-hidden">
             <div
-                className="absolute inset-0 w-full 2xl:h-[800px] xl:h-[900px] lg:h-[900px] md:h-[700px] sm:h-[650px] h-[800px] bg-cover bg-center opacity-70 "
+                className="absolute inset-0 w-full 2xl:h-[850px] xl:h-[800px] lg:h-[750px] md:h-[700px] sm:h-[650px] h-[800px] bg-cover bg-center opacity-70 "
                 style={{
                     backgroundImage: `url('/bg_footersvg.svg')`,
                 }}
@@ -22,14 +22,40 @@ const Footer = () => {
             p-10 
             gap-20">
 
-                <div className="py-5 2xl:w-1/2 xl:w-1/2 lg:w-full">
-                    <div className="space-y-8 ml-[25%]">
-                        <h2 className="text-4xl font-bold">Contact Us</h2>
+                <div className="
+                py-5 
+                2xl:w-1/2 
+                xl:w-1/2 
+                lg:w-full
+                w-full
+                h-auto
+                xs:text-center xs:m-auto
+                sm:text-center sm:m-auto
+                ">
+                    {/* <div className="space-y-8 ml-[25%] xs:m-auto md:m-auto sm:m-auto">
+                        <h2 className="text-4xl xs:text-3xl xs:text-center sm:text-center font-bold">Contact Us</h2>
 
-                        {/* Phone Numbers */}
-                        <div className="flex align-middle text-nowrap flex-wrap sm:flex-nowrap md:flex-nowrap lg:flex-nowrap xl:flex-nowrap 2xl:flex-nowrap text-center gap-5">
-                            <div className="flex items-center gap-3">
+                        <div className="
+                        flex 
+                        ml-auto
+                        align-middle
+                        text-nowrap 
+                        flex-wrap 
+                        sm:flex-nowrap 
+                        md:flex-nowrap 
+                        lg:flex-nowrap 
+                        xl:flex-nowrap 
+                        2xl:flex-nowrap 
+                        md:gap-10 
+                        lg:gap-10
+                        xl:gap-10
+                        2xl:gap-10
+                        gap-2
+                        xs:text-sm
+                        " >
+                            <div className="flex gap-3">
                                 <svg
+                                    className="xs:size-4"
                                     width="18"
                                     height="18"
                                     viewBox="0 0 18 18"
@@ -45,6 +71,7 @@ const Footer = () => {
                             </div>
                             <div className="flex items-center gap-3">
                                 <svg
+                                    className="xs:size-4"
                                     width="18"
                                     height="18"
                                     viewBox="0 0 18 18"
@@ -60,7 +87,7 @@ const Footer = () => {
                             </div>
                         </div>
 
-                        {/* Email */}
+
                         <div className="flex items-center gap-3">
                             <svg
                                 width="28"
@@ -88,16 +115,104 @@ const Footer = () => {
 
                         <h2 className="text-xl font-semibold">Office Address</h2>
                         <div className="space-y-5">
-                            <div className="flex items-center gap-5">
+                            <div className="flex items-center gap-5 xs:text-sm">
                                 <Image alt="saudi-logo" src={'/saudiFlag.png'} width={50} height={50} />
                                 <p className="w-1/2">Building no: 2345, Ahmed AL Tamimi AL Malaz, Riyadh 12831, Saudi Arabia</p>
                             </div>
-                            <div className="flex items-center gap-5">
+                            <div className="flex items-center gap-5 xs:text-sm">
                                 <Image alt="indian-logo" src={'/indianFlag.png'} width={50} height={50} />
                                 <p className="w-1/2">No: 23, Kamarajapuram - East Karur, Tamilnadu 639002, India.</p>
                             </div>
                         </div>
+                    </div> */}
+
+
+                    <div className="space-y-3 pb-10 md:space-y-5 xl:space-y-8 ml-[25%] xs:ml-0 xs:m-auto sm:m-auto md:m-auto xs:flex xs:flex-col xs:items-center sm:flex 
+                    sm:flex-col sm:items-center md:items-center lg:items-start">
+                        <h2 className="text-4xl xs:text-3xl xs:text-center sm:text-center md:items-center lg:items-start font-bold">Contact Us</h2>
+
+
+
+                        <div className="flex flex-wrap gap-2 xs:text-sm xs:justify-center sm:justify-center">
+                            <div className="flex items-center gap-3">
+                                <svg
+                                    className="xs:size-4"
+                                    width="18"
+                                    height="18"
+                                    viewBox="0 0 18 18"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M4.18 7.27L10.684 13.73C11.381 12.923 15.794 8.192 18 14.654C18 14.654 17.768 18 13.006 18C9.639 18 6.155 13.962 3.716 11.654C1.626 9.692 0 7.154 0 4.846C0 0.116 3.252 0 3.252 0C10.684 2.538 4.181 7.27 4.181 7.27"
+                                        fill="white"
+                                    />
+                                </svg>
+                                <p>+966 560 85 85 96</p>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <svg
+                                    className="xs:size-4"
+                                    width="18"
+                                    height="18"
+                                    viewBox="0 0 18 18"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M4.18 7.27L10.684 13.73C11.381 12.923 15.794 8.192 18 14.654C18 14.654 17.768 18 13.006 18C9.639 18 6.155 13.962 3.716 11.654C1.626 9.692 0 7.154 0 4.846C0 0.116 3.252 0 3.252 0C10.684 2.538 4.181 7.27 4.181 7.27"
+                                        fill="white"
+                                    />
+                                </svg>
+                                <p>+91 883 888 56 83</p>
+                            </div>
+                        </div>
+
+
+                        {/* Email */}
+                        <div className="flex items-center gap-3 xs:justify-center sm:justify-center">
+                            <svg
+                                width="28"
+                                height="22"
+                                viewBox="0 0 28 22"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M27.3346 5.04675V17.6668C27.3347 18.687 26.9449 19.6688 26.2449 20.4111C25.545 21.1534 24.5878 21.6002 23.5693 21.6601L23.3346 21.6668H4.66797C3.64769 21.6668 2.66595 21.277 1.92362 20.577C1.18129 19.8771 0.734492 18.9199 0.674636 17.9014L0.667969 17.6668V5.04675L13.2613 13.4428L13.416 13.5308C13.5982 13.6198 13.7984 13.6661 14.0013 13.6661C14.2042 13.6661 14.4044 13.6198 14.5866 13.5308L14.7413 13.4428L27.3346 5.04675Z"
+                                    fill="white"
+                                />
+                                <path
+                                    d="M23.3351 0.333374C24.7751 0.333374 26.0377 1.09337 26.7417 2.23604L14.0017 10.7294L1.26172 2.23604C1.59611 1.69314 2.05544 1.23804 2.60142 0.908693C3.14739 0.579345 3.76419 0.38529 4.40039 0.342707L4.66839 0.333374H23.3351Z"
+                                    fill="white"
+                                />
+                            </svg>
+                            <p>sales@datasack.in</p>
+                        </div>
+
+                        <h2 className="text-xl font-semibold mb-3">Follow us</h2>
+                        <Logos />
+
+                        <h2 className="text-xl font-semibold">Office Address</h2>
+                    
+                        <div className="space-y-5  xs:items-center sm:items-center md:items-center lg:items-start">
+                            <div className="flex items-center gap-5 xs:text-sm xs:flex-col sm:flex-col md:flex-col lg:flex-row">
+                                <Image alt="saudi-logo" src={'/saudiFlag.png'} width={50} height={50} />
+                                <p className="w-1/2">Building no: 2345, Ahmed AL Tamimi AL Malaz, Riyadh 12831, Saudi Arabia</p>
+                            </div>
+                            <div className="flex items-center gap-5 xs:text-sm xs:flex-col sm:flex-col md:flex-col lg:flex-row">
+                                <Image alt="indian-logo" src={'/indianFlag.png'} width={50} height={50} />
+                                <p className="w-1/2">No: 23, Kamarajapuram - East Karur, Tamilnadu 639002, India.</p>
+                            </div>
+                        </div>
+
+
+
                     </div>
+
+
+
+
 
 
                 </div>
@@ -158,19 +273,19 @@ const Footer = () => {
                     </form>
                 </div>
 
-                <div className="
+                {/* <div className="
                 relative 
             lg:hidden 
             xl:hidden 
             2xl:hidden 
                 ">
                     <button>Call us</button>
-                </div>
+                </div> */}
 
 
             </div>
 
-            {/* Bottom Logo and Certification */}
+            {/* bottom logo certification */}
             <div className="absolute bottom-0 w-full text-center py-4 bg-black/60 text-white text-sm">
                 <Image src="https://bunny-wp-pullzone-dgpgtislbk.b-cdn.net/wp-content/uploads/2024/01/Datasack_tech_logo-web.png" alt="DataSack Solutions Logo" width={120} height={30} className="inline-block" />
                 <p className="inline-block ml-4">ISO/IEC 27001:2022 CERTIFIED</p>
