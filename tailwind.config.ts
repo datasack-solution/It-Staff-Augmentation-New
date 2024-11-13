@@ -28,7 +28,8 @@ const config: Config = {
         flyinup: 'fly-in-up 0.5s ease-in-out 0s 1',
         jiggle: 'jiggle 1.5s ease-in-out 2s 5',
         'jiggle-infinity': 'jiggle 1.5s ease-in-out 0.2s infinite',
-         'slideDown': 'slideDown 0.4s ease-out'
+         'slideDown': 'slideDown 0.4s ease-out',
+         fadeinbounceup: 'fade-in-bounceup 1s ease-in-out 0.25s 1',
       },
       keyframes: {
         'infinite-scroll': {
@@ -113,7 +114,25 @@ const config: Config = {
             opacity: "1",
             transform: "translateY(0)",
           }
-        }
+        },
+        "fade-in-bounceup": {
+          "0%": {
+              opacity: "0",
+              transform: "translate3d(0%, 100%, 0)",
+          },
+          "33%": {
+              opacity: "0.5",
+              transform: "translate3d(0%, 0%, 0)",
+          },
+          "66%": {
+              opacity: "0.7",
+              transform: "translate3d(0%, 20%, 0)",
+          },
+          "100%": {
+              opacity: "1",
+              transform: "translate3d(0, 0, 0)",
+          },
+      },
       },
       colors: {
         background: "var(--background)",

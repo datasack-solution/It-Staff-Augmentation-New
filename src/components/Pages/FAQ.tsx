@@ -36,13 +36,13 @@ export default function FAQPage() {
                     ))}
                 </div>
 
-                <div className='container m-auto mt-20'>
+                <div className='container m-auto mt-10'>
 
                     <h2 className="text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl 2xl:text-4xl font-bold mb-5 text-center">
                         Partners
                     </h2>
 
-                    <p className='text-center my-10'>Trusted by 100+ companies</p>
+                    <p className='text-center pb-5'>Trusted by 100+ companies</p>
                 </div>
             </div>
             <Partners />
@@ -63,10 +63,10 @@ function FAQItem({ question, index }: { question: string, index: number }) {
                 <h3 className="font-medium 2xl:text-lg xl:text-lg md:text-base text-base sm:text-base text-left p-2">{index + 1}. {question}</h3>
                 <span className="text-xl  animate-bounce p-2">
                     {isOpen ? <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
-                        <path fill-rule="evenodd" d="M11.47 7.72a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 1 1-1.06 1.06L12 9.31l-6.97 6.97a.75.75 0 0 1-1.06-1.06l7.5-7.5Z" clip-rule="evenodd" />
+                        <path fillRule="evenodd" d="M11.47 7.72a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 1 1-1.06 1.06L12 9.31l-6.97 6.97a.75.75 0 0 1-1.06-1.06l7.5-7.5Z" clipRule="evenodd" />
                     </svg>
                         : <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
-                            <path fill-rule="evenodd" d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z" clip-rule="evenodd" />
+                            <path fillRule="evenodd" d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z" clipRule="evenodd" />
                         </svg>
                     }
                 </span>

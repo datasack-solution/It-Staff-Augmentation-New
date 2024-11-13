@@ -13,6 +13,37 @@ import { useCallUsModalState } from '../CallUsContext';
 import CallUsModal from '../CallUsModal';
 import HomeIcon from '../HomeIcon';
 
+import { TypeAnimation } from 'react-type-animation';
+
+const TypingText = () => {
+  return (
+    <TypeAnimation
+      sequence={[
+        'Cost-effective IT Staffing Agency In Riyadh',
+        3000,
+        'IT Staff Augmentation Services Saudi Arabia',
+        3000,
+        'Best IT Contract Staffing Saudi Arabia',
+        3000,
+        'IT Managed Service Providers Saudi Arabia',
+        3000
+      ]}
+      wrapper="span"
+      speed={50}
+      className='
+          text-xl
+          sm:text-xl 
+          md:text-3xl 
+          lg:text-4xl 
+          xl:text-5xl 
+          2xl:text-[40px] 
+          font-bold 
+          mb-7'
+      repeat={Infinity}
+    />
+  );
+};
+
 
 const HomePage = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -103,10 +134,10 @@ const HomePage = () => {
         m-auto
         h-full">
 
-          { <HomeIcon className='2xl:size-6 xl:size-5 lg:size-5 md:size-5 sm:size-5 m-auto cursor-pointer' />}
+          {<HomeIcon className='2xl:size-6 xl:size-5 lg:size-5 md:size-5 sm:size-5 m-auto cursor-pointer' />}
           <MessageIcon className='m-auto cursor-pointer 2xl:size-10 xl:size-8 lg:size-7 md:size-7 sm:size-7' />
-          { <WhatsappIcon className='2xl:size-8 xl:size-7 lg:size-7 md:size-7 sm:size-7 m-auto cursor-pointer' />}
-         
+          {<WhatsappIcon className='2xl:size-8 xl:size-7 lg:size-7 md:size-7 sm:size-7 m-auto cursor-pointer' />}
+
           <div>
             {!darkMode &&
               <div>
@@ -143,7 +174,7 @@ const HomePage = () => {
               Get Pricing
             </div>
             <div className="text-gray-800  py-1 cursor-pointer  hover:text-orange-500 uppercase font-semibold">
-              Manage Service
+              Managed Services
             </div>
             <div
               onClick={() => setIsCallUsModalOpen(true)}
@@ -182,9 +213,9 @@ const HomePage = () => {
               <div className='flex align-middle m-auto'>
                 <p>Close</p>
                 <div className='inline-block text-center m-auto'>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-5">
-                  <path fillRule="evenodd" d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
-                </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-5">
+                    <path fillRule="evenodd" d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
+                  </svg>
                 </div>
               </div>
 
@@ -192,15 +223,22 @@ const HomePage = () => {
             <nav className="flex flex-col gap-5 space-y-4 text-white">
               <div onClick={() => {
                 setIsMenuOpen(false);
-                document.getElementById('pricing-section')?.scrollIntoView()
+                document.getElementById('pricing-section')?.scrollIntoView({
+                  behavior:'smooth'
+                })
               }}>
                 <span className="hover:text-orange-500 cursor-pointer">
                   Get Pricing
                 </span>
               </div>
-              <div>
+              <div onClick={() => {
+                setIsMenuOpen(false);
+                document.getElementById('managed-services-section')?.scrollIntoView({
+                  behavior:'smooth'
+                })
+              }}>
                 <span className="hover:text-orange-500 cursor-pointer">
-                  Manage Service
+                  Managed Services
                 </span>
               </div>
               <div onClick={() => {
@@ -231,19 +269,18 @@ const HomePage = () => {
         ">
 
 
-
-          <div className="bg-[rgba(238,123,34,0.3)] rounded-full w-auto max-w-80 p-1 m-auto flex my-10 ">
+          <Link href={'https://www.datasack.in'} className="bg-[rgba(238,123,34,0.3)] rounded-full w-auto max-w-80 p-1 m-auto flex my-10 ">
             <div className="rounded-full  animate-pulse w-full bg-[rgba(238,123,34,0.3)] drop-shadow-lg shadow-orange-900 flex p-1">
 
               <div className="rounded-full bg-[#EE7B22] w-3/12 h-full"></div>
-              <button className='m-auto text-black  
+              <button className='m-auto text-gray-900  
           text-sm text-nowrap font-medium'
               >Check out more about us</button>
-              {!darkMode && <RightArrow className='m-auto' />}
+              {!darkMode && <RightArrow className='m-auto animate-slide-right'/>}
               {darkMode && <RightArrow_Light className='m-auto' />}
             </div>
 
-          </div>
+          </Link>
 
           <h1 className="
             text-4xl
@@ -263,7 +300,7 @@ const HomePage = () => {
             Need Tech Talent Quickly?
           </h1>
 
-          <p className="
+          {/* <p className="
           text-2xl
           sm:text-2xl 
           md:text-3xl 
@@ -274,11 +311,16 @@ const HomePage = () => {
           mb-7
           ">
             Cost-effective IT Staffing Agency In Riyadh
-          </p>
+          </p> */}
+
+          <div className='h-12'>
+            <TypingText />
+          </div>
 
           <div className="
           max-w-fit 
           px-1
+          mt-5
           align-middle
           justify-center
           space-y-5

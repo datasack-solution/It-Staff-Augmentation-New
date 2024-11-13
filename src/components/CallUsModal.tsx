@@ -15,8 +15,8 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
 
 
 
-    return <div className="fixed inset-0 flex items-center justify-center bg-gray-900 text-black bg-opacity-50 z-[62]">
-        <div className="bg-white w-full max-h-[600px] md:max-h-screen lg:max-h-screen xl:max-h-screen 2xl:max-h-screen  max-w-3xl mx-4 md:mx-0 p-6 rounded-lg shadow-lg relative overflow-auto">
+    return <div className="fixed  inset-0 flex items-center justify-center bg-gray-900 text-black bg-opacity-50 z-[62]">
+        <div className="bg-white animate-flyinup w-full max-h-[600px] md:max-h-screen lg:max-h-screen xl:max-h-screen 2xl:max-h-screen  max-w-3xl mx-4 md:mx-0 p-6 rounded-lg shadow-lg relative overflow-auto">
             <button onClick={onConfirm} className="absolute top-4 right-4 text-gray-400 hover:text-gray-600" aria-label="Close Modal">&times;</button>
 
             <h2 className="text-3xl font-bold text-center mb-5">Book a Call for <span className="text-orange-500">Free Consultation</span></h2>

@@ -296,11 +296,13 @@ const Pricing = () => {
                 lg:w-1/3
                 gap-4">
                     {Object.keys(technologies).map((category, index) => (
-                        <div className='relative' key={index}>
+                        <div key={index} className="relative p-[1px]">
+                            <div className="absolute inset-0 bg-gradient-to-r from-[#EE7B22]  to-[#732A09] rounded-full"></div>
+
                             <button
                                 key={category}
                                 onClick={() => handleCategoryClick(category as keyof typeof technologies)}
-                                className={`border max-h-fit w-full text-black border-orange-500 py-2 px-4 rounded-full transition-colors ${selectedCategory === category ? "bg-orange-500 text-white" : "text-black"
+                                className={`border relative  w-full h-full text-black border-orange-500 py-2 px-4 rounded-full transition-colors ${selectedCategory === category ? "bg-orange-500 text-white" : "text-black bg-white"
                                     } ${quantities[category] &&
                                         (Object.values(quantities[category]).some(quantity => quantity > 0) && selectedCategory == category) ? 'bg-orange-500 text-black' : 'text-black'} hover:bg-orange-500`}
                             >
@@ -379,10 +381,10 @@ const Pricing = () => {
                     )}
 
                     <div className='mb-28 mt-8 text-black'>
-                        <DurationRangeSelector onChange={setDurationIndex}/>
+                        <DurationRangeSelector onChange={setDurationIndex} />
 
                         {techs.length > 0 && <div className="pt-5 m-auto">
-                            <div onClick={()=>setIsCallUsModalOpen(true)} className='animate-bounce-right m-auto cursor-pointer border w-fit p-3 text-white bg-orange-500 rounded-full text-xs font-semibold'>Get Pricing</div>
+                            <div onClick={() => setIsCallUsModalOpen(true)} className='animate-bounce-right m-auto cursor-pointer border w-fit p-3 text-white bg-orange-500 rounded-full text-xs font-semibold'>Get Pricing</div>
                         </div>}
                     </div>
                 </div>

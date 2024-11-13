@@ -5,9 +5,11 @@ import Footer from "@/components/Pages/Footer"
 import HomePage from "@/components/Pages/Hero"
 import ManageServicePage from "@/components/Pages/ManageService"
 import PricingPage from "@/components/Pages/Pricing"
+import PricingToast from "@/components/PricingToast"
 
 const IndexPage = () => {
   return <div className="bg-white">
+  <PricingToast/>
   <HomePage/>
   <PricingPage/>
   <BenefitsPage/>

@@ -40,14 +40,14 @@ const ManageServicePage = () => {
     infinite: true,
     arrows:true,
     nextArrow: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#F37318" className="size-6">
-    <path fill-rule="evenodd" d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clip-rule="evenodd" />
+    <path fillRule="evenodd" d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clipRule="evenodd" />
   </svg>
   ,
   prevArrow:<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#F37318" className="size-6">
   <path fillRule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z" clipRule="evenodd" />
 </svg>,
     speed: 150,
-    beforeChange: (_, next) => setActiveIndex(next),
+    beforeChange: (currentSlide, next) => setActiveIndex(next),
     responsive: [
       {
         breakpoint: 1023,
@@ -88,10 +88,10 @@ const ManageServicePage = () => {
 
   const [activeIndex, setActiveIndex] = React.useState(0);
 
-  return <div className="bg-[#F2F2F2] w-screen text-black">
+  return <div id='managed-services-section' className="bg-[#F2F2F2] w-screen text-black">
     <div className="container p-7 pb-10 2xl:pb-40 xl:pb-40 lg:pb-35 md:pd-10 sm:pd-10 m-auto text-black bg-[#F2F2F2]">
       <h2 className="text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl 2xl:text-4xl text-black font-bold text-center">
-        Managed <span className="text-orange-500">Service</span>
+        Managed <span className="text-orange-500">Services</span>
       </h2>
       <p className="text-center mt-10 px-3 mb-10 text-gray-600">
         DataSack assembles your dream team on demand, providing expertise without the hassle of full-time hiring. Whether you&apos;re looking for an IT Recruitment Agency in Riyadh or need to contract resources for specific projects or skills, we ensure you get the right talent exactly when you need it.

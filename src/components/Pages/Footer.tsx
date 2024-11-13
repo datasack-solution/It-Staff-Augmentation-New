@@ -1,14 +1,43 @@
 import Image from "next/image"
+import CallUsModal from "../CallUsModal";
+import React, { useState, useEffect, useRef } from 'react';
+import { useCallUsModalState } from "../CallUsContext";
 
 const Footer = () => {
+    const { isCallUsModalOpen, setIsCallUsModalOpen, isOpened } = useCallUsModalState()
+    const footerRef = useRef<HTMLDivElement | null>(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting && !isOpened) {
+                    setIsCallUsModalOpen(true);
+                }
+            },
+            { threshold: 0.4 }
+        );
+
+        if (footerRef.current) {
+            observer.observe(footerRef.current);
+        }
+
+        return () => {
+            if (footerRef.current) {
+                observer.unobserve(footerRef.current);
+            }
+        };
+    }, [isOpened, setIsCallUsModalOpen]);
+
     return (
-        <div className="bg-black text-white 2xl:h-[850px] xl:h-[800px] lg:h-[750px] md:h-[700px] sm:h-[650px] h-[800px]w-screen relative overflow-hidden">
+        <div ref={footerRef} className="bg-black text-white 2xl:h-[850px] xl:h-[800px] lg:h-[750px] md:h-[700px] sm:h-[650px] h-[800px]w-screen relative overflow-hidden">
             <div
                 className="absolute inset-0 w-full 2xl:h-[850px] xl:h-[800px] lg:h-[750px] md:h-[700px] sm:h-[650px] h-[800px] bg-cover bg-center opacity-70 "
                 style={{
                     backgroundImage: `url('/bg_footersvg.svg')`,
                 }}
             />
+
+            {(isCallUsModalOpen && !isOpened ) && <CallUsModal isModalOpen={isCallUsModalOpen} onConfirm={() => { setIsCallUsModalOpen(false) }} />}
 
             <div className=" 
             relative
@@ -29,111 +58,14 @@ const Footer = () => {
                 lg:w-full
                 w-full
                 h-auto
-                xs:text-center xs:m-auto
-                sm:text-center sm:m-auto
+                m-auto
                 ">
-                    {/* <div className="space-y-8 ml-[25%] xs:m-auto md:m-auto sm:m-auto">
-                        <h2 className="text-4xl xs:text-3xl xs:text-center sm:text-center font-bold">Contact Us</h2>
 
-                        <div className="
-                        flex 
-                        ml-auto
-                        align-middle
-                        text-nowrap 
-                        flex-wrap 
-                        sm:flex-nowrap 
-                        md:flex-nowrap 
-                        lg:flex-nowrap 
-                        xl:flex-nowrap 
-                        2xl:flex-nowrap 
-                        md:gap-10 
-                        lg:gap-10
-                        xl:gap-10
-                        2xl:gap-10
-                        gap-2
-                        xs:text-sm
-                        " >
-                            <div className="flex gap-3">
-                                <svg
-                                    className="xs:size-4"
-                                    width="18"
-                                    height="18"
-                                    viewBox="0 0 18 18"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        d="M4.18 7.27L10.684 13.73C11.381 12.923 15.794 8.192 18 14.654C18 14.654 17.768 18 13.006 18C9.639 18 6.155 13.962 3.716 11.654C1.626 9.692 0 7.154 0 4.846C0 0.116 3.252 0 3.252 0C10.684 2.538 4.181 7.27 4.181 7.27"
-                                        fill="white"
-                                    />
-                                </svg>
-                                <p>+966 560 85 85 96</p>
-                            </div>
-                            <div className="flex items-center gap-3">
-                                <svg
-                                    className="xs:size-4"
-                                    width="18"
-                                    height="18"
-                                    viewBox="0 0 18 18"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        d="M4.18 7.27L10.684 13.73C11.381 12.923 15.794 8.192 18 14.654C18 14.654 17.768 18 13.006 18C9.639 18 6.155 13.962 3.716 11.654C1.626 9.692 0 7.154 0 4.846C0 0.116 3.252 0 3.252 0C10.684 2.538 4.181 7.27 4.181 7.27"
-                                        fill="white"
-                                    />
-                                </svg>
-                                <p>+91 883 888 56 83</p>
-                            </div>
-                        </div>
-
-
-                        <div className="flex items-center gap-3">
-                            <svg
-                                width="28"
-                                height="22"
-                                viewBox="0 0 28 22"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M27.3346 5.04675V17.6668C27.3347 18.687 26.9449 19.6688 26.2449 20.4111C25.545 21.1534 24.5878 21.6002 23.5693 21.6601L23.3346 21.6668H4.66797C3.64769 21.6668 2.66595 21.277 1.92362 20.577C1.18129 19.8771 0.734492 18.9199 0.674636 17.9014L0.667969 17.6668V5.04675L13.2613 13.4428L13.416 13.5308C13.5982 13.6198 13.7984 13.6661 14.0013 13.6661C14.2042 13.6661 14.4044 13.6198 14.5866 13.5308L14.7413 13.4428L27.3346 5.04675Z"
-                                    fill="white"
-                                />
-                                <path
-                                    d="M23.3351 0.333374C24.7751 0.333374 26.0377 1.09337 26.7417 2.23604L14.0017 10.7294L1.26172 2.23604C1.59611 1.69314 2.05544 1.23804 2.60142 0.908693C3.14739 0.579345 3.76419 0.38529 4.40039 0.342707L4.66839 0.333374H23.3351Z"
-                                    fill="white"
-                                />
-                            </svg>
-                            <p>sales@datasack.in</p>
-                        </div>
-
-                        <div>
-                            <h2 className="text-xl font-semibold mb-3">Follow us</h2>
-                            <Logos />
-                        </div>
-
-                        <h2 className="text-xl font-semibold">Office Address</h2>
-                        <div className="space-y-5">
-                            <div className="flex items-center gap-5 xs:text-sm">
-                                <Image alt="saudi-logo" src={'/saudiFlag.png'} width={50} height={50} />
-                                <p className="w-1/2">Building no: 2345, Ahmed AL Tamimi AL Malaz, Riyadh 12831, Saudi Arabia</p>
-                            </div>
-                            <div className="flex items-center gap-5 xs:text-sm">
-                                <Image alt="indian-logo" src={'/indianFlag.png'} width={50} height={50} />
-                                <p className="w-1/2">No: 23, Kamarajapuram - East Karur, Tamilnadu 639002, India.</p>
-                            </div>
-                        </div>
-                    </div> */}
-
-
-                    <div className="space-y-3 pb-10 md:space-y-5 xl:space-y-8 ml-[25%] xs:ml-0 xs:m-auto sm:m-auto md:m-auto xs:flex xs:flex-col xs:items-center sm:flex 
+                    <div className="space-y-3 lg:ml-[25%]  pb-10 md:space-y-5 xl:space-y-8 ml-[25%] xs:ml-0 xs:m-auto sm:m-auto md:m-auto xs:flex xs:flex-col xs:items-center sm:flex 
                     sm:flex-col sm:items-center md:items-center lg:items-start">
                         <h2 className="text-4xl xs:text-3xl xs:text-center sm:text-center md:items-center lg:items-start font-bold">Contact Us</h2>
 
-
-
-                        <div className="flex flex-wrap gap-2 xs:text-sm xs:justify-center sm:justify-center">
+                        <div className="flex flex-wrap gap-2 xs:text-sm justify-center lg:justify-start">
                             <div className="flex items-center gap-3">
                                 <svg
                                     className="xs:size-4"
@@ -194,8 +126,8 @@ const Footer = () => {
                         <Logos />
 
                         <h2 className="text-xl font-semibold">Office Address</h2>
-                    
-                        <div className="space-y-5  xs:items-center sm:items-center md:items-center lg:items-start">
+
+                        <div className="space-y-5 text-center md:text-start  xs:items-center sm:items-center md:items-center lg:items-start">
                             <div className="flex items-center gap-5 xs:text-sm xs:flex-col sm:flex-col md:flex-col lg:flex-row">
                                 <Image alt="saudi-logo" src={'/saudiFlag.png'} width={50} height={50} />
                                 <p className="w-1/2">Building no: 2345, Ahmed AL Tamimi AL Malaz, Riyadh 12831, Saudi Arabia</p>
@@ -205,9 +137,6 @@ const Footer = () => {
                                 <p className="w-1/2">No: 23, Kamarajapuram - East Karur, Tamilnadu 639002, India.</p>
                             </div>
                         </div>
-
-
-
                     </div>
 
 
@@ -219,28 +148,38 @@ const Footer = () => {
 
 
                 {/* right section - quick form */}
-                <div className=" hidden 
+                <div className=" 
+                hidden 
+                xl:mr-[10%]
+
             lg:relative 
             xl:relative 
             2xl:relative 
+
             lg:block 
             xl:block 
             2xl:block  
-            2xl:w-1/3 xl:w-2/3 lg:w-full md:w-full bg-white text-black rounded-lg p-8 shadow-lg space-y-6">
+
+            2xl:w-1/3 
+            xl:w-2/5 
+            md:w-full
+
+
+            bg-white 
+            text-black 
+            rounded-lg 
+            p-5 
+            shadow-lg 
+            space-y-6">
                     <h3 className="text-2xl font-bold text-center">Quick Enquiry</h3>
                     <form className="space-y-8">
-                        {/* <input
-                type="text"
-                placeholder="Enter Your Name"
-                className="w-full p-3 border rounded-lg focus:outline-none focus:border-orange-500"
-              /> */}
                         <fieldset className="w-full m-auto h-auto border-2 rounded-full px-5 py-1  focus:outline-none focus:border-orange-500">
                             <legend className="px-2">Name</legend>
                             <input
                                 placeholder="Enter Your Name"
                                 type="text"
                                 className="w-full outline-none rounded-full px-2 py-1"
-                                onChange={e => { }}
+                                onChange={e => { console.log(e.target.value) }}
                             />
                         </fieldset>
 
@@ -250,7 +189,7 @@ const Footer = () => {
                                 placeholder="Enter Your Phone Number"
                                 type="tel"
                                 className="w-full outline-none rounded-full px-2 py-1"
-                                onChange={e => { }}
+                                onChange={e => { console.log(e.target.value) }}
                             />
                         </fieldset>
 
@@ -261,7 +200,7 @@ const Footer = () => {
                                 placeholder="Enter Your Email"
                                 type="email"
                                 className="w-full outline-none rounded-full px-2 py-1"
-                                onChange={e => { }}
+                                onChange={e => { console.log(e.target.value) }}
                             />
                         </fieldset>
 
@@ -307,7 +246,7 @@ const Logos = () => {
     return <div className="flex gap-5 align-middle">
         {/* linkedin */}
         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" className="size-8" xmlns="http://www.w3.org/2000/svg">
-            <g clip-path="url(#clip0_136_4097)">
+            <g clipPath="url(#clip0_136_4097)">
                 <path d="M29 0H3C1.35 0 0 1.35 0 3V29C0 30.65 1.35 32 3 32H29C30.65 32 32 30.65 32 29V3C32 1.35 30.65 0 29 0ZM12 26H8V12H12V26ZM10 10C9.46957 10 8.96086 9.78929 8.58579 9.41421C8.21071 9.03914 8 8.53043 8 8C8 7.46957 8.21071 6.96086 8.58579 6.58579C8.96086 6.21071 9.46957 6 10 6C10.5304 6 11.0391 6.21071 11.4142 6.58579C11.7893 6.96086 12 7.46957 12 8C12 8.53043 11.7893 9.03914 11.4142 9.41421C11.0391 9.78929 10.5304 10 10 10ZM26 26H22V18C22 17.4696 21.7893 16.9609 21.4142 16.5858C21.0391 16.2107 20.5304 16 20 16C19.4696 16 18.9609 16.2107 18.5858 16.5858C18.2107 16.9609 18 17.4696 18 18V26H14V12H18V14.482C18.824 13.35 20.088 12 21.5 12C23.988 12 26 14.238 26 17V26Z" fill="white" />
             </g>
             <defs>
@@ -326,8 +265,8 @@ const Logos = () => {
 
         {/* insta */}
         <svg className="size-8" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M18.3333 1C22.0133 1 25 3.98667 25 7.66667V18.3333C25 22.0133 22.0133 25 18.3333 25H7.66667C3.98667 25 1 22.0133 1 18.3333V7.66667C1 3.98667 3.98667 1 7.66667 1H13H18.3333Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M13.0013 7.66663C15.948 7.66663 18.3346 10.0533 18.3346 13C18.3346 15.9466 15.948 18.3333 13.0013 18.3333C10.0546 18.3333 7.66797 15.9466 7.66797 13C7.66797 10.0533 10.0546 7.66663 13.0013 7.66663Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M18.3333 1C22.0133 1 25 3.98667 25 7.66667V18.3333C25 22.0133 22.0133 25 18.3333 25H7.66667C3.98667 25 1 22.0133 1 18.3333V7.66667C1 3.98667 3.98667 1 7.66667 1H13H18.3333Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M13.0013 7.66663C15.948 7.66663 18.3346 10.0533 18.3346 13C18.3346 15.9466 15.948 18.3333 13.0013 18.3333C10.0546 18.3333 7.66797 15.9466 7.66797 13C7.66797 10.0533 10.0546 7.66663 13.0013 7.66663Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
 
         {/* twitter */}
