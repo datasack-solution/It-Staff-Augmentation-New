@@ -136,7 +136,7 @@ const AnalyticsPage = () => {
         <div className="container relative
         lg:hidden
         xl:hidden
-        2xl:hidden p-5 m-auto text-white">
+        2xl:hidden p-7 m-auto text-white">
             {/* <h2 className="text-2xl text-black font-semibold mb-6">Our IT Staff Augmentation Process</h2> */}
 
             <h2 className="text-xl sm:text-xl md:text-2xl lg:text-3xl text-black font-bold text-center mt-5 mb-10">

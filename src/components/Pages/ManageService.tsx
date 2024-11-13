@@ -65,9 +65,9 @@ const ManageServicePage = () => {
   const [activeIndex, setActiveIndex] = React.useState(0);
 
   return <div className="bg-[#F2F2F2] w-screen text-black">
-    <div className="container p-5 pb-40 m-auto text-black bg-[#F2F2F2]">
+    <div className="container p-7 pb-40 m-auto text-black bg-[#F2F2F2]">
       <h2 className="text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl 2xl:text-4xl text-black font-bold text-center">
-        Manage <span className="text-orange-500">Service</span>
+        Managed <span className="text-orange-500">Service</span>
       </h2>
       <p className="text-center mt-10 px-3 mb-10 text-gray-600">
         DataSack assembles your dream team on demand, providing expertise without the hassle of full-time hiring. Whether you&apos;re looking for an IT Recruitment Agency in Riyadh or need to contract resources for specific projects or skills, we ensure you get the right talent exactly when you need it.
