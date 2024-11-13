@@ -38,8 +38,16 @@ const ManageServicePage = () => {
     centerPadding: '20px',
     slidesToShow: 1,
     infinite: true,
+    arrows:true,
+    nextArrow: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#F37318" className="size-6">
+    <path fill-rule="evenodd" d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clip-rule="evenodd" />
+  </svg>
+  ,
+  prevArrow:<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#F37318" className="size-6">
+  <path fillRule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z" clipRule="evenodd" />
+</svg>,
     speed: 150,
-    beforeChange: (current, next) => setActiveIndex(next),
+    beforeChange: (_, next) => setActiveIndex(next),
     responsive: [
       {
         breakpoint: 1023,
@@ -57,6 +65,22 @@ const ManageServicePage = () => {
           centerMode: true,
           centerPadding: '50px',
         }
+      },
+      {
+        breakpoint: 500,
+        settings: {
+          slidesToShow: 1,
+          centerMode: true,
+          centerPadding: '30px',
+        }
+      },
+      {
+        breakpoint: 410,
+        settings: {
+          slidesToShow: 1,
+          centerMode: true,
+          centerPadding: '1px',
+        }
       }
     ],
   };
@@ -65,7 +89,7 @@ const ManageServicePage = () => {
   const [activeIndex, setActiveIndex] = React.useState(0);
 
   return <div className="bg-[#F2F2F2] w-screen text-black">
-    <div className="container p-7 pb-40 m-auto text-black bg-[#F2F2F2]">
+    <div className="container p-7 pb-10 2xl:pb-40 xl:pb-40 lg:pb-35 md:pd-10 sm:pd-10 m-auto text-black bg-[#F2F2F2]">
       <h2 className="text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl 2xl:text-4xl text-black font-bold text-center">
         Managed <span className="text-orange-500">Service</span>
       </h2>
@@ -169,7 +193,7 @@ const ManageServicePage = () => {
                 }}
               >
                 <h3 className="text-xl font-bold mb-2 text-white">
-                  {service.title}
+                    {index+1}. {service.title}
                 </h3>
                 <p className="text-base text-white">
                   {service.description}

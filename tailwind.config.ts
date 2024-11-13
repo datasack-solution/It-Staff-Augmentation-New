@@ -22,7 +22,8 @@ const config: Config = {
         'slide-right': 'slideRight 1s ease-in-out infinite',
         flyinup: 'fly-in-up 0.5s ease-in-out 0s 1',
         jiggle: 'jiggle 1.5s ease-in-out 2s 5',
-        'jiggle-infinity': 'jiggle 1.5s ease-in-out 0.2s infinite'
+        'jiggle-infinity': 'jiggle 1.5s ease-in-out 0.2s infinite',
+         'slideDown': 'slideDown 0.4s ease-out'
       },
       keyframes: {
         'infinite-scroll': {
@@ -98,6 +99,16 @@ const config: Config = {
             transform: "scale3d(1, 1, 1)"
           },
         },
+        "slideDown":{
+          "from": {
+            opacity: "0",
+            transform: "translateY(-10px)",
+          },
+          "to": {
+            opacity: "1",
+            transform: "translateY(0)",
+          }
+        }
       },
       colors: {
         background: "var(--background)",
