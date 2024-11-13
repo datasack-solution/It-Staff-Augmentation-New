@@ -1,6 +1,6 @@
 import Image from "next/image"
 import CallUsModal from "../CallUsModal";
-import React, { useState, useEffect, useRef } from 'react';
+import React, {  useEffect, useRef } from 'react';
 import { useCallUsModalState } from "../CallUsContext";
 
 const Footer = () => {
@@ -17,13 +17,15 @@ const Footer = () => {
             { threshold: 0.4 }
         );
 
-        if (footerRef.current) {
-            observer.observe(footerRef.current);
+        const footerNode = footerRef.current
+
+        if (footerNode) {
+            observer.observe(footerNode);
         }
 
         return () => {
-            if (footerRef.current) {
-                observer.unobserve(footerRef.current);
+            if (footerNode) {
+                observer.unobserve(footerNode);
             }
         };
     }, [isOpened, setIsCallUsModalOpen]);
