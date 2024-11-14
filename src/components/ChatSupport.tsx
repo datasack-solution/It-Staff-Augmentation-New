@@ -107,6 +107,8 @@ const ChatScreen: FunctionComponent<{
     const [userDetails, setUserDetails] = useState<UserDetails>({ name: "", email: "" });
     const chatEndRef = useRef<HTMLDivElement | null>(null);
 
+    console.log(userDetails)
+
     useEffect(() => {
       chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
     }, [messages]);
@@ -218,7 +220,7 @@ const ChatScreen: FunctionComponent<{
                   className="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-300 py-2 px-4 rounded-full text-xs"
                   onClick={() => {
                     if (!loading)
-                    handleUserSubmit(String(question.question))}}
+                    handleUserSubmit(String(question.id))}}
                 >
                   {question.id}.{question.question}
                 </button>
