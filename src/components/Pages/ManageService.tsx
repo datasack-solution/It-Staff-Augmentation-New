@@ -88,8 +88,8 @@ const ManageServicePage = () => {
 
   const [activeIndex, setActiveIndex] = React.useState(0);
 
-  return <div id='managed-services-section' className="bg-[#F2F2F2] dark:bg-[#252525] w-screen text-black dark:text-white">
-    <div className="container p-7 pb-10 2xl:pb-40 xl:pb-40 lg:pb-35 md:pd-10 sm:pd-10 m-auto text-black dark:text-white bg-[#F2F2F2] dark:bg-[#252525]">
+  return <div id='managed-services-section' className="bg-[#F2F2F2] dark:bg-[#252525]  text-black dark:text-white">
+    <div className="container p-7  pb-10 2xl:pb-40 xl:pb-40 lg:pb-35 md:pd-10 sm:pd-10 m-auto text-black dark:text-white bg-[#F2F2F2] dark:bg-[#252525]">
       <h2 className="text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl 2xl:text-4xl text-black dark:text-white font-bold text-center">
         Managed <span className="text-orange-500">Services</span>
       </h2>

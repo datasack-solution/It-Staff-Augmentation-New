@@ -4,15 +4,42 @@ const banks = ['alinma_bank.png', 'alrajhi_bank.png', 'bank_albilad.png', 'futur
 
 
 export default function FAQPage() {
-    const faqs = [
-        "When You Choose IT Contract Staffing?",
-        "What is an IT Outsource Contract?",
-        "Difference Between IT Resource Augmentation Services and IT Team Augmentation?",
-        "What You Can Expect as a Client from an International Recruitment Agency?",
-        "What role do banking recruitment agencies play in your hiring strategy?",
-        "What is IT Contract recruitment?",
-        "How to choose the right outsourced IT service providers?"
-    ];
+    // const faqs = [
+    //     "When You Choose IT Contract Staffing?",
+    //     "What is an IT Outsource Contract?",
+    //     "Difference Between IT Resource Augmentation Services and IT Team Augmentation?",
+    //     "What You Can Expect as a Client from an International Recruitment Agency?",
+    //     "What role do banking recruitment agencies play in your hiring strategy?",
+    //     "What is IT Contract recruitment?",
+    //     "How to choose the right outsourced IT service providers?"
+    // ];
+
+    const faqs=[
+        {
+            title:"When You Choose IT Contract Staffing?",
+            description:"Choosing the Best IT contract staffing Saudi Arabia enables businesses to quickly hire skilled professionals for specific projects. This flexible method allows companies to adjust their teams based on project needs without making long-term commitments. It helps reduce hiring costs and save valuable time in the hiring process. As a result, your internal teams can concentrate on their core functions. With the Best IT contract staffing Saudi Arabia, you can efficiently manage your workforce. Embrace this smart hiring solution for your business today."
+        },
+        {
+            title:"What is an IT Staffing?",
+            description:"IT Staffing is a solution that connects businesses with skilled tech professionals, tailored to meet specific project needs. This service provides on-demand access to IT talent, allowing companies to quickly scale their teams up or down based on workload. With flexible hiring options, businesses in IT Staffing Riyadh can choose short-term, long-term, or project-based roles without long-term commitments. IT Staffing saves valuable time, as agencies handle recruiting, vetting, and onboarding, ensuring new hires are ready to contribute right away. This cost-effective approach also reduces overhead since companies only hire as needed. By offering access to specialized skills, IT Staffing supports complex IT needs such as cybersecurity and cloud computing. With streamlined onboarding and ongoing support, companies can focus more on their core operations."
+        },
+        {
+            title:"Difference Between IT Resource Augmentation Services and IT Team Augmentation",
+            description:"IT Resource Augmentation Saudi Arabia enhances your current team by adding skilled professionals temporarily to address specific project needs. This flexible approach allows you to maintain control over your projects while benefiting from specialized expertise. By supplementing your workforce, you can adapt to changing demands without long-term commitments. It also helps to streamline operations and improve efficiency. Choose IT Resource Augmentation Saudi Arabia to empower your team's success. IT Team Augmentation Saudi Arabia involves integrating a full team of skilled professionals into your project. This team typically operates under your management, ensuring alignment with your goals. It's an ideal solution for larger projects that need a cohesive group with diverse skills. By leveraging IT Team Augmentation, you can enhance project efficiency and meet specific objectives more effectively. Choose IT Team Augmentation Saudi Arabia for a seamless extension of your workforce."
+        },
+        {
+            title:"What is IT Staff Augmentation?",
+            description:"IT Staff Augmentation is a service that helps businesses quickly hire skilled IT professionals for specific projects or tasks. It allows companies to bring in experts temporarily, filling gaps in their teams without long-term commitments. This service ensures flexibility by scaling the workforce based on project needs, saving time on recruitment. It's ideal for temporary workloads or specialized skills like software development or cybersecurity. Top IT Staff Augmentation Services Saudi Arabia ensures companies only pay for the talent they need, helping to lower operational expenses. IT staff augmentation helps companies stay focused on core tasks while enhancing productivity. It's an affordable solution to hit project milestones with highly skilled professionals."
+        },
+        {
+            title:"What are IT Managed Services?",
+            description:"IT Managed Services refers to outsourcing your company's IT operations to a third-party provider. Instead of handling IT tasks in-house, businesses rely on experts to manage everything from network security to software updates. As one of the Top IT Managed Service Providers Saudi Arabia, we ensure that your IT infrastructure is always running smoothly without the need for constant attention. This service helps businesses avoid downtime, enhance productivity, and reduce operational costs. Managed services include monitoring systems, troubleshooting issues, and offering support when needed. This allows companies to focus on core business functions while leaving the technical side in trusted hands. It's a smart and efficient solution for maintaining a reliable IT environment."
+        },
+        {
+            title:"What does it mean by full time contract employee?",
+            description:"A full time contract employee is someone who works for a company on a contract basis, typically for a set period, but with the same hours and responsibilities as a permanent employee. Unlike regular employees, they are hired for specific projects or tasks and are not permanent staff members. These employees often enjoy benefits like health insurance, paid time off, and other perks, similar to full-time staff. However, their employment is bound by a contract with a defined end date. Full-time contract employees can help businesses scale their teams quickly without long-term commitments. They bring specialized skills and expertise for the duration of the contract. It's a flexible arrangement for both companies and employees."
+        },
+    ]
 
     return (
         <div className="bg-white dark:bg-[#252525] text-black dark:text-white relative overflow-hidden">
@@ -32,7 +59,7 @@ export default function FAQPage() {
 
                 <div className="space-y-4">
                     {faqs.map((question, index) => (
-                        <FAQItem key={index} question={question} index={index} />
+                        <FAQItem key={index} question={question.title} answer={question.description} index={index} />
                     ))}
                 </div>
 
@@ -50,7 +77,7 @@ export default function FAQPage() {
     );
 }
 
-function FAQItem({ question, index }: { question: string, index: number }) {
+function FAQItem({ question, index,answer }: { question: string,answer:string, index: number }) {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
@@ -73,7 +100,7 @@ function FAQItem({ question, index }: { question: string, index: number }) {
             </div>
             {isOpen && (
                 <div className="mt-2 text-gray-600 dark:text-white text-sm sm:text-sm md:text-base lg:text-base xl:text-base 2xl:text-base overflow-hidden animate-slideDown p-2">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit voluptas enim explicabo corrupti quas dolores placeat necessitatibus voluptatem, repellat sed maxime reprehenderit qui repudiandae magni quibusdam fuga ducimus molestias. Dicta.</p>
+                    <p>{answer}</p>
                 </div>
             )}
         </div>

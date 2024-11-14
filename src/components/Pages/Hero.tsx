@@ -16,6 +16,7 @@ import HomeIcon from '../HomeIcon';
 import { TypeAnimation } from 'react-type-animation';
 import HomeIcon_Light from '../HomeIcon_Light';
 import WhatsappIcon_Light from '../WhatsappIcon_Light';
+import ChatScreen from '../ChatSupport';
 
 const TypingText = () => {
   return (
@@ -52,6 +53,7 @@ const HomePage = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isChatScreen,setIsChatScreen] = useState(false)
 
 
   useEffect(() => {
@@ -72,8 +74,8 @@ const HomePage = () => {
   }, [scrollPosition]);
 
   useEffect(() => {
-    document.body.classList.toggle('overflow-hidden', isMenuOpen);
-  }, [isMenuOpen]);
+    document.body.classList.toggle('overflow-hidden', (isMenuOpen||isChatScreen));
+  }, [isMenuOpen,isChatScreen]);
 
 
   const toggleDarkMode = () => {
@@ -87,13 +89,12 @@ const HomePage = () => {
 
   const banks = ['alinma_bank.png', 'alrajhi_bank.png', 'bank_albilad.png', 'future_generali.png', 'nibav.png', 'olam.png', 'reliance_capital.png', 'enjaz.png']
   return (
-    <div className='2xl:h-[1000px] xl:h-[900px] lg:h-[900px] md:h-[750px] sm:h-[750px] h-[750px] overflow-hidden mb-10'>
+    <div className='2xl:h-[1000px] xl:h-[900px] lg:h-[900px] md:h-[750px] sm:h-[750px] h-[750px] max-w-screen overflow-hidden mb-10'>
 
       {/* background image */}
       <div
         className="absolute 
         inset-0 
-        w-screen 
         2xl:h-[1000px] 
         xl:h-[900px] 
         lg:h-[900px] 
@@ -121,7 +122,10 @@ const HomePage = () => {
 
 
       {/* chatbot flot */}
-      <ChatBotIcon className='fixed right-5 z-50
+      <ChatBotIcon onClick={()=>{
+        setIsChatScreen(e=>!e)}} className='fixed 
+      right-5 
+      z-50
       size-12
       sm:size-12
       md:size-12
@@ -129,6 +133,8 @@ const HomePage = () => {
       xl:size-14
       2xl:size-16
       rounded-full bg-gray-700 p-2 bottom-10' />
+
+    { isChatScreen &&<ChatScreen onClose={()=>setIsChatScreen(false)}/>}
 
       {/* whatsapp float */}
       <WhatsappIcon className='
