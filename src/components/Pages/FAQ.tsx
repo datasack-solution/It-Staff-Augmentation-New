@@ -15,14 +15,14 @@ export default function FAQPage() {
     ];
 
     return (
-        <div className="bg-white text-black relative overflow-hidden">
+        <div className="bg-white dark:bg-[#252525] text-black dark:text-white relative overflow-hidden">
 
             <div className="absolute inset-0  w-full h-screen ">
-                <div className="absolute w-11/12 h-full opacity-[0.06] -right-[85%] bg-orange-200 rounded-full"></div>
-                <div className="absolute w-10/12 h-full opacity-[0.06] -right-[60%] bg-orange-200 rounded-full"></div>
-                <div className="absolute w-9/12 h-full opacity-[0.06] -right-[60%] bg-orange-200 rounded-full"></div>
-                <div className="absolute w-8/12 h-full opacity-[0.06] -right-[35%] bg-orange-200 rounded-full"></div>
-                <div className="absolute w-7/12 h-full opacity-[0.06] -right-[20%] bg-orange-200 rounded-full"></div>
+                <div className="absolute w-11/12 h-full opacity-[0.06] -right-[85%] bg-orange-200 dark:bg-opacity-40 rounded-full"></div>
+                <div className="absolute w-10/12 h-full opacity-[0.06] -right-[60%] bg-orange-200 dark:bg-opacity-40 rounded-full"></div>
+                <div className="absolute w-9/12 h-full opacity-[0.06] -right-[60%] bg-orange-200 dark:bg-opacity-40 rounded-full"></div>
+                <div className="absolute w-8/12 h-full opacity-[0.06] -right-[35%] bg-orange-200 dark:bg-opacity-40 rounded-full"></div>
+                <div className="absolute w-7/12 h-full opacity-[0.06] -right-[20%] bg-orange-200 dark:bg-opacity-40 rounded-full"></div>
             </div>
 
             <div className="container relative p-7 mx-auto">
@@ -55,7 +55,7 @@ function FAQItem({ question, index }: { question: string, index: number }) {
 
     return (
         <div
-            className={`border-b py-4 cursor-pointer transition-all duration-300 ${isOpen ? 'bg-gray-100' : ''
+            className={`border-b py-4 cursor-pointer transition-all duration-300 ${isOpen ? 'bg-gray-100 dark:bg-transparent' : ''
                 }`}
             onClick={() => setIsOpen(!isOpen)}
         >
@@ -72,7 +72,7 @@ function FAQItem({ question, index }: { question: string, index: number }) {
                 </span>
             </div>
             {isOpen && (
-                <div className="mt-2 text-gray-600 text-sm sm:text-sm md:text-base lg:text-base xl:text-base 2xl:text-base overflow-hidden animate-slideDown p-2">
+                <div className="mt-2 text-gray-600 dark:text-white text-sm sm:text-sm md:text-base lg:text-base xl:text-base 2xl:text-base overflow-hidden animate-slideDown p-2">
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit voluptas enim explicabo corrupti quas dolores placeat necessitatibus voluptatem, repellat sed maxime reprehenderit qui repudiandae magni quibusdam fuga ducimus molestias. Dicta.</p>
                 </div>
             )}
@@ -89,7 +89,7 @@ let ul = $refs.logos;
 ul.insertAdjacentHTML('afterend', ul.outerHTML);
 ul.nextSibling.setAttribute('aria-hidden', 'true');
 })"
-        className="w-full -mt-10 mb-20 sm:p-5 md:p-6 lg:p-7 xl:p-7 2xl:p-7 inline-flex flex-nowrap overflow-hidden 
+        className="w-full dark:bg-white dark:bg-opacity-70  -mt-10 mb-20 xs:p-2 sm:p-5 md:p-6 lg:p-7 xl:p-7 2xl:p-7 inline-flex flex-nowrap overflow-hidden 
    [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-100px),transparent_100%)]">
 
         <ul className="flex items-center justify-center md:justify-start [&_li]:mx-4 [&_img]:max-w-none animate-infinite-scroll">

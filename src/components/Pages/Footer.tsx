@@ -31,7 +31,7 @@ const Footer = () => {
     }, [isOpened, setIsCallUsModalOpen]);
 
     return (
-        <div ref={footerRef} className="bg-black text-white 2xl:h-[850px] xl:h-[800px] lg:h-[750px] md:h-[700px] sm:h-[650px] h-[800px]w-screen relative overflow-hidden">
+        <div ref={footerRef} className="bg-black  text-white 2xl:h-[850px] xl:h-[800px] lg:h-[750px] md:h-[700px] sm:h-[650px] h-[800px]w-screen relative overflow-hidden">
             <div
                 className="absolute inset-0 w-full 2xl:h-[850px] xl:h-[800px] lg:h-[750px] md:h-[700px] sm:h-[650px] h-[800px] bg-cover bg-center opacity-70 "
                 style={{
@@ -167,8 +167,10 @@ const Footer = () => {
             md:w-full
 
 
-            bg-white 
+            bg-white
+            dark:bg-[#252525] 
             text-black 
+            dark:text-white
             rounded-lg 
             p-5 
             shadow-lg 
@@ -180,7 +182,7 @@ const Footer = () => {
                             <input
                                 placeholder="Enter Your Name"
                                 type="text"
-                                className="w-full outline-none rounded-full px-2 py-1"
+                                className="w-full outline-none rounded-full px-2 py-1 bg-transparent"
                                 onChange={e => { console.log(e.target.value) }}
                             />
                         </fieldset>
@@ -190,7 +192,7 @@ const Footer = () => {
                             <input
                                 placeholder="Enter Your Phone Number"
                                 type="tel"
-                                className="w-full outline-none rounded-full px-2 py-1"
+                                className="w-full outline-none rounded-full px-2 py-1 bg-transparent"
                                 onChange={e => { console.log(e.target.value) }}
                             />
                         </fieldset>
@@ -201,7 +203,7 @@ const Footer = () => {
                             <input
                                 placeholder="Enter Your Email"
                                 type="email"
-                                className="w-full outline-none rounded-full px-2 py-1"
+                                className="w-full outline-none rounded-full px-2 py-1 bg-transparent"
                                 onChange={e => { console.log(e.target.value) }}
                             />
                         </fieldset>
