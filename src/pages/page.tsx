@@ -1,3 +1,4 @@
+import GreetModal from "@/components/GreetModal"
 import AnalyticsPage from "@/components/Pages/Analytics"
 import BenefitsPage from "@/components/Pages/Benefits"
 import FAQPage from "@/components/Pages/FAQ"

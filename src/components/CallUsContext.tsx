@@ -4,6 +4,8 @@ interface CallUsModalContextProps {
   setIsCallUsModalOpen: React.Dispatch<React.SetStateAction<boolean>>
   isCallUsModalOpen: boolean
   isOpened:boolean
+  darkMode:boolean,
+  setDarkMode:React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const CallUsModalContext = createContext<CallUsModalContextProps | undefined>(undefined);
@@ -11,6 +13,8 @@ const CallUsModalContext = createContext<CallUsModalContextProps | undefined>(un
 export const CallUsModalProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isCallUsModalOpen, setIsCallUsModalOpen] = useState(false)
   const [isOpened, setIsOpened] = useState(false)
+  const [darkMode, setDarkMode] = useState(false);
+
 
   useEffect(()=>{
     setIsOpened(false)
@@ -30,7 +34,7 @@ export const CallUsModalProvider: React.FC<{ children: React.ReactNode }> = ({ c
   }, [isCallUsModalOpen]);
 
   return (
-    <CallUsModalContext.Provider value={{ isCallUsModalOpen, setIsCallUsModalOpen, isOpened }}>
+    <CallUsModalContext.Provider value={{ isCallUsModalOpen, setIsCallUsModalOpen, isOpened , darkMode,setDarkMode}}>
       {children}
     </CallUsModalContext.Provider>
   );

@@ -1,7 +1,8 @@
-import { FunctionComponent } from "react"
+import { FunctionComponent, useState } from "react"
 
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
+import GreetModal from "./GreetModal"
 
 
 export interface AddTechModalProps {
@@ -12,8 +13,11 @@ export interface AddTechModalProps {
 const CallUsModal: FunctionComponent<AddTechModalProps> = ({
     onConfirm,
 }) => {
+    const [submitted,setSubmitted]=useState(false)
 
-
+    if (submitted){
+        return <GreetModal  onConfirm={onConfirm}/>
+    }
 
     return <div className="fixed  inset-0 flex items-center justify-center bg-gray-900 text-black bg-opacity-50 z-[62]">
         <div className="bg-white animate-flyinup w-full max-h-[600px] md:max-h-screen lg:max-h-screen xl:max-h-screen 2xl:max-h-screen  max-w-3xl mx-4 md:mx-0 p-6 rounded-lg shadow-lg relative overflow-auto">
@@ -22,7 +26,7 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
             <h2 className="text-3xl font-bold text-center mb-5">Book a Call for <span className="text-orange-500">Free Consultation</span></h2>
             <p className="text-center text-gray-500 mb-6">Level Up Your IT with DataSack Experts !!</p>
 
-            <form className="space-y-4">
+            <form className="space-y-4" onSubmit={()=>setSubmitted(true)}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
                         <label className="text-gray-600 text-sm">Select Your Industry</label>

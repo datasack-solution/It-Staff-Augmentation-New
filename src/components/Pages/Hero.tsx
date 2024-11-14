@@ -46,8 +46,7 @@ const TypingText = () => {
 
 
 const HomePage = () => {
-  const [darkMode, setDarkMode] = useState(false);
-  const { isCallUsModalOpen, setIsCallUsModalOpen } = useCallUsModalState()
+  const { isCallUsModalOpen, setIsCallUsModalOpen, darkMode, setDarkMode } = useCallUsModalState()
   const [isVisible, setIsVisible] = useState(true);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -103,6 +102,24 @@ const HomePage = () => {
       xl:size-14
       2xl:size-16
       rounded-full bg-gray-700 p-2 bottom-10' />
+
+      <WhatsappIcon className='
+       right-5 z-50
+      animate-pulse
+      cursor-pointer
+    fixed
+      block sm:hidden md:hidden lg:hidden xlg:hidden 2xl:hidden
+      size-12
+      sm:size-12
+      md:size-12
+      lg:size-14
+      xl:size-14
+      2xl:size-16
+      rounded-full bg-orange-100
+       p-2 bottom-28'
+      />
+
+
 
       {isCallUsModalOpen && <CallUsModal isModalOpen={isCallUsModalOpen} onConfirm={() => setIsCallUsModalOpen(false)} />}
 
@@ -173,7 +190,8 @@ const HomePage = () => {
             } className="text-gray-800  py-1 cursor-pointer  hover:text-orange-500 uppercase font-semibold">
               Get Pricing
             </div>
-            <div className="text-gray-800  py-1 cursor-pointer  hover:text-orange-500 uppercase font-semibold">
+            <div onClick={() => document.getElementById('managed-services-section')?.scrollIntoView({ behavior: 'smooth' })
+            } className="text-gray-800  py-1 cursor-pointer  hover:text-orange-500 uppercase font-semibold">
               Managed Services
             </div>
             <div
@@ -210,7 +228,7 @@ const HomePage = () => {
               className="text-white flex align-middle font-semibold text-lg mb-5"
               onClick={() => setIsMenuOpen(false)}
             >
-              <div className='flex align-middle m-auto'>
+              <div className='flex align-middle m-auto text-yellow-500'>
                 <p>Close</p>
                 <div className='inline-block text-center m-auto'>
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-5">
@@ -249,6 +267,21 @@ const HomePage = () => {
                   Contact Us
                 </span>
               </div>
+
+              <div>
+            {!darkMode &&
+              <div className='flex align-middle gap-2'>
+                <LightToggle className='rounded-full' onClick={toggleDarkMode} />
+                <p className='text-center text-xs pt-1'>Light</p>
+              </div>}
+            {darkMode &&
+              <div className='flex align-middle gap-2'>
+                <DarkToggle className='rounded-full' onClick={toggleDarkMode} />
+                <p className='text-center text-xs pt-1'>Dark</p>
+              </div>
+            }
+          </div>
+
             </nav>
           </div>
         </div>
