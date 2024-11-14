@@ -85,9 +85,9 @@ const HomePage = () => {
 
   const banks = ['alinma_bank.png', 'alrajhi_bank.png', 'bank_albilad.png', 'future_generali.png', 'nibav.png', 'olam.png', 'reliance_capital.png', 'enjaz.png']
   return (
-    <div className='bg-red-white 2xl:h-[1000px] xl:h-[900px] lg:h-[900px] md:h-[700px] sm:h-[650px] h-[800px] overflow-hidden mb-10'>
+    <div className='bg-red-white 2xl:h-[1000px] xl:h-[900px] lg:h-[900px] md:h-[750px] sm:h-[750px] h-[700px] overflow-hidden mb-10'>
       <div
-        className="absolute inset-0 w-screen 2xl:h-[1000px] xl:h-[900px] lg:h-[900px] md:h-[700px] sm:h-[650px] h-[800px] bg-cover opacity-40 blur-[1px] sm:opacity-80 md:opacity-70 lg:opacity-70 xl:opacity-70 2xl:opacity-90"
+        className="absolute inset-0 w-screen 2xl:h-[1000px] xl:h-[900px] lg:h-[900px] md:h-[750px] sm:h-[750px] h-[700px] bg-cover opacity-40 blur-[1px] sm:opacity-80 md:opacity-70 lg:opacity-70 xl:opacity-70 2xl:opacity-90"
         style={{
           backgroundImage: `
       url('/BG-Upscale.jpg')
