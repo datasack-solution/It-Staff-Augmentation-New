@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import AnalyticsDeskCardSvg from "../AnalyticsDescCardSvg";
 import AnalyticsMobilePointSvg from "../AnalyticsMobilePointSvg";
+import { useCallUsModalState } from "../CallUsContext";
 
 interface Step {
     id: number;
@@ -46,6 +47,7 @@ const AnalyticsPage = () => {
     const [content, setContent] = useState(0)
     const sliderRef = useRef<Slider | null>(null);
     const [activeIndex, setActiveIndex] = useState<number>(0);
+    const {  darkMode } = useCallUsModalState()
 
     const settings: Settings = {
         dots: false,
@@ -62,18 +64,18 @@ const AnalyticsPage = () => {
 
 
 
-    return <div className=" text-black">
+    return <div className=" text-black dark:text-white">
         <div className="container
         hidden
         lg:flex
         xl:flex
-        2xl:flex bg-white  mb-10 m-auto">
+        2xl:flex bg-white dark:bg-[#252525]  mb-10 m-auto">
             <div className="w-[60%] mt-16 lg:mt-10">
                 <div className="w-1/2 m-auto">
-                    <h2 className="mt text-xl sm:text-xl md:text-2xl lg:text-3xl text-nowrap xl:text-3xl 2xl:text-4xl pt text-black font-bold text-center mt-10">
+                    <h2 className="mt text-xl sm:text-xl md:text-2xl lg:text-3xl text-nowrap xl:text-3xl 2xl:text-4xl pt  font-bold text-center mt-10">
                         IT Staff <span className="text-orange-500">Augmentation</span>
                     </h2>
-                    <p className="text-center mt-10 px-3 mb-10 text-gray-600">
+                    <p className="text-center mt-10 px-3 mb-10 text-gray-600 dark:text-white">
                         Augment your software team with IT professionals from the IT outsourcing company Riyadh.
                     </p>
                 </div>
@@ -87,7 +89,7 @@ const AnalyticsPage = () => {
                 m-auto 
                 justify-between 
                 p-5 
-                bg-white">
+                bg-white dark:bg-[#252525]">
                     <div className="
                     grid 
                     xl:grid-cols-2 
@@ -105,7 +107,7 @@ const AnalyticsPage = () => {
                                 text-center
                                  rounded-full 
 
-                                 ${content == index ? 'bg-orange-500 text-white' : 'bg-white text-black'}
+                                 ${content == index ? 'bg-orange-500 text-white' : 'bg-white text-black dark:bg-[#252525] dark:text-white'}
                                  `}>{analytic.title}</button>
                             </div>
                         })}
@@ -113,10 +115,12 @@ const AnalyticsPage = () => {
 
                     <div className="flex relative lg:mt-20 xl:mt-10 2xl:mt-0">
                         <div className=" w-full">
-                            <AnalyticsDeskCardSvg />
+                             <AnalyticsDeskCardSvg />
                         </div>
                         <div className="absolute left-14 text-base w-3/4 text-wrap mt-5 p-2
-                         bg-gradient-to-t from-[rgba(0,0,0,1)] to-[rgba(0,0,0,0.5)] bg-clip-text text-transparent
+                         bg-gradient-to-t from-[rgba(0,0,0,1)] to-[rgba(0,0,0,0.5)] 
+                         dark:text-white
+                         bg-clip-text text-transparent
                          ">
                             {analytics[content].description}
                         </div>
@@ -127,7 +131,7 @@ const AnalyticsPage = () => {
 
             </div>
             <div className=" w-[40%] lg:mt-20 xl:mt-10">
-                <Image alt="illustration" src={'/steps.png'} width={550} height={400} className="mt-10" />
+                <Image alt="illustration" src={darkMode ? '/steps_dark.png' : '/steps.png'} width={550} height={400} className="mt-10" />
             </div>
         </div>
 
@@ -136,13 +140,13 @@ const AnalyticsPage = () => {
         <div className="container relative
         lg:hidden
         xl:hidden
-        2xl:hidden p-7 m-auto text-white">
+        2xl:hidden p-7 m-auto">
             {/* <h2 className="text-2xl text-black font-semibold mb-6">Our IT Staff Augmentation Process</h2> */}
 
-            <h2 className="text-xl sm:text-xl md:text-2xl lg:text-3xl text-black font-bold text-center mt-5 mb-10">
+            <h2 className="text-xl sm:text-xl md:text-2xl lg:text-3xl text-black dark:text-white font-bold text-center mt-5 mb-10">
                 IT Staff <span className="text-orange-500">Augmentation</span>
             </h2>
-            <p className="text-center mt-5 px-3 mb-5 text-gray-600">
+            <p className="text-center mt-5 px-3 mb-5 text-gray-600 dark:text-white">
                 Augment your software team with IT professionals from the IT outsourcing company Riyadh.
             </p>
 
@@ -162,14 +166,14 @@ const AnalyticsPage = () => {
                         <AnalyticsMobilePointSvg activeIndex={activeIndex} currentIndex={index} />
 
                         <div className={`flex-grow h-px ${index === activeIndex ? 'border-orange-600' : 'border-gray-500'} border-dotted border-b-2`}></div>
-                        <span className={`px-4 py-1 rounded-full text-sm ${index === activeIndex ? 'bg-orange-600 text-white' : 'bg-gray-700'}`}>
+                        <span className={`px-4 py-1 rounded-full text-sm ${index === activeIndex ? 'bg-orange-600 text-white' : 'bg-gray-700 text-white'}`}>
                             {`0${index + 1}. ${step.title}`}
                         </span>
                     </motion.div>
                 ))}
             </div>
 
-            <Slider {...settings} ref={sliderRef} className="mb-6 -mt-10">
+            <Slider {...settings} ref={sliderRef} className="mb-6">
                 {steps.map((step) => (
                     <div key={step.id} className="p-4">
                         <h3 className="text-lg font-semibold">{`0${step.id}. ${step.title}`}</h3>
