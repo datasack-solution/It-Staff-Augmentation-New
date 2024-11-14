@@ -9,7 +9,7 @@ import PricingPage from "@/components/Pages/Pricing"
 import PricingToast from "@/components/PricingToast"
 
 const IndexPage = () => {
-  return <div className="bg-white">
+  return <div className="bg-white dark:bg-[#252525]">
   <PricingToast/>
   <HomePage/>
   <PricingPage/>

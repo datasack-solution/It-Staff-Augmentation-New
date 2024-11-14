@@ -99,7 +99,7 @@ const Pricing = () => {
     const [isEditModalOpen, setEditModalOpen] = useState(false)
     const [isModalOpen, setModalOpen] = useState<boolean>(false)
     const [durationIndex, setDurationIndex] = useState<number>(6)
-    const { setIsCallUsModalOpen } = useCallUsModalState()
+    const { setIsCallUsModalOpen, darkMode } = useCallUsModalState()
 
     const techs = Object.values(quantities).flatMap(r => { return Object.keys(r) })
     const techQuantities = Object.values(quantities).flatMap(r => Object.values(r))
@@ -201,17 +201,17 @@ const Pricing = () => {
 
 
     return (
-        <div id='pricing-section' className={`container mx-auto lg:p-10 `}>
+        <div id='pricing-section' className={`container mx-auto lg:p-10`}>
             {techs.length > 0 && <div
-                className="skill-footer text-black animate-flyinup sm:fixed md:fixed lg:fixed xl:fixed 2xl:fixed w-screen z-50 bg-gray-50 bottom-0 left-0 p-4 font-sans text-sm font-normal break-words whitespace-normal  border shadow-lg border-blue-gray-50 text-blue-gray-500 shadow-blue-gray-500/10 focus:outline-none">
+                className="skill-footer text-black animate-flyinup sm:fixed md:fixed lg:fixed xl:fixed 2xl:fixed w-screen z-50 bg-gray-50 dark:bg-[rgba(30,30,30,1)] bottom-0 left-0 p-4 font-sans text-sm font-normal break-words whitespace-normal   shadow-lg border-blue-gray-50 text-blue-gray-500 shadow-blue-gray-500/10 focus:outline-none">
                 <div className='flex justify-between'>
                     <div className='flex gap-5'>
                         <h2 className='text-orange-500 font-semibold text-lg'>Selected Technologies</h2>
-                        <p className='text-sm mt-1'>Duration: <span className='font-semibold'>{durationScale[durationIndex]}</span></p>
+                        <p className='text-sm mt-1 dark:text-white'>Duration: <span className='font-semibold'>{durationScale[durationIndex]}</span></p>
                     </div>
 
                     <svg onClick={removeAllTech} className="cursor-pointer mr-5" width="20" height="20" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M18 0.5C8.25 0.5 0.5 8.25 0.5 18C0.5 27.75 8.25 35.5 18 35.5C27.75 35.5 35.5 27.75 35.5 18C35.5 8.25 27.75 0.5 18 0.5ZM24.75 26.75L18 20L11.25 26.75L9.25 24.75L16 18L9.25 11.25L11.25 9.25L18 16L24.75 9.25L26.75 11.25L20 18L26.75 24.75L24.75 26.75Z" fill="black" fillOpacity="0.4" />
+                        <path d="M18 0.5C8.25 0.5 0.5 8.25 0.5 18C0.5 27.75 8.25 35.5 18 35.5C27.75 35.5 35.5 27.75 35.5 18C35.5 8.25 27.75 0.5 18 0.5ZM24.75 26.75L18 20L11.25 26.75L9.25 24.75L16 18L9.25 11.25L11.25 9.25L18 16L24.75 9.25L26.75 11.25L20 18L26.75 24.75L24.75 26.75Z" fill={darkMode ? '#fff' : '#000'} fillOpacity="0.4" />
                     </svg>
                 </div>
 
@@ -219,19 +219,25 @@ const Pricing = () => {
                     {techs.map((item, index) => {
                         return (
                             <div key={index} className="animate-bounce-right relative flex items-center justify-center p-0.5 rounded-full">
-                                <div className="absolute inset-0 bg-gradient-to-r from-orange-200 via-transparent to-orange-50 rounded-full"></div>
+                                <div className="absolute inset-0 bg-gradient-to-r from-orange-200 via-transparent to-orange-50 
+                                                                        dark:from-[rgba(253,253,253,0.69)] dark:via-[rgba(128,128,128,1)] dark:to-[rgba(128,128,128,1)]
 
-                                <div className="relative items-center justify-center rounded-full">
+                                rounded-full"></div>
 
-                                    <div className="flex items-center bg-white rounded-full p-2 gap-2">
+                                <div className="relative items-center justify-center rounded-full dark:text-white">
+
+                                    <div className="flex items-center bg-white
+                                    dark:bg-[rgba(128,128,128,1)]
+                                    
+                                    rounded-full p-2 gap-2">
 
                                         <span>{item}</span>
 
-                                        <span className="text-black rounded-full w-5 h-5 text-center justify-center bg-[rgba(238,123,34,0.14)]">{techQuantities[index]}</span>
+                                        <span className="text-black dark:text-white rounded-full w-5 h-5 text-center justify-center bg-[rgba(238,123,34,0.14)] dark:bg-[rgba(255,255,255,0.17)]">{techQuantities[index]}</span>
 
 
                                         <svg onClick={() => removeTech(item)} className="cursor-pointer mr-5" width="20" height="20" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M18 0.5C8.25 0.5 0.5 8.25 0.5 18C0.5 27.75 8.25 35.5 18 35.5C27.75 35.5 35.5 27.75 35.5 18C35.5 8.25 27.75 0.5 18 0.5ZM24.75 26.75L18 20L11.25 26.75L9.25 24.75L16 18L9.25 11.25L11.25 9.25L18 16L24.75 9.25L26.75 11.25L20 18L26.75 24.75L24.75 26.75Z" fill="black" fillOpacity="0.3" />
+                                            <path d="M18 0.5C8.25 0.5 0.5 8.25 0.5 18C0.5 27.75 8.25 35.5 18 35.5C27.75 35.5 35.5 27.75 35.5 18C35.5 8.25 27.75 0.5 18 0.5ZM24.75 26.75L18 20L11.25 26.75L9.25 24.75L16 18L9.25 11.25L11.25 9.25L18 16L24.75 9.25L26.75 11.25L20 18L26.75 24.75L24.75 26.75Z" fill={darkMode?'white':'black'} fillOpacity="0.3" />
                                         </svg>
 
                                     </div>
@@ -241,13 +247,13 @@ const Pricing = () => {
                     })}
                 </div>
 
-                <div onClick={() => setIsCallUsModalOpen(true)} className='animate-jiggle cursor-pointer float-right mr-5 border w-fit p-3 flex justify-end text-white bg-orange-500 rounded-full text-xs font-semibold'>Get Pricing</div>
+                <div onClick={() => setIsCallUsModalOpen(true)} className='animate-jiggle cursor-pointer float-right mr-5  w-fit p-3 flex justify-end text-white bg-orange-500 rounded-full text-xs font-semibold'>Get Pricing</div>
             </div>}
 
-            <h2 className="text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl 2xl:text-4xl text-black font-bold text-center">
+            <h2 className="text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl 2xl:text-4xl text-black dark:text-white font-bold text-center">
                 Craft your own <span className="text-orange-500">pricing</span>
             </h2>
-            <p className="text-center my-10 px-3 text-gray-600">
+            <p className="text-center my-10 px-3 text-gray-600 dark:text-white">
                 Customize your plan with chosen technologies, with pricing calculated monthly to fit your needs.
             </p>
 
@@ -302,7 +308,7 @@ const Pricing = () => {
                             <button
                                 key={category}
                                 onClick={() => handleCategoryClick(category as keyof typeof technologies)}
-                                className={`border relative  w-full h-full text-black border-orange-500 py-2 px-4 rounded-full transition-colors ${selectedCategory === category ? "bg-orange-500 text-white" : "text-black bg-white"
+                                className={`border relative  w-full h-full text-black border-orange-500 py-2 px-4 rounded-full transition-colors ${selectedCategory === category ? "bg-orange-500 text-white" : "text-black bg-white dark:bg-[#252525] dark:text-white"
                                     } ${quantities[category] &&
                                         (Object.values(quantities[category]).some(quantity => quantity > 0) && selectedCategory == category) ? 'bg-orange-500 text-black' : 'text-black'} hover:bg-orange-500`}
                             >
@@ -323,17 +329,19 @@ const Pricing = () => {
 
                 <CategoryHorizontal handleCategoryClick={handleCategoryClick} selectedCategory={selectedCategory} quantities={quantities} />
 
-                <div className="lg:w-2/3 p-3 bg-gray-50 rounded-lg shadow">
+                <div className="lg:w-2/3 p-3 bg-gray-50 dark:bg-[rgba(0,0,0,0.1)] rounded-lg shadow">
                     <div className='flex justify-between mb-2 cursor-pointer gap-5'>
-                        <h3 className="text-xl font-semibold mb-4 text-black">
+                        <h3 className="text-xl font-semibold mb-4 text-black dark:text-white">
                             {selectedCategory ? `${selectedCategory} Technologies` : "Select a Category"}
                             <div className="w-full h-0.5 mt-1 bg-gradient-to-r from-[rgba(238,123,34,1)] to-[rgba(218,218,218,1)] rounded-lg"></div>
                         </h3>
 
 
-                        <div onClick={() => setModalOpen(true)} className='group h-fit text-nowrap border-2 text-black inline-block border-red-100 max-h-14 rounded-full bg-orange-500 md:bg-transparent lg:bg-transparent xl:bg-transparent 2xl:bg-transparent hover:bg-orange-500 hover:rounded-full justify-center align-middle'>
-                            <PlusIcon className='size-10 invisible hidden md:inline-block lg:inline-block xl:inline-block 2xl:inline-block md:visible lg:visible xl:visible 2xl:visible group-hover:invisible group-hover:hidden' />
-                            <p className='visible md:invisible lg:invisible xl:invisible 2xl:invisible md:hidden lg:hidden xl:hidden 2xl:hidden group-hover:visible group-hover:inline-block text-white p-3 sm:p-1 md:p-2 lg:p-3 xl:p-3 2xl:p-3 text-center uppercase text-xs'>Add Tech +</p>
+                        <div onClick={() => setModalOpen(true)} className='group h-fit text-nowrap border-2 text-black dark:text-white inline-block border-red-100
+                        dark:border-[rgba(94,94,94,0.78)]
+                        max-h-14 rounded-full bg-orange-500 md:bg-transparent lg:bg-transparent xl:bg-transparent 2xl:bg-transparent hover:bg-orange-500 hover:rounded-full justify-center align-middle'>
+                            <PlusIcon darkMode={darkMode} className='size-10 invisible hidden md:inline-block lg:inline-block xl:inline-block 2xl:inline-block md:visible lg:visible xl:visible 2xl:visible group-hover:invisible group-hover:hidden' />
+                            <p className='visible md:invisible lg:invisible xl:invisible 2xl:invisible md:hidden lg:hidden xl:hidden 2xl:hidden group-hover:visible group-hover:inline-block text-white dark:text-white p-3 sm:p-1 md:p-2 lg:p-3 xl:p-3 2xl:p-3 text-center uppercase text-xs'>Add Tech +</p>
                         </div>
                     </div>
 
@@ -346,15 +354,18 @@ const Pricing = () => {
                     />
 
                     {selectedCategory ? (
-                        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 text-black">
+                        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 text-black dark:text-white">
                             {technologies[selectedCategory].map((tech, index) => (
                                 <div key={index} className="flex items-center justify-between p-4 shadow rounded-lg ">
                                     <span>{tech}</span>
 
                                     <div className="relative flex items-center justify-center p-0.5 rounded-full">
-                                        <div className="absolute inset-0 bg-gradient-to-r from-orange-200 via-transparent to-orange-50 rounded-full"></div>
+                                        <div className="absolute inset-0 
+                                        bg-gradient-to-r from-orange-200 via-transparent to-orange-50
+                                        dark:from-[rgba(128,128,128,0.3)] dark:via-transparent dark:to-[rgba(128,128,128,0.3)]
+                                        rounded-full"></div>
 
-                                        <div className="relative flex items-center bg-white rounded-full px-1">
+                                        <div className="relative flex items-center bg-white dark:bg-[rgba(128,128,128,0.3)] rounded-full px-1">
                                             <button
                                                 onClick={() => { handleDecreaseQuantity(selectedCategory, tech) }}
                                                 className="  rounded-full w-8 h-8 text-center p-0"
@@ -362,7 +373,10 @@ const Pricing = () => {
                                                 -
                                             </button>
 
-                                            <span className="text-black rounded-full w-5 h-5 text-center justify-center bg-[rgba(238,123,34,0.14)]">{quantities[selectedCategory]?.[tech] || 0}</span>
+                                            <span className="text-black dark:text-white rounded-full w-5 h-5 text-center justify-center
+                                             bg-[rgba(238,123,34,0.14)]
+                                             dark:bg-[rgba(94,94,94,0.8)]
+                                             ">{quantities[selectedCategory]?.[tech] || 0}</span>
 
                                             <button
                                                 onClick={() => { handleIncreaseQuantity(selectedCategory, tech) }}
@@ -377,17 +391,18 @@ const Pricing = () => {
                             ))}
                         </ul>
                     ) : (
-                        <p className="text-gray-500">Please select a category to view its technologies.</p>
+                        <p className="text-gray-500 dark:text-white">Please select a category to view its technologies.</p>
                     )}
 
                     <div className='mb-28 mt-8 text-black'>
                         <DurationRangeSelector onChange={setDurationIndex} />
 
                         {techs.length > 0 && <div className="pt-5 m-auto">
-                            <div onClick={() => setIsCallUsModalOpen(true)} className='animate-bounce-right m-auto cursor-pointer border w-fit p-3 text-white bg-orange-500 rounded-full text-xs font-semibold'>Get Pricing</div>
+                            <div onClick={() => setIsCallUsModalOpen(true)} className='animate-bounce-right m-auto cursor-pointer  w-fit p-3 text-white bg-orange-500 rounded-full text-xs font-semibold'>Get Pricing</div>
                         </div>}
                     </div>
                 </div>
+
             </div>
 
         </div>

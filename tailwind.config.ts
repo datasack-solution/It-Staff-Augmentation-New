@@ -8,7 +8,7 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/pages/fonts/Poppins-Bold.ttf"
   ],
-  // darkMode: "class",
+  darkMode: "class",
   theme: {
     extend: {
       screens:{

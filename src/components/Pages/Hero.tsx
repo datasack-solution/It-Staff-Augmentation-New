@@ -14,6 +14,8 @@ import CallUsModal from '../CallUsModal';
 import HomeIcon from '../HomeIcon';
 
 import { TypeAnimation } from 'react-type-animation';
+import HomeIcon_Light from '../HomeIcon_Light';
+import WhatsappIcon_Light from '../WhatsappIcon_Light';
 
 const TypingText = () => {
   return (
@@ -85,15 +87,40 @@ const HomePage = () => {
 
   const banks = ['alinma_bank.png', 'alrajhi_bank.png', 'bank_albilad.png', 'future_generali.png', 'nibav.png', 'olam.png', 'reliance_capital.png', 'enjaz.png']
   return (
-    <div className='bg-red-white 2xl:h-[1000px] xl:h-[900px] lg:h-[900px] md:h-[750px] sm:h-[750px] h-[700px] overflow-hidden mb-10'>
+    <div className='2xl:h-[1000px] xl:h-[900px] lg:h-[900px] md:h-[750px] sm:h-[750px] h-[700px] overflow-hidden mb-10'>
+
+      {/* background image */}
       <div
-        className="absolute inset-0 w-screen 2xl:h-[1000px] xl:h-[900px] lg:h-[900px] md:h-[750px] sm:h-[750px] h-[700px] bg-cover opacity-40 blur-[1px] sm:opacity-80 md:opacity-70 lg:opacity-70 xl:opacity-70 2xl:opacity-90"
+        className="absolute 
+        inset-0 
+        w-screen 
+        2xl:h-[1000px] 
+        xl:h-[900px] 
+        lg:h-[900px] 
+        md:h-[750px] 
+        sm:h-[750px] 
+        h-[700px] 
+        bg-cover 
+        opacity-40 
+        blur-[1px] 
+        sm:opacity-80 
+        md:opacity-70 
+        lg:opacity-70 
+        xl:opacity-70 
+        2xl:opacity-90
+        
+        dark:opacity-50
+        
+        "
         style={{
           backgroundImage: `
       url('/BG-Upscale.jpg')
     `
         }}
       />
+
+
+      {/* chatbot flot */}
       <ChatBotIcon className='fixed right-5 z-50
       size-12
       sm:size-12
@@ -103,6 +130,7 @@ const HomePage = () => {
       2xl:size-16
       rounded-full bg-gray-700 p-2 bottom-10' />
 
+      {/* whatsapp float */}
       <WhatsappIcon className='
        right-5 z-50
       animate-pulse
@@ -119,10 +147,11 @@ const HomePage = () => {
        p-2 bottom-28'
       />
 
-
-
+      {/* call us modal */}
       {isCallUsModalOpen && <CallUsModal isModalOpen={isCallUsModalOpen} onConfirm={() => setIsCallUsModalOpen(false)} />}
 
+
+      {/* side icons bar */}
       <div className="
       fixed
       hidden sm:block md:block lg:block xlg:block 2xl:block
@@ -134,10 +163,13 @@ const HomePage = () => {
       px-[1.5px] 
       py-[1px]
       bg-gradient-to-b 
-      from-[rgba(238,123,34,1)] via-[rgba(238,123,34,0)] to-[rgba(238,123,34,0.3)] 
+      from-[rgba(238,123,34,0.7)] via-[rgba(238,123,34,0)] to-[rgba(238,123,34,0.3)]
+      dark:from-[rgba(238,123,34,0.5)] dark:via-[rgba(238,123,34,0)] dark:to-[rgba(238,123,34,0.1)]
       rounded-3xl">
         <div className="
         bg-white
+        dark:bg-black
+        dark:bg-opacity-30
         py-4
         z-100
         space-y-4
@@ -151,27 +183,30 @@ const HomePage = () => {
         m-auto
         h-full">
 
-          {<HomeIcon className='2xl:size-6 xl:size-5 lg:size-5 md:size-5 sm:size-5 m-auto cursor-pointer' />}
+          {!darkMode && <HomeIcon className='2xl:size-6 xl:size-5 lg:size-5 md:size-5 sm:size-5 m-auto cursor-pointer' />}
+          {darkMode && <HomeIcon_Light className='2xl:size-6 xl:size-5 lg:size-5 md:size-5 sm:size-5 m-auto cursor-pointer' />}
           <MessageIcon className='m-auto cursor-pointer 2xl:size-10 xl:size-8 lg:size-7 md:size-7 sm:size-7' />
-          {<WhatsappIcon className='2xl:size-8 xl:size-7 lg:size-7 md:size-7 sm:size-7 m-auto cursor-pointer' />}
+          {!darkMode &&<WhatsappIcon className='2xl:size-8 xl:size-7 lg:size-7 md:size-7 sm:size-7 m-auto cursor-pointer' />}
+          {darkMode &&<WhatsappIcon_Light className='2xl:size-8 xl:size-7 lg:size-7 md:size-7 sm:size-7 m-auto cursor-pointer' />}
 
           <div>
             {!darkMode &&
               <div>
                 <LightToggle className='m-auto cursor-pointer 2xl:size-10 xl:size-8 lg:size-7 md:size-7 sm:size-7' onClick={toggleDarkMode} />
-                <p className='text-center text-xs'>Light</p>
+                <p className='text-center text-xs text-black'>Light</p>
               </div>}
             {darkMode &&
               <div>
                 <DarkToggle className='m-auto cursor-pointer 2xl:size-10 xl:size-8 lg:size-7 md:size-7 sm:size-7' onClick={toggleDarkMode} />
-                <p className='text-center text-xs'>Dark</p>
+                <p className='text-center text-xs text-white'>Dark</p>
               </div>
             }
           </div>
         </div>
       </div>
 
-      <div className={`fixed w-full bg-white  bg-opacity-50 backdrop-blur-lg z-40 top-0 transition-transform duration-500 ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}>
+      {/* header */}
+      <div className={`fixed w-full bg-white bg-opacity-50 dark:bg-black  dark:bg-opacity-30 backdrop-blur-lg z-40 top-0 transition-transform duration-500 ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}>
         <div className='flex justify-between align-middle w-full bg-transparent'>
           <div className='p-3'>
             <Link href="/" >
@@ -187,11 +222,11 @@ const HomePage = () => {
 
           <div className='hidden text-sm sm:text-xs md:text-sm lg:text-lg xl:text-lg 2xl:text-lg w-fit sm:flex gap-14 text-purple-100 sm:text-blue-100 mr-2 justify-around align-middle p-7'>
             <div onClick={() => document.getElementById('pricing-section')?.scrollIntoView({ behavior: 'smooth' })
-            } className="text-gray-800  py-1 cursor-pointer  hover:text-orange-500 uppercase font-semibold">
+            } className="text-gray-800 dark:text-white  py-1 cursor-pointer  hover:text-orange-500 uppercase font-semibold">
               Get Pricing
             </div>
             <div onClick={() => document.getElementById('managed-services-section')?.scrollIntoView({ behavior: 'smooth' })
-            } className="text-gray-800  py-1 cursor-pointer  hover:text-orange-500 uppercase font-semibold">
+            } className="text-gray-800 dark:text-white  py-1 cursor-pointer  hover:text-orange-500 uppercase font-semibold">
               Managed Services
             </div>
             <div
@@ -242,7 +277,7 @@ const HomePage = () => {
               <div onClick={() => {
                 setIsMenuOpen(false);
                 document.getElementById('pricing-section')?.scrollIntoView({
-                  behavior:'smooth'
+                  behavior: 'smooth'
                 })
               }}>
                 <span className="hover:text-orange-500 cursor-pointer">
@@ -252,7 +287,7 @@ const HomePage = () => {
               <div onClick={() => {
                 setIsMenuOpen(false);
                 document.getElementById('managed-services-section')?.scrollIntoView({
-                  behavior:'smooth'
+                  behavior: 'smooth'
                 })
               }}>
                 <span className="hover:text-orange-500 cursor-pointer">
@@ -269,18 +304,18 @@ const HomePage = () => {
               </div>
 
               <div>
-            {!darkMode &&
-              <div className='flex align-middle gap-2'>
-                <LightToggle className='rounded-full' onClick={toggleDarkMode} />
-                <p className='text-center text-xs pt-1'>Light</p>
-              </div>}
-            {darkMode &&
-              <div className='flex align-middle gap-2'>
-                <DarkToggle className='rounded-full' onClick={toggleDarkMode} />
-                <p className='text-center text-xs pt-1'>Dark</p>
+                {!darkMode &&
+                  <div className='flex align-middle gap-2'>
+                    <LightToggle className='rounded-full' onClick={toggleDarkMode} />
+                    <p className='text-center text-xs pt-1'>Light</p>
+                  </div>}
+                {darkMode &&
+                  <div className='flex align-middle gap-2'>
+                    <DarkToggle className='rounded-full' onClick={toggleDarkMode} />
+                    <p className='text-center text-xs pt-1'>Dark</p>
+                  </div>
+                }
               </div>
-            }
-          </div>
 
             </nav>
           </div>
@@ -288,6 +323,9 @@ const HomePage = () => {
 
       </div>
 
+
+
+      {/* page body */}
       <div className="relative h-screen w-screen overflow-y bg-opacity-50 mt-28 px-5">
         <div className="
         relative 
@@ -299,6 +337,7 @@ const HomePage = () => {
         h-full 
         text-center 
         text-black 
+        dark:text-white
         ">
 
 
@@ -306,10 +345,10 @@ const HomePage = () => {
             <div className="rounded-full  animate-pulse w-full bg-[rgba(238,123,34,0.3)] drop-shadow-lg shadow-orange-900 flex p-1">
 
               <div className="rounded-full bg-[#EE7B22] w-3/12 h-full"></div>
-              <button className='m-auto text-gray-900  
+              <button className='m-auto text-gray-900 dark:text-white 
           text-sm text-nowrap font-medium'
               >Check out more about us</button>
-              {!darkMode && <RightArrow className='m-auto animate-slide-right'/>}
+              {!darkMode && <RightArrow className='m-auto animate-slide-right' />}
               {darkMode && <RightArrow_Light className='m-auto' />}
             </div>
 
@@ -328,7 +367,9 @@ const HomePage = () => {
             md:mb-5
             lg:mb-5
             xl:mb-10
-            bg-gradient-to-t from-[rgba(0,0,0,1)] to-[rgba(0,0,0,0.5)] bg-clip-text text-transparent
+            bg-gradient-to-t from-[rgba(0,0,0,1)] to-[rgba(0,0,0,0.5)] 
+            dark:bg-gradient-to-t dark:from-[rgba(255,255,255,1)] dark:to-[rgba(255,255,255,0.5)] 
+            bg-clip-text text-transparent
             tracking-tight">
             Need Tech Talent Quickly?
           </h1>
@@ -346,7 +387,7 @@ const HomePage = () => {
             Cost-effective IT Staffing Agency In Riyadh
           </p> */}
 
-          <div className='h-12'>
+          <div className='h-12 '>
             <TypingText />
           </div>
 
@@ -366,23 +407,30 @@ const HomePage = () => {
           m-auto
           flex-col
           font-bold">
-            <p className=' bg-gradient-to-b from-[rgba(0,0,0,1)] to-[rgba(0,0,0,0.6)] bg-clip-text text-transparent'>
+            <p className=' 
+            bg-gradient-to-b from-[rgba(0,0,0,1)] to-[rgba(0,0,0,0.6)] 
+            dark:bg-gradient-to-t dark:from-[rgba(255,255,255,1)] dark:to-[rgba(255,255,255,0.5)] 
+
+            bg-clip-text text-transparent'>
               From banking to finance and healthcare, we cater to every industry—your success is our mission!
             </p>
 
-            <p className=' bg-gradient-to-b from-[rgba(0,0,0,1)] to-[rgba(0,0,0,0.6)] bg-clip-text text-transparent'>
+            <p className='
+            bg-gradient-to-b from-[rgba(0,0,0,1)] to-[rgba(0,0,0,0.6)]
+            dark:bg-gradient-to-t dark:from-[rgba(255,255,255,1)] dark:to-[rgba(255,255,255,0.5)] 
+            bg-clip-text text-transparent'>
               It all starts by choosing your path below…
             </p>
           </div>
 
-          <button onClick={() => setIsCallUsModalOpen(true)} className="px-6 py-3 animate-bounce-right bg-orange-500 rounded-full text-white font-semibold transition hover:bg-orange-600 flex m-auto gap-1 mt-10">
+          <button onClick={() => setIsCallUsModalOpen(true)} className="px-6 py-3 animate-bounce-right bg-orange-500 dark:bg-opacity-70 rounded-full text-white font-semibold transition hover:bg-orange-600 flex m-auto gap-1 mt-10">
             <Star className='' />
             <p className='text-sm  sm:text-sm md:text-lg lg:text-sm xl:text-lg'>Book For Demo</p>
           </button>
 
 
-          <div className="my-2 md:my-10 lg:my-10 xl:my-10 2xl:my-10 align-middle m-auto bg-white bg-opacity-50 rounded-3xl shadow-lg w-4/5 h-fit">
-            <p className="pt-3 text-sm sm:text-sm md:text-sm lg:text-lg xl:text-lg 2xl:text-lg text-black font-semibold text-center">Trusted by 100+ Companies</p>
+          <div className="my-2 md:my-10 lg:my-10 xl:my-10 2xl:my-10 align-middle m-auto bg-white dark:bg-black dark:bg-opacity-30 bg-opacity-50 rounded-3xl shadow-lg w-4/5 h-fit">
+            <p className="pt-3 text-sm sm:text-sm md:text-sm lg:text-lg xl:text-lg 2xl:text-lg text-black dark:text-white font-semibold text-center">Trusted by 100+ Companies</p>
 
             <div
               x-data="{}"
@@ -391,16 +439,16 @@ const HomePage = () => {
       ul.insertAdjacentHTML('afterend', ul.outerHTML);
       ul.nextSibling.setAttribute('aria-hidden', 'true');
     })"
-              className="w-full sm:p-5 md:p-6 lg:p-7 xl:p-7 2xl:p-7 inline-flex flex-nowrap overflow-hidden 
+              className="w-full inline-flex flex-nowrap overflow-hidden 
                [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-100px),transparent_100%)]">
 
-              <ul className="flex items-center justify-center md:justify-start [&_li]:mx-4 [&_img]:max-w-none animate-infinite-scroll">
+              <ul className="flex p-5 items-center justify-center md:justify-start [&_li]:mx-4 [&_img]:max-w-none animate-infinite-scroll">
                 {banks.map((bank, i) => (
                   <li key={i} className="flex justify-center items-center  sm:basis-1/3 md:basis-1/4 lg:basis-1/5">
                     <Image
-                      src={`/brands_color/${bank}`}
-                      alt="DataSack Solutions Logo"
-                      width={100}
+                      src={darkMode ?  `/${bank}` : `/brands_color/${bank}`}
+                      alt="brand_logo"
+                      width={ 100}
                       height={80}
                       className="cursor-pointer w-24 sm:w-20 md:w-28 lg:w-36 xl:w-40 h-auto"
                     />
@@ -412,7 +460,7 @@ const HomePage = () => {
                 {banks.map((bank, i) => (
                   <li key={i} className="flex justify-center items-center  sm:basis-1/3 md:basis-1/4 lg:basis-1/5">
                     <Image
-                      src={`/brands_color/${bank}`}
+                      src={darkMode ?  `/${bank}` : `/brands_color/${bank}`}
                       alt="DataSack Solutions Logo"
                       width={100}
                       height={80}

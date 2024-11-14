@@ -109,7 +109,7 @@ const CategoryHorizontal: FunctionComponent<CategoryHorizontalProps> = ({
             <button
               key={category}
               onClick={() => { handleCategoryClick(category as keyof typeof technologies) }}
-              className={`relative border w-full h-full whitespace-nowrap border-orange-500 py-2 px-4 rounded-full transition-colors ${selectedCategory === category ? "bg-orange-500 text-white" : "text-black bg-white"
+              className={`relative border w-full h-full whitespace-nowrap border-orange-500 py-2 px-4 rounded-full transition-colors ${selectedCategory === category ? "bg-orange-500 text-white" : "text-black bg-white dark:bg-[#252525] dark:text-white"
                 } ${quantities[category] &&
                   (Object.values(quantities[category]).some(quantity => quantity > 0) && selectedCategory == category) ? 'bg-orange-500 text-black' : ' text-black'}   hover:bg-orange-500`}
             >
