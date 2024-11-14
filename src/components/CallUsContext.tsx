@@ -15,7 +15,6 @@ export const CallUsModalProvider: React.FC<{ children: React.ReactNode }> = ({ c
   const [isOpened, setIsOpened] = useState(false)
   const [darkMode, setDarkMode] = useState(false);
 
-
   useEffect(()=>{
     setIsOpened(false)
   },[])

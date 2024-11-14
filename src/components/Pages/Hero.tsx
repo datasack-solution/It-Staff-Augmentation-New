@@ -87,7 +87,7 @@ const HomePage = () => {
 
   const banks = ['alinma_bank.png', 'alrajhi_bank.png', 'bank_albilad.png', 'future_generali.png', 'nibav.png', 'olam.png', 'reliance_capital.png', 'enjaz.png']
   return (
-    <div className='2xl:h-[1000px] xl:h-[900px] lg:h-[900px] md:h-[750px] sm:h-[750px] h-[700px] overflow-hidden mb-10'>
+    <div className='2xl:h-[1000px] xl:h-[900px] lg:h-[900px] md:h-[750px] sm:h-[750px] h-[750px] overflow-hidden mb-10'>
 
       {/* background image */}
       <div
@@ -99,9 +99,9 @@ const HomePage = () => {
         lg:h-[900px] 
         md:h-[750px] 
         sm:h-[750px] 
-        h-[700px] 
+        h-[750px] 
         bg-cover 
-        opacity-40 
+        opacity-60 
         blur-[1px] 
         sm:opacity-80 
         md:opacity-70 
@@ -109,7 +109,7 @@ const HomePage = () => {
         xl:opacity-70 
         2xl:opacity-90
         
-        dark:opacity-50
+        dark:opacity-40
         
         "
         style={{
@@ -209,7 +209,7 @@ const HomePage = () => {
       <div className={`fixed w-full bg-white bg-opacity-50 dark:bg-black  dark:bg-opacity-30 backdrop-blur-lg z-40 top-0 transition-transform duration-500 ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}>
         <div className='flex justify-between align-middle w-full bg-transparent'>
           <div className='p-3'>
-            <Link href="/" >
+            <Link href="https://www.datasack.in" target="_blank" >
               <Image
                 src="https://bunny-wp-pullzone-dgpgtislbk.b-cdn.net/wp-content/uploads/2024/01/Datasack_tech_logo-web.png"
                 alt="DataSack Solutions Logo"
@@ -341,7 +341,7 @@ const HomePage = () => {
         ">
 
 
-          <Link href={'https://www.datasack.in'} className="bg-[rgba(238,123,34,0.3)] rounded-full w-auto max-w-80 p-1 m-auto flex my-10 ">
+          <Link href={'https://www.datasack.in'} target="_blank" className="bg-[rgba(238,123,34,0.3)] rounded-full w-auto max-w-80 p-1 m-auto flex my-10 ">
             <div className="rounded-full  animate-pulse w-full bg-[rgba(238,123,34,0.3)] drop-shadow-lg shadow-orange-900 flex p-1">
 
               <div className="rounded-full bg-[#EE7B22] w-3/12 h-full"></div>
@@ -429,7 +429,7 @@ const HomePage = () => {
           </button>
 
 
-          <div className="my-2 md:my-10 lg:my-10 xl:my-10 2xl:my-10 align-middle m-auto bg-white dark:bg-black dark:bg-opacity-30 bg-opacity-50 rounded-3xl shadow-lg w-4/5 h-fit">
+          <div className="my-2 md:my-10 lg:my-10 xl:my-10 2xl:my-10 align-middle m-auto bg-white dark:bg-black dark:bg-opacity-30 bg-opacity-50 rounded-3xl shadow-lg w-4/5 ">
             <p className="pt-3 text-sm sm:text-sm md:text-sm lg:text-lg xl:text-lg 2xl:text-lg text-black dark:text-white font-semibold text-center">Trusted by 100+ Companies</p>
 
             <div
@@ -439,8 +439,8 @@ const HomePage = () => {
       ul.insertAdjacentHTML('afterend', ul.outerHTML);
       ul.nextSibling.setAttribute('aria-hidden', 'true');
     })"
-              className="w-full inline-flex flex-nowrap overflow-hidden 
-               [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-100px),transparent_100%)]">
+              className="w-full inline-flex flex-nowrap overflow-hidden h-14 lg:h-20
+               [mask-image:_linear-gradient(to_right,transparent_0,_black_10%,_black_calc(100%-10%),transparent_100%)]">
 
               <ul className="flex p-5 items-center justify-center md:justify-start [&_li]:mx-4 [&_img]:max-w-none animate-infinite-scroll">
                 {banks.map((bank, i) => (
@@ -456,9 +456,9 @@ const HomePage = () => {
                 ))}
               </ul>
 
-              <ul className="flex items-center justify-center md:justify-start [&_li]:mx-4 [&_img]:max-w-none animate-infinite-scroll" aria-hidden="true">
+              <ul className="flex p-5 items-center justify-center md:justify-start [&_li]:mx-4 [&_img]:max-w-none animate-infinite-scroll" aria-hidden="true">
                 {banks.map((bank, i) => (
-                  <li key={i} className="flex justify-center items-center  sm:basis-1/3 md:basis-1/4 lg:basis-1/5">
+                  <li key={i} className="flex  justify-center items-center  sm:basis-1/3 md:basis-1/4 lg:basis-1/5">
                     <Image
                       src={darkMode ?  `/${bank}` : `/brands_color/${bank}`}
                       alt="DataSack Solutions Logo"
