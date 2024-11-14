@@ -296,7 +296,7 @@ const Logos = () => {
         <a href="https://youtube.com/@datasacksolutions?si=IbbfLrQ005AsttVn" target="_blank">
         <svg className="size-8" width="30" height="24" viewBox="0 0 30 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <mask id="mask0_136_4102" style={{ maskType: 'luminance' }} maskUnits="userSpaceOnUse" x="0" y="0" width="30" height="24">
-                <path d="M15.0013 1.33337C28.3346 1.33337 28.3346 1.33337 28.3346 12C28.3346 22.6667 28.3346 22.6667 15.0013 22.6667C1.66797 22.6667 1.66797 22.6667 1.66797 12C1.66797 1.33337 1.66797 1.33337 15.0013 1.33337Z" fill="white" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M15.0013 1.33337C28.3346 1.33337 28.3346 1.33337 28.3346 12C28.3346 22.6667 28.3346 22.6667 15.0013 22.6667C1.66797 22.6667 1.66797 22.6667 1.66797 12C1.66797 1.33337 1.66797 1.33337 15.0013 1.33337Z" fill="white" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 <path d="M12.0391 6.66675L20.928 12.0001L12.0391 17.3334V6.66675Z" fill="black" />
             </mask>
             <g mask="url(#mask0_136_4102)">

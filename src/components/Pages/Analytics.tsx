@@ -193,9 +193,9 @@ const AnalyticsPage = () => {
                 </button>
 
                 <div className="flex space-x-2">
-                    {steps.map((_, index) => (
+                    {steps.map((step, index) => (
                         <span
-                            key={index}
+                            key={step.id}
                             onClick={() => handleClickStep(index)}
                             className={`w-2.5 h-2.5 ${index === activeIndex ? 'bg-orange-600' : 'bg-gray-500'} rounded-full cursor-pointer`}
                         ></span>
