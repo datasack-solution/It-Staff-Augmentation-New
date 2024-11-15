@@ -89,11 +89,11 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
                     </div>
                     <div>
                         <label className="text-gray-600 dark:text-gray-300 text-sm">Select Date</label>
-                        <input type="date" className="w-full border border-gray-300 dark:border-gray-600  bg-transparent rounded-full py-2 px-4 outline-none focus:ring-2 focus:ring-orange-500" />
+                        <input type="date" className="w-full border text-black border-gray-300 dark:border-gray-600  bg-transparent rounded-full py-2 px-4 outline-none focus:ring-2 focus:ring-orange-500 dark:invert" />
                     </div>
                     <div>
                         <label className="text-gray-600 dark:text-gray-300 text-sm">Select Time</label>
-                        <input type="time" className="w-full border border-gray-300 dark:border-gray-600  bg-transparent rounded-full py-2 px-4 outline-none focus:ring-2 focus:ring-orange-500" />
+                        <input type="time" className="w-full border text-black border-gray-300 dark:border-gray-600  bg-transparent rounded-full py-2 px-4 outline-none focus:ring-2 focus:ring-orange-500 dark:invert" />
                         {/* <select className="w-full border border-gray-300 dark:border-gray-600  bg-transparent rounded-full py-2 px-4 outline-none focus:ring-2 focus:ring-orange-500">
                             <option>Select Time</option>
                         </select> */}
