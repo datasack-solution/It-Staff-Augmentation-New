@@ -329,7 +329,11 @@ const ChatScreen: FunctionComponent<{
           />
           <button
           disabled={loading}
-            onClick={() =>{!loading && userInput && handleUserSubmit(userInput)}}
+            onClick={() =>{
+              if (!loading && userInput){
+                handleUserSubmit(userInput)
+              }
+            }}
             className="ml-2 p-2 bg-orange-500 rounded-full text-white hover:bg-orange-600"
           >
             &#10148;
