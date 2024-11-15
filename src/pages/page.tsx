@@ -33,7 +33,7 @@ const IndexPage = () => {
   }, [setDarkMode]);
 
 
-  return <div className="bg-white dark:bg-[#252525] overflow-hidden">
+  return <div className="bg-white dark:bg-[#252525]">
     <PricingToast />
     <HomePage />
     <PricingPage />

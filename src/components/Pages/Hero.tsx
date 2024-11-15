@@ -48,6 +48,30 @@ const TypingText = () => {
 };
 
 
+function whatsappUrl(){
+  const phoneNumber = `+966560858596`
+  const message =`
+    Hi there, 
+    Explore IT Staff Augmentation Services Riyadh
+
+    Check out our company - (https://www.datasack.in)
+
+    Need Tech Talent Quickly? Kindly Fill up the details to touch with you.
+
+    Industry     :
+    Name         :
+    Email        :
+    Phone        :
+    Requirements :
+
+    Thank you, we will reach out you shortly!
+    `;
+
+  const encodedMessage = encodeURIComponent(message);
+  return `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+}
+
+
 const HomePage = () => {
   const { isCallUsModalOpen, setIsCallUsModalOpen, darkMode, setDarkMode } = useCallUsModalState()
   const [isVisible, setIsVisible] = useState(true);
@@ -89,7 +113,7 @@ const HomePage = () => {
 
   const banks = ['alinma_bank.png', 'alrajhi_bank.png', 'bank_albilad.png', 'future_generali.png', 'nibav.png', 'olam.png', 'reliance_capital.png', 'enjaz.png']
   return (
-    <div className='2xl:h-[1000px] xl:h-[900px] lg:h-[900px] md:h-[750px] sm:h-[750px] h-[750px] max-w-screen overflow-hidden mb-10'>
+    <div className='2xl:h-[1000px] xl:h-[900px] lg:h-[900px] md:h-[750px] sm:h-[750px] h-[750px] max-w-screen mb-10 overflow-hidden hide-scrollbar'>
 
       {/* background image */}
       <div
@@ -111,7 +135,7 @@ const HomePage = () => {
         2xl:opacity-90
         
         dark:opacity-40
-        
+        overflow-hidden
         "
         style={{
           backgroundImage: `
@@ -132,12 +156,13 @@ const HomePage = () => {
       lg:size-14
       xl:size-14
       2xl:size-16
-      rounded-full bg-gray-700 p-2 bottom-10' />
+      rounded-full bg-gray-700 p-2 bottom-10 cursor-pointer hover:animate-jiggle-infinity' />
 
     { isChatScreen &&<ChatScreen onClose={()=>setIsChatScreen(false)}/>}
 
       {/* whatsapp float */}
-      <WhatsappIcon className='
+     <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer"
+     ><WhatsappIcon className='
        right-5 z-50
       animate-pulse
       cursor-pointer
@@ -151,7 +176,7 @@ const HomePage = () => {
       2xl:size-16
       rounded-full bg-orange-100
        p-2 bottom-28'
-      />
+      /></a> 
 
       {/* call us modal */}
       {isCallUsModalOpen && <CallUsModal isModalOpen={isCallUsModalOpen} onConfirm={() => setIsCallUsModalOpen(false)} />}
@@ -192,8 +217,10 @@ const HomePage = () => {
           {!darkMode && <HomeIcon className='2xl:size-6 xl:size-5 lg:size-5 md:size-5 sm:size-5 m-auto cursor-pointer' />}
           {darkMode && <HomeIcon_Light className='2xl:size-6 xl:size-5 lg:size-5 md:size-5 sm:size-5 m-auto cursor-pointer' />}
           <MessageIcon className='m-auto cursor-pointer 2xl:size-10 xl:size-8 lg:size-7 md:size-7 sm:size-7' />
-          {!darkMode &&<WhatsappIcon className='2xl:size-8 xl:size-7 lg:size-7 md:size-7 sm:size-7 m-auto cursor-pointer' />}
-          {darkMode &&<WhatsappIcon_Light className='2xl:size-8 xl:size-7 lg:size-7 md:size-7 sm:size-7 m-auto cursor-pointer' />}
+          {!darkMode && <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer"
+     ><WhatsappIcon className='2xl:size-8 xl:size-7 lg:size-7 md:size-7 sm:size-7 m-auto cursor-pointer' /></a>}
+          {darkMode &&<a href={whatsappUrl()} target="_blank" rel="noopener noreferrer"
+     ><WhatsappIcon_Light className='2xl:size-8 xl:size-7 lg:size-7 md:size-7 sm:size-7 m-auto cursor-pointer' /></a>}
 
           <div>
             {!darkMode &&
