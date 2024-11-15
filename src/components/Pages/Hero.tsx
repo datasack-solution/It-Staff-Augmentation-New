@@ -113,7 +113,7 @@ const HomePage = () => {
 
   const banks = ['alinma_bank.png', 'alrajhi_bank.png', 'bank_albilad.png', 'future_generali.png', 'nibav.png', 'olam.png', 'reliance_capital.png', 'enjaz.png']
   return (
-    <div className='2xl:h-[1000px] xl:h-[900px] lg:h-[900px] md:h-[750px] sm:h-[750px] h-[750px] max-w-screen mb-10 overflow-hidden hide-scrollbar'>
+    <div id='hero_section' className='2xl:h-[1000px] xl:h-[900px] lg:h-[900px] md:h-[750px] sm:h-[750px] h-[750px] max-w-screen mb-10 overflow-hidden hide-scrollbar'>
 
       {/* background image */}
       <div
@@ -219,8 +219,12 @@ const HomePage = () => {
         m-auto
         h-full">
 
-          {!darkMode && <HomeIcon className='2xl:size-6 xl:size-5 lg:size-5 md:size-5 sm:size-5 m-auto cursor-pointer' />}
-          {darkMode && <HomeIcon_Light className='2xl:size-6 xl:size-5 lg:size-5 md:size-5 sm:size-5 m-auto cursor-pointer' />}
+          {!darkMode && <HomeIcon onClick={()=>document.getElementById('hero_section')?.scrollIntoView({
+            behavior:'smooth'
+          })}  className='2xl:size-6 xl:size-5 lg:size-5 md:size-5 sm:size-5 m-auto cursor-pointer' />}
+          {darkMode && <HomeIcon_Light  onClick={()=>document.getElementById('hero_section')?.scrollIntoView({
+            behavior:'smooth'
+          })}  className='2xl:size-6 xl:size-5 lg:size-5 md:size-5 sm:size-5 m-auto cursor-pointer' />}
           <MessageIcon className='m-auto cursor-pointer 2xl:size-10 xl:size-8 lg:size-7 md:size-7 sm:size-7' />
           {!darkMode && <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer"
      ><WhatsappIcon className='2xl:size-8 xl:size-7 lg:size-7 md:size-7 sm:size-7 m-auto cursor-pointer' /></a>}
