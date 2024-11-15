@@ -100,7 +100,7 @@ const CategoryHorizontal: FunctionComponent<CategoryHorizontalProps> = ({
       >
         
         {Object.keys(technologies).map((category, index) => (
-          <div key={index} className="relative p-[1px]"
+          <div key={index} className="relative p-[1px] mt-2"
           ref={(el) => {
              categoryRefs.current[category] = el;
           }}

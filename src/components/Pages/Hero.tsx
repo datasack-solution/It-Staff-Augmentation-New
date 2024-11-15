@@ -179,7 +179,12 @@ const HomePage = () => {
       /></a> 
 
       {/* call us modal */}
-      {isCallUsModalOpen && <CallUsModal isModalOpen={isCallUsModalOpen} onConfirm={() => setIsCallUsModalOpen(false)} />}
+      {isCallUsModalOpen.isOpen && <CallUsModal onConfirm={() => setIsCallUsModalOpen({
+        hasTechs:false,
+        isOpen:false,
+        techLabels:null,
+        techQuantities:null
+      })} />}
 
 
       {/* side icons bar */}
@@ -263,7 +268,12 @@ const HomePage = () => {
               Managed Services
             </div>
             <div
-              onClick={() => setIsCallUsModalOpen(true)}
+              onClick={() => setIsCallUsModalOpen({
+                isOpen:true,
+                hasTechs:false,
+                techLabels:null,
+                techQuantities:null
+              })}
               className="flex items-center bg-orange-500 text-white font-semibold px-4 py-1 rounded-full hover:bg-orange-600 cursor-pointer"
             >
               <svg className='animate-jiggle-infinity' width="16" height="16" style={{ marginRight: '0.5rem' }} viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -329,7 +339,12 @@ const HomePage = () => {
               </div>
               <div onClick={() => {
                 setIsMenuOpen(false);
-                setIsCallUsModalOpen(true)
+                setIsCallUsModalOpen({
+                  isOpen:true,
+                  hasTechs:false,
+                  techLabels:null,
+                  techQuantities:null
+                })
               }}>
                 <span className="hover:text-orange-500 cursor-pointer">
                   Contact Us
@@ -456,7 +471,12 @@ const HomePage = () => {
             </p>
           </div>
 
-          <button onClick={() => setIsCallUsModalOpen(true)} className="px-6 py-3 animate-bounce-right bg-orange-500 dark:bg-opacity-70 rounded-full text-white font-semibold transition hover:bg-orange-600 flex m-auto gap-1 mt-10">
+          <button onClick={() => setIsCallUsModalOpen({
+                isOpen:true,
+                hasTechs:false,
+                techLabels:null,
+                techQuantities:null
+              })} className="px-6 py-3 animate-bounce-right bg-orange-500 dark:bg-opacity-70 rounded-full text-white font-semibold transition hover:bg-orange-600 flex m-auto gap-1 mt-10">
             <Star className='' />
             <p className='text-sm  sm:text-sm md:text-lg lg:text-sm xl:text-lg'>Book For Demo</p>
           </button>

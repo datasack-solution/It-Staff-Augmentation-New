@@ -95,11 +95,11 @@ const durationScale = [
 
 const Pricing = () => {
     const [selectedCategory, setSelectedCategory] = useState<keyof typeof technologies | null>('SAP');
-    const [quantities, setQuantities] = useState<{ [category: string]: { [tech: string]: number } }>({});
+    // const [quantities, setQuantities] = useState<{ [category: string]: { [tech: string]: number } }>({});
     const [isEditModalOpen, setEditModalOpen] = useState(false)
     const [isModalOpen, setModalOpen] = useState<boolean>(false)
     const [durationIndex, setDurationIndex] = useState<number>(6)
-    const { setIsCallUsModalOpen, darkMode } = useCallUsModalState()
+    const { setIsCallUsModalOpen, isCallUsModalOpen,darkMode, quantities,setQuantities } = useCallUsModalState()
 
     const techs = Object.values(quantities).flatMap(r => { return Object.keys(r) })
     const techQuantities = Object.values(quantities).flatMap(r => Object.values(r))
@@ -110,7 +110,7 @@ const Pricing = () => {
             setEditModalOpen(false)
         }
 
-        if (isEditModalOpen || isModalOpen) {
+        if (isEditModalOpen || isModalOpen || isCallUsModalOpen.isOpen) {
             document.body.classList.add('overflow-hidden');
         } else {
             document.body.classList.remove('overflow-hidden');
@@ -119,7 +119,7 @@ const Pricing = () => {
         return () => {
             document.body.classList.remove('overflow-hidden');
         };
-    }, [isEditModalOpen, isModalOpen, quantities, techs.length]);
+    }, [isEditModalOpen,isCallUsModalOpen.isOpen, isModalOpen, quantities, techs.length]);
 
 
     const handleIncreaseQuantity = (category: keyof Technologies, tech: string) => {
@@ -247,7 +247,12 @@ const Pricing = () => {
                     })}
                 </div>
 
-                <div onClick={() => setIsCallUsModalOpen(true)} className='animate-jiggle cursor-pointer float-right mr-5  w-fit p-3 flex justify-end text-white bg-orange-500 rounded-full text-xs font-semibold'>Get Pricing</div>
+                <div onClick={() => setIsCallUsModalOpen({
+                     isOpen:true,
+                     hasTechs:true,
+                     techLabels:techs,
+                     techQuantities:techQuantities
+                })} className='animate-jiggle cursor-pointer float-right mr-5  w-fit p-3 flex justify-end text-white bg-orange-500 rounded-full text-xs font-semibold'>Get Pricing</div>
             </div>}
 
             <h2 className="text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl 2xl:text-4xl text-black dark:text-white font-bold text-center">
@@ -398,7 +403,12 @@ const Pricing = () => {
                         <DurationRangeSelector onChange={setDurationIndex} />
 
                         {techs.length > 0 && <div className="pt-5 m-auto">
-                            <div onClick={() => setIsCallUsModalOpen(true)} className='animate-bounce-right m-auto cursor-pointer  w-fit p-3 text-white bg-orange-500 rounded-full text-xs font-semibold'>Get Pricing</div>
+                            <div onClick={() => setIsCallUsModalOpen({
+                                isOpen:true,
+                                hasTechs:true,
+                                techLabels:techs,
+                                techQuantities:techQuantities
+                            })} className='animate-bounce-right m-auto cursor-pointer  w-fit p-3 text-white bg-orange-500 rounded-full text-xs font-semibold'>Get Pricing</div>
                         </div>}
                     </div>
                 </div>

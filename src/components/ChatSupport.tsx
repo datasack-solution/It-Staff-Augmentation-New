@@ -116,6 +116,9 @@ const positiveResponses: Record<string, string[]> = {
     "I understand, no worries! 😎",
     "Perfectly understood! 🌟"
   ],
+  "have a nice day":[
+    "You too have a nice day! 😊🙌"
+  ],
   "cool": [
     "Cool indeed! 😎",
     "You're rocking it! 🎸",
@@ -341,7 +344,7 @@ const ChatScreen: FunctionComponent<{
           } else if (viewportWidth >= 1280) {
             // For extra-large screens (xl)
             chatElement.style.top = '95%';
-            chatElement.style.left = '80%';
+            chatElement.style.left = '70%';
             // chatElement.style.transform = 'translateX(-50%)';
           } 
         }

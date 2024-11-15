@@ -11,7 +11,12 @@ const Footer = () => {
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting && !isOpened) {
-                    setIsCallUsModalOpen(true);
+                    setIsCallUsModalOpen({
+                        isOpen:true,
+                        hasTechs:false,
+                        techLabels:null,
+                        techQuantities:null
+                      });
                 }
             },
             { threshold: 0.4 }
@@ -39,7 +44,12 @@ const Footer = () => {
                 }}
             />
 
-            {(isCallUsModalOpen && !isOpened) && <CallUsModal isModalOpen={isCallUsModalOpen} onConfirm={() => { setIsCallUsModalOpen(false) }} />}
+            {(isCallUsModalOpen.isOpen && !isOpened) && <CallUsModal  onConfirm={() => { setIsCallUsModalOpen({
+                isOpen:false,
+                hasTechs:false,
+                techLabels:null,
+                techQuantities:null
+              }) }} />}
 
             <div className=" 
             relative
