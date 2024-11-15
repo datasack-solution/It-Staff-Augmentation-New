@@ -1,4 +1,4 @@
-import { FunctionComponent, useRef, useState } from "react"
+import { FunctionComponent,useState } from "react"
 import Slider, { Settings } from 'react-slick';
 
 import PhoneInput from 'react-phone-input-2'
@@ -32,11 +32,6 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
             return updatedQuantities;
         });
     };
-
-
-    const removeAllTech = () => {
-        setQuantities({})
-    }
 
     const techs = Object.values(quantities).flatMap(r => { return Object.keys(r) })
     const techQuantities = Object.values(quantities).flatMap(r => Object.values(r))

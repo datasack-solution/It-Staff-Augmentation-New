@@ -1,7 +1,7 @@
-import Slider, { Settings } from 'react-slick';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import React from 'react';
+import Slider, { Settings } from 'react-slick';
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 
 
 const manageServices = [
@@ -33,10 +33,13 @@ const manageServices = [
 
 
 const ManageServicePage = () => {
+  const [activeIndex, setActiveIndex] = React.useState(0);
+
   const settings: Settings = {
     centerMode: true,
     centerPadding: '20px',
     slidesToShow: 1,
+    swipe: true,
     infinite: true,
     arrows: true,
     nextArrow: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#F37318" className="size-6">
@@ -83,10 +86,10 @@ const ManageServicePage = () => {
         }
       }
     ],
+    className: 'curvy',
   };
 
 
-  const [activeIndex, setActiveIndex] = React.useState(0);
 
   return <div id='managed-services-section' className="bg-[#F2F2F2] dark:bg-[#252525]  text-black dark:text-white">
     <div className="container p-7  pb-10 2xl:pb-40 xl:pb-40 lg:pb-35 md:pd-10 sm:pd-10 m-auto text-black dark:text-white bg-[#F2F2F2] dark:bg-[#252525]">
@@ -183,21 +186,21 @@ const ManageServicePage = () => {
               key={index}
               className={`rounded-3xl  transition-transform duration-500 ${activeIndex === index
                 ? 'scale-100 rotate-0 shadow-lg'
-                : 'scale-90 opacity-80 rotate-3 backdrop-blur-sm blur-[1px]'
+                : 'scale-50 opacity-80  backdrop-blur-sm blur-[3px]'
                 }`}
               style={{
                 width: '70%',
                 margin: '0 auto',
-                perspective: '1000px',
+                perspective: '1500px',
               }}
             >
               <div
-                className="bg-orange-500 border-2 border-orange-300 rounded-3xl p-4 shadow-md h-64 flex flex-col justify-center text-center transform transition-transform duration-500 hover:rotate-2 hover:scale-105"
+                className=" border-2 backdrop-blur-xl dark:bg-black bg-white bg-opacity-30 dark:bg-opacity-10 border-orange-300 rounded-3xl p-4 shadow-md h-64 flex flex-col justify-center text-center transform transition-transform duration-500 "
                 style={{
 
-                  backgroundImage: `
-      url('/pattern_mangedservices.svg')
-    `,
+                  //               backgroundImage: `
+                  //   url('/pattern_mangedservices.svg')
+                  // `,
 
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
@@ -210,10 +213,10 @@ const ManageServicePage = () => {
                     : 'rotateY(-5deg)',
                 }}
               >
-                <h3 className="text-xl font-bold mb-2 text-white">
+                <h3 className="text-xl font-bold mb-2 text-orange-500 ">
                   {index + 1}. {service.title}
                 </h3>
-                <p className="text-base text-white">
+                <p className="text-base text-gray-600 dark:text-white">
                   {service.description}
                 </p>
               </div>
@@ -221,7 +224,6 @@ const ManageServicePage = () => {
           ))}
         </Slider>
       </div>
-
 
     </div>
   </div>

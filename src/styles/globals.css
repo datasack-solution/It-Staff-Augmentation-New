@@ -57,3 +57,9 @@ body.modal-open {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+.curvy{
+  perspective: 1500px;
+  overflow: hidden;
+  position:relative;
+}
