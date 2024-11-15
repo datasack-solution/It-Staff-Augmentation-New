@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, KeyboardEvent, ChangeEvent, FunctionComponent } from "react";
 import ChatBotIcon from "./ChatBotIcon";
+import Slider, { Settings } from 'react-slick';
 
 interface Message {
   sender: "user" | "bot";
@@ -106,16 +107,76 @@ const ChatScreen: FunctionComponent<{
     const [loading, setLoading] = useState(false)
     const [userDetails, setUserDetails] = useState<UserDetails>({ name: "", email: "" });
     const chatEndRef = useRef<HTMLDivElement | null>(null);
+    const chatRef = useRef<HTMLDivElement | null>(null);
+    const [isMinimized, setIsMinimized] = useState(false);
+
+
+    const handleMouseDown = (e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
+      e.preventDefault();
+  
+      const chatElement = chatRef.current;
+      if (!chatElement) return;
+  
+      // Determine if this is a mouse or touch event
+      const startX = 'clientX' in e ? e.clientX : e.touches[0].clientX;
+      const startY = 'clientY' in e ? e.clientY : e.touches[0].clientY;
+      const initialX = startX - chatElement.getBoundingClientRect().left;
+      const initialY = startY - chatElement.getBoundingClientRect().top;
+  
+      const handleMove = (moveEvent: MouseEvent | TouchEvent) => {
+        if (!chatElement) return;
+        
+        const currentX = 'clientX' in moveEvent ? moveEvent.clientX : moveEvent.touches[0].clientX;
+        const currentY = 'clientY' in moveEvent ? moveEvent.clientY : moveEvent.touches[0].clientY;
+        
+        chatElement.style.left = `${currentX - initialX}px`;
+        chatElement.style.top = `${currentY - initialY}px`;
+      };
+  
+      const handleEnd = () => {
+        document.removeEventListener('mousemove', handleMove);
+        document.removeEventListener('mouseup', handleEnd);
+        document.removeEventListener('touchmove', handleMove);
+        document.removeEventListener('touchend', handleEnd);
+      };
+  
+      // Attach both mouse and touch event listeners
+      document.addEventListener('mousemove', handleMove);
+      document.addEventListener('mouseup', handleEnd);
+      document.addEventListener('touchmove', handleMove);
+      document.addEventListener('touchend', handleEnd);
+    };
+
+    const handleMinimize = () => {
+      setIsMinimized((prev) => !prev);
+    };
+
 
     console.log(userDetails)
+
+    const settings: Settings = {
+      dots: false,
+      infinite: true,
+      speed: 500,
+      variableWidth:true,
+      slidesToScroll:1,
+      
+    };
 
     useEffect(() => {
       chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
     }, [messages]);
 
-    const handleUserSubmit = (message: string) => {
-      setMessages([...messages, { sender: "user", text: message }]);
+    const handleUserSubmit = (message: string) => {   //we are getting question id
+      if (step!==0 && step!==1){
+        setMessages([...messages, { sender: "user", text: defaultQuestions.find(e => e.id == parseInt(message) || e.question.toLowerCase().includes(message.toLowerCase()))?.question || message }]);
+      }else{
+        setMessages([...messages, {sender:'user',text:message}])
+      }
+   
       setUserInput("");
+
+      const gotQuestion = defaultQuestions.find(e => e.question.toLowerCase().includes(message.toLowerCase()))
 
       const addBotMessage = (text: string, nextStep?: number) => {
         setLoading(true);
@@ -148,6 +209,8 @@ const ChatScreen: FunctionComponent<{
               addBotMessage(selectedQuestion.answer);
             }
           }
+        } else if (gotQuestion) {
+          addBotMessage(gotQuestion.answer)
         } else {
           addBotMessage("Please select a question by typing the corresponding number, or type 'connect with agent' to talk to an agent.");
         }
@@ -165,23 +228,46 @@ const ChatScreen: FunctionComponent<{
     };
 
     return (
-      <div id="chatscreen" className="fixed bottom-0 max-h-screen h-2/3 z-[70] right-0 w-80 md:w-96 overflow-auto bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 shadow-lg rounded-t-3xl flex flex-col">
-        <div className="bg-white dark:bg-gray-900 py-3 px-4 rounded-t-3xl flex items-center justify-between">
+      <div id="chatscreen" ref={chatRef}  className={`fixed bottom-0 max-h-screen ${
+        isMinimized ? 'h-12' : 'h-2/3'
+      } z-[70] xs:right-5 right-0 w-80 md:w-96  bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 shadow-lg rounded-t-3xl flex flex-col`}  
+      
+      >
+        <div className="bg-white dark:bg-gray-900 py-3 px-4 rounded-t-3xl flex items-center justify-between hide-scrollbar touch-pan-x drag-handle cursor-move" onMouseDown={handleMouseDown}
+        onTouchStart={handleMouseDown}
+        >
+        
           <h2 className="text-lg font-semibold text-gray-800 dark:text-white">
             Chat with Our <span className="text-orange-500">Support Team</span>
           </h2>
-          {/* <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-4 cursor-pointer">
-            <path fillRule="evenodd" d="M4.25 12a.75.75 0 0 1 .75-.75h14a.75.75 0 0 1 0 1.5H5a.75.75 0 0 1-.75-.75Z" clipRule="evenodd" />
-          </svg> */}
 
+
+           <div className="flex items-center space-x-2">
+          {/* Minimize button */}
+          <button onClick={handleMinimize} className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="h-5 w-5"
+            >
+              <path
+                fillRule="evenodd"
+                d="M4.25 12a.75.75 0 0 1 .75-.75h14a.75.75 0 0 1 0 1.5H5a.75.75 0 0 1-.75-.75Z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </button>
+          {/* Close button */}
           <button onClick={onClose} className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
             &#10005;
           </button>
-          
+        </div>
+
 
         </div>
 
-        <div className="flex-1 p-4 overflow-y-auto space-y-4">
+        <div className="flex-1 p-4 overflow-y-auto hide-scrollbar space-y-4">
           {messages.map((msg, index) => (
             <div key={index} className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}>
               {msg.sender === "bot" && (
@@ -211,23 +297,25 @@ const ChatScreen: FunctionComponent<{
           <div ref={chatEndRef} />
         </div>
 
-        {step === 2 && (
-          <div className="px-4 relative py-2 whitespace-nowrap overflow-x-scroll scrollbar-think scrollbar-thumb-gray-400 scrollbar-track-gray-200 dark:scrollbar-thumb-gray-600 dark:scrollbar-track-gray-800">
-            <div className="flex space-x-2">
-              {defaultQuestions.map((question) => (
+{step === 2 && (
+        <div className="h-10 px-7 overflow-hidden flex">
+          <Slider {...settings} className="relative w-full whitespace-nowrap hide-scrollbar">
+            {defaultQuestions.map((question) => (
+              <div key={question.id} className="w-auto flex-shrink-0">
                 <button
-                  key={question.id}
                   className="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-300 py-2 px-4 rounded-full text-xs"
                   onClick={() => {
-                    if (!loading)
-                    handleUserSubmit(String(question.id))}}
+                    if (!loading) handleUserSubmit(String(question.id));
+                  }}
                 >
                   {question.id}.{question.question}
                 </button>
-              ))}
-            </div>
-          </div>
-        )}
+              </div>
+            ))}
+          </Slider>
+        </div>
+      )}
+
 
         <div className="p-3 border-t border-gray-300 dark:border-gray-700 flex items-center bg-white dark:bg-gray-900">
           <input
@@ -236,11 +324,12 @@ const ChatScreen: FunctionComponent<{
             className="w-full bg-transparent focus:outline-none text-sm text-gray-800 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
             value={userInput}
             onChange={handleInputChange}
-            onKeyPress={handleKeyPress}
-            disabled={loading}
+            onKeyPress={(e)=>!loading&&handleKeyPress(e)}
+            autoFocus={true}
           />
           <button
-            onClick={() => userInput && handleUserSubmit(userInput)}
+          disabled={loading}
+            onClick={() =>{!loading && userInput && handleUserSubmit(userInput)}}
             className="ml-2 p-2 bg-orange-500 rounded-full text-white hover:bg-orange-600"
           >
             &#10148;
