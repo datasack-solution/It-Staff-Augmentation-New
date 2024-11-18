@@ -1,7 +1,6 @@
 import ChatBotIcon from '@/components/ChatBotIcon';
 import DarkToggle from '@/components/DarkToggle';
 import LightToggle from '@/components/LightToggle';
-import MessageIcon from '@/components/MessageIcon';
 import RightArrow from '@/components/RightArrow';
 import RightArrow_Light from '@/components/RightArrow_Light';
 import Star from '@/components/Start';
@@ -33,7 +32,7 @@ const TypingText = () => {
       ]}
       wrapper="span"
       cursor={false}
-      speed={50}
+      speed={70}
       className='
           text-xl
           sm:text-xl 
@@ -49,9 +48,9 @@ const TypingText = () => {
 };
 
 
-function whatsappUrl(){
+function whatsappUrl() {
   const phoneNumber = `+966560858596`
-  const message =`
+  const message = `
     Hi there, 
     Explore IT Staff Augmentation Services Riyadh
 
@@ -78,7 +77,7 @@ const HomePage = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isChatScreen,setIsChatScreen] = useState(false)
+  const [isChatScreen, setIsChatScreen] = useState(false)
 
 
   useEffect(() => {
@@ -99,8 +98,8 @@ const HomePage = () => {
   }, [scrollPosition]);
 
   useEffect(() => {
-    document.body.classList.toggle('overflow-hidden', (isMenuOpen||isChatScreen));
-  }, [isMenuOpen,isChatScreen]);
+    document.body.classList.toggle('overflow-hidden', (isMenuOpen || isChatScreen));
+  }, [isMenuOpen, isChatScreen]);
 
 
   const toggleDarkMode = () => {
@@ -112,7 +111,7 @@ const HomePage = () => {
     setDarkMode(!darkMode);
   };
 
-  const banks = ['alinma_bank.png', 'alrajhi_bank.png', 'bank_albilad.png', 'future_generali.png', 'nibav.png', 'olam.png', 'reliance_capital.png', 'enjaz.png']
+  const banks = ['alinma_bank.png', 'alrajhi_bank.png', 'bank_albilad.png', 'future_generali.png', 'elm.png', 'gallagherold.png', 'nibav.png', 'olam.png', 'reliance_capital.png', 'enjaz.png', 'novasat.png']
   return (
     <div id='hero_section' className='2xl:h-[1000px] xl:h-[900px] lg:h-[900px] md:h-[750px] sm:h-[750px] h-[750px] max-w-screen mb-10 overflow-hidden hide-scrollbar'>
 
@@ -146,9 +145,10 @@ const HomePage = () => {
       />
 
 
-      {/* chatbot flot */}
-      <ChatBotIcon onClick={()=>{
-        setIsChatScreen(e=>!e)}} className='fixed 
+      {/* chatbot float */}
+      <ChatBotIcon onClick={() => {
+        setIsChatScreen(e => !e)
+      }} className='fixed 
       right-5 
       z-50
       size-12
@@ -159,11 +159,11 @@ const HomePage = () => {
       2xl:size-16
       rounded-full bg-gray-700 p-2 bottom-10 cursor-pointer hover:animate-jiggle-infinity animate-tada' />
 
-    { isChatScreen &&<ChatScreen onClose={()=>setIsChatScreen(false)}/>}
+      {isChatScreen && <ChatScreen onClose={() => setIsChatScreen(false)} />}
 
       {/* whatsapp float */}
-     <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer"
-     ><WhatsappIcon className='
+      <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer"
+      ><WhatsappIcon className='
        right-5 z-50
       animate-pulse
       cursor-pointer
@@ -177,14 +177,14 @@ const HomePage = () => {
       2xl:size-16
       rounded-full bg-orange-100
        p-2 bottom-28'
-      /></a> 
+        /></a>
 
       {/* call us modal */}
       {isCallUsModalOpen.isOpen && <CallUsModal onConfirm={() => setIsCallUsModalOpen({
-        hasTechs:false,
-        isOpen:false,
-        techLabels:null,
-        techQuantities:null
+        hasTechs: false,
+        isOpen: false,
+        techLabels: null,
+        techQuantities: null
       })} />}
 
 
@@ -220,27 +220,27 @@ const HomePage = () => {
         m-auto
         h-full">
 
-          {!darkMode && <HomeIcon onClick={()=>document.getElementById('hero_section')?.scrollIntoView({
-            behavior:'smooth'
-          })}  className='2xl:size-6 xl:size-5 lg:size-5 md:size-5 sm:size-5 m-auto cursor-pointer' />}
-          {darkMode && <HomeIcon_Light  onClick={()=>document.getElementById('hero_section')?.scrollIntoView({
-            behavior:'smooth'
-          })}  className='2xl:size-6 xl:size-5 lg:size-5 md:size-5 sm:size-5 m-auto cursor-pointer' />}
-          <MessageIcon className='m-auto cursor-pointer 2xl:size-10 xl:size-8 lg:size-7 md:size-7 sm:size-7' />
+          {!darkMode && <HomeIcon onClick={() => document.getElementById('hero_section')?.scrollIntoView({
+            behavior: 'smooth'
+          })} className='2xl:size-6 xl:size-5 lg:size-5 md:size-5 sm:size-5 m-auto cursor-pointer' />}
+          {darkMode && <HomeIcon_Light onClick={() => document.getElementById('hero_section')?.scrollIntoView({
+            behavior: 'smooth'
+          })} className='2xl:size-6 xl:size-5 lg:size-5 md:size-5 sm:size-5 m-auto cursor-pointer' />}
+          {/* <MessageIcon className='m-auto cursor-pointer 2xl:size-10 xl:size-8 lg:size-7 md:size-7 sm:size-7' /> */}
           {!darkMode && <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer"
-     ><WhatsappIcon className='2xl:size-8 xl:size-7 lg:size-7 md:size-7 sm:size-7 m-auto cursor-pointer' /></a>}
-          {darkMode &&<a href={whatsappUrl()} target="_blank" rel="noopener noreferrer"
-     ><WhatsappIcon_Light className='2xl:size-8 xl:size-7 lg:size-7 md:size-7 sm:size-7 m-auto cursor-pointer' /></a>}
+          ><WhatsappIcon className='2xl:size-7 xl:size-7 lg:size-7 md:size-7 sm:size-7 m-auto cursor-pointer' /></a>}
+          {darkMode && <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer"
+          ><WhatsappIcon_Light className='2xl:size-7 xl:size-7 lg:size-7 md:size-7 sm:size-7 m-auto cursor-pointer' /></a>}
 
-          <div>
+          <div >
             {!darkMode &&
               <div>
-                <LightToggle className='m-auto cursor-pointer 2xl:size-10 xl:size-8 lg:size-7 md:size-7 sm:size-7' onClick={toggleDarkMode} />
+                <LightToggle className='m-auto cursor-pointer 2xl:size-10 xl:size-8 lg:size-7 md:size-7 sm:size-7 -mt-2' onClick={toggleDarkMode} />
                 <p className='text-center text-xs text-black'>Light</p>
               </div>}
             {darkMode &&
               <div>
-                <DarkToggle className='m-auto cursor-pointer 2xl:size-10 xl:size-8 lg:size-7 md:size-7 sm:size-7' onClick={toggleDarkMode} />
+                <DarkToggle className='m-auto cursor-pointer 2xl:size-10 xl:size-8 lg:size-7 md:size-7 sm:size-7 -mt-2' onClick={toggleDarkMode} />
                 <p className='text-center text-xs text-white'>Dark</p>
               </div>
             }
@@ -274,10 +274,10 @@ const HomePage = () => {
             </div>
             <div
               onClick={() => setIsCallUsModalOpen({
-                isOpen:true,
-                hasTechs:false,
-                techLabels:null,
-                techQuantities:null
+                isOpen: true,
+                hasTechs: false,
+                techLabels: null,
+                techQuantities: null
               })}
               className="flex items-center bg-orange-500 text-white font-semibold px-4 py-1 rounded-full hover:bg-orange-600 cursor-pointer"
             >
@@ -345,10 +345,10 @@ const HomePage = () => {
               <div onClick={() => {
                 setIsMenuOpen(false);
                 setIsCallUsModalOpen({
-                  isOpen:true,
-                  hasTechs:false,
-                  techLabels:null,
-                  techQuantities:null
+                  isOpen: true,
+                  hasTechs: false,
+                  techLabels: null,
+                  techQuantities: null
                 })
               }}>
                 <span className="hover:text-orange-500 cursor-pointer">
@@ -477,11 +477,11 @@ const HomePage = () => {
           </div>
 
           <button onClick={() => setIsCallUsModalOpen({
-                isOpen:true,
-                hasTechs:false,
-                techLabels:null,
-                techQuantities:null
-              })} className="px-6 py-3 animate-bounce-right bg-orange-500 dark:bg-opacity-70 rounded-full text-white font-semibold transition hover:bg-orange-600 flex m-auto gap-1 mt-10">
+            isOpen: true,
+            hasTechs: false,
+            techLabels: null,
+            techQuantities: null
+          })} className="px-6 py-3 animate-bounce-right bg-orange-500 dark:bg-opacity-70 rounded-full text-white font-semibold transition hover:bg-orange-600 flex m-auto gap-1 mt-10">
             <Star className='' />
             <p className='text-sm  sm:text-sm md:text-lg lg:text-sm xl:text-lg'>Book For Demo</p>
           </button>
@@ -504,11 +504,11 @@ const HomePage = () => {
                 {banks.map((bank, i) => (
                   <li key={i} className="flex justify-center items-center  sm:basis-1/3 md:basis-1/4 lg:basis-1/5">
                     <Image
-                      src={darkMode ?  `/${bank}` : `/brands_color/${bank}`}
+                      src={darkMode ? `/${bank}` : `/brands_color/${bank}`}
                       alt="brand_logo"
-                      width={ 100}
+                      width={100}
                       height={80}
-                      className="cursor-pointer w-24 sm:w-20 md:w-28 lg:w-36 xl:w-40 h-auto"
+                      className="cursor-pointer w-24  sm:w-20 md:w-28 lg:w-36 xl:w-40 h-auto mr-0 ml-0"
                     />
                   </li>
                 ))}
@@ -518,11 +518,11 @@ const HomePage = () => {
                 {banks.map((bank, i) => (
                   <li key={i} className="flex  justify-center items-center  sm:basis-1/3 md:basis-1/4 lg:basis-1/5">
                     <Image
-                      src={darkMode ?  `/${bank}` : `/brands_color/${bank}`}
+                      src={darkMode ? `/${bank}` : `/brands_color/${bank}`}
                       alt="DataSack Solutions Logo"
                       width={100}
                       height={80}
-                      className="cursor-pointer w-24 sm:w-20 md:w-28 lg:w-36 xl:w-40 h-auto"
+                      className="cursor-pointer  w-24 sm:w-20 md:w-28 lg:w-36 xl:w-40 h-auto ml-0 mr-0"
                     />
                   </li>
                 ))}

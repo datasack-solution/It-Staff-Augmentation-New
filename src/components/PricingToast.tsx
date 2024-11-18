@@ -3,19 +3,28 @@ import { useCallUsModalState } from './CallUsContext';
 
 const PricingToast = () => {
     const [isVisible, setIsVisible] = useState(false);
-    const { darkMode } = useCallUsModalState()
+    const { darkMode,quantities } = useCallUsModalState()
+    const techs = Object.values(quantities).flatMap(r => { return Object.keys(r) })
 
     const handleClose = () => {
         setIsVisible(false);
     };
 
     useEffect(() => {
+        if (techs.length > 0) {
+            // Hide the toast immediately if there are techs
+            setIsVisible(false);
+            return;
+        }
+    
+        // Show the toast after 4 seconds if no techs are present
         const timer = setTimeout(() => {
             setIsVisible(true);
-        }, 2000);
-
+        }, 4000);
+    
+        // Cleanup timer on dependency change or unmount
         return () => clearTimeout(timer);
-    }, []);
+    }, [techs]);
 
     return (
         isVisible && (
@@ -39,7 +48,7 @@ const PricingToast = () => {
                     })
                     setIsVisible(false)
                 }}
-                className="ml-auto bg-[#FF7A29] text-white border-none rounded-md px-4 py-2 xs:text-nowrap text-base xs:text-sm cursor-pointer">
+                className="ml-auto bg-[#FF7A29] text-white animate-tada border-none rounded-md px-4 py-2 xs:text-nowrap text-base xs:text-sm cursor-pointer">
                     Get Price
                 </button>             
             </div>

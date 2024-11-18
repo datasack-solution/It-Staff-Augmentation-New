@@ -96,7 +96,7 @@ const EditTechModal: FunctionComponent<AddTechModalProps> = ({
                                                             <div className="flex align-middle m-auto gap-2 max-w-fit mr-5">
                                                                 <button
                                                                     onClick={() => { decreaseTechQuantity(item) }}
-                                                                    className="justify-center m-auto bg-orange-300 px-2 hover:text-white rounded-full text-center "
+                                                                    className="justify-center m-auto bg-orange-500 px-2 hover:text-white rounded-full text-center "
                                                                 >
                                                                     -
                                                                 </button>
@@ -106,7 +106,7 @@ const EditTechModal: FunctionComponent<AddTechModalProps> = ({
 
                                                                 <button
                                                                     onClick={() => { increaseTechQuantity(item) }}
-                                                                    className="justify-center m-auto bg-orange-300  px-2 hover:text-white 
+                                                                    className="justify-center m-auto bg-orange-500  px-2 hover:text-white 
                                                                     
                                                                     rounded-full text-center "
                                                                 >

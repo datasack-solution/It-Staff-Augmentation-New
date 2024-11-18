@@ -136,6 +136,9 @@ const positiveResponses: Record<string, string[]> = {
   "see you later": [
     "I'm here if you need anything else! 😊"
   ],
+  'no': [
+    'Got it!'
+  ]
 };
 
 const getHappyResponse = (input: string): string | undefined => {
@@ -382,6 +385,18 @@ const ChatScreen: FunctionComponent<{
     const handleUserSubmit = (message: string) => {   //we are getting question id
       const rawtime = new Date()
       const time = formatTime(rawtime)
+      const addBotMessage = (text: string, nextStep?: number) => {
+        setLoading(true);
+        setMessages((prev) => [...prev, { sender: "bot", time, text: "loading" }]);
+
+        setTimeout(() => {
+          setLoading(false);
+          setMessages((prev) => [...prev.slice(0, -1), { sender: "bot", time, text }]);
+          if (nextStep !== undefined) setStep(nextStep);
+        }, 500);
+      };
+
+
       if (step !== 0 && step !== 1) {
         setMessages([...messages, { sender: "user", time, text: defaultQuestions.find(e => e.id == parseInt(message) || e.question.toLowerCase().includes(message.toLowerCase()))?.question || message }]);
       } else {
@@ -394,24 +409,22 @@ const ChatScreen: FunctionComponent<{
 
       const happyResponse = getHappyResponse(message)
 
-      const addBotMessage = (text: string, nextStep?: number) => {
-        setLoading(true);
-        setMessages((prev) => [...prev, { sender: "bot", time, text: "loading" }]);
-
-        setTimeout(() => {
-          setLoading(false);
-          setMessages((prev) => [...prev.slice(0, -1), { sender: "bot", time, text }]);
-          if (nextStep !== undefined) setStep(nextStep);
-        }, 1500);
-      };
-
+   
       if (step === 0) {
         setUserDetails((prev) => ({ ...prev, name: message }));
         addBotMessage(`Hi ${message}, Please enter your email.`, 1);
 
       } else if (step === 1) {
+          const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+          const isValid = emailPattern.test(message.trim())
+          if (!isValid){
+            setStep(1)
+            addBotMessage('Oops, Please give a valid email!', 1)
+            return
+          }
+
         setUserDetails((prev) => ({ ...prev, email: message }));
-        addBotMessage("How can I assist you today?", 2);
+        addBotMessage("Thank you 😊, How can I assist you today? ", 2);
 
       } else {
         const questionId = parseInt(message);
