@@ -6,7 +6,7 @@ import 'react-phone-input-2/lib/style.css'
 import GreetModal from "./GreetModal"
 import { TechQuantitiesType, useCallUsModalState } from "./CallUsContext"
 import { useForm, Controller } from "react-hook-form";
-import { clientApiService, ClientRequestData, TransformedSkillsets } from "@/pages/api/userApi";
+import {  ClientRequestData, TransformedSkillsets } from "@/pages/api/userApi";
 
 export interface AddTechModalProps {
     onConfirm: () => void
@@ -31,16 +31,13 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
         handleSubmit,
         control,
         setValue,
-        watch,
         setError,
         clearErrors,
         formState: { errors },
     } = useForm<FormData>();
 
     const [submitted, setSubmitted] = useState(false)
-    const { darkMode, isCallUsModalOpen, setQuantities, quantities,duration } = useCallUsModalState()
-    const [isSuccess, setSuccess] = useState(false)
-    const [isFailed, setIsFailed] = useState(false)
+    const { darkMode, isCallUsModalOpen, setQuantities, quantities, duration } = useCallUsModalState()
     const [isLoading, setIsLoading] = useState(false)
 
     const removeTech = (tech: string) => {
@@ -64,19 +61,20 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
 
     const transformSkillsets = (skillsets: TechQuantitiesType): TransformedSkillsets[] => {
         return Object.entries(skillsets).map(([category, technologies]) => ({
-          category,
-          technologies: Object.entries(technologies).map(([tech, quantity]) => ({
-            tech,
-            quantity,
-          })),
+            category,
+            technologies: Object.entries(technologies).map(([tech, quantity]) => ({
+                tech,
+                quantity,
+            })),
         }));
-      };
+    };
 
     const onSubmit = async (data: FormData) => {
         const publicKey = "28Jy3xAgZVdVfJM4A";
         const serviceId = "service_w3n2h6s";
         const templateIdWithGreet = "template_l6jxhcz";
         const templateIdWithTechnologies = "template_fzbseij";
+        // let emailSent = false;
 
         if (techs.length > 0) { //selected techs
             //prepare date for pushing into db.
@@ -85,34 +83,54 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
             const apiData: ClientRequestData = {
                 ...data,
                 skillsets: transformedSkillsets,
-                duration
+                duration,
             }
 
             setIsLoading(true);
-            let emailSent = false;
 
             try {
-                await emailJs.send(serviceId, templateIdWithTechnologies, apiData as any, publicKey);
-                emailSent = true;
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                await emailJs.send(serviceId, templateIdWithTechnologies, {...apiData, nda:data.nda?'Yes':'No'} as Record<string, any>, publicKey);
+                // emailSent = true;
             } catch (emailError) {
                 console.error("Error sending email:", emailError);
                 setIsLoading(false);
-                setIsFailed(true);
                 return;
             }
 
-            if (emailSent) {
-                try {
-                    await clientApiService.createClient(apiData);
-                    setSuccess(true);
-                } catch (apiError) {
-                    console.error("Error creating client:", apiError);
-                }
-            }
+            // if (emailSent) {
+            //     try {
+            //         await clientApiService.createClient(apiData);
+            //         setSuccess(true);
+            //     } catch (apiError) {
+            //         console.error("Error creating client:", apiError);
+            //     }
+            // }
         } else {
             console.log("without skills:", data)
+            setIsLoading(true);
+
+            try {
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                await emailJs.send(serviceId, templateIdWithGreet, {...data, nda:data.nda?'Yes':'No'} as Record<string, any>, publicKey);
+                // emailSent = true;
+            } catch (emailError) {
+                console.error("Error sending email:", emailError);
+                setIsLoading(false);
+                return;
+            }
+
+            // if (emailSent) {
+            //     try {
+            //         await clientApiService.createClient(data);
+            //         setSuccess(true);
+            //     } catch (apiError) {
+            //         console.error("Error creating client:", apiError);
+            //     }
+            // }
         }
-        console.log(data);
+
+        setIsLoading(false);
         setSubmitted(true);
     };
 
@@ -275,10 +293,10 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
             </form>
         </div>
         {isLoading && <div className="absolute animate-spin m-auto p-2 bg-orange-400 rounded-full">
-                <div className=" bg-yellow-400 w-2 h-2 -ml-5 rounded-full "></div>
-                <div className=" bg-yellow-500 w-2 h-2 -ml-5 -mt-7  rounded-full "></div>
-                <div className=" bg-yellow-600 w-2 h-2 -mr-5 -mt-4  rounded-full "></div>
-            </div>}
+            <div className=" bg-yellow-400 w-2 h-2 -ml-5 rounded-full "></div>
+            <div className=" bg-yellow-500 w-2 h-2 -ml-5 -mt-7  rounded-full "></div>
+            <div className=" bg-yellow-600 w-2 h-2 -mr-5 -mt-4  rounded-full "></div>
+        </div>}
     </div>
 
 }

@@ -1,5 +1,3 @@
-
-import { TechQuantitiesType } from "@/components/CallUsContext";
 import axios from "axios"
 
 interface EnquiryForm {
@@ -31,7 +29,8 @@ interface ClientApi{
 class ClientApiService implements ClientApi{
     async createClient(client:ClientRequestData):Promise<void>{
         // return await axios.post('https://it-augmentation-server.vercel.app/clients',client)
-        return await axios.post('')
+        return await axios.post('http://localhost:4000/clientsNew',client)
+        // return await axios.post('')
     }
 }
 

@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef, KeyboardEvent, ChangeEvent, FunctionComponent } from "react";
 import ChatBotIcon from "./ChatBotIcon";
 import Slider, { Settings } from 'react-slick';
-import { TypeAnimation } from 'react-type-animation';
 
 interface Message {
   sender: "user" | "bot";
