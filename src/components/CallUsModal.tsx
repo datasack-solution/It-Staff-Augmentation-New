@@ -1,24 +1,49 @@
-import { FunctionComponent,useState } from "react"
+import { FunctionComponent, useState } from "react"
 import Slider, { Settings } from 'react-slick';
-
-import PhoneInput from 'react-phone-input-2'
+import emailJs from '@emailjs/browser';
+import PhoneInput, { CountryData } from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 import GreetModal from "./GreetModal"
-import { useCallUsModalState } from "./CallUsContext"
-
+import { TechQuantitiesType, useCallUsModalState } from "./CallUsContext"
+import { useForm, Controller } from "react-hook-form";
+import { clientApiService, ClientRequestData, TransformedSkillsets } from "@/pages/api/userApi";
 
 export interface AddTechModalProps {
     onConfirm: () => void
 }
 
+interface FormData {
+    industry: string;
+    name: string;
+    email: string;
+    phone: string;
+    date: string;
+    time: string;
+    reason?: string;
+    nda: boolean;
+}
+
 const CallUsModal: FunctionComponent<AddTechModalProps> = ({
     onConfirm,
 }) => {
+    const {
+        register,
+        handleSubmit,
+        control,
+        setValue,
+        watch,
+        setError,
+        clearErrors,
+        formState: { errors },
+    } = useForm<FormData>();
+
     const [submitted, setSubmitted] = useState(false)
-    const { darkMode, isCallUsModalOpen, setQuantities, quantities } = useCallUsModalState()
+    const { darkMode, isCallUsModalOpen, setQuantities, quantities,duration } = useCallUsModalState()
+    const [isSuccess, setSuccess] = useState(false)
+    const [isFailed, setIsFailed] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
 
     const removeTech = (tech: string) => {
-
         setQuantities(prev => {
             const updatedQuantities = { ...prev };
 
@@ -35,7 +60,61 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
 
     const techs = Object.values(quantities).flatMap(r => { return Object.keys(r) })
     const techQuantities = Object.values(quantities).flatMap(r => Object.values(r))
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+    const transformSkillsets = (skillsets: TechQuantitiesType): TransformedSkillsets[] => {
+        return Object.entries(skillsets).map(([category, technologies]) => ({
+          category,
+          technologies: Object.entries(technologies).map(([tech, quantity]) => ({
+            tech,
+            quantity,
+          })),
+        }));
+      };
+
+    const onSubmit = async (data: FormData) => {
+        const publicKey = "28Jy3xAgZVdVfJM4A";
+        const serviceId = "service_w3n2h6s";
+        const templateIdWithGreet = "template_l6jxhcz";
+        const templateIdWithTechnologies = "template_fzbseij";
+
+        if (techs.length > 0) { //selected techs
+            //prepare date for pushing into db.
+            const transformedSkillsets = transformSkillsets(quantities);
+
+            const apiData: ClientRequestData = {
+                ...data,
+                skillsets: transformedSkillsets,
+                duration
+            }
+
+            setIsLoading(true);
+            let emailSent = false;
+
+            try {
+                await emailJs.send(serviceId, templateIdWithTechnologies, apiData as any, publicKey);
+                emailSent = true;
+            } catch (emailError) {
+                console.error("Error sending email:", emailError);
+                setIsLoading(false);
+                setIsFailed(true);
+                return;
+            }
+
+            if (emailSent) {
+                try {
+                    await clientApiService.createClient(apiData);
+                    setSuccess(true);
+                } catch (apiError) {
+                    console.error("Error creating client:", apiError);
+                }
+            }
+        } else {
+            console.log("without skills:", data)
+        }
+        console.log(data);
+        setSubmitted(true);
+    };
 
     if (submitted) {
         return <GreetModal onConfirm={onConfirm} />
@@ -45,8 +124,8 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
         return <></>
     }
 
-    return <div className="fixed overflow-auto inset-0 flex items-center justify-center bg-gray-900 text-black dark:text-white bg-opacity-50 z-[62]">
-        <div className="bg-white dark:bg-[#252525] animate-flyinup w-full max-h-[600px] md:max-h-screen lg:max-h-screen xl:max-h-screen 2xl:max-h-screen  max-w-3xl mx-4 md:mx-0 p-6 rounded-lg shadow-lg relative overflow-auto">
+    return <div className="fixed  overflow-auto inset-0 flex items-center justify-center bg-gray-900 text-black dark:text-white bg-opacity-50 z-[62]">
+        <div className={`bg-white dark:bg-[#252525] ${isLoading && 'blur-[3px]'} animate-flyinup w-full max-h-[600px] md:max-h-screen lg:max-h-screen xl:max-h-screen 2xl:max-h-screen  max-w-3xl mx-4 md:mx-0 p-6 rounded-lg shadow-lg relative overflow-auto`}>
             <button onClick={onConfirm} className="absolute top-4 right-4 text-gray-400 hover:text-gray-600" aria-label="Close Modal">&times;</button>
 
 
@@ -64,95 +143,142 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
             </div>}
 
 
-            <form className="space-y-4" onSubmit={() => setSubmitted(true)}>
+
+            <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div className="relative">
                         <label className="text-gray-600 dark:text-gray-300 text-sm">Select Your Industry</label>
-                        <select className="w-full border border-gray-300 dark:border-gray-600  bg-transparent  rounded-full py-2 px-4 outline-none focus:ring-2 focus:ring-orange-500">
-                            <option >Technology</option>
-                            <option >Finance</option>
-                            <option >Health Care</option>
+                        <select
+                            {...register("industry", { required: "Please select your industry" })}
+                            className="w-full border border-gray-300 dark:border-gray-600 bg-transparent rounded-full py-2 px-4 outline-none focus:ring-2 focus:ring-orange-500"
+                        >
+                            <option value="">Select an industry</option>
+                            <option value="Technology">Technology</option>
+                            <option value="Finance">Finance</option>
+                            <option value="Health Care">Health Care</option>
                         </select>
+                        {errors.industry && <p className="text-red-500 text-sm">{errors.industry.message}</p>}
                     </div>
+
                     <div>
                         <label className="text-gray-600 dark:text-gray-300 text-sm">Enter Your Name</label>
-                        <input type="text" placeholder="Enter Your Name" className="w-full border border-gray-300 dark:border-gray-600  bg-transparent rounded-full py-2 px-4 outline-none focus:ring-2 focus:ring-orange-500" />
+                        <input
+                            type="text"
+                            placeholder="Enter Your Name"
+                            {...register("name", { required: "Name is required" })}
+                            className="w-full border border-gray-300 dark:border-gray-600 bg-transparent rounded-full py-2 px-4 outline-none focus:ring-2 focus:ring-orange-500"
+                        />
+                        {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
                     </div>
+
                     <div>
                         <label className="text-gray-600 dark:text-gray-300 text-sm">Corporate Email</label>
-                        <input type="email" placeholder="Corporate Email" className="w-full border border-gray-300 dark:border-gray-600  bg-transparent rounded-full py-2 px-4 outline-none focus:ring-2 focus:ring-orange-500" />
+                        <input
+                            type="email"
+                            placeholder="Corporate Email"
+                            {...register("email", {
+                                required: "Corporate email is required",
+                                pattern: { value: emailRegex, message: "Enter a valid email address" },
+                            })}
+                            className="w-full border border-gray-300 dark:border-gray-600 bg-transparent rounded-full py-2 px-4 outline-none focus:ring-2 focus:ring-orange-500"
+                        />
+                        {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
                     </div>
+
                     <div>
                         <label className="text-gray-600 dark:text-gray-300 text-sm">Phone No</label>
-                        <div className="flex items-center border border-gray-300 dark:border-gray-600  bg-transparent rounded-full py-2 px-4">
-                            {/* <span className="mr-2">🇮🇳 </span>
-                            <span className="mr-2">+91 </span> */}
-                            <PhoneInput
-                                country={'sa'}
-                                value={'966'}
-                                onChange={() => {
-                                    // const countryCodeLength = data.dialCode.length
-                                    // if (phone == '' || phone.length == countryCodeLength) {
-                                    //     setError('phone', {
-                                    //         message: 'Phone Number required'
-                                    //     })
-                                    // } else {
-                                    //     clearErrors('phone')
-                                    // }
-                                    // setValue('phone', phone)
-                                }}
-                                containerStyle={{
-                                    backgroundColor: 'transparent',
-                                }}
-                                searchStyle={{
-                                    backgroundColor: 'transparent',
-                                }}
-                                dropdownStyle={{
-                                    backgroundColor: darkMode ? 'black' : 'white',
-                                    color: 'gray'
-
-                                }}
-                                inputStyle={{
-                                    width: '100%',
-                                    border: 'none',
-                                    backgroundColor: 'transparent'
-                                }}
-                                buttonStyle={{
-                                    backgroundColor: 'transparent',
-                                    border: 'none',
-                                }}
-                            />
-                            {/* <input type="tel" placeholder="Phone No" className="flex-1 outline-none" /> */}
-                        </div>
+                        <Controller
+                            name="phone"
+                            control={control}
+                            defaultValue=""
+                            rules={{
+                                required: "Phone number is required",
+                                validate: (value) => value.length > 2 || "Enter a valid phone number",
+                            }}
+                            render={({ field }) => (
+                                <PhoneInput
+                                    country="sa"
+                                    value={field.value}
+                                    // onChange={(phone) => setValue("phone", phone as string)}
+                                    onChange={(phone, data: CountryData) => {
+                                        const countryCodeLength = data.dialCode.length
+                                        if (phone == '' || phone.length == countryCodeLength) {
+                                            setError('phone', {
+                                                message: 'Phone Number required'
+                                            })
+                                        } else {
+                                            clearErrors('phone')
+                                        }
+                                        setValue('phone', phone)
+                                    }}
+                                    containerStyle={{ backgroundColor: 'transparent' }}
+                                    inputStyle={{ width: '100%', border: 'none', backgroundColor: 'transparent' }}
+                                    dropdownStyle={{ backgroundColor: 'white', color: 'gray' }}
+                                    buttonStyle={{ backgroundColor: 'transparent', border: 'none' }}
+                                />
+                            )}
+                        />
+                        {errors.phone && <p className="text-red-500 text-sm">{errors.phone.message}</p>}
                     </div>
+
                     <div>
                         <label className="text-gray-600 dark:text-gray-300 text-sm">Select Date</label>
-                        <input type="date" className="w-full border text-black border-gray-300 dark:border-gray-600  bg-transparent rounded-full py-2 px-4 outline-none focus:ring-2 focus:ring-orange-500 dark:invert" />
+                        <input
+                            type="date"
+                            {...register("date", { required: "Please select a date" })}
+                            className="w-full border text-black border-gray-300 dark:border-gray-600 bg-transparent rounded-full py-2 px-4 outline-none focus:ring-2 focus:ring-orange-500 dark:invert"
+                        />
+                        {errors.date && <p className="text-red-500 text-sm">{errors.date.message}</p>}
                     </div>
+
                     <div>
                         <label className="text-gray-600 dark:text-gray-300 text-sm">Select Time</label>
-                        <input type="time" className="w-full border text-black border-gray-300 dark:border-gray-600  bg-transparent rounded-full py-2 px-4 outline-none focus:ring-2 focus:ring-orange-500 dark:invert" />
-                        {/* <select className="w-full border border-gray-300 dark:border-gray-600  bg-transparent rounded-full py-2 px-4 outline-none focus:ring-2 focus:ring-orange-500">
-                            <option>Select Time</option>
-                        </select> */}
+                        <input
+                            type="time"
+                            {...register("time", { required: "Please select a time" })}
+                            className="w-full border text-black border-gray-300 dark:border-gray-600 bg-transparent rounded-full py-2 px-4 outline-none focus:ring-2 focus:ring-orange-500 dark:invert"
+                        />
+                        {errors.time && <p className="text-red-500 text-sm">{errors.time.message}</p>}
                     </div>
                 </div>
 
                 <div>
                     <label className="text-gray-600 dark:text-gray-300 text-sm">Reason</label>
-                    <textarea placeholder="Reason" className="w-full border border-gray-300 dark:border-gray-600  bg-transparent rounded-lg py-2 px-4 outline-none focus:ring-2 focus:ring-orange-500"></textarea>
+                    <textarea
+                        placeholder="Reason"
+                        {...register("reason")}
+                        className="w-full border border-gray-300 dark:border-gray-600 bg-transparent rounded-lg py-2 px-4 outline-none focus:ring-2 focus:ring-orange-500"
+                    ></textarea>
                 </div>
 
                 <div className="flex items-center space-x-2">
-                    <input type="checkbox" id="nda" className="h-5 w-5 text-orange-500 focus:ring-orange-500" />
-                    <label className="text-gray-600 dark:text-gray-300 text-sm">I Want to Protect My Data by Signing an NDA</label>
+                    <input
+                        type="checkbox"
+                        id="nda"
+                        {...register("nda")}
+                        className="h-5 w-5 text-orange-500 focus:ring-orange-500"
+                    />
+                    <label htmlFor="nda" className="text-gray-600 dark:text-gray-300 text-sm">
+                        I Want to Protect My Data by Signing an NDA
+                    </label>
                 </div>
 
                 <div className="w-full text-center">
-                    <button type="submit" className="w-fit p-5 bg-orange-500 text-white font-semibold py-3 rounded-full hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2">Book Now</button>
+                    <button
+                        type="submit"
+                        className="w-fit p-5 bg-orange-500 text-white font-semibold py-3 rounded-full hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
+                        disabled={isLoading}
+                    >
+                        Book Now
+                    </button>
                 </div>
             </form>
         </div>
+        {isLoading && <div className="absolute animate-spin m-auto p-2 bg-orange-400 rounded-full">
+                <div className=" bg-yellow-400 w-2 h-2 -ml-5 rounded-full "></div>
+                <div className=" bg-yellow-500 w-2 h-2 -ml-5 -mt-7  rounded-full "></div>
+                <div className=" bg-yellow-600 w-2 h-2 -mr-5 -mt-4  rounded-full "></div>
+            </div>}
     </div>
 
 }

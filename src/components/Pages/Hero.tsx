@@ -32,6 +32,7 @@ const TypingText = () => {
         3000
       ]}
       wrapper="span"
+      cursor={false}
       speed={50}
       className='
           text-xl
@@ -156,7 +157,7 @@ const HomePage = () => {
       lg:size-14
       xl:size-14
       2xl:size-16
-      rounded-full bg-gray-700 p-2 bottom-10 cursor-pointer hover:animate-jiggle-infinity' />
+      rounded-full bg-gray-700 p-2 bottom-10 cursor-pointer hover:animate-jiggle-infinity animate-tada' />
 
     { isChatScreen &&<ChatScreen onClose={()=>setIsChatScreen(false)}/>}
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, KeyboardEvent, ChangeEvent, FunctionComponent } from "react";
 import ChatBotIcon from "./ChatBotIcon";
 import Slider, { Settings } from 'react-slick';
+import { TypeAnimation } from 'react-type-animation';
 
 interface Message {
   sender: "user" | "bot";
@@ -116,7 +117,7 @@ const positiveResponses: Record<string, string[]> = {
     "I understand, no worries! 😎",
     "Perfectly understood! 🌟"
   ],
-  "have a nice day":[
+  "have a nice day": [
     "You too have a nice day! 😊🙌"
   ],
   "cool": [
@@ -312,15 +313,15 @@ const ChatScreen: FunctionComponent<{
       if (chatElement) {
         const viewportWidth = window.innerWidth;
         const viewportHeight = window.innerHeight;
-    
+
         // Always make sure chatElement is not off the screen
         const chatWidth = chatElement.offsetWidth;
         const chatHeight = chatElement.offsetHeight;
-    
+
         // Adjust position when the chat is not minimized
         if (!isMinimized) {
           chatElement.style.top = `${viewportHeight - chatHeight - 20}px`;
-          chatElement.style.left = `${Math.max(viewportWidth - chatWidth - 20, 0)}px`; 
+          chatElement.style.left = `${Math.max(viewportWidth - chatWidth - 20, 0)}px`;
         } else {
           // Minimized state positioning for mobile, tablet, and desktop
           if (viewportWidth < 640) {
@@ -346,11 +347,11 @@ const ChatScreen: FunctionComponent<{
             chatElement.style.top = '95%';
             chatElement.style.left = '70%';
             // chatElement.style.transform = 'translateX(-50%)';
-          } 
+          }
         }
       }
     }, [isMinimized]);
-    
+
 
     const handleMinimize = () => {
       setIsMinimized((prev) => !prev);
@@ -366,12 +367,12 @@ const ChatScreen: FunctionComponent<{
       variableWidth: true,
       slidesToScroll: 1,
       nextArrow: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#F37318" className="size-6">
-      <path fillRule="evenodd" d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clipRule="evenodd" />
-    </svg>
-    ,
-    prevArrow: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#F37318" className="size-6">
-      <path fillRule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z" clipRule="evenodd" />
-    </svg>,
+        <path fillRule="evenodd" d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clipRule="evenodd" />
+      </svg>
+      ,
+      prevArrow: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#F37318" className="size-6">
+        <path fillRule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z" clipRule="evenodd" />
+      </svg>,
 
     };
 
@@ -420,7 +421,7 @@ const ChatScreen: FunctionComponent<{
           if (selectedQuestion) {
             if (selectedQuestion.id === connectWithAgentId) {
               addBotMessage(`${selectedQuestion.answer}\nThank you! We will contact you soon.`);
-              setStep(-1);
+              // setStep(-1);
             } else {
               addBotMessage(selectedQuestion.answer);
             }
@@ -448,8 +449,8 @@ const ChatScreen: FunctionComponent<{
 
     return (
       <div id="chatscreen" ref={chatRef}
-      className={`fixed bottom-0 max-h-screen ${isMinimized ? 'h-12' : 'h-2/3'
-        } z-[70] xs:right-5 right-0 w-80 md:w-96  bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 shadow-lg rounded-t-3xl flex flex-col`}
+        className={`fixed bottom-0 max-h-screen ${isMinimized ? 'h-12' : 'h-2/3'
+          } z-[70] xs:right-5 right-0 w-80 md:w-96  bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 shadow-lg rounded-t-3xl flex flex-col`}
       >
         <div className={`bg-white dark:bg-gray-900 py-3 px-4 rounded-t-3xl flex items-center justify-between hide-scrollbar touch-pan-x drag-handle 
         ${isMinimized ? 'cursor-default' : 'cursor-move'}
@@ -511,6 +512,15 @@ const ChatScreen: FunctionComponent<{
                   {msg.text !== 'loading' ? <div>
                     <div className="bg-orange-500 text-white p-3 rounded-xl text-sm max-w-xs">
                       <p>{msg.text}</p>
+                      {/* <TypeAnimation
+                        sequence={[
+                          msg.text,
+                          3000,
+                        ]}
+                        wrapper="span"
+                        cursor={false}
+                        speed={80}
+                      /> */}
                     </div>
                     <p className="float-right mt-1 text-xs">{msg.time}</p>
                   </div>

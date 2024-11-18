@@ -76,7 +76,7 @@ const AddTechModal: FunctionComponent<AddTechModalProps> = ({
                                                 type="number"
                                                 max={150}
                                                 maxLength={150}
-                                                placeholder="Enter Tech Name"
+                                                placeholder="Enter Tech Quantity"
                                                 className="w-full outline-none rounded-full px-2 py-1"
                                                 onChange={e=>{
                                                     setErr(null)

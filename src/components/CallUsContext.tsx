@@ -7,7 +7,9 @@ interface CallUsModalContextProps {
   darkMode:boolean,
   setDarkMode:React.Dispatch<React.SetStateAction<boolean>>
   quantities:TechQuantitiesType
-  setQuantities:React.Dispatch<React.SetStateAction<TechQuantitiesType>>
+  setQuantities:React.Dispatch<React.SetStateAction<TechQuantitiesType>>,
+  setDuration:React.Dispatch<React.SetStateAction<string>>,
+  duration:string
 }
 
 
@@ -20,7 +22,7 @@ type CallUsModalStateType = {
   techQuantities:number[]| null
 }
 
-type TechQuantitiesType = { [category: string]: { [tech: string]: number } }
+export type TechQuantitiesType = { [category: string]: { [tech: string]: number } }
 
 export const CallUsModalProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isCallUsModalOpen, setIsCallUsModalOpen] = useState<CallUsModalStateType>({
@@ -30,6 +32,8 @@ export const CallUsModalProvider: React.FC<{ children: React.ReactNode }> = ({ c
     techQuantities:[]
   })
   const [quantities, setQuantities] = useState<TechQuantitiesType>({});
+  const [duration, setDuration] = useState<string>('6 months');
+
   const [isOpened, setIsOpened] = useState(false)
   const [darkMode, setDarkMode] = useState(false);
 
@@ -51,7 +55,7 @@ export const CallUsModalProvider: React.FC<{ children: React.ReactNode }> = ({ c
   }, [isCallUsModalOpen.isOpen]);
 
   return (
-    <CallUsModalContext.Provider value={{ isCallUsModalOpen, setIsCallUsModalOpen, isOpened , darkMode,setDarkMode,quantities,setQuantities}}>
+    <CallUsModalContext.Provider value={{ isCallUsModalOpen, setIsCallUsModalOpen, isOpened , darkMode,setDarkMode,quantities,setQuantities,duration,setDuration}}>
       {children}
     </CallUsModalContext.Provider>
   );

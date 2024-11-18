@@ -30,6 +30,7 @@ const config: Config = {
         'jiggle-infinity': 'jiggle 1.5s ease-in-out 0.2s infinite',
          'slideDown': 'slideDown 0.4s ease-out',
          fadeinbounceup: 'fade-in-bounceup 1s ease-in-out 0.25s 1',
+         tada: 'tada 2s ease-in-out 0.25s infinite',
       },
       keyframes: {
         'infinite-scroll': {
@@ -133,6 +134,23 @@ const config: Config = {
               transform: "translate3d(0, 0, 0)",
           },
       },
+      tada: {
+        "0%": {
+            transform: "scale3d(1, 1, 1)",
+        },
+        "10%, 20%": {
+            transform: "scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg)",
+        },
+        "30%, 50%, 70%, 90%": {
+            transform: "scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg)",
+        },
+        "40%, 60%, 80%": {
+            transform: "scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg)",
+        },
+        "100%": {
+            transform: "scale3d(1, 1, 1)",
+        },
+    },
       },
       colors: {
         background: "var(--background)",

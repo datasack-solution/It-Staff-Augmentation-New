@@ -101,7 +101,7 @@ const EditTechModal: FunctionComponent<AddTechModalProps> = ({
                                                                     -
                                                                 </button>
 
-                                                                <span className="text-black dark:text-white dark:bg-[#ffffff63] rounded-full w-6 h-6 text-center justify-center bg-[rgba(238,123,34,0.14)]">{quantities[index]}</span>
+                                                                <span className="text-black dark:text-white dark:bg-[#ffffff63] rounded-full w-6 h-6 font-light m-auto bg-[rgba(238,123,34,0.14)]">{quantities[index]}</span>
 
 
                                                                 <button

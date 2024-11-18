@@ -87,22 +87,24 @@ export const technologies: Technologies = {
     ]
 };
 
-const durationScale = [
-    '', '1 month', '2 months', '3 months', '4 months', '5 months', '6 months',
-    '7 months', '8 months', '9 months', '10 months', '11 months',
-    '1 year', '1.2 years', '1.5 years', '1.7 years', '2+ years'
-];
+// const durationScale = [
+//     '', '1 month', '2 months', '3 months', '4 months', '5 months', '6 months',
+//     '7 months', '8 months', '9 months', '10 months', '11 months',
+//     '1 year', '1.2 years', '1.5 years', '1.7 years', '2+ years'
+// ];
 
 const Pricing = () => {
     const [selectedCategory, setSelectedCategory] = useState<keyof typeof technologies | null>('SAP');
     // const [quantities, setQuantities] = useState<{ [category: string]: { [tech: string]: number } }>({});
     const [isEditModalOpen, setEditModalOpen] = useState(false)
     const [isModalOpen, setModalOpen] = useState<boolean>(false)
-    const [durationIndex, setDurationIndex] = useState<number>(6)
-    const { setIsCallUsModalOpen, isCallUsModalOpen,darkMode, quantities,setQuantities } = useCallUsModalState()
+    // const [durationIndex, setDurationIndex] = useState<number>(6)
+    const { setIsCallUsModalOpen, isCallUsModalOpen,darkMode, quantities,setQuantities ,duration} = useCallUsModalState()
 
     const techs = Object.values(quantities).flatMap(r => { return Object.keys(r) })
     const techQuantities = Object.values(quantities).flatMap(r => Object.values(r))
+
+    console.log('tech quantities: ',techQuantities)
 
 
     useEffect(() => {
@@ -207,7 +209,7 @@ const Pricing = () => {
                 <div className='flex justify-between'>
                     <div className='flex gap-5'>
                         <h2 className='text-orange-500 font-semibold text-lg'>Selected Technologies</h2>
-                        <p className='text-sm mt-1 dark:text-white'>Duration: <span className='font-semibold'>{durationScale[durationIndex]}</span></p>
+                        <p className='text-sm mt-1 dark:text-white'>Duration: <span className='font-semibold'>{duration}</span></p>
                     </div>
 
                     <svg onClick={removeAllTech} className="cursor-pointer mr-5" width="20" height="20" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -233,7 +235,7 @@ const Pricing = () => {
 
                                         <span>{item}</span>
 
-                                        <span className="text-black dark:text-white rounded-full w-5 h-5 text-center justify-center bg-[rgba(238,123,34,0.14)] dark:bg-[rgba(255,255,255,0.17)]">{techQuantities[index]}</span>
+                                        <span className="text-black dark:text-white rounded-full px-2 py-1 text-xs text-center justify-center bg-[rgba(238,123,34,0.14)] dark:bg-[rgba(255,255,255,0.17)]">{techQuantities[index]}</span>
 
 
                                         <svg onClick={() => removeTech(item)} className="cursor-pointer mr-5" width="20" height="20" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -270,7 +272,7 @@ const Pricing = () => {
                 removeTech={removeTech}
                 increaseTechQuantity={increasingTechQuantity}
                 decreaseTechQuantity={decreasingTechQuantity}
-                duration={durationScale[durationIndex]}
+                duration={duration}
             />
 
             {techs.length > 0 && <div onClick={() => { setEditModalOpen(true) }} className='fixed animate-flyinup z-50 bottom-10 w-full sm:hidden md:hidden lg:hidden xl:hidden 2xl:hidden'>
@@ -400,7 +402,7 @@ const Pricing = () => {
                     )}
 
                     <div className='mb-28 mt-8 text-black'>
-                        <DurationRangeSelector onChange={setDurationIndex} />
+                        <DurationRangeSelector  />
 
                         {techs.length > 0 && <div className="pt-5 m-auto">
                             <div onClick={() => setIsCallUsModalOpen({

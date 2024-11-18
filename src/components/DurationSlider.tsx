@@ -1,5 +1,6 @@
 import { Slider, SliderSingleProps } from 'antd';
 import { FunctionComponent, useState } from 'react';
+import { useCallUsModalState } from './CallUsContext';
 
 
 const customScale = [
@@ -47,12 +48,10 @@ const marks: SliderSingleProps['marks'] = {
     },
 };
 
-const DurationSlider:FunctionComponent<{
-    onChange:(index:number)=>void
-}> = ({
-    onChange
+const DurationSlider:FunctionComponent = ({
 }) => {
     const [durationIndex, setDurationIndex] = useState(6);
+    const {setDuration} = useCallUsModalState()
 
     return (
         <div className="w-full mx-auto">
@@ -70,7 +69,7 @@ const DurationSlider:FunctionComponent<{
                 max={customScale.length - 1}
                 defaultValue={durationIndex}
                 onChangeComplete={w=>{
-                    onChange(w)
+                    setDuration(customScale[w])
                     setDurationIndex(w)
                 }}
                 step={1}
