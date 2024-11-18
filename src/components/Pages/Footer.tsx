@@ -91,7 +91,7 @@ const Footer = () => {
             <div
                 className="absolute inset-0 w-full 2xl:h-[850px] xl:h-[800px] lg:h-[750px] md:h-[700px] sm:h-[650px] h-[800px] bg-cover bg-center opacity-70 "
                 style={{
-                    backgroundImage: `url('/bg_footersvg.svg')`,
+                    backgroundImage: `url('/bg_footer.png')`,
                 }}
             />
 
