@@ -60,8 +60,8 @@ const Footer = () => {
         const templateIdWithGreet = "template_l6jxhcz";
         setLoading(true)
         try {
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            await emailJs.send(serviceId, templateIdWithGreet, {...data, reason:"Quick Enquiry About IT Staff Augmentation Services",nda:'Yes',date:"ASAP",industry:"Unknown"} as Record<string, any>, publicKey);
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            await emailJs.send(serviceId, templateIdWithGreet, { ...data, reason: "Quick Enquiry About IT Staff Augmentation Services", nda: 'Yes', date: "ASAP", industry: "Unknown" } as Record<string, any>, publicKey);
             setEmailSent(true)
             setLoading(false)
         } catch (emailError) {
@@ -77,7 +77,7 @@ const Footer = () => {
     }
 
     if (loading) {
-      return  <div className="fixed  overflow-auto inset-0 flex items-center justify-center bg-gray-900 text-black dark:text-white bg-opacity-50 z-[62]">
+        return <div className="fixed  overflow-auto inset-0 flex items-center justify-center bg-gray-900 text-black dark:text-white bg-opacity-50 z-[62]">
             {loading && <div className="absolute animate-spin m-auto p-2 bg-orange-400 rounded-full">
                 <div className=" bg-yellow-400 w-2 h-2 -ml-5 rounded-full "></div>
                 <div className=" bg-yellow-500 w-2 h-2 -ml-5 -mt-7  rounded-full "></div>

@@ -6,7 +6,7 @@ import 'react-phone-input-2/lib/style.css'
 import GreetModal from "./GreetModal"
 import { TechQuantitiesType, useCallUsModalState } from "./CallUsContext"
 import { useForm, Controller } from "react-hook-form";
-import {  ClientRequestData, TransformedSkillsets } from "@/pages/api/userApi";
+import {   ClientRequestData, TransformedSkillsets } from "@/pages/api/userApi";
 
 export interface AddTechModalProps {
     onConfirm: () => void
@@ -48,7 +48,13 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
                 if (updatedQuantities[category][tech] !== undefined) {
                     // eslint-disable-next-line @typescript-eslint/no-unused-vars
                     const { [tech]: _, ...updatedCategory } = updatedQuantities[category];
-                    updatedQuantities[category] = updatedCategory;
+                    if (Object.keys(updatedCategory).length === 0) {
+                        // remove the category if it's empty
+                        delete updatedQuantities[category];
+                    } else {
+                        // otherwise, update the category with remaining technologies
+                        updatedQuantities[category] = updatedCategory;
+                    }
                 }
             }
             return updatedQuantities;
@@ -98,10 +104,10 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
                 return;
             }
 
-            // if (emailSent) {
+            // // if (emailSent) {
             //     try {
             //         await clientApiService.createClient(apiData);
-            //         setSuccess(true);
+            //         // setSuccess(true);
             //     } catch (apiError) {
             //         console.error("Error creating client:", apiError);
             //     }
@@ -120,14 +126,14 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
                 return;
             }
 
-            // if (emailSent) {
+            // // if (emailSent) {
             //     try {
             //         await clientApiService.createClient(data);
-            //         setSuccess(true);
+            //         // setSuccess(true);
             //     } catch (apiError) {
             //         console.error("Error creating client:", apiError);
             //     }
-            // }
+            // // }
         }
 
         setIsLoading(false);

@@ -142,6 +142,13 @@ const Pricing = () => {
             if (currentQuantity <= 1) {
                 // eslint-disable-next-line @typescript-eslint/no-unused-vars
                 const { [tech]: _, ...updatedCategory } = currentCategory;
+
+                if (Object.keys(updatedCategory).length === 0) {
+                // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                    const { [category]: __, ...updatedCategories } = prev;
+                    return updatedCategories;
+                }
+                
                 return {
                     ...prev,
                     [category]: updatedCategory,
@@ -167,7 +174,13 @@ const Pricing = () => {
                 if (updatedQuantities[category][tech] !== undefined) {
                     // eslint-disable-next-line @typescript-eslint/no-unused-vars
                     const { [tech]: _, ...updatedCategory } = updatedQuantities[category];
-                    updatedQuantities[category] = updatedCategory;
+                    if (Object.keys(updatedCategory).length === 0) {
+                        // remove the category if it's empty
+                        delete updatedQuantities[category];
+                    } else {
+                        // otherwise, update the category with remaining technologies
+                        updatedQuantities[category] = updatedCategory;
+                    }
                 }
             }
             return updatedQuantities;
