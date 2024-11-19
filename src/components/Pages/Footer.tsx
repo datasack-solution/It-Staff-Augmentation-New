@@ -91,7 +91,7 @@ const Footer = () => {
             <div
                 className="absolute inset-0 w-full 2xl:h-[850px] xl:h-[800px] lg:h-[750px] md:h-[700px] sm:h-[650px] h-[800px] bg-cover bg-center opacity-70 "
                 style={{
-                    backgroundImage: `url('/bg_footer.png')`,
+                    backgroundImage: `url('/taggedImages/footer-bg.webp')`,
                 }}
             />
 
@@ -194,11 +194,11 @@ const Footer = () => {
 
                         <div className="space-y-5 text-center md:text-start  xs:items-center sm:items-center md:items-center lg:items-start">
                             <div className="flex items-center gap-5 xs:text-sm xs:flex-col sm:flex-col md:flex-col lg:flex-row">
-                                <Image alt="saudi-logo" src={'/saudiFlag.png'} width={50} height={50} />
+                                <Image alt="Experience confidence with Top IT Managed Service Providers Saudi Arabia, delivering proactive solutions, symbolized by the Saudi flag" src={'/taggedImages/saudiFlag.webp'} width={50} height={50} />
                                 <p className="w-1/2">Building no: 2345, Ahmed AL Tamimi AL Malaz, Riyadh 12831, Saudi Arabia</p>
                             </div>
                             <div className="flex items-center gap-5 xs:text-sm xs:flex-col sm:flex-col md:flex-col lg:flex-row">
-                                <Image alt="indian-logo" src={'/indianFlag.png'} width={50} height={50} />
+                                <Image alt="indian-logo" src={'/taggedImages/indianFlag.png'} width={50} height={50} />
                                 <p className="w-1/2">No: 23, Kamarajapuram - East Karur, Tamilnadu 639002, India.</p>
                             </div>
                         </div>
@@ -214,7 +214,6 @@ const Footer = () => {
             lg:relative 
             xl:relative 
             2xl:relative 
-
             lg:block 
             xl:block 
             2xl:block  
@@ -287,7 +286,7 @@ const Footer = () => {
 
             {/* bottom logo certification */}
             <div className="absolute bottom-0 w-full text-center py-4 bg-black/60 text-white text-sm">
-                <Image src="https://bunny-wp-pullzone-dgpgtislbk.b-cdn.net/wp-content/uploads/2024/01/Datasack_tech_logo-web.png" alt="DataSack Solutions Logo" width={120} height={30} className="inline-block" />
+                <Image src="/taggedImages/logo.webp" alt="Transform your workforce with the Best IT Staffing Agency Saudi Arabia, providing innovative hiring solutions." width={120} height={30} className="inline-block" />
                 <p className="inline-block ml-4">ISO/IEC 27001:2022 CERTIFIED</p>
             </div>
         </div>

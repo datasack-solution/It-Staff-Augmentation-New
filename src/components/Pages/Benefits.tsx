@@ -1,34 +1,35 @@
 const benefits = [
     {
         title: 'Core Focus',
-        description: 'Our IT Recruitment Agency in Riyadh optimizes productivity by outsourcing non-core tasks to contingent workers, freeing up resources for core business activities and enhancing operational efficiency for our clients.'
+        description: 'Our Top IT Staff Augmentation Services Saudi Arabia optimize productivity by outsourcing non-core tasks to contingent workers, freeing up resources for core business activities and enhancing operational efficiency for our clients.'
     },
     {
         title: 'Strategic Hiring Efficiency',
-        description: 'Reduce overhead costs with IT Staffing Agency Riyadh by hiring workers only when needed. This approach ensures financial efficiency and flexibility, paying only for the essential workforce during peak demands.'
-    }, {
+        description: 'Reduce overhead costs with the Best IT Staffing Agency Saudi Arabia by hiring workers only when needed. This approach ensures financial efficiency and flexibility, paying only for the essential workforce during peak demands.'
+    }, 
+    {
         title: 'Flexible Workforce',
-        description: 'Outsourcing Company Riyadh increases financial flexibility by converting fixed costs into variable costs, hiring workers for specific durations. This ensures optimal budget management by paying only for necessary expertise..'
+        description: 'Increases financial flexibility by converting fixed costs into variable costs and hiring workers for specific durations. This ensures optimal budget management by paying only for necessary expertise.'
     },
     {
         title: 'Onsite Efficiency',
-        description: 'Optimize travel logistics with expert IT staff augmentation services Riyadh, ensuring rapid consultant availability and prompt support for enhanced client satisfaction and project efficiency.'
+        description: 'Optimize travel logistics with expert Top IT Staff Augmentation Services Saudi Arabia, ensuring rapid consultant availability and prompt support to enhance client satisfaction and project efficiency.'
     },
     {
         title: 'Precision Staffing',
-        description: 'Reduce staffing costs with an IT Recruitment Agency in Saudi through just-in-time recruitment, ensuring resources are deployed precisely when needed. This approach minimizes overheads tied to idle workforce capacity, enhancing financial flexibility and efficiency.'
+        description: 'Reduce staffing costs with the Best IT contract staffing Saudi Arabia through just-in-time recruitment, ensuring resources are deployed exactly when needed. This approach minimizes overheads tied to idle workforce capacity, enhancing financial flexibility and efficiency.'
     },
     {
         title: 'Smooth Visa Logistics',
-        description: 'Utilizing our expert team in logistics and visa processing at our IT Outsourcing Company Riyadh, we collaborate closely to ensure an efficient and seamless experience for our clients. This approach streamlines operations and enhances client satisfaction.'
+        description: 'Utilizing our expert team in logistics and visa processing, we collaborate closely to ensure an efficient and seamless experience for our clients. This approach streamlines operations and enhances client satisfaction.'
     },
     {
         title: 'Resource Deployment',
-        description: 'Our IT Staffing Agency Riyadh deploys resources in India to meet business needs. This strategic advantage ensures swift adaptation to market demands, enhancing operational agility and client satisfaction.'
+        description: 'Our Best IT Staffing Agency Saudi Arabia deploys resources from India to meet business needs. This strategic advantage ensures swift adaptation to market demands, enhancing operational agility and client satisfaction.'
     },
     {
         title: 'Rapid Expansion',
-        description: 'Accelerate growth by scaling up IT Staffing Agency Riyadh to efficiently meet demand. This proactive approach ensures timely service delivery, enhancing customer satisfaction and seizing market opportunities.'
+        description: 'Boost your growth by partnering with the Best IT Staffing Agency Saudi Arabia, ensuring you meet demand swiftly and efficiently. This proactive approach ensures timely service delivery, enhancing customer satisfaction and seizing market opportunities.'
     }
 ]
 
@@ -36,10 +37,11 @@ const BenefitsPage = () => {
     return <div className="bg-[#F2F2F2] dark:bg-[#252525]">
         <div className="container p-5 m-auto text-black dark:text-white bg-[#F2F2F2] dark:bg-[#252525]">
             <h2 className="text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl 2xl:text-4xl text-black dark:text-white font-bold text-center">
-                Benefits of Choosing Us - <span className="text-orange-500">Advanced IT Recruitment Agency in Riyadh</span>
+            Benefits of Choosing Us - <span className="text-orange-500">Best IT contract staffing Saudi Arabia</span>
             </h2>
             <p className="text-center mt-10 px-3 mb-10 text-gray-600 dark:text-white">
-                IT Staff Augmentation Services Riyadh provided by Datasack Solutions are advantageous as they offer the following benefits.
+            Top IT Staff Augmentation Services Saudi Arabia provided by DataSack Solutions is
+            advantageous as it offers the following benefits.
             </p>
 
             <div className="hide-scrollbar relative flex items-center justify-center p-[1.5px] rounded-full">
@@ -52,9 +54,6 @@ const BenefitsPage = () => {
                             rounded-3xl"></div>
 
                             <div className="relative p-5 bg-white dark:bg-[#1b1b1b] max-h-80 h-full flex flex-col items-center overflow-auto hide-scrollbar rounded-3xl shadow-md">
-                                {/* <div className="rounded-full p-1 bg-gray-200 w-10 h-10 text-center align-middle">
-                                    <p className="mt-auto text-lg text-black">{index + 1}</p>
-                                </div> */}
 
                                 <div className="w-fit inline-block py-3">
                                     <h2 className="text-center font-bold text-lg">{benefit.title}</h2>

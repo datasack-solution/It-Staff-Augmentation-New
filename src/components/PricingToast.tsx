@@ -3,11 +3,12 @@ import { useCallUsModalState } from './CallUsContext';
 
 const PricingToast = () => {
     const [isVisible, setIsVisible] = useState(false);
+    const [masterVisible, setMasterVisible] = useState(true);
     const { darkMode,quantities } = useCallUsModalState()
     const techs = Object.values(quantities).flatMap(r => { return Object.keys(r) })
 
     const handleClose = () => {
-        setIsVisible(false);
+        setMasterVisible(false);
     };
 
     useEffect(() => {
@@ -27,7 +28,7 @@ const PricingToast = () => {
     }, [techs]);
 
     return (
-        isVisible && (
+        (isVisible && masterVisible) && (
             <div className="fixed bottom-5 left-5  bg-white dark:bg-[#252525] dark:text-white text-black p-8 xs:p-4 xs:pt-8 xs:w-3/4 flex items-center
             border-[0.5px]
             border-orange-500 
@@ -46,7 +47,7 @@ const PricingToast = () => {
                     document.getElementById('pricing-section')?.scrollIntoView({
                         behavior:'smooth'
                     })
-                    setIsVisible(false)
+                    handleClose()
                 }}
                 className="ml-auto bg-[#FF7A29] text-white animate-tada border-none rounded-md px-4 py-2 xs:text-nowrap text-base xs:text-sm cursor-pointer">
                     Get Price

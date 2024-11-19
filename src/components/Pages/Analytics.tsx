@@ -16,7 +16,7 @@ interface Step {
 }
 
 const steps: Step[] = [
-    { id: 1, title: "Contract Staffing", description: "Access Skilled IT contractors to meet your project-based needs." },
+    { id: 1, title: "IT Contract Staffing", description: "Access Skilled IT contractors to meet your project-based needs." },
     { id: 2, title: "Key Statistics", description: "Experts ready in 2 weeks, 8% available to join instantly—rated 4.9/5 on Clutch." },
     { id: 3, title: "Remote Hiring", description: "Source and onboard talented IT professionals from anywhere in the world." },
     { id: 4, title: "Global Mobility", description: "Facilitate seamless employee relocation and cross-based assignments." },
@@ -25,7 +25,7 @@ const steps: Step[] = [
 
 const analytics = [
     {
-        title: "Contract Staffing",
+        title: "IT Contract Staffing",
         description: "Access Skilled IT contractors to meet your project-based needs"
     }, {
         title: "Key Statistics",
@@ -131,7 +131,7 @@ const AnalyticsPage = () => {
 
             </div>
             <div className=" w-[40%] lg:mt-20 xl:mt-10">
-                <Image alt="illustration" src={darkMode ? '/steps_dark.png' : '/steps.png'} width={550} height={400} className="mt-10" />
+                <Image alt={darkMode ? "Empower your organization with the Best IT Staffing Agency Saudi Arabia, offering unparalleled recruitment solutions.":"Maximize efficiency with Top IT Staff Augmentation Services Saudi Arabia, tailored to meet your specific goals."} src={darkMode ? '/taggedImages/steps-dark.webp' : '/taggedImages/steps-light.webp'} width={550} height={400} className="mt-10" />
             </div>
         </div>
 

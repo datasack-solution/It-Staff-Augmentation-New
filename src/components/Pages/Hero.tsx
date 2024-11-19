@@ -21,13 +21,13 @@ const TypingText = () => {
   return (
     <TypeAnimation
       sequence={[
-        'Cost-effective IT Staffing Agency In Riyadh',
+        'Cost-effective IT Staffing Agency Saudi Arabia',
         3000,
-        'IT Staff Augmentation Services Saudi Arabia',
+        'IT Staff Augmentation Services',
         3000,
-        'Best IT Contract Staffing Saudi Arabia',
+        'IT contract staffing',
         3000,
-        'IT Managed Service Providers Saudi Arabia',
+        'IT Managed Services',
         3000
       ]}
       wrapper="span"
@@ -111,7 +111,67 @@ const HomePage = () => {
     setDarkMode(!darkMode);
   };
 
-  const banks = ['alinma_bank.png', 'alrajhi_bank.png', 'bank_albilad.png', 'future_generali.png', 'elm.png', 'gallagherold.png', 'nibav.png', 'olam.png', 'reliance_capital.png', 'enjaz.png', 'novasat.png']
+  const banks = [
+    {
+      url: "alinma_bank.webp",
+      alt_dark: "Partner with Top IT Managed Service Providers Saudi Arabia to enhance efficiency and results for Alinma Bank.",
+      alt_color: "Unlock efficiency with Top IT Managed Service Providers Saudi Arabia, tailored to optimize Alinma Bank's operations."
+    },
+    {
+      url: "alrajhi_bank.webp",
+      alt_dark: "Streamline your hiring with the Best IT Contract Staffing Saudi Arabia, delivering top-tier solutions to Alrajhi Bank.",
+      alt_color: "Simplify workforce expansion with the Best IT Contract Staffing Saudi Arabia, ensuring success for Alrajhi Bank."
+    },
+    {
+      url: "bank_albilad.webp",
+      alt_dark: "Employ full time contract employees to maintain seamless IT support for Bank Albilad's evolving needs.",
+      alt_color: "Full time contract employees ensures consistent IT performance, empowering Bank Albilad to achieve seamless delivery."
+    },
+    {
+      url: "future_generali.webp",
+      alt_dark: "IT Staffing Riyadh offers innovative recruitment services tailored to meet Future Generali's business goals.",
+      alt_color: "Transform hiring processes with IT Staffing Riyadh, offering customized solutions for Future Generali's unique goals."
+    },
+    {
+      url: "elm.webp",
+      alt_dark: "Choose the Best IT Contract Staffing Saudi Arabia for scalable solutions designed to suit Elm's objectives.",
+      alt_color: "Opt for the Best IT Contract Staffing Saudi Arabia for flexible and efficient workforce solutions tailored for Elm."
+    },
+    {
+      url: "gallagher.webp",
+      alt_dark: "Adapt to market demands with Top IT Staff Augmentation Services Saudi Arabia, driving success for Gallagher.",
+      alt_color: "Rely on Top IT Staff Augmentation Services Saudi Arabia to meet dynamic workforce needs, enhancing Gallagher's success."
+    },
+    {
+      url: "nibav.webp",
+      alt_dark: "Expand your workforce with IT Resource Augmentation Saudi Arabia, offering strategic staffing options for Nibav.",
+      alt_color: "IT Resource Augmentation Saudi Arabia provides scalable solutions to meet Nibav's project needs."
+    },
+    {
+      url: "olam.webp",
+      alt_dark: "Rely on the Best IT Staffing Agency Saudi Arabia to connect with exceptional talent for Olam's projects.",
+      alt_color: "Trust the Best IT Staffing Agency Saudi Arabia for unmatched recruitment, securing top talent for Olam."
+    },
+    {
+      url: "reliance_capital.webp",
+      alt_dark: "Bolster your team with IT Team Augmentation Saudi Arabia, ensuring expert professionals for Reliance Capital.",
+      alt_color: "Boost capabilities with IT Team Augmentation Saudi Arabia, providing reliable professionals for Reliance Capital."
+    },
+    {
+      url: "enjaz.webp",
+      alt_dark: "Achieve operational excellence with Top IT Managed Service Providers Saudi Arabia, supporting Enjaz's growth.",
+      alt_color: "Gain a competitive edge with Top IT Managed Service Providers Saudi Arabia, delivering results for Enjaz."
+    },
+    {
+      url: "novasat.webp",
+      alt_dark: "Enhance productivity with IT Resource Augmentation Saudi Arabia, delivering tailored expertise for Novasat.",
+      alt_color: "Achieve excellence with IT Resource Augmentation Saudi Arabia, ensuring expert project delivery for Novasat."
+    }
+  ];
+  
+  
+
+
   return (
     <div id='hero_section' className='2xl:h-[1000px] xl:h-[900px] lg:h-[900px] md:h-[750px] sm:h-[750px] h-[750px] max-w-screen mb-10 overflow-hidden hide-scrollbar'>
 
@@ -139,9 +199,8 @@ const HomePage = () => {
         "
         style={{
           backgroundImage: `
-      url('/BG-Upscale.jpg')
-    `
-        }}
+      url('/taggedImages/bg.webp')
+    `}}
       />
 
 
@@ -251,17 +310,15 @@ const HomePage = () => {
       {/* header */}
       <div className={`fixed w-full bg-white bg-opacity-50 dark:bg-black  dark:bg-opacity-30 backdrop-blur-lg z-40 top-0 transition-transform duration-500 ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}>
         <div className='flex justify-between align-middle w-full bg-transparent'>
-          <div className='p-3'>
             <Link href="https://www.datasack.in" target="_blank" >
               <Image
-                src="https://bunny-wp-pullzone-dgpgtislbk.b-cdn.net/wp-content/uploads/2024/01/Datasack_tech_logo-web.png"
-                alt="DataSack Solutions Logo"
-                width={120}
-                height={10}
-                className="cursor-pointer w-auto h-auto"
+                src="/taggedImages/logo.webp"
+                alt="Transform your workforce with the Best IT Staffing Agency Saudi Arabia, providing innovative hiring solutions"
+                width={140}
+                height={110}
+                className="cursor-pointer w-auto max-h-16 md:max-h-20  p-1 "
               />
             </Link>
-          </div>
 
           <div className='hidden text-sm sm:text-xs md:text-sm lg:text-lg xl:text-lg 2xl:text-lg w-fit sm:flex gap-14 text-purple-100 sm:text-blue-100 mr-2 justify-around align-middle p-7'>
             <div onClick={() => document.getElementById('pricing-section')?.scrollIntoView({ behavior: 'smooth' })
@@ -279,7 +336,7 @@ const HomePage = () => {
                 techLabels: null,
                 techQuantities: null
               })}
-              className="flex items-center bg-orange-500 text-white font-semibold px-4 py-1 rounded-full hover:bg-orange-600 cursor-pointer"
+              className="flex items-center bg-orange-500 text-white font-semibold px-4 py-1 rounded-full hover:bg-orange-600 cursor-pointer max-h-10"
             >
               <svg className='animate-jiggle-infinity' width="16" height="16" style={{ marginRight: '0.5rem' }} viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M4.18 7.27L10.684 13.73C11.381 12.923 15.794 8.192 18 14.654C18 14.654 17.768 18 13.006 18C9.639 18 6.155 13.962 3.716 11.654C1.626 9.692 0 7.154 0 4.846C0 0.116 3.252 0 3.252 0C10.684 2.538 4.181 7.27 4.181 7.27" fill="white" />
@@ -504,8 +561,8 @@ const HomePage = () => {
                 {banks.map((bank, i) => (
                   <li key={i} className="flex justify-center items-center  sm:basis-1/3 md:basis-1/4 lg:basis-1/5">
                     <Image
-                      src={darkMode ? `/${bank}` : `/brands_color/${bank}`}
-                      alt="brand_logo"
+                      src={darkMode ? `/taggedImages/Client-Logos-Dark/${bank.url}` : `/taggedImages/Client-Logos-Color/${bank.url}`}
+                      alt={darkMode ? bank.alt_dark:bank.alt_color}
                       width={100}
                       height={80}
                       className="cursor-pointer w-24  sm:w-20 md:w-28 lg:w-36 xl:w-40 h-auto mr-0 ml-0"
@@ -518,8 +575,8 @@ const HomePage = () => {
                 {banks.map((bank, i) => (
                   <li key={i} className="flex  justify-center items-center  sm:basis-1/3 md:basis-1/4 lg:basis-1/5">
                     <Image
-                      src={darkMode ? `/${bank}` : `/brands_color/${bank}`}
-                      alt="DataSack Solutions Logo"
+                      src={darkMode ? `/taggedImages/Client-Logos-Dark/${bank.url}` : `/taggedImages/Client-Logos-Color/${bank.url}`}
+                      alt={darkMode ? bank.alt_dark:bank.alt_color}
                       width={100}
                       height={80}
                       className="cursor-pointer  w-24 sm:w-20 md:w-28 lg:w-36 xl:w-40 h-auto ml-0 mr-0"

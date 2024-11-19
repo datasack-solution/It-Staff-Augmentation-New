@@ -99,12 +99,12 @@ const Pricing = () => {
     const [isEditModalOpen, setEditModalOpen] = useState(false)
     const [isModalOpen, setModalOpen] = useState<boolean>(false)
     // const [durationIndex, setDurationIndex] = useState<number>(6)
-    const { setIsCallUsModalOpen, isCallUsModalOpen,darkMode, quantities,setQuantities ,duration} = useCallUsModalState()
+    const { setIsCallUsModalOpen, isCallUsModalOpen, darkMode, quantities, setQuantities, duration } = useCallUsModalState()
 
     const techs = Object.values(quantities).flatMap(r => { return Object.keys(r) })
     const techQuantities = Object.values(quantities).flatMap(r => Object.values(r))
 
-    console.log('tech quantities: ',techQuantities)
+    console.log('tech quantities: ', techQuantities)
 
 
     useEffect(() => {
@@ -121,7 +121,7 @@ const Pricing = () => {
         return () => {
             document.body.classList.remove('overflow-hidden');
         };
-    }, [isEditModalOpen,isCallUsModalOpen.isOpen, isModalOpen, quantities, techs.length]);
+    }, [isEditModalOpen, isCallUsModalOpen.isOpen, isModalOpen, quantities, techs.length]);
 
 
     const handleIncreaseQuantity = (category: keyof Technologies, tech: string) => {
@@ -144,11 +144,11 @@ const Pricing = () => {
                 const { [tech]: _, ...updatedCategory } = currentCategory;
 
                 if (Object.keys(updatedCategory).length === 0) {
-                // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                    // eslint-disable-next-line @typescript-eslint/no-unused-vars
                     const { [category]: __, ...updatedCategories } = prev;
                     return updatedCategories;
                 }
-                
+
                 return {
                     ...prev,
                     [category]: updatedCategory,
@@ -252,7 +252,7 @@ const Pricing = () => {
 
 
                                         <svg onClick={() => removeTech(item)} className="cursor-pointer mr-5" width="20" height="20" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M18 0.5C8.25 0.5 0.5 8.25 0.5 18C0.5 27.75 8.25 35.5 18 35.5C27.75 35.5 35.5 27.75 35.5 18C35.5 8.25 27.75 0.5 18 0.5ZM24.75 26.75L18 20L11.25 26.75L9.25 24.75L16 18L9.25 11.25L11.25 9.25L18 16L24.75 9.25L26.75 11.25L20 18L26.75 24.75L24.75 26.75Z" fill={darkMode?'white':'black'} fillOpacity="0.3" />
+                                            <path d="M18 0.5C8.25 0.5 0.5 8.25 0.5 18C0.5 27.75 8.25 35.5 18 35.5C27.75 35.5 35.5 27.75 35.5 18C35.5 8.25 27.75 0.5 18 0.5ZM24.75 26.75L18 20L11.25 26.75L9.25 24.75L16 18L9.25 11.25L11.25 9.25L18 16L24.75 9.25L26.75 11.25L20 18L26.75 24.75L24.75 26.75Z" fill={darkMode ? 'white' : 'black'} fillOpacity="0.3" />
                                         </svg>
 
                                     </div>
@@ -263,10 +263,10 @@ const Pricing = () => {
                 </div>
 
                 <div onClick={() => setIsCallUsModalOpen({
-                     isOpen:true,
-                     hasTechs:true,
-                     techLabels:techs,
-                     techQuantities:techQuantities
+                    isOpen: true,
+                    hasTechs: true,
+                    techLabels: techs,
+                    techQuantities: techQuantities
                 })} className='animate-jiggle cursor-pointer float-right mr-5  w-fit p-3 flex justify-end text-white bg-orange-500 rounded-full text-xs font-semibold'>Get Pricing</div>
             </div>}
 
@@ -415,20 +415,52 @@ const Pricing = () => {
                     )}
 
                     <div className='mb-28 mt-8 text-black'>
-                        <DurationRangeSelector  />
+                        <DurationRangeSelector />
 
                         {techs.length > 0 && <div className="pt-5 m-auto">
                             <div onClick={() => setIsCallUsModalOpen({
-                                isOpen:true,
-                                hasTechs:true,
-                                techLabels:techs,
-                                techQuantities:techQuantities
+                                isOpen: true,
+                                hasTechs: true,
+                                techLabels: techs,
+                                techQuantities: techQuantities
                             })} className='animate-bounce-right m-auto cursor-pointer  w-fit p-3 text-white bg-orange-500 rounded-full text-xs font-semibold'>Get Pricing</div>
                         </div>}
                     </div>
                 </div>
-
             </div>
+
+            <div className='text-center xs:w-[100%] sm:w-[90%] md:w-[90%] lg:w-[60%]  m-auto flex flex-col gap-5 px-10 text-2xl'>
+                <p className='font-semibold text-xl'>Dear IT Leader,</p>
+
+                <p className='text-base text-left'>We know—it&apos;s tough building the right IT team.,</p>
+                <p className='text-base text-left'>We understand that you&apos;re managing tight schedules and deliverables while trying
+                    to find the perfect people.</p>
+                <p className='text-base text-left'>Do you hire full time contract employees, or try IT staff augmentation? Decisions,
+                    decisions.</p>
+                <p className='text-base text-left'>Feeling the pressure as your to-do list keeps growing?</p>
+                <p className='text-base text-left'>And to top it all off, you&apos;re being stretched thin between delivering projects and
+                    managing recruitment.</p>
+                <p className='text-base text-left'>One minute they&apos;re trying to hire… The next, they&apos;re putting out fires because they lack
+                    the right resources.</p>
+                <p className='text-base text-left'>Don&apos;t worry, you&apos;re not alone.</p>
+                <p className='text-base text-left'>At DataSack Solutions, we make it easier and faster for you. Whether you need IT
+                    Managed Services, IT staff augmentation, IT staffing, full time contract employees, or
+                    IT contract staffing for your next big project, we&apos;re your trusted IT Staffing Agency,
+                    here to strengthen your IT and drive your business forward.</p>
+                <p className='text-base text-left'>We handle the tricky stuff, so you can focus on growing your business and maybe
+                even get a good night&apos;s sleep.</p>
+                <p className='text-base text-left'>You&apos;re reading this because,</p>
+                <p className='text-base text-left'>you want more.</p>
+                <p className='text-base text-left'>More skilled talent.</p>
+                <p className='text-base text-left'>More opportunities to scale without stressing over hiring.</p>
+                <p className='text-base text-left'>With DataSack Solutions, you gain more than IT solutions—you gain a partner dedicated to driving your success.</p>
+                <p className='text-base text-left'>Let&apos;s take your business to the next level.</p>
+
+                <p></p>
+            </div>
+
+
+            <div className=' h-[1px] mt-10 w-[80%] m-auto border-[0.5px] border-dashed mb-10 border-orange-500'></div>
 
         </div>
     );
