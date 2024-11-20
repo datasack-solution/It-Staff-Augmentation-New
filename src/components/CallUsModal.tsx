@@ -5,7 +5,7 @@ import PhoneInput, { CountryData } from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 import GreetModal from "./GreetModal"
 import { TechQuantitiesType, useCallUsModalState } from "./CallUsContext"
-import { useForm, Controller, UseFormRegister, FieldErrors } from "react-hook-form";
+import { useForm, Controller, FieldErrors } from "react-hook-form";
 import { ClientRequestData, TransformedSkillsets } from "@/pages/api/userApi";
 
 export interface AddTechModalProps {
@@ -39,6 +39,8 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
     const [submitted, setSubmitted] = useState(false)
     const { darkMode, isCallUsModalOpen, setQuantities, quantities, duration } = useCallUsModalState()
     const [isLoading, setIsLoading] = useState(false)
+
+    // console.log("watch:",watch())
 
     const removeTech = (tech: string) => {
         setQuantities(prev => {
@@ -105,12 +107,12 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
             }
 
             // // if (emailSent) {
-            //     try {
-            //         await clientApiService.createClient(apiData);
-            //         // setSuccess(true);
-            //     } catch (apiError) {
-            //         console.error("Error creating client:", apiError);
-            //     }
+                // try {
+                //     await clientApiService.createClient(apiData);
+                //     // setSuccess(true);
+                // } catch (apiError) {
+                //     console.error("Error creating client:", apiError);
+                // }
             // }
         } else {
             console.log("without skills:", data)
@@ -127,12 +129,12 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
             }
 
             // // if (emailSent) {
-            //     try {
-            //         await clientApiService.createClient(data);
-            //         // setSuccess(true);
-            //     } catch (apiError) {
-            //         console.error("Error creating client:", apiError);
-            //     }
+                // try {
+                //     await clientApiService.createClient(data);
+                //     // setSuccess(true);
+                // } catch (apiError) {
+                //     console.error("Error creating client:", apiError);
+                // }
             // // }
         }
 
@@ -177,7 +179,12 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
             <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div className="relative">
-                        <CustomIndustryDropDown errors={errors} onChange={()=>clearErrors('industry')} register={register}/>
+                        <CustomIndustryDropDown errors={errors} onChange={(r)=>{
+                            console.log("r")
+                            if (r!=''){
+                                setValue('industry',r)
+                            }
+                        }}/>
                     </div>
 
                     <div>
@@ -308,13 +315,12 @@ export default CallUsModal
 
 
 const CustomIndustryDropDown:FunctionComponent<{
-    register:UseFormRegister<FormData>,
     errors:FieldErrors<FormData>,
     onChange:(v:string)=>void
 
-}> = ({ register, errors, onChange })=> {
+}> = ({  errors, onChange })=> {
     const industries = ["Technology", "Finance", "Health Care"];
-    const [selectedIndustry, setSelectedIndustry] = useState("");
+    const [selectedIndustry, setSelectedIndustry] = useState("Technology");
     const [isOpen, setIsOpen] = useState(false);
 
     const handleSelect = (industry:string) => {
@@ -328,11 +334,17 @@ const CustomIndustryDropDown:FunctionComponent<{
             <label className="text-gray-600 dark:text-gray-300 text-sm">
                 Select Your Industry
             </label>
+
             <div
                 className="w-full border border-gray-300 dark:border-gray-600 bg-transparent rounded-full py-2 px-4 cursor-pointer outline-none focus:ring-2 focus:ring-orange-500"
                 onClick={() => setIsOpen(!isOpen)}
             >
-                {selectedIndustry || "Select an industry"}
+                <div className="flex justify-between">
+                <div>{selectedIndustry || "Select an industry"}</div>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-5">
+  <path fillRule="evenodd" d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z" clipRule="evenodd" />
+</svg>
+</div>
             </div>
 
             {isOpen && (
@@ -354,11 +366,11 @@ const CustomIndustryDropDown:FunctionComponent<{
             )}
 
             
-            <input
+            {/* <input
                 type="hidden"
                 value={selectedIndustry}
                 {...register("industry", { required: "Please select your industry" })}
-            />
+            /> */}
         </div>
     );
 }

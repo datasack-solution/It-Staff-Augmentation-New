@@ -267,7 +267,7 @@ const HomePage = () => {
         py-4
         z-100
         space-y-4
-        bg-opacity-50     
+        bg-opacity-80     
         backdrop-blur-3xl 
         backdrop-brightness-75
         rounded-3xl 
