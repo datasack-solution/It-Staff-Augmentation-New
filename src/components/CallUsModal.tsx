@@ -1,12 +1,12 @@
-import { FunctionComponent, useState } from "react"
-import Slider, { Settings } from 'react-slick';
-import emailJs from '@emailjs/browser';
-import PhoneInput, { CountryData } from 'react-phone-input-2'
-import 'react-phone-input-2/lib/style.css'
-import GreetModal from "./GreetModal"
-import { TechQuantitiesType, useCallUsModalState } from "./CallUsContext"
-import { useForm, Controller, FieldErrors } from "react-hook-form";
 import { ClientRequestData, TransformedSkillsets } from "@/pages/api/userApi";
+import emailJs from '@emailjs/browser';
+import { FunctionComponent, useState } from "react";
+import { Controller, FieldErrors, useForm } from "react-hook-form";
+import PhoneInput, { CountryData } from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css';
+import Slider, { Settings } from 'react-slick';
+import { TechQuantitiesType, useCallUsModalState } from "./CallUsContext";
+import GreetModal from "./GreetModal";
 
 export interface AddTechModalProps {
     onConfirm: () => void
@@ -34,13 +34,15 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
         setError,
         clearErrors,
         formState: { errors },
-    } = useForm<FormData>();
+    } = useForm<FormData>({
+        defaultValues:{
+            industry:'Technology'
+        }
+    });
 
     const [submitted, setSubmitted] = useState(false)
     const { darkMode, isCallUsModalOpen, setQuantities, quantities, duration } = useCallUsModalState()
     const [isLoading, setIsLoading] = useState(false)
-
-    // console.log("watch:",watch())
 
     const removeTech = (tech: string) => {
         setQuantities(prev => {
@@ -128,14 +130,14 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
                 return;
             }
 
-            // // if (emailSent) {
+            // if (emailSent) {
                 // try {
                 //     await clientApiService.createClient(data);
                 //     // setSuccess(true);
                 // } catch (apiError) {
                 //     console.error("Error creating client:", apiError);
                 // }
-            // // }
+            // }
         }
 
         setIsLoading(false);
@@ -180,7 +182,6 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div className="relative">
                         <CustomIndustryDropDown errors={errors} onChange={(r)=>{
-                            console.log("r")
                             if (r!=''){
                                 setValue('industry',r)
                             }
@@ -322,6 +323,7 @@ const CustomIndustryDropDown:FunctionComponent<{
     const industries = ["Technology", "Finance", "Health Care"];
     const [selectedIndustry, setSelectedIndustry] = useState("Technology");
     const [isOpen, setIsOpen] = useState(false);
+
 
     const handleSelect = (industry:string) => {
         setSelectedIndustry(industry);

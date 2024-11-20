@@ -5,6 +5,7 @@ import { useCallUsModalState } from "../CallUsContext";
 import emailJs from '@emailjs/browser';
 import GreetModal from "../GreetModal";
 import { useForm } from "react-hook-form";
+import Link from "next/link";
 
 interface SimpleUserDetail {
     name: string,
@@ -195,11 +196,11 @@ const Footer = () => {
                         <div className="space-y-5 text-center md:text-start  xs:items-center sm:items-center md:items-center lg:items-start">
                             <div className="flex items-center gap-5 xs:text-sm xs:flex-col sm:flex-col md:flex-col lg:flex-row">
                                 <Image alt="Experience confidence with Top IT Managed Service Providers Saudi Arabia, delivering proactive solutions, symbolized by the Saudi flag" src={'/taggedImages/saudiFlag.webp'} width={50} height={50} />
-                                <p className="w-1/2">Building no: 2345, Ahmed AL Tamimi AL Malaz, Riyadh 12831, Saudi Arabia</p>
+                                <Link className="w-1/2" href={'https://maps.app.goo.gl/CxePLTdFTx34i9Gi7'} target="_blank"><p >Building no: 2345, Ahmed AL Tamimi AL Malaz, Riyadh 12831, Saudi Arabia</p></Link>
                             </div>
                             <div className="flex items-center gap-5 xs:text-sm xs:flex-col sm:flex-col md:flex-col lg:flex-row">
                                 <Image alt="indian-logo" src={'/taggedImages/indianFlag.png'} width={50} height={50} />
-                                <p className="w-1/2">No: 23, Kamarajapuram - East Karur, Tamilnadu 639002, India.</p>
+                                <Link className="w-1/2" href={'https://maps.app.goo.gl/sFRc86h6DGKqzm857?g_st=ac'} target="_blank"><p >No: 23, Kamarajapuram - East Karur, Tamilnadu 639002, India.</p></Link>
                             </div>
                         </div>
                     </div>
@@ -207,79 +208,78 @@ const Footer = () => {
 
 
                 {/* right section - quick form */}
-                <div className=" 
-                hidden 
+                <div className=" hidden 
                 xl:mr-[10%]
-
             lg:relative 
             xl:relative 
             2xl:relative 
             lg:block 
             xl:block 
             2xl:block  
-
             2xl:w-1/3 
             xl:w-2/5 
             md:w-full
-
-
+            sm:h-1/2
+            bg-opacity-80
             bg-white
             dark:bg-[#252525] 
             text-black 
             dark:text-white
-            rounded-lg 
-            p-5 
-            shadow-lg 
-            space-y-6">
-                    <h3 className="text-2xl font-bold text-center">Quick Enquiry</h3>
-                    <form className="space-y-8" onSubmit={handleSubmit(onSubmit)}>
-                        <fieldset className="w-full m-auto h-auto border-2 rounded-full px-5 py-1  focus:outline-none focus:border-orange-500">
-                            <legend className="px-2">Name</legend>
-                            <input
-                                placeholder="Enter Your Name"
-                                type="text"
-                                className="w-full outline-none rounded-full px-2 py-1 bg-transparent"
-                                {...register("name", { required: "Name is required" })}
-                            />
-                            {errors.name && <p className="text-red-500 text-sm ml-2 p-1">{errors.name.message}</p>}
-                        </fieldset>
+            rounded-2xl 
+            p-[1px] 
+            ">
+                    <div className="absolute  inset-0 bg-gradient-to-b from-orange-300 via-transparent to-orange-300 opacity-0 dark:opacity-100 rounded-2xl"></div>
+                    <div className="relative dark:bg-[rgba(0,0,0,0.8)] bg-white bg-opacity-25 p-5 rounded-2xl space-y-6 h-full">
+                        <h3 className="text-2xl font-bold text-center">Quick Enquiry</h3>
+                        <form className="space-y-8" onSubmit={handleSubmit(onSubmit)}>
+                            <fieldset className="w-full m-auto h-auto border-2 border-gray-400 rounded-full px-5 py-1  focus:outline-none focus:border-orange-500">
+                                <legend className="px-2">Name</legend>
+                                <input
+                                    placeholder="Enter Your Name"
+                                    type="text"
+                                    className="w-full outline-none rounded-full px-2 py-1 bg-transparent"
+                                    {...register("name", { required: "Name is required" })}
+                                />
+                                {errors.name && <p className="text-red-500 text-sm ml-2 p-1">{errors.name.message}</p>}
+                            </fieldset>
 
 
-                        <fieldset className="w-full m-auto h-auto border-2 rounded-full px-5 py-1">
-                            <legend className="px-2">Phone Number</legend>
-                            <input
-                                placeholder="Enter Your Phone Number"
-                                type="number"
-                                className="w-full outline-none rounded-full px-2 py-1 bg-transparent"
-                                {...register('phone', { required: "Phone is required" })}
+                            <fieldset className="w-full m-auto h-auto border-2 border-gray-400 rounded-full px-5 py-1">
+                                <legend className="px-2">Phone Number</legend>
+                                <input
+                                    placeholder="Enter Your Phone Number"
+                                    type="number"
+                                    className="w-full outline-none rounded-full px-2 py-1 bg-transparent"
+                                    {...register('phone', { required: "Phone is required" })}
 
-                            />
-                            {errors.phone && <p className="text-red-500 text-sm ml-2 p-1" >{errors.phone.message}</p>}
+                                />
+                                {errors.phone && <p className="text-red-500 text-sm ml-2 p-1" >{errors.phone.message}</p>}
 
-                        </fieldset>
-
-
-
-                        <fieldset className="w-full m-auto h-auto border-2 rounded-full px-5 py-1">
-                            <legend className="px-2">Email</legend>
-                            <input
-                                placeholder="Enter Your Email"
-                                type="email"
-                                className="w-full outline-none rounded-full px-2 py-1 bg-transparent"
-                                {...register("email", {
-                                    required: "Corporate email is required",
-                                    pattern: { value: emailRegex, message: "Enter a valid email address" },
-                                })} />
-                            {errors.email && <p className="text-red-500 text-sm ml-2 p-1">{errors.email.message}</p>}
-                        </fieldset>
+                            </fieldset>
 
 
-                        <div className="pt-[30%]">
-                            <button type="submit" className="w-full py-3 bg-orange-500 text-white rounded-lg font-bold">
-                                Get Enquiry
-                            </button>
-                        </div>
-                    </form>
+
+                            <fieldset className="w-full m-auto h-auto border-2 border-gray-400 rounded-full px-5 py-1">
+                                <legend className="px-2">Email</legend>
+                                <input
+                                    placeholder="Enter Your Email"
+                                    type="email"
+                                    className="w-full outline-none rounded-full px-2 py-1 bg-transparent"
+                                    {...register("email", {
+                                        required: "Corporate email is required",
+                                        pattern: { value: emailRegex, message: "Enter a valid email address" },
+                                    })} />
+                                {errors.email && <p className="text-red-500 text-sm ml-2 p-1">{errors.email.message}</p>}
+                            </fieldset>
+
+
+                            <div className="pt-[30%]">
+                                <button type="submit" className="w-full py-3 bg-orange-500 text-white rounded-lg font-bold">
+                                    Get Enquiry
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
 
             </div>
