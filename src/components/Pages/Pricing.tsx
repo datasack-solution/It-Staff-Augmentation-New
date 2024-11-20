@@ -427,7 +427,7 @@ const Pricing = () => {
                 </div>
             </div>
 
-            <div className='text-center xs:w-[100%] sm:w-[90%] md:w-[90%] lg:w-[60%]  m-auto flex flex-col gap-5 px-10 text-2xl'>
+            <div className='text-center xs:w-[100%] text-black dark:text-white sm:w-[90%] md:w-[90%] lg:w-[60%]  m-auto flex flex-col gap-5 px-10 text-2xl'>
                 <p className='font-semibold text-xl'>Dear IT Leader,</p>
 
                 <p className='text-base text-left'>We know—it&apos;s tough building the right IT team.,</p>
