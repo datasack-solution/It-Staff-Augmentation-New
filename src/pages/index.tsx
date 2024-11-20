@@ -58,14 +58,14 @@ export default function Home() {
       <meta property="og:type" content="website" />
       <meta property="og:site_name" content="IT Staffing Agency Saudi Arabia | Free Consultation" />
       <meta property="og:url" content="https://itstaffaugmentation.datasack.in/" />
-      <meta property="og:image" content="https://itstaffaugmentation.datasack.in/Icons/card_logo.webp" />
+      <meta property="og:image" content="https://itstaffaugmentation.datasack.in/taggedImages/card_logo.webp" />
       <meta property="og:image:width" content="1000" />
       <meta property="og:image:height" content="1000" />
       <meta property="og:locale" content="en_US" />
       <meta property="twitter:title" content="IT Staffing Agency Saudi Arabia | Free Consultation" />
       <meta property="twitter:description" content="Looking for IT Staff Augmentation Services? Our IT staffing enhances your workforce & meets project needs." />
       <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:image" content="https://itstaffaugmentation.datasack.in/Icons/card_logo.webp" />
+      <meta property="twitter:image" content="https://itstaffaugmentation.datasack.in/taggedImages/card_logo.webp" />
       <meta property="twitter:image:alt" content="Discover the advantages of an IT staffing agency Riyadh to enhance your project delivery." />
       <link rel="icon" href="/favicon.ico" />
 

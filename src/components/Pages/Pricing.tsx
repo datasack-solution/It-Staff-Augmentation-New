@@ -104,8 +104,6 @@ const Pricing = () => {
     const techs = Object.values(quantities).flatMap(r => { return Object.keys(r) })
     const techQuantities = Object.values(quantities).flatMap(r => Object.values(r))
 
-    console.log('tech quantities: ', techQuantities)
-
 
     useEffect(() => {
         if (techs.length == 0) {
