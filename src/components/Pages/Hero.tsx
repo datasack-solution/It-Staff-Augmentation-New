@@ -169,7 +169,6 @@ const HomePage = () => {
     }
   ];
   
-  
   return (
     <div id='hero_section' className='2xl:h-[1000px] xl:h-[900px] lg:h-[900px] md:h-[750px] sm:h-[750px] h-[750px] max-w-screen mb-10 overflow-hidden hide-scrollbar'>
 

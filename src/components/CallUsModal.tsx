@@ -366,13 +366,6 @@ const CustomIndustryDropDown:FunctionComponent<{
             {errors.industry && (
                 <p className="text-red-500 text-sm">{errors.industry.message}</p>
             )}
-
-            
-            {/* <input
-                type="hidden"
-                value={selectedIndustry}
-                {...register("industry", { required: "Please select your industry" })}
-            /> */}
         </div>
     );
 }
