@@ -5,8 +5,8 @@ import PhoneInput, { CountryData } from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 import GreetModal from "./GreetModal"
 import { TechQuantitiesType, useCallUsModalState } from "./CallUsContext"
-import { useForm, Controller } from "react-hook-form";
-import {   ClientRequestData, TransformedSkillsets } from "@/pages/api/userApi";
+import { useForm, Controller, UseFormRegister, FieldErrors } from "react-hook-form";
+import { ClientRequestData, TransformedSkillsets } from "@/pages/api/userApi";
 
 export interface AddTechModalProps {
     onConfirm: () => void
@@ -96,7 +96,7 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
 
             try {
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                await emailJs.send(serviceId, templateIdWithTechnologies, {...apiData, nda:data.nda?'Yes':'No'} as Record<string, any>, publicKey);
+                await emailJs.send(serviceId, templateIdWithTechnologies, { ...apiData, nda: data.nda ? 'Yes' : 'No' } as Record<string, any>, publicKey);
                 // emailSent = true;
             } catch (emailError) {
                 console.error("Error sending email:", emailError);
@@ -118,7 +118,7 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
 
             try {
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                await emailJs.send(serviceId, templateIdWithGreet, {...data, nda:data.nda?'Yes':'No'} as Record<string, any>, publicKey);
+                await emailJs.send(serviceId, templateIdWithGreet, { ...data, nda: data.nda ? 'Yes' : 'No' } as Record<string, any>, publicKey);
                 // emailSent = true;
             } catch (emailError) {
                 console.error("Error sending email:", emailError);
@@ -150,7 +150,13 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
 
     return <div className="fixed  overflow-auto inset-0 flex items-center justify-center bg-gray-900 text-black dark:text-white bg-opacity-50 z-[62]">
         <div className={`bg-white dark:bg-[#252525] ${isLoading && 'blur-[3px]'} animate-flyinup w-full max-h-[600px] md:max-h-screen lg:max-h-screen xl:max-h-screen 2xl:max-h-screen  max-w-3xl mx-4 md:mx-0 p-6 rounded-lg shadow-lg relative overflow-auto`}>
-            <button onClick={onConfirm} className="absolute top-4 right-4 text-gray-400 hover:text-gray-600" aria-label="Close Modal">&times;</button>
+            <button onClick={onConfirm} className="absolute top-4 right-4  hover:text-gray-600 " aria-label="Close Modal">
+
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="gray" className="size-6">
+  <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z" clipRule="evenodd" />
+</svg>
+
+            </button>
 
 
             {techs.length > 0 && <div>
@@ -171,17 +177,7 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
             <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div className="relative">
-                        <label className="text-gray-600 dark:text-gray-300 text-sm">Select Your Industry</label>
-                        <select
-                            {...register("industry", { required: "Please select your industry" })}
-                            className="w-full border border-gray-300 dark:border-gray-600 bg-transparent rounded-full py-2 px-4 outline-none focus:ring-2 focus:ring-orange-500"
-                        >
-                            <option value="">Select an industry</option>
-                            <option value="Technology">Technology</option>
-                            <option value="Finance">Finance</option>
-                            <option value="Health Care">Health Care</option>
-                        </select>
-                        {errors.industry && <p className="text-red-500 text-sm">{errors.industry.message}</p>}
+                        <CustomIndustryDropDown errors={errors} onChange={()=>clearErrors('industry')} register={register}/>
                     </div>
 
                     <div>
@@ -308,6 +304,66 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
 }
 
 export default CallUsModal
+
+
+
+const CustomIndustryDropDown:FunctionComponent<{
+    register:UseFormRegister<FormData>,
+    errors:FieldErrors<FormData>,
+    onChange:(v:string)=>void
+
+}> = ({ register, errors, onChange })=> {
+    const industries = ["Technology", "Finance", "Health Care"];
+    const [selectedIndustry, setSelectedIndustry] = useState("");
+    const [isOpen, setIsOpen] = useState(false);
+
+    const handleSelect = (industry:string) => {
+        setSelectedIndustry(industry);
+        setIsOpen(false);
+        onChange(industry);
+    };
+
+    return (
+        <div className="relative">
+            <label className="text-gray-600 dark:text-gray-300 text-sm">
+                Select Your Industry
+            </label>
+            <div
+                className="w-full border border-gray-300 dark:border-gray-600 bg-transparent rounded-full py-2 px-4 cursor-pointer outline-none focus:ring-2 focus:ring-orange-500"
+                onClick={() => setIsOpen(!isOpen)}
+            >
+                {selectedIndustry || "Select an industry"}
+            </div>
+
+            {isOpen && (
+                <ul className="absolute z-10 w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg mt-1 shadow-lg">
+                    {industries.map((industry) => (
+                        <li
+                            key={industry}
+                            onClick={() => handleSelect(industry)}
+                            className="px-4 py-2 hover:bg-orange-500 hover:text-white cursor-pointer"
+                        >
+                            {industry}
+                        </li>
+                    ))}
+                </ul>
+            )}
+
+            {errors.industry && (
+                <p className="text-red-500 text-sm">{errors.industry.message}</p>
+            )}
+
+            
+            <input
+                type="hidden"
+                value={selectedIndustry}
+                {...register("industry", { required: "Please select your industry" })}
+            />
+        </div>
+    );
+}
+
+
 
 
 
