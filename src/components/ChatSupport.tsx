@@ -19,8 +19,7 @@ interface Question {
   answer: string;
 }
 const currentTime = new Date().getHours() 
-const greet = currentTime < 12 ? 'Good Morning' : currentTime >12 && currentTime<18 ? 'Good Afternoon' : 'Good Evening'
-
+const greet = currentTime < 12 ? 'Good Morning' : currentTime >=12 && currentTime<=18 ? 'Good Afternoon' : 'Good Evening'
 
 const positiveResponses: Record<string, string[]> = {
   "ok": [
