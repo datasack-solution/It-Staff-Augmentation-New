@@ -1,4 +1,4 @@
-import { ClientRequestData, TransformedSkillsets } from "@/pages/api/userApi";
+import {  ClientRequestData, TransformedSkillsets } from "@/pages/api/userApi";
 import emailJs from '@emailjs/browser';
 import { FunctionComponent, useState } from "react";
 import { Controller, FieldErrors, useForm } from "react-hook-form";

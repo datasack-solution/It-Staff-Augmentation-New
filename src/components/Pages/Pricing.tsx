@@ -87,18 +87,10 @@ export const technologies: Technologies = {
     ]
 };
 
-// const durationScale = [
-//     '', '1 month', '2 months', '3 months', '4 months', '5 months', '6 months',
-//     '7 months', '8 months', '9 months', '10 months', '11 months',
-//     '1 year', '1.2 years', '1.5 years', '1.7 years', '2+ years'
-// ];
-
 const Pricing = () => {
     const [selectedCategory, setSelectedCategory] = useState<keyof typeof technologies | null>('SAP');
-    // const [quantities, setQuantities] = useState<{ [category: string]: { [tech: string]: number } }>({});
     const [isEditModalOpen, setEditModalOpen] = useState(false)
     const [isModalOpen, setModalOpen] = useState<boolean>(false)
-    // const [durationIndex, setDurationIndex] = useState<number>(6)
     const { setIsCallUsModalOpen, isCallUsModalOpen, darkMode, quantities, setQuantities, duration } = useCallUsModalState()
 
     const techs = Object.values(quantities).flatMap(r => { return Object.keys(r) })
@@ -216,7 +208,7 @@ const Pricing = () => {
     return (
         <div id='pricing-section' className={`container mx-auto lg:p-10`}>
             {techs.length > 0 && <div
-                className="skill-footer text-black animate-flyinup sm:fixed md:fixed lg:fixed xl:fixed 2xl:fixed w-screen z-50 bg-gray-50 dark:bg-[rgba(30,30,30,1)] bottom-0 left-0 p-4 font-sans text-sm font-normal break-words whitespace-normal   shadow-lg border-blue-gray-50 text-blue-gray-500 shadow-blue-gray-500/10 focus:outline-none">
+                className="skill-footer text-black animate-flyinup sm:fixed md:fixed lg:fixed xl:fixed 2xl:fixed w-screen z-50 bg-gray-50 dark:bg-[rgba(30,30,30,1)] bottom-0 left-0 p-4 font-sans text-sm font-normal break-words whitespace-normal  shadow-lg border-blue-gray-50 text-blue-gray-500 shadow-blue-gray-500/10 focus:outline-none ">
                 <div className='flex justify-between'>
                     <div className='flex gap-5'>
                         <h2 className='text-orange-500 font-semibold text-lg'>Selected Technologies</h2>
@@ -228,25 +220,25 @@ const Pricing = () => {
                     </svg>
                 </div>
 
-                <div className='flex gap-5 mt-2 overflow-x-hidden w-full flex-wrap max-h-28 text-black'>
+                <div className='flex gap-5 mt-2 overflow-x-hidden w-full flex-wrap max-h-28 max-h-600:max-h-12 max-h-730:max-h-14 text-black'>
                     {techs.map((item, index) => {
                         return (
-                            <div key={index} className="animate-bounce-right relative flex items-center justify-center p-0.5 rounded-full">
+                            <div key={index} className="animate-bounce-right relative flex items-center justify-center p-[2px] rounded-full">
                                 <div className="absolute inset-0 bg-gradient-to-r from-orange-200 via-transparent to-orange-50 
-                                                                        dark:from-[rgba(253,253,253,0.69)] dark:via-[rgba(128,128,128,1)] dark:to-[rgba(128,128,128,1)]
+                                                                        dark:from-[rgba(253,253,253,0.59)] dark:via-[rgba(128,128,128,1)] dark:to-[rgba(128,128,128,0.5)]
 
                                 rounded-full"></div>
 
                                 <div className="relative items-center justify-center rounded-full dark:text-white">
 
                                     <div className="flex items-center bg-white
-                                    dark:bg-[rgba(128,128,128,1)]
+                                    dark:bg-[#494949]
                                     
-                                    rounded-full p-2 gap-2">
+                                    rounded-full p-1 gap-1">
 
                                         <span>{item}</span>
 
-                                        <span className="text-black dark:text-white rounded-full px-2 py-1 text-xs text-center justify-center bg-[rgba(238,123,34,0.14)] dark:bg-[rgba(255,255,255,0.17)]">{techQuantities[index]}</span>
+                                        <span className="text-black dark:text-white rounded-full px-2 py-1 text-xs text-center justify-center bg-[rgba(238,123,34,0.14)] dark:bg-[rgba(255,255,255,0.27)]">{techQuantities[index]}</span>
 
 
                                         <svg onClick={() => removeTech(item)} className="cursor-pointer mr-5" width="20" height="20" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -412,10 +404,10 @@ const Pricing = () => {
                         <p className="text-gray-500 dark:text-white">Please select a category to view its technologies.</p>
                     )}
 
-                    <div className='mb-28 mt-8 text-black'>
+                    <div className='pb-10 h-fit mt-8 text-black'>
                         <DurationRangeSelector />
 
-                        {techs.length > 0 && <div className="pt-5 m-auto">
+                        {techs.length > 0 && <div className="pt-10 m-auto">
                             <div onClick={() => setIsCallUsModalOpen({
                                 isOpen: true,
                                 hasTechs: true,
@@ -427,7 +419,7 @@ const Pricing = () => {
                 </div>
             </div>
 
-            <div className='text-center xs:w-[100%] text-black dark:text-white sm:w-[90%] md:w-[90%] lg:w-[60%]  m-auto flex flex-col gap-5 px-10 text-2xl'>
+            <div className='text-center xs:w-[100%] text-black dark:text-white sm:w-[90%] md:w-[90%] lg:w-[60%]  m-auto mt-10 flex flex-col gap-5 px-10 text-2xl'>
                 <p className='font-semibold text-xl'>Dear IT Leader,</p>
 
                 <p className='text-base text-left'>We know—it&apos;s tough building the right IT team.,</p>
@@ -446,7 +438,7 @@ const Pricing = () => {
                     IT contract staffing for your next big project, we&apos;re your trusted IT Staffing Agency,
                     here to strengthen your IT and drive your business forward.</p>
                 <p className='text-base text-left'>We handle the tricky stuff, so you can focus on growing your business and maybe
-                even get a good night&apos;s sleep.</p>
+                    even get a good night&apos;s sleep.</p>
                 <p className='text-base text-left'>You&apos;re reading this because,</p>
                 <p className='text-base text-left'>you want more.</p>
                 <p className='text-base text-left'>More skilled talent.</p>

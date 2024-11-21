@@ -258,7 +258,6 @@ const Footer = () => {
                             </fieldset>
 
 
-
                             <fieldset className="w-full m-auto h-auto border-2 border-gray-400 rounded-full px-5 py-1">
                                 <legend className="px-2">Email</legend>
                                 <input
@@ -285,9 +284,10 @@ const Footer = () => {
             </div>
 
             {/* bottom logo certification */}
-            <div className="absolute bottom-0 w-full text-center py-4 bg-black/60 text-white text-sm">
-                <Image src="/taggedImages/logo.webp" alt="Transform your workforce with the Best IT Staffing Agency Saudi Arabia, providing innovative hiring solutions." width={120} height={30} className="inline-block" />
+            <div className="absolute bottom-0 w-full text-center align-middle py-4 bg-black/60 text-white text-sm">
+                <Link className="inline-block" href={'https://www.datasack.in'} target="_blank"><Image src="/taggedImages/logo.webp" alt="Transform your workforce with the Best IT Staffing Agency Saudi Arabia, providing innovative hiring solutions." width={120} height={30} className="inline-block"/></Link>
                 <p className="inline-block ml-4">ISO/IEC 27001:2022 CERTIFIED</p>
+                <p className="xs:block sm:block md:inline-block ml-4">@2024</p>
             </div>
         </div>
     );

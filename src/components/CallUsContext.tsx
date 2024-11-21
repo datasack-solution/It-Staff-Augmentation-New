@@ -34,12 +34,32 @@ export const CallUsModalProvider: React.FC<{ children: React.ReactNode }> = ({ c
   const [quantities, setQuantities] = useState<TechQuantitiesType>({});
   const [duration, setDuration] = useState<string>('6 months');
 
+
   const [isOpened, setIsOpened] = useState(false)
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(()=>{
     setIsOpened(false)
   },[])
+
+  useEffect(() => {
+    const handleBeforeUnload = (event:BeforeUnloadEvent) => {
+  const techs = Object.values(quantities).flatMap(r => { return Object.keys(r) })
+        if (techs.length>0) {
+            event.preventDefault();
+            event.returnValue = "Are you sure you want to leave this page?"; //Modern browsers (Chrome 51+, Safari 9.1+, Firefox 48+) ignore the returnValue property and do not display a confirmation dialog.
+            //Legacy browsers (Internet Explorer, older versions of Chrome and Safari) may still display a confirmation dialog if returnValue is set.
+        }
+    };
+
+    // Add the event listener
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+        window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+}, [quantities]);
 
   useEffect(() => {
     if (isCallUsModalOpen.isOpen) {

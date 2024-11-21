@@ -14,7 +14,10 @@ const config: Config = {
       screens:{
         xs:{
           max:'641px'
-        }
+        },
+        'max-h-730': { raw: '(max-height: 730px)' },
+        'max-h-685': { raw: '(max-height: 686px)' }, //this is for get pricing is disturb add custom tech dialog, in nest hub device 1024x600
+        'max-h-600': { raw: '(max-height: 601px)' },
       },
       fontSize: {
         'xxs': '0.625rem',
