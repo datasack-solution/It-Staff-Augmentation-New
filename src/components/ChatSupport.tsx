@@ -11,6 +11,7 @@ interface Message {
 interface UserDetails {
   name: string;
   email: string;
+  country:string
 }
 
 interface Question {
@@ -261,17 +262,19 @@ const ChatScreen: FunctionComponent<{
 }) => {
     const initialTime = formatTime(new Date())
     const [messages, setMessages] = useState<Message[]>([{
-      sender: 'bot',
-      text: 'Please Enter your name.',
-      time: initialTime
-    }]);
+      sender:'bot',
+      text:'Please, Enter your name.',
+      time:initialTime
+    }],);
     const [userInput, setUserInput] = useState<string>("");
     const [step, setStep] = useState<number>(0);
     const [loading, setLoading] = useState(false)
-    const [userDetails, setUserDetails] = useState<UserDetails>({ name: "", email: "" });
+    const [userDetails, setUserDetails] = useState<UserDetails>({ name: "", email: "",country:"" });
     const chatEndRef = useRef<HTMLDivElement | null>(null);
     const chatRef = useRef<HTMLDivElement | null>(null);
     const [isMinimized, setIsMinimized] = useState(false);
+
+console.log("messages: ",messages)
 
 
     const handleMouseDown = (e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
@@ -407,7 +410,7 @@ const ChatScreen: FunctionComponent<{
       };
 
 
-      if (step !== 0 && step !== 1) {
+      if (step !== 0 && step !== 1 && step!==2) {
         setMessages([...messages, { sender: "user", time, text: defaultQuestions.find(e => e.id == parseInt(message) || e.question.toLowerCase().includes(message.toLowerCase()))?.question || message }]);
       } else {
         setMessages([...messages, { sender: 'user', time, text: message }])
@@ -434,9 +437,15 @@ const ChatScreen: FunctionComponent<{
           }
 
         setUserDetails((prev) => ({ ...prev, email: message }));
-        addBotMessage("Thank you 😊, How can I assist you today? ", 2);
+        // addBotMessage("Thank you 😊, How can I assist you today? ", 2);
+        addBotMessage("Which country are you from?",2)
 
-      } else {
+      }else if (step===2){
+        setUserDetails((prev) => ({ ...prev, country: message }));
+        addBotMessage("Thank you 😊, How can I assist you today? ", 3);
+      }
+      
+      else {
         const questionId = parseInt(message);
         if (!isNaN(questionId) && questionId >= 1 && questionId <= defaultQuestions.length) {
           const selectedQuestion = defaultQuestions.find((q) => q.id === questionId);
@@ -524,6 +533,7 @@ const ChatScreen: FunctionComponent<{
         </div>
 
         <div className="flex-1 p-4 overflow-y-auto hide-scrollbar space-y-4">
+          <div className="text-xs w-full m-auto text-center">To assist you further, could you please provide your Name, Email, and Country? This will help us offer a more personalized experience. Thank you!</div>
           {messages.map((msg, index) => (
             <div key={index} className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}>
               {msg.sender === "bot" && (
@@ -567,7 +577,7 @@ const ChatScreen: FunctionComponent<{
           <div ref={chatEndRef} />
         </div>
 
-        {step === 2 && (
+        {step === 3 && (
           <div className="h-10 px-7 overflow-hidden flex">
             <Slider {...settings} className="relative w-full whitespace-nowrap hide-scrollbar">
               {defaultQuestions.map((question) => (

@@ -36,7 +36,9 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
         formState: { errors },
     } = useForm<FormData>({
         defaultValues:{
-            industry:'Technology'
+            industry:'Technology',
+            time:new Date(new Date().setHours(10,0,0)).toLocaleTimeString(), //instead of showing ------, just show default time 10:00 am
+            nda:true, //we don't need this on form
         }
     });
 
@@ -250,7 +252,7 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
                     </div>
 
                     <div>
-                        <label className="text-gray-600 dark:text-gray-300 text-sm">Select Date</label>
+                        <label className="text-gray-600 dark:text-gray-300 text-sm">Preferred Date</label>
                         <input
                             type="date"
                             {...register("date", { required: "Please select a date" })}
@@ -260,7 +262,7 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
                     </div>
 
                     <div>
-                        <label className="text-gray-600 dark:text-gray-300 text-sm">Select Time</label>
+                        <label className="text-gray-600 dark:text-gray-300 text-sm">Preferred Time</label>
                         <input
                             type="time"
                             {...register("time", { required: "Please select a time" })}
@@ -271,15 +273,15 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
                 </div>
 
                 <div>
-                    <label className="text-gray-600 dark:text-gray-300 text-sm">Reason</label>
+                    <label className="text-gray-600 dark:text-gray-300 text-sm">Requirement Summary</label>
                     <textarea
-                        placeholder="Reason"
+                        placeholder="Requirement Summary"
                         {...register("reason")}
                         className="w-full border border-gray-300 dark:border-gray-600 bg-transparent rounded-lg py-2 px-4 outline-none focus:ring-2 focus:ring-orange-500"
                     ></textarea>
                 </div>
 
-                <div className="flex items-center space-x-2">
+                {/* <div className="flex items-center space-x-2">
                     <input
                         type="checkbox"
                         id="nda"
@@ -289,7 +291,7 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
                     <label htmlFor="nda" className="text-gray-600 dark:text-gray-300 text-sm">
                         I Want to Protect My Data by Signing an NDA
                     </label>
-                </div>
+                </div> */}
 
                 <div className="w-full text-center">
                     <button
@@ -297,7 +299,7 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
                         className="w-fit p-5 bg-orange-500 text-white font-semibold py-3 rounded-full hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
                         disabled={isLoading}
                     >
-                        Book Now
+                        Submit
                     </button>
                 </div>
             </form>
