@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef, KeyboardEvent, ChangeEvent, FunctionComponent } from "react";
 import ChatBotIcon from "./ChatBotIcon";
-import Slider, { Settings } from 'react-slick';
-import PhoneInput, { CountryData } from "react-phone-input-2";
+import PhoneInput from "react-phone-input-2";
 
 interface Message {
   sender: "user" | "bot";
@@ -311,7 +310,6 @@ const ChatScreen: FunctionComponent<{
     const chatEndRef = useRef<HTMLDivElement | null>(null);
     const chatRef = useRef<HTMLDivElement | null>(null);
     const [isMinimized, setIsMinimized] = useState(false);
-    const [chatInputEnable, setChatInputEnable] = useState(true)
 
     console.log("messages: ", messages)
 
@@ -411,24 +409,7 @@ const ChatScreen: FunctionComponent<{
       setIsMinimized((prev) => !prev);
     };
 
-
     console.log(userDetails)
-
-    const settings: Settings = {
-      dots: false,
-      infinite: true,
-      speed: 500,
-      variableWidth: true,
-      slidesToScroll: 1,
-      nextArrow: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#F37318" className="size-6">
-        <path fillRule="evenodd" d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clipRule="evenodd" />
-      </svg>
-      ,
-      prevArrow: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#F37318" className="size-6">
-        <path fillRule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z" clipRule="evenodd" />
-      </svg>,
-
-    };
 
     useEffect(() => {
       chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -482,7 +463,6 @@ const ChatScreen: FunctionComponent<{
         addBotMessage("Which country are you from? ", 3);
       }
       else if (step === 3) {
-        setChatInputEnable(false)
         addBotMessage("Please Select one of the following services. ", 4);
       } else if (step === 4) {
         addBotMessage(defaultReply(defaultQuestions1.find(r => r.id == parseInt(message))?.question || message), 5)
