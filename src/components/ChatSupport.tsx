@@ -533,7 +533,7 @@ console.log("messages: ",messages)
         </div>
 
         <div className="flex-1 p-4 overflow-y-auto hide-scrollbar space-y-4">
-          <div className="text-xs w-full m-auto text-center">To assist you further, could you please provide your Name, Email, and Country? This will help us offer a more personalized experience. Thank you!</div>
+          <div className="text-xs w-full m-auto text-center dark:text-white">To assist you further, could you please provide your Name, Email, and Country? This will help us offer a more personalized experience. Thank you!</div>
           {messages.map((msg, index) => (
             <div key={index} className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}>
               {msg.sender === "bot" && (
