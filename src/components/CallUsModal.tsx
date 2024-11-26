@@ -256,17 +256,17 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
                         <input
                             type="date"
                             {...register("date", { required: "Please select a date" })}
-                            className="w-full border text-black border-gray-300 dark:border-gray-600 bg-transparent rounded-full py-2 px-4 outline-none focus:ring-2 focus:ring-orange-500 dark:invert"
+                            className="w-full border min-h-11 text-black border-gray-300 dark:border-gray-600 bg-transparent rounded-full py-2 px-4 outline-none focus:ring-2 focus:ring-orange-500 dark:invert"
                         />
                         {errors.date && <p className="text-red-500 text-sm">{errors.date.message}</p>}
-                    </div>
+                    </div> 
 
                     <div>
                         <label className="text-gray-600 dark:text-gray-300 text-sm">Preferred Time</label>
                         <input
                             type="time"
                             {...register("time", { required: "Please select a time" })}
-                            className="w-full border text-black border-gray-300 dark:border-gray-600 bg-transparent rounded-full py-2 px-4 outline-none focus:ring-2 focus:ring-orange-500 dark:invert"
+                            className="w-full border min-h-11 text-black border-gray-300 dark:border-gray-600 bg-transparent rounded-full py-2 px-4 outline-none focus:ring-2 focus:ring-orange-500 dark:invert"
                         />
                         {errors.time && <p className="text-red-500 text-sm">{errors.time.message}</p>}
                     </div>
