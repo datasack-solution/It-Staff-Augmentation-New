@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, KeyboardEvent, ChangeEvent, FunctionComponent } from "react";
 import ChatBotIcon from "./ChatBotIcon";
 import PhoneInput from "react-phone-input-2";
+import { useCallUsModalState } from "./CallUsContext";
 
 interface Message {
   sender: "user" | "bot";
@@ -292,6 +293,7 @@ const ChatScreen: FunctionComponent<{
   onClose
 }) => {
     const initialTime = formatTime(new Date())
+    const { darkMode } = useCallUsModalState()
     const [messages, setMessages] = useState<Message[]>([
       {
         sender: 'bot',
@@ -579,7 +581,7 @@ const ChatScreen: FunctionComponent<{
                         speed={80}
                       /> */}
                     </div>
-                    <p className="float-right mt-1 text-xs">{msg.time}</p>
+                    <p className="float-right mt-1 text-xs text-black dark:text-white">{msg.time}</p>
                   </div>
                     : <div className="animate-pulse rounded-xl text-center justify-center m-auto">
                       <div className="flex gap-1 animate-bounce">
@@ -594,7 +596,7 @@ const ChatScreen: FunctionComponent<{
                 <div> <div className="bg-gray-200 dark:bg-gray-700 p-3 rounded-xl text-sm text-gray-800 dark:text-white max-w-xs">
                   {msg.text}
                 </div>
-                  <p className="float-start mt-1 text-xs">{msg.time}</p>
+                  <p className="float-start mt-1 text-xs text-black dark:text-white">{msg.time}</p>
                 </div>
               )}
             </div>
@@ -642,15 +644,19 @@ const ChatScreen: FunctionComponent<{
 
           {step == 2 && <div>
             <PhoneInput
+              onEnterKeyPress={(e) => !loading && handleKeyPress(e)}
               country="sa"
               value={userInput}
               onChange={(phone) => {
                 handleInputChange(phone)
               }}
               containerStyle={{ backgroundColor: 'transparent' }}
-              inputStyle={{ width: '100%', border: 'none', backgroundColor: 'transparent' }}
-              dropdownStyle={{ backgroundColor: 'white', color: 'gray',position:'absolute',bottom:30 }}
+              inputStyle={{ width: '100%', border: 'none', backgroundColor: 'transparent', color: darkMode ? 'white' : 'black', }}
+              dropdownStyle={{ backgroundColor: 'white', color: 'gray', position: 'absolute', bottom: 30 }}
               buttonStyle={{ backgroundColor: 'transparent', border: 'none' }}
+              inputProps={{
+                autoFocus: true,
+              }}
             />
           </div>}
           <button

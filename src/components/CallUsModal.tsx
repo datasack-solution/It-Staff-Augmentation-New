@@ -164,7 +164,6 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
 
             </button>
 
-
             {techs.length > 0 && <div>
                 <h2 className="text-3xl font-bold text-center text-orange-500 mb-5">Request <span className="text-black dark:text-white">Quotation For</span></h2>
                 <p className="text-center text-gray-500 dark:text-white mb-6">Here, Your selected technologies</p>
@@ -178,16 +177,14 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
                 <p className="text-center text-gray-500 dark:text-white mb-6">Level Up Your IT with DataSack Experts !!</p>
             </div>}
 
-
-
             <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div className="relative">
-                        <CustomIndustryDropDown errors={errors} onChange={(r)=>{
-                            if (r!=''){
-                                setValue('industry',r)
+                        <CustomIndustryDropDown errors={errors} onChange={(r) => {
+                            if (r != '') {
+                                setValue('industry', r)
                             }
-                        }}/>
+                        }} />
                     </div>
 
                     <div>
@@ -245,6 +242,7 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
                                     inputStyle={{ width: '100%', border: 'none', backgroundColor: 'transparent' }}
                                     dropdownStyle={{ backgroundColor: 'white', color: 'gray' }}
                                     buttonStyle={{ backgroundColor: 'transparent', border: 'none' }}
+                                    containerClass="w-full border border-gray-300 dark:border-gray-600 bg-transparent rounded-full py-1 px-4 outline-none focus:ring-2 focus:ring-orange-500"
                                 />
                             )}
                         />
@@ -259,7 +257,7 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
                             className="w-full border min-h-11 text-black border-gray-300 dark:border-gray-600 bg-transparent rounded-full py-2 px-4 outline-none focus:ring-2 focus:ring-orange-500 dark:invert"
                         />
                         {errors.date && <p className="text-red-500 text-sm">{errors.date.message}</p>}
-                    </div> 
+                    </div>
 
                     <div>
                         <label className="text-gray-600 dark:text-gray-300 text-sm">Preferred Time</label>
@@ -317,17 +315,17 @@ export default CallUsModal
 
 
 
-const CustomIndustryDropDown:FunctionComponent<{
-    errors:FieldErrors<FormData>,
-    onChange:(v:string)=>void
+const CustomIndustryDropDown: FunctionComponent<{
+    errors: FieldErrors<FormData>,
+    onChange: (v: string) => void
 
-}> = ({  errors, onChange })=> {
+}> = ({ errors, onChange }) => {
     const industries = ["Technology", "Finance", "Health Care"];
     const [selectedIndustry, setSelectedIndustry] = useState("Technology");
     const [isOpen, setIsOpen] = useState(false);
 
 
-    const handleSelect = (industry:string) => {
+    const handleSelect = (industry: string) => {
         setSelectedIndustry(industry);
         setIsOpen(false);
         onChange(industry);
@@ -344,11 +342,11 @@ const CustomIndustryDropDown:FunctionComponent<{
                 onClick={() => setIsOpen(!isOpen)}
             >
                 <div className="flex justify-between">
-                <div>{selectedIndustry || "Select an industry"}</div>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-5">
-  <path fillRule="evenodd" d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z" clipRule="evenodd" />
-</svg>
-</div>
+                    <div>{selectedIndustry || "Select an industry"}</div>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-5">
+                        <path fillRule="evenodd" d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z" clipRule="evenodd" />
+                    </svg>
+                </div>
             </div>
 
             {isOpen && (
