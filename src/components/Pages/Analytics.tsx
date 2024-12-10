@@ -131,7 +131,7 @@ const AnalyticsPage = () => {
 
             </div>
             <div className=" w-[40%] lg:mt-20 xl:mt-10">
-                <Image alt={darkMode ? "Empower your organization with the Best IT Staffing Agency Saudi Arabia, offering unparalleled recruitment solutions.":"Maximize efficiency with Top IT Staff Augmentation Services Saudi Arabia, tailored to meet your specific goals."} src={darkMode ? '/taggedImages/steps-dark.webp' : '/taggedImages/steps-light.webp'} width={550} height={400} className="mt-10" />
+                <Image alt={darkMode ? "Empower your organization with the Best IT Staffing Agency Saudi Arabia, offering unparalleled recruitment solutions.":"Maximize efficiency with Top IT Staff Augmentation Services Saudi Arabia, tailored to meet your specific goals."} src={darkMode ? 'taggedImages/steps-dark.webp' : 'taggedImages/steps-light.webp'} width={550} height={400} className="mt-10" />
             </div>
         </div>
 

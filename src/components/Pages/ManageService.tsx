@@ -8,37 +8,37 @@ const manageServices = [
   {
     title: "Talent Sourcing",
     description: "Our IT Staffing Riyadh specializes in recruiting skilled individuals, conducting interviews, and assessing qualifications.",
-    imageUrl: '/taggedImages/Managed Services/Talent Sourcing.webp',
+    imageUrl: 'taggedImages/Managed Services/Talent Sourcing.webp',
     alt: "Opt for a full time contract employee to bridge skill gaps and optimize workforce performance."
   },
   {
     title: "Onboarding & Integration",
     description: "Ensuring contracted resources understand your culture, goals, and expectations.",
-    imageUrl: '/taggedImages/Managed Services/Onboarding & Integration.webp',
+    imageUrl: 'taggedImages/Managed Services/Onboarding & Integration.webp',
     alt: "Unlock efficiency through IT Team Augmentation Saudi Arabia, offering reliable staffing services."
   },
   {
     title: "Performance Monitoring",
     description: "Tracking resource performance throughout the contract to meet your expectations.",
-    imageUrl: '/taggedImages/Managed Services/Performance Monitoring.webp',
+    imageUrl: 'taggedImages/Managed Services/Performance Monitoring.webp',
     alt: "Rely on IT Team Augmentation Saudi Arabia to bridge skill gaps and enhance team productivity."
   },
   {
     title: "Administrative Support",
     description: "Managing payroll, benefits, work permits, logistics, and other HR-related tasks is part of our comprehensive service offering as one of the Top IT Managed Service Providers Saudi Arabia.",
-    imageUrl: '/taggedImages/Managed Services/Administrative Support.webp',
+    imageUrl: 'taggedImages/Managed Services/Administrative Support.webp',
     alt: "Trust IT Staffing Riyadh to deliver reliable and skilled IT resources for your business."
   },
   {
     title: "Problem Resolution",
     description: "Addressing issues and resolving conflicts through Top IT Staff Augmentation Services Saudi Arabia to ensure smooth communication.",
-    imageUrl: '/taggedImages/Managed Services/Problem Resolution.webp',
+    imageUrl: 'taggedImages/Managed Services/Problem Resolution.webp',
     alt: "A full time contract employee offers the perfect blend of cost- efficiency and talent reliability."
   },
   {
     title: "Continuous Communication",
     description: "Our IT Staffing Riyadh team maintains open communication with clients and contracted resources to promptly address issues and keep everyone aligned.",
-    imageUrl: '/taggedImages/Managed Services/Continuous Communication.webp',
+    imageUrl: 'taggedImages/Managed Services/Continuous Communication.webp',
     alt: "IT Staffing Riyadh provides premium staffing solutions for both short- term and long-term projects."
   }
 ]

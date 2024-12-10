@@ -196,7 +196,7 @@ const HomePage = () => {
         "
         style={{
           backgroundImage: `
-      url('/taggedImages/bg.webp')
+      url('taggedImages/bg.webp')
     `}}
       />
 
@@ -309,7 +309,7 @@ const HomePage = () => {
         <div className='flex justify-between align-middle w-full max-h-16 md:max-h-20 bg-transparent'>
             <Link href="https://www.datasack.in" target="_blank" className='my-auto pl-2' >
               <Image
-                src="/taggedImages/logo.webp"
+                src="taggedImages/logo.webp"
                 alt="Transform your workforce with the Best IT Staffing Agency Saudi Arabia, providing innovative hiring solutions"
                 width={140}
                 height={110}
@@ -558,7 +558,7 @@ const HomePage = () => {
                 {banks.map((bank, i) => (
                   <li key={i} className="flex justify-center items-center  sm:basis-1/3 md:basis-1/4 lg:basis-1/5">
                     <Image
-                      src={darkMode ? `/taggedImages/Client-Logos-Dark/${bank.url}` : `/taggedImages/Client-Logos-Color/${bank.url}`}
+                      src={darkMode ? `taggedImages/Client-Logos-Dark/${bank.url}` : `taggedImages/Client-Logos-Color/${bank.url}`}
                       alt={darkMode ? bank.alt_dark:bank.alt_color}
                       width={100}
                       height={80}
@@ -572,7 +572,7 @@ const HomePage = () => {
                 {banks.map((bank, i) => (
                   <li key={i} className="flex  justify-center items-center  sm:basis-1/3 md:basis-1/4 lg:basis-1/5">
                     <Image
-                      src={darkMode ? `/taggedImages/Client-Logos-Dark/${bank.url}` : `/taggedImages/Client-Logos-Color/${bank.url}`}
+                      src={darkMode ? `taggedImages/Client-Logos-Dark/${bank.url}` : `taggedImages/Client-Logos-Color/${bank.url}`}
                       alt={darkMode ? bank.alt_dark:bank.alt_color}
                       width={100}
                       height={80}

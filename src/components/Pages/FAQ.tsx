@@ -173,7 +173,7 @@ ul.nextSibling.setAttribute('aria-hidden', 'true');
             {banks.map((bank, i) => (
                 <li key={i} className="flex justify-center items-center  sm:basis-1/3 md:basis-1/4 lg:basis-1/5">
                     <Image
-                        src={darkMode ? `/taggedImages/Client-Logos-Dark/${bank.url}` : `/taggedImages/Client-Logos-Color/${bank.url}`}
+                        src={darkMode ? `taggedImages/Client-Logos-Dark/${bank.url}` : `taggedImages/Client-Logos-Color/${bank.url}`}
                         alt={darkMode ? bank.alt_dark : bank.alt_color}
                         width={100}
                         height={80}
@@ -187,7 +187,7 @@ ul.nextSibling.setAttribute('aria-hidden', 'true');
             {banks.map((bank, i) => (
                 <li key={i} className="flex justify-center items-center  sm:basis-1/3 md:basis-1/4 lg:basis-1/5">
                     <Image
-                        src={darkMode ? `/taggedImages/Client-Logos-Dark/${bank.url}` : `/taggedImages/Client-Logos-Color/${bank.url}`}
+                        src={darkMode ? `taggedImages/Client-Logos-Dark/${bank.url}` : `taggedImages/Client-Logos-Color/${bank.url}`}
                         alt={darkMode ? bank.alt_dark : bank.alt_color}
                         width={100}
                         height={80}

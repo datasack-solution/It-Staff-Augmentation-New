@@ -92,7 +92,7 @@ const Footer = () => {
             <div
                 className="absolute inset-0 w-full 2xl:h-[850px] xl:h-[800px] lg:h-[750px] md:h-[700px] sm:h-[650px] h-[800px] bg-cover bg-center opacity-70 "
                 style={{
-                    backgroundImage: `url('/taggedImages/footer-bg.webp')`,
+                    backgroundImage: `url('taggedImages/footer-bg.webp')`,
                 }}
             />
 
@@ -195,11 +195,11 @@ const Footer = () => {
 
                         <div className="space-y-5 text-center md:text-start  xs:items-center sm:items-center md:items-center lg:items-start">
                             <div className="flex items-center gap-5 xs:text-sm xs:flex-col sm:flex-col md:flex-col lg:flex-row brightness-150 ">
-                                <Image alt="Experience confidence with Top IT Managed Service Providers Saudi Arabia, delivering proactive solutions, symbolized by the Saudi flag" src={'/taggedImages/saudiFlag.webp'} width={90} height={50} className="p-1 bg-orange-100 bg-opacity-20"/>
+                                <Image alt="Experience confidence with Top IT Managed Service Providers Saudi Arabia, delivering proactive solutions, symbolized by the Saudi flag" src={'taggedImages/saudiFlag.webp'} width={90} height={50} className="p-1 bg-orange-100 bg-opacity-20"/>
                                 <Link className="w-1/2" href={'https://maps.app.goo.gl/CxePLTdFTx34i9Gi7'} target="_blank"><p >Building no: 2345, Ahmed AL Tamimi AL Malaz, Riyadh 12831, Saudi Arabia</p></Link>
                             </div>
                             <div className="flex items-center gap-5 xs:text-sm xs:flex-col sm:flex-col md:flex-col lg:flex-row brightness-125">
-                                <Image alt="indian-logo" src={'/taggedImages/indianFlag.png'} width={90} height={50} className="p-1 bg-orange-100 bg-opacity-20"/>
+                                <Image alt="indian-logo" src={'taggedImages/indianFlag.png'} width={90} height={50} className="p-1 bg-orange-100 bg-opacity-20"/>
                                 <Link className="w-1/2" href={'https://maps.app.goo.gl/sFRc86h6DGKqzm857?g_st=ac'} target="_blank"><p >No: 23, Kamarajapuram - East Karur, Tamilnadu 639002, India.</p></Link>
                             </div>
                         </div>
@@ -285,7 +285,7 @@ const Footer = () => {
 
             {/* bottom logo certification */}
             <div className="absolute bottom-0 w-full text-center align-middle py-4 bg-black/60 text-white text-sm">
-                <Link className="inline-block" href={'https://www.datasack.in'} target="_blank"><Image src="/taggedImages/logo.webp" alt="Transform your workforce with the Best IT Staffing Agency Saudi Arabia, providing innovative hiring solutions." width={120} height={30} className="inline-block"/></Link>
+                <Link className="inline-block" href={'https://www.datasack.in'} target="_blank"><Image src="taggedImages/logo.webp" alt="Transform your workforce with the Best IT Staffing Agency Saudi Arabia, providing innovative hiring solutions." width={120} height={30} className="inline-block"/></Link>
                 <p className="inline-block ml-4">ISO/IEC 27001:2022 CERTIFIED</p>
                 <p className="xs:block sm:block md:inline-block ml-4">&copy;2024</p>
             </div>
