@@ -289,7 +289,6 @@ const ChatScreen: FunctionComponent<{
     const [userInput, setUserInput] = useState<string>("");
     const [step, setStep] = useState<number>(0);
     const [loading, setLoading] = useState(false)
-    const [userDetails, setUserDetails] = useState<UserDetails>({ name: "", email: "", mobile: '', country: "" });
     const chatEndRef = useRef<HTMLDivElement | null>(null);
     const chatRef = useRef<HTMLDivElement | null>(null);
     const [isMinimized, setIsMinimized] = useState(false);
@@ -431,7 +430,6 @@ const ChatScreen: FunctionComponent<{
       const happyResponse = getHappyResponse(message)
 
       if (step === 0) {
-        setUserDetails((prev) => ({ ...prev, name: message }));
         addBotMessage(`Hi ${message}, Please enter your email.`, 1);
 
       } else if (step === 1) {
@@ -443,11 +441,9 @@ const ChatScreen: FunctionComponent<{
           return
         }
 
-        setUserDetails((prev) => ({ ...prev, mobile: message }));
         addBotMessage("Enter your mobile number", 2)
 
       } else if (step === 2) {
-        setUserDetails((prev) => ({ ...prev, country: message }));
         addBotMessage("Which country are you from? ", 3);
       }
       else if (step === 3) {
