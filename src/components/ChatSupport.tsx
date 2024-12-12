@@ -33,13 +33,6 @@ const sendChatsToEmail = async(messages:Message[]) => {
   }
 }
 
-interface UserDetails {
-  name: string;
-  email: string;
-  mobile: string;
-  country: string
-}
-
 interface Question {
   id: number;
   question: string;
