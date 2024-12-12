@@ -122,12 +122,12 @@ const ManageServicePage = () => {
             <Image alt={manageServices[0].alt} src={manageServices[0].imageUrl} width={100} height={100} />
             <h2 className="text-lg font-semibold mb-4 md:text-sm lg:text-lg xl:text-xl 2xl:text-xl">1. Talent Sourcing</h2>
             <p className="text-gray-600 dark:text-gray-200 leading-relaxed text-justify md:text-sm lg:text-base xl:text-base 2xl:text-base">
-              Our IT recruitment agency in Saudi specializes in recruiting skilled individuals, conducting interviews, and assessing qualifications.
+            Our IT Staffing Riyadh specializes in recruiting skilled individuals, conducting interviews, and assessing qualifications.
             </p>
             <Image alt={manageServices[1].alt} src={manageServices[1].imageUrl} width={100} height={100} />
             <h2 className="text-lg font-semibold  mb-4 md:text-sm lg:text-lg xl:text-xl 2xl:text-xl">2. Onboarding & Integration</h2>
             <p className="text-gray-600 dark:text-gray-200 leading-relaxed text-justify md:text-sm lg:text-base xl:text-base 2xl:text-base">
-              Ensuring contracted resources understand your culture, goals, and expectations.
+            Ensuring contracted resources understand your culture, goals, and expectations.
             </p>
           </div>
         </div>
@@ -143,7 +143,7 @@ const ManageServicePage = () => {
                   <Image alt={manageServices[2].alt} src={manageServices[2].imageUrl} width={100} height={100} className='m-auto' />
                   <h2 className="text-lg font-semibold mb-2 text-center md:text-sm lg:text-lg xl:text-xl 2xl:text-xl">3. Performance Monitoring</h2>
                   <p className="text-gray-600 dark:text-gray-200 leading-relaxed text-justify md:text-sm lg:text-base xl:text-base 2xl:text-base">
-                    Tracking resource performance throughout the contract to meet your expectations.
+                  Tracking resource performance throughout the contract to meet your expectations.
                   </p>
                 </div>
               </div>
@@ -169,7 +169,7 @@ const ManageServicePage = () => {
                   <Image alt={manageServices[4].alt} src={manageServices[4].imageUrl} width={100} height={100} className='m-auto' />
                   <h2 className="text-lg font-semibold mb-2 text-center md:text-sm lg:text-lg xl:text-xl 2xl:text-xl">5. Problem Resolution</h2>
                   <p className="text-gray-600 dark:text-gray-200 text-justify leading-relaxed md:text-sm lg:text-base xl:text-base 2xl:text-base">
-                    Addressing issues and resolving conflicts through IT staff augmentation services Riyadh to ensure smooth communication.
+                    Addressing issues and resolving conflicts through Top IT Staff Augmentation Services Saudi Arabia to ensure smooth communication.
                   </p>
                 </div>
               </div>
@@ -180,7 +180,7 @@ const ManageServicePage = () => {
                   <Image alt={manageServices[5].alt} src={manageServices[5].imageUrl} width={100} height={100} className='m-auto' />
                   <h2 className="text-lg font-semibold mb-2 text-center md:text-sm lg:text-lg xl:text-xl 2xl:text-xl">6. Continuous Communication</h2>
                   <p className="text-gray-600 dark:text-gray-200 text-justify leading-relaxed md:text-sm lg:text-base xl:text-base 2xl:text-base">
-                    Our IT recruitment agency in Saudi maintains open communication with clients and contracted resources to promptly address issues and keep everyone aligned.
+                    Our IT Staffing Riyadh team maintains open communication with clients and contracted resources to promptly address issues and keep everyone aligned.
                   </p>
                 </div>
               </div>

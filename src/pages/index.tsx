@@ -48,24 +48,24 @@ export default function Home() {
 
   return <Fragment>
     <Head>
-      <title>IT Staffing Agency Saudi Arabia | Free Consultation</title>
+      <title>IT Staff Augmentation | IT Staffing | Get Pricing</title>
       <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
-      <meta title="title" content="IT Staffing Agency Saudi Arabia | Free Consultation" />
-      <meta name="description" content="Looking for IT Staff Augmentation Services? Our IT staffing enhances your workforce & meets project needs." />
+      <meta title="title" content="IT Staff Augmentation | IT Staffing | Get Pricing" />
+      <meta name="description" content="Expert IT staff augmentation & IT staffing with flexible contracts. Competitive Pricing. Reach Out Today!." />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <meta property="og:title" content="IT Staffing Agency Saudi Arabia | Free Consultation" />
-      <meta property="og:description" content="Looking for IT Staff Augmentation Services? Our IT staffing enhances your workforce & meets project needs." />
+      <meta property="og:title" content="IT Staff Augmentation | IT Staffing | Get Pricing" />
+      <meta property="og:description" content="Expert IT staff augmentation & IT staffing with flexible contracts. Competitive Pricing. Reach Out Today!." />
       <meta property="og:type" content="website" />
-      <meta property="og:site_name" content="IT Staffing Agency Saudi Arabia | Free Consultation" />
-      {/* <meta property="og:url" content="https://itstaffaugmentation.datasack.in/" />
-      <meta property="og:image" content="https://itstaffaugmentation.datasack.in/taggedImages/card_logo.webp" /> */}
+      <meta property="og:site_name" content="IT Staff Augmentation | IT Staffing | Get Pricing" />
+      <meta property="og:url" content="https://www.datasack.in/itstaffaugmentation" />
+      <meta property="og:image" content="https://www.datasack.in/itstaffaugmentation/taggedImages/card_logo.webp" />
       <meta property="og:image:width" content="1000" />
       <meta property="og:image:height" content="1000" />
       <meta property="og:locale" content="en_US" />
-      <meta property="twitter:title" content="IT Staffing Agency Saudi Arabia | Free Consultation" />
-      <meta property="twitter:description" content="Looking for IT Staff Augmentation Services? Our IT staffing enhances your workforce & meets project needs." />
+      <meta property="twitter:title" content="IT Staff Augmentation | IT Staffing | Get Pricing" />
+      <meta property="twitter:description" content="Expert IT staff augmentation & IT staffing with flexible contracts. Competitive Pricing. Reach Out Today!." />
       <meta property="twitter:card" content="summary_large_image" />
-      {/* <meta property="twitter:image" content="https://itstaffaugmentation.datasack.in/taggedImages/card_logo.webp" /> */}
+      <meta property="twitter:image" content="https://www.datasack.in/itstaffaugmentation/taggedImages/card_logo.webp" />
       <meta property="twitter:image:alt" content="Discover the advantages of an IT staffing agency Riyadh to enhance your project delivery." />
       <link rel="icon" href="/favicon.ico" />
 

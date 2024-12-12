@@ -1,9 +1,5 @@
 const benefits = [
     {
-        title: 'Core Focus',
-        description: 'Our Top IT Staff Augmentation Services Saudi Arabia optimize productivity by outsourcing non-core tasks to contingent workers, freeing up resources for core business activities and enhancing operational efficiency for our clients.'
-    },
-    {
         title: 'Strategic Hiring Efficiency',
         description: 'Reduce overhead costs with the Best IT Staffing Agency Saudi Arabia by hiring workers only when needed. This approach ensures financial efficiency and flexibility, paying only for the essential workforce during peak demands.'
     }, 
@@ -12,12 +8,20 @@ const benefits = [
         description: 'Increases financial flexibility by converting fixed costs into variable costs and hiring workers for specific durations. This ensures optimal budget management by paying only for necessary expertise.'
     },
     {
-        title: 'Onsite Efficiency',
-        description: 'Optimize travel logistics with expert Top IT Staff Augmentation Services Saudi Arabia, ensuring rapid consultant availability and prompt support to enhance client satisfaction and project efficiency.'
-    },
-    {
         title: 'Precision Staffing',
         description: 'Reduce staffing costs with the Best IT contract staffing Saudi Arabia through just-in-time recruitment, ensuring resources are deployed exactly when needed. This approach minimizes overheads tied to idle workforce capacity, enhancing financial flexibility and efficiency.'
+    },
+    {
+        title: 'Core Focus',
+        description: 'Our Top IT Staff Augmentation Services Saudi Arabia optimize productivity by outsourcing non-core tasks to contingent workers, freeing up resources for core business activities and enhancing operational efficiency for our clients.'
+    },
+    {
+        title: 'Rapid Expansion',
+        description: 'Boost your growth by partnering with the Best IT Staffing Agency Saudi Arabia, ensuring you meet demand swiftly and efficiently. This proactive approach ensures timely service delivery, enhancing customer satisfaction and seizing market opportunities.'
+    },
+    {
+        title: 'Onsite Efficiency',
+        description: 'Optimize travel logistics with expert Top IT Staff Augmentation Services Saudi Arabia, ensuring rapid consultant availability and prompt support to enhance client satisfaction and project efficiency.'
     },
     {
         title: 'Smooth Visa Logistics',
@@ -27,10 +31,6 @@ const benefits = [
         title: 'Resource Deployment',
         description: 'Our Best IT Staffing Agency Saudi Arabia deploys resources from India to meet business needs. This strategic advantage ensures swift adaptation to market demands, enhancing operational agility and client satisfaction.'
     },
-    {
-        title: 'Rapid Expansion',
-        description: 'Boost your growth by partnering with the Best IT Staffing Agency Saudi Arabia, ensuring you meet demand swiftly and efficiently. This proactive approach ensures timely service delivery, enhancing customer satisfaction and seizing market opportunities.'
-    }
 ]
 
 const BenefitsPage = () => {
