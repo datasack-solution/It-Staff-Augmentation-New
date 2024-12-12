@@ -1,12 +1,36 @@
-import React, { useState, useEffect, useRef, KeyboardEvent, ChangeEvent, FunctionComponent } from "react";
-import ChatBotIcon from "./ChatBotIcon";
+import React, { ChangeEvent, FunctionComponent, KeyboardEvent, useEffect, useRef, useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import { useCallUsModalState } from "./CallUsContext";
+import ChatBotIcon from "./ChatBotIcon";
+import emailJs from '@emailjs/browser';
 
 interface Message {
   sender: "user" | "bot";
   text: string;
   time: string
+}
+
+const publicKey = '8TwxGIOLSaBZeH7Dk'
+const serviceId='service_7wgr0bg'
+const templateMsgId = 'template_4madn88'
+
+const sendChatsToEmail = async(messages:Message[]) => {
+  const clientName=messages[2].text
+  const formattedMessages = messages.map(msg => ({
+    ...msg,
+    sender: msg.sender === 'user' ? 'User' : 'Bot',  // replace 'user' and 'bot' with 'User' or 'Bot' for a better view
+  }));
+
+  const templateParams = {
+    clientName,
+    messages:formattedMessages, 
+  };
+
+  try{
+    await emailJs.send(serviceId, templateMsgId, templateParams, publicKey);
+  }catch(e){
+    console.log("error on sending mail..",e)
+  }
 }
 
 interface UserDetails {
@@ -165,84 +189,9 @@ const getHappyResponse = (input: string): string | undefined => {
     }
   }
 
-
-  // return "I'm here if you need anything else! 😊";
   return undefined
 };
 
-
-
-// const defaultQuestions: Question[] = [
-//   { id: 1, question: "What can I help you with today?", answer: "I'm here to assist with any questions or concerns you have!" },
-//   { id: 2, question: "Tell me more about your issue.", answer: "Could you please provide more details on the issue you're experiencing?" },
-//   { id: 3, question: "Do you need technical support?", answer: "Our technical support team is available to help with any technical issues." },
-//   { id: 4, question: "Are you interested in our products?", answer: "We offer a range of products. Let me know if you'd like more information!" },
-//   { id: 5, question: "Would you like information on our services?", answer: "I can provide detailed information on our services. Just ask!" },
-//   { id: 6, question: "Do you have an account with us?", answer: "If you have an account, I can assist you further with your queries." },
-//   { id: 7, question: "How soon do you need assistance?", answer: "Let us know your timeline, and we'll do our best to assist you promptly." },
-//   { id: 8, question: "Would you like to connect with an agent?", answer: "Thank you! We will connect you with an agent shortly." },
-//   { id: 9, question: "Can I help you with anything else?", answer: "Feel free to ask any other questions you may have." },
-//   { id: 10, question: "Thank you for reaching out!", answer: "You're welcome! Have a great day!" },
-// ];
-
-
-// const defaultQuestions: Question[] = [
-//   {
-//     id: 1,
-//     question: "What is IT Staff Augmentation?",
-//     answer: "IT Staff Augmentation is a flexible hiring model that allows you to add skilled tech professionals to your team on a temporary or long-term basis, helping you scale your workforce quickly based on project needs."
-//   },
-//   {
-//     id: 2,
-//     question: "How can IT Staff Augmentation benefit my business?",
-//     answer: "IT Staff Augmentation offers flexibility, cost savings, and access to a global talent pool. It enables you to fill skill gaps quickly, scale up or down based on project requirements, and avoid the lengthy hiring process."
-//   },
-//   {
-//     id: 3,
-//     question: "What types of roles can be filled with IT Staff Augmentation?",
-//     answer: "You can fill a wide range of roles, including software developers, project managers, business analysts, UX/UI designers, data engineers, and more, based on the specific requirements of your project."
-//   },
-//   {
-//     id: 4,
-//     question: "How do you select and vet IT staff for my project?",
-//     answer: "We thoroughly vet candidates through a multi-step process, including technical assessments, interviews, and background checks, to ensure they meet the skill requirements and fit your team's culture."
-//   },
-//   {
-//     id: 5,
-//     question: "What's the difference between IT Staff Augmentation and outsourcing?",
-//     answer: "In IT Staff Augmentation, the augmented staff works as part of your team, following your processes and management. With outsourcing, an external team manages the entire project or task independently."
-//   },
-//   {
-//     id: 6,
-//     question: "How long does it take to onboard augmented staff?",
-//     answer: "Onboarding time varies depending on the role and skill level, but we aim to provide qualified candidates within a few days, ensuring a smooth and efficient transition into your team."
-//   },
-//   {
-//     id: 7,
-//     question: "Can I scale the team up or down easily with this service?",
-//     answer: "Yes, IT Staff Augmentation is designed for scalability. You can increase or reduce the team size as your project evolves, providing flexibility and cost control."
-//   },
-//   // {
-//   //   id: 8,
-//   //   question: "Can I connect with an expert to discuss my specific needs?",
-//   //   answer: "Absolutely! We can connect you with an expert to discuss your project requirements in detail. Please let us know, and we will arrange a call for you."
-//   // },
-//   // {
-//   //   id: 9,
-//   //   question: "What is the cost structure for IT Staff Augmentation services?",
-//   //   answer: "The cost depends on the skills, experience level, and duration required. We provide transparent, competitive rates tailored to your specific staffing needs."
-//   // },
-//   // {
-//   //   id: 10,
-//   //   question: "How can I get started with IT Staff Augmentation?",
-//   //   answer: "To get started, you can provide us with details of your requirements, and we'll match you with the right candidates. Our team will guide you through the process from start to finish."
-//   // },
-//   // {
-//   //   id: 11,
-//   //   question: "Connect with agent",
-//   //   answer: "Thank you. We will further contact you."
-//   // },
-// ];
 
 const defaultQuestions1: Question[] = [
   {
@@ -265,12 +214,43 @@ const defaultQuestions1: Question[] = [
     question: "IT Contract Staffing",
     answer: "We thoroughly vet candidates through a multi-step process, including technical assessments, interviews, and background checks, to ensure they meet the skill requirements and fit your team's culture."
   },
-  // {
-  //   id: 5,
-  //   question: "If not listed, please specify your required service.",
-  //   answer: "In IT Staff Augmentation, the augmented staff works as part of your team, following your processes and management. With outsourcing, an external team manages the entire project or task independently."
-  // },
 ];
+
+const filterMessagesForSendingPayload = (messages: Message[]): Message[] => {
+  const filteredMessages: Message[] = [];
+
+  for (let i = 0; i < messages.length; i++) {
+    const currentMessage = messages[i];
+
+    if (currentMessage.sender === "bot" && currentMessage.text.startsWith("Oops")) {
+      // Remove the last user message as it's invalid
+      filteredMessages.pop();
+
+      // Check upcoming user messages for valid email
+      let j = i + 1;
+      while (j < messages.length) {
+        const nextMessage = messages[j];
+        if (nextMessage.sender === "user" && isValidEmail(nextMessage.text)) {
+          // Append valid email message and break loop
+          filteredMessages.push(nextMessage);
+          i = j; // Update i to skip validated messages
+          break;
+        }
+        j++;
+      }
+    } else {
+      // Append the current message if not related to "Oops"
+      filteredMessages.push(currentMessage);
+    }
+  }
+
+  return filteredMessages;
+};
+
+function isValidEmail(email:string) {
+  const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  return regex.test(email);
+}
 
 
 const defaultReply = (question: string) => `Please share what you need in ${question}. Just a quick note about your project!`
@@ -286,6 +266,7 @@ const formatTime = (date: Date): string => {
 
   return `${hours}:${strMinutes} ${ampm}`;
 };
+let sent=false
 
 const ChatScreen: FunctionComponent<{
   onClose: () => void
@@ -313,7 +294,6 @@ const ChatScreen: FunctionComponent<{
     const chatRef = useRef<HTMLDivElement | null>(null);
     const [isMinimized, setIsMinimized] = useState(false);
 
-    console.log("messages: ", messages)
 
 
     const handleMouseDown = (e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
@@ -407,11 +387,17 @@ const ChatScreen: FunctionComponent<{
     }, [isMinimized]);
 
 
+    useEffect(()=>{
+      if (step==6 && !sent){
+        const got = filterMessagesForSendingPayload(messages)
+        sendChatsToEmail(got)
+        sent=true
+      }
+    },[step,messages])
+
     const handleMinimize = () => {
       setIsMinimized((prev) => !prev);
     };
-
-    console.log(userDetails)
 
     useEffect(() => {
       chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -551,7 +537,10 @@ const ChatScreen: FunctionComponent<{
                 }
               </button>
               {/* Close button */}
-              <button onClick={onClose} className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
+              <button onClick={()=>{
+                sent=false
+                onClose()
+              }} className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
                 &#10005;
               </button>
             </div>

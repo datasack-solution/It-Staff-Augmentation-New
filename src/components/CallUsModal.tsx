@@ -1,4 +1,4 @@
-import {  ClientRequestData, TransformedSkillsets } from "@/pages/api/userApi";
+import {  clientApiService, ClientRequestData, TransformedSkillsets } from "@/pages/api/userApi";
 import emailJs from '@emailjs/browser';
 import { FunctionComponent, useState } from "react";
 import { Controller, FieldErrors, useForm } from "react-hook-form";
@@ -111,12 +111,12 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
             }
 
             // // if (emailSent) {
-                // try {
-                //     await clientApiService.createClient(apiData);
-                //     // setSuccess(true);
-                // } catch (apiError) {
-                //     console.error("Error creating client:", apiError);
-                // }
+                try {
+                    await clientApiService.createClient(apiData);
+                    // setSuccess(true);
+                } catch (apiError) {
+                    console.error("Error creating client:", apiError);
+                }
             // }
         } else {
             console.log("without skills:", data)
@@ -133,12 +133,12 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
             }
 
             // if (emailSent) {
-                // try {
-                //     await clientApiService.createClient(data);
-                //     // setSuccess(true);
-                // } catch (apiError) {
-                //     console.error("Error creating client:", apiError);
-                // }
+                try {
+                    await clientApiService.createClient(data);
+                    // setSuccess(true);
+                } catch (apiError) {
+                    console.error("Error creating client:", apiError);
+                }
             // }
         }
 
