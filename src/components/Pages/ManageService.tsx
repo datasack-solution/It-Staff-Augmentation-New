@@ -25,7 +25,7 @@ const manageServices = [
   },
   {
     title: "Administrative Support",
-    description: "Managing payroll, benefits, work permits, logistics, and other HR-related tasks is part of our comprehensive service offering as one of the Top IT Managed Service Providers Saudi Arabia.",
+    description: "As one of the Top IT Managed Service Providers Saudi Arabia, we handle payroll, benefits, work permits, logistics, and HR tasks efficiently.",
     imageUrl: 'taggedImages/Managed Services/Administrative Support.webp',
     alt: "Trust IT Staffing Riyadh to deliver reliable and skilled IT resources for your business."
   },
@@ -155,7 +155,7 @@ const ManageServicePage = () => {
                   <Image alt={manageServices[3].alt} src={manageServices[3].imageUrl} width={100} height={100} className='m-auto' />
                   <h2 className="text-lg font-semibold mb-2 text-center md:text-sm lg:text-lg xl:text-xl 2xl:text-xl">4. Administrative Support</h2>
                   <p className="text-gray-600 dark:text-gray-200 leading-relaxed text-justify md:text-sm lg:text-base xl:text-base 2xl:text-base">
-                    Managing payroll, benefits, work permits, logistics, and other HR-related tasks.
+                    As one of the Top IT Managed Service Providers Saudi Arabia, we handle payroll, benefits, work permits, logistics, and HR tasks efficiently.
                   </p>
                 </div>
               </div>
