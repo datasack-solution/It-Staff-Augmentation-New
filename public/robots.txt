@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.datasack.in/itstaffaugmentation
+
+# Sitemaps
+Sitemap: https://www.datasack.in/itstaffaugmentation/sitemap.xml
