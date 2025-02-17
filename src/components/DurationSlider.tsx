@@ -120,7 +120,6 @@ const DurationSlider:FunctionComponent = ({
                         }
                     }
                 }}
-                onChange={(w) => { console.log("onchage: ", w) }}
                 styles={{
                     track: {
                         background: 'transparent',

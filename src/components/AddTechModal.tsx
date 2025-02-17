@@ -1,4 +1,4 @@
-import { Dispatch, FunctionComponent, SetStateAction, useState } from "react"
+import { Dispatch, FunctionComponent, SetStateAction, useEffect, useState } from "react"
 import { Technologies, technologies } from "./Pages/Pricing"
 
 export interface AddTechModalProps {
@@ -23,7 +23,17 @@ const AddTechModal: FunctionComponent<AddTechModalProps> = ({
     const [quantity,setQuantity] = useState<number>(0)
     const [err,setErr]=useState<string|null>(null)
 
+    useEffect(()=>{
+        setErr(null)
+        setQuantity(0)
+        setCustomTech('')
+    },[isModalOpen])
+
     const onSave = () => {
+        if (quantity==0){
+            setErr('Atleast 1 Quantity is needed')
+            return
+        }
         if (selectedCategory){
             technologies[selectedCategory].push(customTech)
             setQuantities(prev => ({
@@ -34,9 +44,9 @@ const AddTechModal: FunctionComponent<AddTechModalProps> = ({
                 },
             }));
         } 
+        onConfirm()
     }
 
-   
 
     if (isModalOpen) {
         return <div className="relative z-10 text-black" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -80,17 +90,17 @@ const AddTechModal: FunctionComponent<AddTechModalProps> = ({
                                                 className="w-full outline-none rounded-full px-2 py-1"
                                                 onChange={e=>{
                                                     setErr(null)
+                                                    setQuantity(parseInt(e.target.value))
                                                     if (parseInt(e.target.value)>150){
                                                         setErr('Please, Give Maximum Upto 150')
+                                                        return
                                                     }
-                                                    setQuantity(parseInt(e.target.value))
                                                 }}
                                             />
                                         </fieldset>
 
                                         <button disabled={err!=null} onClick={()=>{
                                                 onSave();
-                                                onConfirm()
                                         }} className={`p-3 text-white  ${err!==null ?'bg-orange-200':'bg-orange-500'} rounded-full w-fit justify-center align-middle self-center`}>Add Tech</button>
 
                                     </div>

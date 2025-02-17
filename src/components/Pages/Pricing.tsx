@@ -6,7 +6,6 @@ import DurationRangeSelector from '../DurationSlider';
 import EditTechModal from '../EditTechModal';
 import PlusIcon from '../PlusIcon';
 
-
 export type Technologies = {
     "Core Banking": string[];
     SAP: string[];
@@ -19,6 +18,7 @@ export type Technologies = {
     "Software Development": string[];
     "Testing/QA": string[];
     "Specialized Tools/Applications": string[]
+    "Other": string[]
 };
 
 export const technologies: Technologies = {
@@ -84,7 +84,8 @@ export const technologies: Technologies = {
         "Adobe Analytics Developer",
         "Experian Power Curve",
         "Newgen Consultant",
-    ]
+    ],
+    "Other": []
 };
 
 const Pricing = () => {
@@ -346,13 +347,16 @@ const Pricing = () => {
                             <div className="w-full h-0.5 mt-1 bg-gradient-to-r from-[rgba(238,123,34,1)] to-[rgba(218,218,218,1)] rounded-lg"></div>
                         </h3>
 
-
-                        <div onClick={() => setModalOpen(true)} className='group h-fit text-nowrap border-2 text-black dark:text-white inline-block border-red-100
+                        {selectedCategory != 'Other' ? <div onClick={() => setModalOpen(true)} className='group h-fit text-nowrap border-2 text-black dark:text-white inline-block border-red-100
                         dark:border-[rgba(94,94,94,0.78)]
                         max-h-14 rounded-full bg-orange-500 md:bg-transparent lg:bg-transparent xl:bg-transparent 2xl:bg-transparent hover:bg-orange-500 hover:rounded-full justify-center align-middle'>
                             <PlusIcon darkMode={darkMode} className='size-10 invisible hidden md:inline-block lg:inline-block xl:inline-block 2xl:inline-block md:visible lg:visible xl:visible 2xl:visible group-hover:invisible group-hover:hidden' />
-                            <p className='visible md:invisible lg:invisible xl:invisible 2xl:invisible md:hidden lg:hidden xl:hidden 2xl:hidden group-hover:visible group-hover:inline-block text-white dark:text-white p-3 sm:p-1 md:p-2 lg:p-3 xl:p-3 2xl:p-3 text-center uppercase text-xs'>Add Tech +</p>
-                        </div>
+                            <p className={`visible md:invisible lg:invisible xl:invisible 2xl:invisible md:hidden lg:hidden xl:hidden 2xl:hidden group-hover:visible group-hover:inline-block text-white dark:text-white p-3 sm:p-1 md:p-2 lg:p-3 xl:p-3 2xl:p-3 text-center uppercase text-xs`}>Add Tech +</p>
+                        </div> : <div onClick={() => setModalOpen(true)} className='group h-fit text-nowrap border-2 text-black dark:text-white inline-block border-red-100
+                        dark:border-[rgba(94,94,94,0.78)]
+                        max-h-14 rounded-full bg-orange-500 hover:rounded-full justify-center align-middle'>
+                            <p className={` text-white dark:text-white p-3 sm:p-1 md:p-2 lg:p-3 xl:p-3 2xl:p-3 text-center uppercase text-xs`}>Add Tech +</p>
+                        </div>}
                     </div>
 
                     {/* going to be modal */}
@@ -362,6 +366,7 @@ const Pricing = () => {
                         selectedCategory={selectedCategory}
                         setQuantities={setQuantities}
                     />
+                    {selectedCategory == 'Other' && <p className='text-sm text-gray-500'>You can add any technologies you want by clicking <span className='text-gray-600 dark:text-gray-400'>&apos;Add Tech +&apos;</span></p>}
 
                     {selectedCategory ? (
                         <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 text-black dark:text-white">
@@ -386,7 +391,9 @@ const Pricing = () => {
                                             <span className="text-black dark:text-white rounded-full w-5 h-5 text-center justify-center
                                              bg-[rgba(238,123,34,0.14)]
                                              dark:bg-[rgba(94,94,94,0.8)]
-                                             ">{quantities[selectedCategory]?.[tech] || 0}</span>
+                                             ">
+                                                {quantities[selectedCategory]?.[tech] || 0}
+                                            </span>
 
                                             <button
                                                 onClick={() => { handleIncreaseQuantity(selectedCategory, tech) }}
@@ -394,6 +401,28 @@ const Pricing = () => {
                                             >
                                                 +
                                             </button>
+
+                                            {selectedCategory == 'Other' && <button onClick={() => {
+                                                removeTech(tech);
+                                                technologies[selectedCategory] = technologies[selectedCategory].filter(e => e !== tech)
+                                            }} className='px-2 py-1 bg-red-50 dark:bg-gray-700 text-red-600 rounded-r-full'>
+
+                                                <svg
+                                                    className="cursor-pointer size-4"
+                                                    width="20"
+                                                    height="20"
+                                                    viewBox="0 0 36 36"
+                                                    fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                >
+                                                    <path
+                                                        d="M18 0.5C8.25 0.5 0.5 8.25 0.5 18C0.5 27.75 8.25 35.5 18 35.5C27.75 35.5 35.5 27.75 35.5 18C35.5 8.25 27.75 0.5 18 0.5ZM24.75 26.75L18 20L11.25 26.75L9.25 24.75L16 18L9.25 11.25L11.25 9.25L18 16L24.75 9.25L26.75 11.25L20 18L26.75 24.75L24.75 26.75Z"
+                                                        fill={darkMode ? 'white' : 'black'}
+                                                        fillOpacity="0.3"
+                                                    />
+                                                </svg>
+
+                                            </button>}
                                         </div>
                                     </div>
 

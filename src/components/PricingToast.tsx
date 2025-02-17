@@ -49,7 +49,7 @@ const PricingToast = () => {
                     })
                     handleClose()
                 }}
-                className="ml-auto bg-[#FF7A29] text-white animate-tada border-none rounded-md px-4 py-2 xs:text-nowrap text-base xs:text-sm cursor-pointer">
+                className="ml-auto bg-[#FF7A29] text-white animate-tada border-none rounded-md px-4 py-1 xs:text-nowrap text-sm xs:text-sm cursor-pointer">
                     Get Price
                 </button>             
             </div>

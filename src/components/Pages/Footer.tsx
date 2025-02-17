@@ -287,7 +287,7 @@ const Footer = () => {
             <div className="absolute bottom-0 w-full text-center align-middle py-4 bg-black/60 text-white text-sm">
                 <Link className="inline-block" href={'https://www.datasack.in'} target="_blank"><Image src="taggedImages/logo.webp" alt="Transform your workforce with the Best IT Staffing Agency Saudi Arabia, providing innovative hiring solutions." width={120} height={30} className="inline-block"/></Link>
                 <p className="inline-block ml-4">ISO/IEC 27001:2022 CERTIFIED</p>
-                <p className="xs:block sm:block md:inline-block ml-4">&copy;2024</p>
+                <p className="xs:block sm:block md:inline-block ml-4">&copy;2025</p>
             </div>
         </div>
     );
