@@ -88,6 +88,8 @@ export const technologies: Technologies = {
     "Other": []
 };
 
+let addTechModalOpenedOnFirstTime = false
+
 const Pricing = () => {
     const [selectedCategory, setSelectedCategory] = useState<keyof typeof technologies | null>('SAP');
     const [isEditModalOpen, setEditModalOpen] = useState(false)
@@ -204,8 +206,6 @@ const Pricing = () => {
         setSelectedCategory(category);
     };
 
-
-
     return (
         <div id='pricing-section' className={`container mx-auto lg:p-10`}>
             {techs.length > 0 && <div
@@ -318,12 +318,19 @@ const Pricing = () => {
 
                             <button
                                 key={category}
-                                onClick={() => handleCategoryClick(category as keyof typeof technologies)}
+                                onClick={() => {
+                                    handleCategoryClick(category as keyof typeof technologies)
+                                    const categoryTechs = technologies[category as keyof typeof technologies].length
+                                    if (category=='Other' && (!addTechModalOpenedOnFirstTime || categoryTechs==0)){
+                                        setModalOpen(true)
+                                        addTechModalOpenedOnFirstTime = true
+                                    }
+                                }}
                                 className={`border relative  w-full h-full text-black border-orange-500 py-2 px-4 rounded-full transition-colors ${selectedCategory === category ? "bg-orange-500 text-white" : "text-black bg-white dark:bg-[#252525] dark:text-white"
                                     } ${quantities[category] &&
                                         (Object.values(quantities[category]).some(quantity => quantity > 0) && selectedCategory == category) ? 'bg-orange-500 text-black' : 'text-black'} hover:bg-orange-500`}
                             >
-                                {category}
+                                {category=='Other'?'Enter your Requirement':category}
                             </button>
 
                             {quantities[category] &&
@@ -338,12 +345,12 @@ const Pricing = () => {
                     ))}
                 </div>
 
-                <CategoryHorizontal handleCategoryClick={handleCategoryClick} selectedCategory={selectedCategory} quantities={quantities} />
+                <CategoryHorizontal handleCategoryClick={handleCategoryClick} selectedCategory={selectedCategory} quantities={quantities} triggerAddTechModalOnCustomRequirement={()=>{setModalOpen(true)}}/>
 
                 <div className="lg:w-2/3 p-3 bg-gray-50 dark:bg-[rgba(0,0,0,0.1)] rounded-lg shadow">
                     <div className='flex justify-between mb-2 cursor-pointer gap-5'>
                         <h3 className="text-xl font-semibold mb-4 text-black dark:text-white">
-                            {selectedCategory ? `${selectedCategory} Technologies` : "Select a Category"}
+                            {selectedCategory ? selectedCategory=='Other'? 'Custom Technologies': `${selectedCategory} Technologies` : "Select a Category"}
                             <div className="w-full h-0.5 mt-1 bg-gradient-to-r from-[rgba(238,123,34,1)] to-[rgba(218,218,218,1)] rounded-lg"></div>
                         </h3>
 
@@ -395,12 +402,13 @@ const Pricing = () => {
                                                 {quantities[selectedCategory]?.[tech] || 0}
                                             </span>
 
-                                            <button
+                                            { <button
+                                            disabled={quantities[selectedCategory]?.[tech] > 149}
                                                 onClick={() => { handleIncreaseQuantity(selectedCategory, tech) }}
-                                                className="  rounded-full w-8 h-8 text-center"
+                                                className={`rounded-full w-8 h-8 text-center ${quantities[selectedCategory]?.[tech] > 149 && 'text-gray-400'}`}
                                             >
                                                 +
-                                            </button>
+                                            </button>}
 
                                             {selectedCategory == 'Other' && <button onClick={() => {
                                                 removeTech(tech);
@@ -442,7 +450,7 @@ const Pricing = () => {
                                 hasTechs: true,
                                 techLabels: techs,
                                 techQuantities: techQuantities
-                            })} className='animate-bounce-right m-auto cursor-pointer  w-fit p-3 text-white bg-orange-500 rounded-full text-xs font-semibold'>Get Pricing</div>
+                            })} className='m-auto cursor-pointer  w-fit p-3 text-white bg-orange-500 rounded-full text-xs font-semibold'>Get Pricing</div>
                         </div>}
                     </div>
                 </div>

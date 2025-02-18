@@ -2,6 +2,7 @@ import { FunctionComponent, useEffect, useRef, useState } from 'react';
 import { ChevronDoubleRightIcon } from '@heroicons/react/24/solid'
 import { technologies } from './Pages/Pricing';
 
+let addTechModalOpenedOnFirstTime = false
 
 export interface CategoryHorizontalProps {
   selectedCategory: keyof typeof technologies | null
@@ -10,14 +11,16 @@ export interface CategoryHorizontalProps {
     [category: string]: {
       [tech: string]: number;
     };
-  }
+  },
+  triggerAddTechModalOnCustomRequirement: () =>void
 }
 
 
 const CategoryHorizontal: FunctionComponent<CategoryHorizontalProps> = ({
   handleCategoryClick,
   selectedCategory,
-  quantities
+  quantities,
+  triggerAddTechModalOnCustomRequirement
 }) => {
   const [hasScrolled, setHasScrolled] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
@@ -108,12 +111,19 @@ const CategoryHorizontal: FunctionComponent<CategoryHorizontalProps> = ({
             <div className="absolute inset-0 bg-gradient-to-r from-[#EE7B22]  to-[#732A09] rounded-full"></div>
             <button
               key={category}
-              onClick={() => { handleCategoryClick(category as keyof typeof technologies) }}
+              onClick={() => { 
+                handleCategoryClick(category as keyof typeof technologies);
+                const categoryTechs = technologies[category as keyof typeof technologies].length
+                if (category=='Other' && (!addTechModalOpenedOnFirstTime || categoryTechs==0)){
+                    triggerAddTechModalOnCustomRequirement()
+                    addTechModalOpenedOnFirstTime = true
+                }
+              }}
               className={`relative border w-full h-full whitespace-nowrap border-orange-500 py-2 px-4 rounded-full transition-colors ${selectedCategory === category ? "bg-orange-500 text-white" : "text-black bg-white dark:bg-[#252525] dark:text-white"
                 } ${quantities[category] &&
                   (Object.values(quantities[category]).some(quantity => quantity > 0) && selectedCategory == category) ? 'bg-orange-500 text-black' : ' text-black'}   hover:bg-orange-500`}
             >
-              {category}
+              {category=='Other'?'Enter your Requirement':category}
             </button>
 
             {quantities[category] &&

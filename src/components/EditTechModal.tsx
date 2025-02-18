@@ -29,25 +29,8 @@ const EditTechModal: FunctionComponent<AddTechModalProps> = ({
     decreaseTechQuantity,
     duration
 }) => {
-
-    // const [customTech, setCustomTech] = useState('')
-    // const [quantity, setQuantity] = useState<number>(0)
     const [err, setErr] = useState<string | null>(null)
     const { setIsCallUsModalOpen, darkMode } = useCallUsModalState()
-
-    // const onSave = () => {
-    //     if (selectedCategory) {
-    //         technologies[selectedCategory].push(customTech)
-    //         setQuantities(prev => ({
-    //             ...prev,
-    //             [selectedCategory]: {
-    //                 ...prev[selectedCategory],
-    //                 [customTech]: quantity,
-    //             },
-    //         }));
-    //     }
-    // }
-
 
     if (isModalOpen && techs.length > 0) {
         return <div className="relative sm:hidden md:hidden lg:hidden xl:hidden 2xl:hidden z-[51] text-black" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -74,8 +57,6 @@ const EditTechModal: FunctionComponent<AddTechModalProps> = ({
 
                                     {err && <p className="text-red-500 text-sm">{err}</p>}
 
-
-
                                     <div className='flex gap-5 mt-2 overflow-x-hidden w-full flex-wrap max-h-96 justify-start'>
                                         {techs.map((item, index) => {
                                             return (
@@ -96,19 +77,18 @@ const EditTechModal: FunctionComponent<AddTechModalProps> = ({
                                                             <div className="flex align-middle m-auto gap-2 max-w-fit mr-5">
                                                                 <button
                                                                     onClick={() => { decreaseTechQuantity(item) }}
-                                                                    className="justify-center m-auto bg-orange-500 px-2 hover:text-white rounded-full text-center "
+                                                                    className="justify-center m-auto bg-orange-500 px-2 text-yellow-300 hover:text-white rounded-full text-center "
                                                                 >
                                                                     -
                                                                 </button>
 
                                                                 <span className="text-black dark:text-white dark:bg-[#ffffff63] rounded-full w-6 h-6 font-light m-auto bg-[rgba(238,123,34,0.14)]">{quantities[index]}</span>
 
-
                                                                 <button
+                                                                    disabled={quantities[index] > 149}
                                                                     onClick={() => { increaseTechQuantity(item) }}
-                                                                    className="justify-center m-auto bg-orange-500  px-2 hover:text-white 
-                                                                    
-                                                                    rounded-full text-center "
+                                                                    className={`justify-center m-auto text-yellow-300  px-2 hover:text-white 
+                                                                    rounded-full text-center ${quantities[index]>149 ? ' bg-orange-300':'bg-orange-500'}`}
                                                                 >
                                                                     +
                                                                 </button>
@@ -125,8 +105,6 @@ const EditTechModal: FunctionComponent<AddTechModalProps> = ({
                                                 </div>)
                                         })}
                                     </div>
-
-
                                     <div onClick={() => setIsCallUsModalOpen({
                                         isOpen: true,
                                         hasTechs: true,
@@ -138,9 +116,6 @@ const EditTechModal: FunctionComponent<AddTechModalProps> = ({
 
                                 </div>
                                 <p className="text-sm mt-3">Duration: <span className="font-semibold text-orange-500">{duration}</span></p>
-
-
-
                             </div>
                         </div>
                     </div>
