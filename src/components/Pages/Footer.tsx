@@ -254,9 +254,7 @@ const Footer = () => {
 
                                 />
                                 {errors.phone && <p className="text-red-500 text-sm ml-2 p-1" >{errors.phone.message}</p>}
-
                             </fieldset>
-
 
                             <fieldset className="w-full m-auto h-auto border-2 border-gray-400 rounded-full px-5 py-1">
                                 <legend className="px-2">Email</legend>
@@ -271,7 +269,6 @@ const Footer = () => {
                                 {errors.email && <p className="text-red-500 text-sm ml-2 p-1">{errors.email.message}</p>}
                             </fieldset>
 
-
                             <div className="pt-[30%]">
                                 <button type="submit" className="w-full py-3 bg-orange-500 text-white rounded-lg font-bold">
                                     Get Enquiry
@@ -280,7 +277,6 @@ const Footer = () => {
                         </form>
                     </div>
                 </div>
-
             </div>
 
             {/* bottom logo certification */}
@@ -295,9 +291,6 @@ const Footer = () => {
 
 
 export default Footer
-
-
-
 
 
 
@@ -333,7 +326,6 @@ const Logos = () => {
             </svg>
         </a>
 
-
         {/* twitter */}
         <a href="https://x.com/DataSack" target="_blank">
             <svg className="size-8" width="41" height="32" viewBox="0 0 41 32" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
@@ -347,7 +339,6 @@ const Logos = () => {
             </svg>
         </a>
 
-
         {/* youtube */}
         <a href="https://youtube.com/@datasacksolutions?si=IbbfLrQ005AsttVn" target="_blank">
             <svg className="size-8" width="30" height="24" viewBox="0 0 30 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -360,8 +351,6 @@ const Logos = () => {
                 </g>
             </svg>
         </a>
-
-
 
         {/* pinterest */}
         <a href="https://in.pinterest.com/DataSack_Solutions/" target="_blank">

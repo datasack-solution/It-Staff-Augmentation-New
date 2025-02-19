@@ -57,7 +57,22 @@ const banks = [
         url: "novasat.webp",
         alt_dark: "Enhance productivity with IT Resource Augmentation Saudi Arabia, delivering tailored expertise for Novasat.",
         alt_color: "Achieve excellence with IT Resource Augmentation Saudi Arabia, ensuring expert project delivery for Novasat."
-    }
+    },
+    {
+        url: "pif.webp",
+        alt_dark: "The Best IT Staffing Agency Saudi Arabia helps PIF access skilled IT experts, ensuring project success with the right talent.",
+        alt_color: "Partner with Top IT Staff Augmentation Services Saudi Arabia to hire exceptional IT professionals and drive PIF's projects forward."
+      },
+      {
+        url: "esports.webp",
+        alt_dark: "Trust the Best IT Contract Staffing Saudi Arabia to provide Saudi Esports with experienced professionals for smooth and successful project delivery.",
+        alt_color: "Choose the Top IT Managed Service Providers Saudi Arabia for Saudi Esports' IT hiring needs and build a strong, skilled workforce."
+      },
+      {
+        url: "king_salman_IAir.webp",
+        alt_dark: "Count on the Best IT Staffing Agency Saudi Arabia to help King Salman International Airport recruit top IT talent and achieve operational excellence.",
+        alt_color: "With Top IT Staff Augmentation Services Saudi Arabia, King Salman International Airport can access industry-leading IT professionals to ensure business growth and success."
+      },
 ];
 
 
@@ -177,7 +192,8 @@ ul.nextSibling.setAttribute('aria-hidden', 'true');
                         alt={darkMode ? bank.alt_dark : bank.alt_color}
                         width={100}
                         height={80}
-                        className="cursor-pointer w-24 sm:w-20 md:w-28 lg:w-36 xl:w-40 h-auto"
+                        // className="cursor-pointer w-24 sm:w-20 md:w-28 lg:w-36 xl:w-40 h-auto"
+                        className={`cursor-pointer  mr-0 ml-0 ${bank.url==='king_salman_IAir.webp'? "h-5 md:h-7 w-auto":"h-auto w-24 sm:w-20 md:w-28 lg:w-36 xl:w-40"}`}
                     />
                 </li>
             ))}
@@ -191,7 +207,8 @@ ul.nextSibling.setAttribute('aria-hidden', 'true');
                         alt={darkMode ? bank.alt_dark : bank.alt_color}
                         width={100}
                         height={80}
-                        className="cursor-pointer w-24 sm:w-20 md:w-28 lg:w-36 xl:w-40 h-auto"
+                        // className="cursor-pointer w-24 sm:w-20 md:w-28 lg:w-36 xl:w-40 h-auto"
+                        className={`cursor-pointer  mr-0 ml-0 ${bank.url==='king_salman_IAir.webp'? "h-5 md:h-7 w-auto":"h-auto w-24 sm:w-20 md:w-28 lg:w-36 xl:w-40"}`}
                     />
                 </li>
             ))}

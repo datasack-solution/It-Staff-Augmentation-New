@@ -78,6 +78,9 @@ export default function Home() {
       <link rel="preload" as="image" href="taggedImages/Client-Logos-Color/olam.webp" />
       <link rel="preload" as="image" href="taggedImages/Client-Logos-Color/reliance_capital.webp" />
       <link rel="preload" as="image" href="taggedImages/Client-Logos-Color/enjaz.webp" />
+      <link rel="preload" as="image" href="taggedImages/Client-Logos-Color/pif.webp" />
+      <link rel="preload" as="image" href="taggedImages/Client-Logos-Color/esports.webp" />
+      <link rel="preload" as="image" href="taggedImages/Client-Logos-Color/king_salman_IAir.webp" />
 
       <link rel="preload" as="image" href="taggedImages/Client-Logos-Dark/alinma_bank.webp" />
       <link rel="preload" as="image" href="taggedImages/Client-Logos-Dark/alrajhi_bank.webp" />
@@ -87,6 +90,9 @@ export default function Home() {
       <link rel="preload" as="image" href="taggedImages/Client-Logos-Dark/olam.webp" />
       <link rel="preload" as="image" href="taggedImages/Client-Logos-Dark/reliance_capital.webp" />
       <link rel="preload" as="image" href="taggedImages/Client-Logos-Dark/enjaz.webp" />
+      <link rel="preload" as="image" href="taggedImages/Client-Logos-Dark/pif.webp" />
+      <link rel="preload" as="image" href="taggedImages/Client-Logos-Dark/esports.webp" />
+      <link rel="preload" as="image" href="taggedImages/Client-Logos-Dark/king_salman_IAir.webp" />
 
       <link rel="preload" as="image" href="taggedImages/Managed Services/Administrative Support.webp" />
       <link rel="preload" as="image" href="taggedImages/Managed Services/Continuous Communication.webp" />

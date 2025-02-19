@@ -163,12 +163,22 @@ const HomePage = () => {
       alt_color: "Gain a competitive edge with Top IT Managed Service Providers Saudi Arabia, delivering results for Enjaz."
     },
     {
-      url: "novasat.webp",
-      alt_dark: "Enhance productivity with IT Resource Augmentation Saudi Arabia, delivering tailored expertise for Novasat.",
-      alt_color: "Achieve excellence with IT Resource Augmentation Saudi Arabia, ensuring expert project delivery for Novasat."
-    }
+      url: "pif.webp",
+      alt_dark: "The Best IT Staffing Agency Saudi Arabia helps PIF access skilled IT experts, ensuring project success with the right talent.",
+      alt_color: "Partner with Top IT Staff Augmentation Services Saudi Arabia to hire exceptional IT professionals and drive PIF's projects forward."
+    },
+    {
+      url: "esports.webp",
+      alt_dark: "Trust the Best IT Contract Staffing Saudi Arabia to provide Saudi Esports with experienced professionals for smooth and successful project delivery.",
+      alt_color: "Choose the Top IT Managed Service Providers Saudi Arabia for Saudi Esports' IT hiring needs and build a strong, skilled workforce."
+    },
+    {
+      url: "king_salman_IAir.webp",
+      alt_dark: "Count on the Best IT Staffing Agency Saudi Arabia to help King Salman International Airport recruit top IT talent and achieve operational excellence.",
+      alt_color: "With Top IT Staff Augmentation Services Saudi Arabia, King Salman International Airport can access industry-leading IT professionals to ensure business growth and success."
+    },
   ];
-  
+
   return (
     <div id='hero_section' className='2xl:h-[1000px] xl:h-[900px] lg:h-[900px] md:h-[750px] sm:h-[750px] h-[750px] max-w-screen mb-10 overflow-hidden hide-scrollbar'>
 
@@ -199,7 +209,6 @@ const HomePage = () => {
       url('taggedImages/bg.webp')
     `}}
       />
-
 
       {/* chatbot float */}
       <ChatBotIcon onClick={() => {
@@ -307,15 +316,15 @@ const HomePage = () => {
       {/* header */}
       <div className={`fixed w-full bg-white bg-opacity-50 dark:bg-black  dark:bg-opacity-30 backdrop-blur-lg z-40 top-0 transition-transform duration-500 ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}>
         <div className='flex justify-between align-middle w-full max-h-16 md:max-h-20 bg-transparent'>
-            <Link href="https://www.datasack.in" target="_blank" className='my-auto pl-2' >
-              <Image
-                src="taggedImages/logo.webp"
-                alt="Transform your workforce with the Best IT Staffing Agency Saudi Arabia, providing innovative hiring solutions"
-                width={140}
-                height={110}
-                className="cursor-pointer w-auto max-h-14 md:max-h-[68px] p-1"
-              />
-            </Link>
+          <Link href="https://www.datasack.in" target="_blank" className='my-auto pl-2' >
+            <Image
+              src="taggedImages/logo.webp"
+              alt="Transform your workforce with the Best IT Staffing Agency Saudi Arabia, providing innovative hiring solutions"
+              width={140}
+              height={110}
+              className="cursor-pointer w-auto max-h-14 md:max-h-[68px] p-1"
+            />
+          </Link>
 
           <div className='hidden text-sm sm:text-xs md:text-sm lg:text-lg xl:text-lg 2xl:text-lg w-fit sm:flex gap-14 text-purple-100 sm:text-blue-100 mr-2 justify-around align-middle p-5 m-auto'>
             <div onClick={() => document.getElementById('pricing-section')?.scrollIntoView({ behavior: 'smooth' })
@@ -423,14 +432,10 @@ const HomePage = () => {
                   </div>
                 }
               </div>
-
             </nav>
           </div>
         </div>
-
       </div>
-
-
 
       {/* page body */}
       <div className="relative h-screen w-screen overflow-y bg-opacity-50 mt-28 px-5">
@@ -481,19 +486,6 @@ const HomePage = () => {
             Need Tech Talent Quickly?
           </h1>
 
-          {/* <p className="
-          text-2xl
-          sm:text-2xl 
-          md:text-3xl 
-          lg:text-4xl 
-          xl:text-5xl 
-          2xl:text-[40px] 
-          font-bold 
-          mb-7
-          ">
-            Cost-effective IT Staffing Agency In Riyadh
-          </p> */}
-
           <div className='h-12 '>
             <TypingText />
           </div>
@@ -540,7 +532,6 @@ const HomePage = () => {
             <p className='text-sm  sm:text-sm md:text-lg lg:text-sm xl:text-lg'>Book For Demo</p>
           </button>
 
-
           <div className="my-2 md:my-10 lg:my-10 xl:my-10 2xl:my-10 align-middle m-auto bg-white dark:bg-black dark:bg-opacity-30 bg-opacity-50 rounded-3xl shadow-lg w-4/5 ">
             <p className="pt-3 text-sm sm:text-sm md:text-sm lg:text-lg xl:text-lg 2xl:text-lg text-black dark:text-white font-semibold text-center">Trusted by 100+ Companies</p>
 
@@ -559,10 +550,10 @@ const HomePage = () => {
                   <li key={i} className="flex justify-center items-center  sm:basis-1/3 md:basis-1/4 lg:basis-1/5">
                     <Image
                       src={darkMode ? `taggedImages/Client-Logos-Dark/${bank.url}` : `taggedImages/Client-Logos-Color/${bank.url}`}
-                      alt={darkMode ? bank.alt_dark:bank.alt_color}
+                      alt={darkMode ? bank.alt_dark : bank.alt_color}
                       width={100}
                       height={80}
-                      className="cursor-pointer w-24  sm:w-20 md:w-28 lg:w-36 xl:w-40 h-auto mr-0 ml-0"
+                      className={`cursor-pointer    mr-0 ml-0 ${bank.url==='king_salman_IAir.webp'? "h-5 md:h-7 w-auto":"h-auto w-24 sm:w-20 md:w-28 lg:w-36 xl:w-40"}`}
                     />
                   </li>
                 ))}
@@ -573,17 +564,16 @@ const HomePage = () => {
                   <li key={i} className="flex  justify-center items-center  sm:basis-1/3 md:basis-1/4 lg:basis-1/5">
                     <Image
                       src={darkMode ? `taggedImages/Client-Logos-Dark/${bank.url}` : `taggedImages/Client-Logos-Color/${bank.url}`}
-                      alt={darkMode ? bank.alt_dark:bank.alt_color}
+                      alt={darkMode ? bank.alt_dark : bank.alt_color}
                       width={100}
                       height={80}
-                      className="cursor-pointer  w-24 sm:w-20 md:w-28 lg:w-36 xl:w-40 h-auto ml-0 mr-0"
-                    />
+                      className={`cursor-pointer  mr-0 ml-0 ${bank.url==='king_salman_IAir.webp'? "h-5 md:h-7 w-auto":"h-auto w-24   sm:w-20 md:w-28 lg:w-36 xl:w-40"}`}                    />
                   </li>
                 ))}
               </ul>
+
             </div>
           </div>
-
         </div>
       </div>
     </div>

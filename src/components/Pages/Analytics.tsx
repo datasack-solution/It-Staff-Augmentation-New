@@ -62,14 +62,16 @@ const AnalyticsPage = () => {
         sliderRef.current?.slickGoTo(index);
     };
 
-
-
     return <div className=" text-black dark:text-white">
         <div className="container
         hidden
         lg:flex
         xl:flex
-        2xl:flex bg-white dark:bg-[#252525]  mb-10 m-auto">
+        2xl:flex 
+        bg-white 
+        dark:bg-[#252525]  
+        mb-10 
+        m-auto">
             <div className="w-[60%] mt-16 lg:mt-10">
                 <div className="w-1/2 m-auto">
                     <h2 className="mt text-xl sm:text-xl md:text-2xl lg:text-3xl text-nowrap xl:text-3xl 2xl:text-4xl pt  font-bold text-center mt-10">
@@ -134,7 +136,6 @@ const AnalyticsPage = () => {
                 <Image alt={darkMode ? "Empower your organization with the Best IT Staffing Agency Saudi Arabia, offering unparalleled recruitment solutions.":"Maximize efficiency with Top IT Staff Augmentation Services Saudi Arabia, tailored to meet your specific goals."} src={darkMode ? 'taggedImages/steps-dark.webp' : 'taggedImages/steps-light.webp'} width={550} height={400} className="mt-10" />
             </div>
         </div>
-
 
         {/* mobile support */}
         <div className="container relative
@@ -212,7 +213,6 @@ const AnalyticsPage = () => {
                 </button>
             </div>
         </div>
-
     </div>
 }
 

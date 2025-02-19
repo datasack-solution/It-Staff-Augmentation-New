@@ -81,14 +81,10 @@ const BenefitsPage = () => {
                                     {benefit.description}
                                 </div>
                             </div>
-
-
                         </div>
                     })}
                 </div>
-
             </div>
-
         </div>
     </div>
 }
