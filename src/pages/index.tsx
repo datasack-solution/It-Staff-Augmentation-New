@@ -81,6 +81,12 @@ export default function Home() {
       <link rel="preload" as="image" href="taggedImages/Client-Logos-Color/pif.webp" />
       <link rel="preload" as="image" href="taggedImages/Client-Logos-Color/esports.webp" />
       <link rel="preload" as="image" href="taggedImages/Client-Logos-Color/king_salman_IAir.webp" />
+      <link rel="preload" as="image" href="taggedImages/Client-Logos-Color/d360.webp" />
+      <link rel="preload" as="image" href="taggedImages/Client-Logos-Color/riyadh_airports.webp" />
+      <link rel="preload" as="image" href="taggedImages/Client-Logos-Color/arab-national-bank-logo.webp" />
+      <link rel="preload" as="image" href="taggedImages/Client-Logos-Color/elite-elevators-logo.webp" />
+      <link rel="preload" as="image" href="taggedImages/Client-Logos-Color/k2-partnering-solutions-logo.webp" />
+      <link rel="preload" as="image" href="taggedImages/Client-Logos-Color/nupco-logo.webp" />
 
       <link rel="preload" as="image" href="taggedImages/Client-Logos-Dark/alinma_bank.webp" />
       <link rel="preload" as="image" href="taggedImages/Client-Logos-Dark/alrajhi_bank.webp" />
@@ -93,6 +99,8 @@ export default function Home() {
       <link rel="preload" as="image" href="taggedImages/Client-Logos-Dark/pif.webp" />
       <link rel="preload" as="image" href="taggedImages/Client-Logos-Dark/esports.webp" />
       <link rel="preload" as="image" href="taggedImages/Client-Logos-Dark/king_salman_IAir.webp" />
+      <link rel="preload" as="image" href="taggedImages/Client-Logos-Dark/d360.webp" />
+      <link rel="preload" as="image" href="taggedImages/Client-Logos-Dark/riyadh_airports.webp" />
 
       <link rel="preload" as="image" href="taggedImages/Managed Services/Administrative Support.webp" />
       <link rel="preload" as="image" href="taggedImages/Managed Services/Continuous Communication.webp" />

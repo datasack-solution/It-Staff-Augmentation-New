@@ -63,3 +63,57 @@ body.modal-open {
   overflow: hidden;
   position:relative;
 }
+
+
+/* image */
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Full width of the li */
+  height: 100px; /* Base height */
+  overflow: hidden; /* Hide overflow if image exceeds container */
+}
+
+.logo-image {
+  max-width: 100%; /* Ensure it fits the container */
+  max-height: 100%; /* Limit height to container */
+  object-fit: contain; /* Maintain aspect ratio without cropping */
+  padding: 5px; /* Optional: consistent padding */
+}
+
+/* Special case adjustments */
+.king-salman-logo {
+  height: 100%; /* Full height for this specific logo */
+  width: auto;
+}
+
+/* Specific adjustments for elm, elite-elevators, and k2 on mobile */
+.small-logo-mobile {
+  max-height: 120%; /* Allow slight overflow to make them larger */
+  padding: 0; /* Remove padding to maximize size */
+}
+
+
+/* Invert filter for dark mode */
+.invert-in-dark {
+  filter: brightness(0) invert(1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 639px) { /* Mobile screens */
+  .logo-container { height: 120px; } /* Slightly smaller base height for mobile */
+}
+@media (min-width: 640px) { /* sm */
+  .logo-container { height: 120px; }
+}
+@media (min-width: 768px) { /* md */
+  .logo-container { height: 140px; }
+}
+@media (min-width: 1024px) { /* lg */
+  .logo-container { height: 160px; }
+}
+@media (min-width: 1280px) { /* xl */
+  .logo-container { height: 180px; }
+}

@@ -196,7 +196,7 @@ const Footer = () => {
                         <div className="space-y-5 text-center md:text-start  xs:items-center sm:items-center md:items-center lg:items-start">
                             <div className="flex items-center gap-5 xs:text-sm xs:flex-col sm:flex-col md:flex-col lg:flex-row brightness-150 ">
                                 <Image alt="Experience confidence with Top IT Managed Service Providers Saudi Arabia, delivering proactive solutions, symbolized by the Saudi flag" src={'taggedImages/saudiFlag.webp'} width={90} height={50} className="p-1 bg-orange-100 bg-opacity-20"/>
-                                <Link className="w-1/2" href={'https://maps.app.goo.gl/CxePLTdFTx34i9Gi7'} target="_blank"><p >Building no: 2345, Ahmed AL Tamimi AL Malaz, Riyadh 12831, Saudi Arabia</p></Link>
+                                <Link className="w-1/2" href={'https://maps.app.goo.gl/eZQvejPHJT51uLqF6'} target="_blank"><p >Building no: 2345, Ahmed AL Tamimi AL Malaz, Riyadh 12831, Saudi Arabia</p></Link>
                             </div>
                             <div className="flex items-center gap-5 xs:text-sm xs:flex-col sm:flex-col md:flex-col lg:flex-row brightness-125">
                                 <Image alt="indian-logo" src={'taggedImages/indianFlag.png'} width={90} height={50} className="p-1 bg-orange-100 bg-opacity-20"/>

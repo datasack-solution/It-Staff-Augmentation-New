@@ -4,77 +4,106 @@ import { useCallUsModalState } from '../CallUsContext';
 
 const banks = [
     {
-        url: "alinma_bank.webp",
-        alt_dark: "Partner with Top IT Managed Service Providers Saudi Arabia to enhance efficiency and results for Alinma Bank.",
-        alt_color: "Unlock efficiency with Top IT Managed Service Providers Saudi Arabia, tailored to optimize Alinma Bank's operations."
+      url: "alinma_bank.webp",
+      alt_dark: "Partner with Top IT Managed Service Providers Saudi Arabia to enhance efficiency and results for Alinma Bank.",
+      alt_color: "Unlock efficiency with Top IT Managed Service Providers Saudi Arabia, tailored to optimize Alinma Bank's operations."
     },
     {
-        url: "alrajhi_bank.webp",
-        alt_dark: "Streamline your hiring with the Best IT Contract Staffing Saudi Arabia, delivering top-tier solutions to Alrajhi Bank.",
-        alt_color: "Simplify workforce expansion with the Best IT Contract Staffing Saudi Arabia, ensuring success for Alrajhi Bank."
+      url: "alrajhi_bank.webp",
+      alt_dark: "Streamline your hiring with the Best IT Contract Staffing Saudi Arabia, delivering top-tier solutions to Alrajhi Bank.",
+      alt_color: "Simplify workforce expansion with the Best IT Contract Staffing Saudi Arabia, ensuring success for Alrajhi Bank."
     },
     {
-        url: "bank_albilad.webp",
-        alt_dark: "Employ full time contract employees to maintain seamless IT support for Bank Albilad's evolving needs.",
-        alt_color: "Full time contract employees ensures consistent IT performance, empowering Bank Albilad to achieve seamless delivery."
+      url: "bank_albilad.webp",
+      alt_dark: "Employ full time contract employees to maintain seamless IT support for Bank Albilad's evolving needs.",
+      alt_color: "Full time contract employees ensures consistent IT performance, empowering Bank Albilad to achieve seamless delivery."
     },
     {
-        url: "future_generali.webp",
-        alt_dark: "IT Staffing Riyadh offers innovative recruitment services tailored to meet Future Generali's business goals.",
-        alt_color: "Transform hiring processes with IT Staffing Riyadh, offering customized solutions for Future Generali's unique goals."
+      url: "future_generali.webp",
+      alt_dark: "IT Staffing Riyadh offers innovative recruitment services tailored to meet Future Generali's business goals.",
+      alt_color: "Transform hiring processes with IT Staffing Riyadh, offering customized solutions for Future Generali's unique goals."
     },
     {
-        url: "elm.webp",
-        alt_dark: "Choose the Best IT Contract Staffing Saudi Arabia for scalable solutions designed to suit Elm's objectives.",
-        alt_color: "Opt for the Best IT Contract Staffing Saudi Arabia for flexible and efficient workforce solutions tailored for Elm."
+      url: "elm.webp",
+      alt_dark: "Choose the Best IT Contract Staffing Saudi Arabia for scalable solutions designed to suit Elm's objectives.",
+      alt_color: "Opt for the Best IT Contract Staffing Saudi Arabia for flexible and efficient workforce solutions tailored for Elm."
     },
     {
-        url: "gallagher.webp",
-        alt_dark: "Adapt to market demands with Top IT Staff Augmentation Services Saudi Arabia, driving success for Gallagher.",
-        alt_color: "Rely on Top IT Staff Augmentation Services Saudi Arabia to meet dynamic workforce needs, enhancing Gallagher's success."
+      url: "gallagher.webp",
+      alt_dark: "Adapt to market demands with Top IT Staff Augmentation Services Saudi Arabia, driving success for Gallagher.",
+      alt_color: "Rely on Top IT Staff Augmentation Services Saudi Arabia to meet dynamic workforce needs, enhancing Gallagher's success."
     },
     {
-        url: "nibav.webp",
-        alt_dark: "Expand your workforce with IT Resource Augmentation Saudi Arabia, offering strategic staffing options for Nibav.",
-        alt_color: "IT Resource Augmentation Saudi Arabia provides scalable solutions to meet Nibav's project needs."
+      url: "nibav.webp",
+      alt_dark: "Expand your workforce with IT Resource Augmentation Saudi Arabia, offering strategic staffing options for Nibav.",
+      alt_color: "IT Resource Augmentation Saudi Arabia provides scalable solutions to meet Nibav's project needs."
     },
     {
-        url: "olam.webp",
-        alt_dark: "Rely on the Best IT Staffing Agency Saudi Arabia to connect with exceptional talent for Olam's projects.",
-        alt_color: "Trust the Best IT Staffing Agency Saudi Arabia for unmatched recruitment, securing top talent for Olam."
+      url: "d360.webp",
+      alt_dark: "Scale business growth with IT Staffing Agency Saudi Arabia, ensuring reliable IT talent for D360.",
+      alt_color: "Innovate digital solutions with IT Staffing Riyadh, securing top IT professionals for D360."
     },
     {
-        url: "reliance_capital.webp",
-        alt_dark: "Bolster your team with IT Team Augmentation Saudi Arabia, ensuring expert professionals for Reliance Capital.",
-        alt_color: "Boost capabilities with IT Team Augmentation Saudi Arabia, providing reliable professionals for Reliance Capital."
+      url: "sami.webp",
+      alt_dark: "Scale esports development with IT Staff Augmentation Services Saudi Arabia, ensuring top talent for Saudi Esports.",
+      alt_color: "Drive gaming innovation with IT Staffing Agency Saudi Arabia, delivering skilled professionals for Saudi Esports."
     },
     {
-        url: "enjaz.webp",
-        alt_dark: "Achieve operational excellence with Top IT Managed Service Providers Saudi Arabia, supporting Enjaz's growth.",
-        alt_color: "Gain a competitive edge with Top IT Managed Service Providers Saudi Arabia, delivering results for Enjaz."
+      url: "arab-national-bank-logo.webp",
+      alt_dark: "Scale esports development with IT Staff Augmentation Services Saudi Arabia, ensuring top talent for Saudi Esports.",
+      alt_color: "Drive gaming innovation with IT Staffing Agency Saudi Arabia, delivering skilled professionals for Saudi Esports."
     },
     {
-        url: "novasat.webp",
-        alt_dark: "Enhance productivity with IT Resource Augmentation Saudi Arabia, delivering tailored expertise for Novasat.",
-        alt_color: "Achieve excellence with IT Resource Augmentation Saudi Arabia, ensuring expert project delivery for Novasat."
+      url: "elite-elevators-logo.webp",
+      alt_dark: "Scale esports development with IT Staff Augmentation Services Saudi Arabia, ensuring top talent for Saudi Esports.",
+      alt_color: "Drive gaming innovation with IT Staffing Agency Saudi Arabia, delivering skilled professionals for Saudi Esports."
     },
     {
-        url: "pif.webp",
-        alt_dark: "The Best IT Staffing Agency Saudi Arabia helps PIF access skilled IT experts, ensuring project success with the right talent.",
-        alt_color: "Partner with Top IT Staff Augmentation Services Saudi Arabia to hire exceptional IT professionals and drive PIF's projects forward."
-      },
-      {
-        url: "esports.webp",
-        alt_dark: "Trust the Best IT Contract Staffing Saudi Arabia to provide Saudi Esports with experienced professionals for smooth and successful project delivery.",
-        alt_color: "Choose the Top IT Managed Service Providers Saudi Arabia for Saudi Esports' IT hiring needs and build a strong, skilled workforce."
-      },
-      {
-        url: "king_salman_IAir.webp",
-        alt_dark: "Count on the Best IT Staffing Agency Saudi Arabia to help King Salman International Airport recruit top IT talent and achieve operational excellence.",
-        alt_color: "With Top IT Staff Augmentation Services Saudi Arabia, King Salman International Airport can access industry-leading IT professionals to ensure business growth and success."
-      },
-];
-
+      url: "k2-partnering-solutions-logo.webp",
+      alt_dark: "Scale esports development with IT Staff Augmentation Services Saudi Arabia, ensuring top talent for Saudi Esports.",
+      alt_color: "Drive gaming innovation with IT Staffing Agency Saudi Arabia, delivering skilled professionals for Saudi Esports."
+    },
+    {
+      url: "nupco-logo.webp",
+      alt_dark: "Scale esports development with IT Staff Augmentation Services Saudi Arabia, ensuring top talent for Saudi Esports.",
+      alt_color: "Drive gaming innovation with IT Staffing Agency Saudi Arabia, delivering skilled professionals for Saudi Esports."
+    },
+    {
+      url: "riyadh_airports.webp",
+      alt_dark: "Improve operational efficiency with IT Staff Augmentation Services Saudi Arabia, delivering top-tier IT solutions for Riyadh Airports.",
+      alt_color: "Optimize airport IT infrastructure with IT Staffing Agency Saudi Arabia, providing expert IT support for Riyadh Airports."
+    },
+    {
+      url: "olam.webp",
+      alt_dark: "Rely on the Best IT Staffing Agency Saudi Arabia to connect with exceptional talent for Olam's projects.",
+      alt_color: "Trust the Best IT Staffing Agency Saudi Arabia for unmatched recruitment, securing top talent for Olam."
+    },
+    {
+      url: "reliance_capital.webp",
+      alt_dark: "Bolster your team with IT Team Augmentation Saudi Arabia, ensuring expert professionals for Reliance Capital.",
+      alt_color: "Boost capabilities with IT Team Augmentation Saudi Arabia, providing reliable professionals for Reliance Capital."
+    },
+    {
+      url: "enjaz.webp",
+      alt_dark: "Achieve operational excellence with Top IT Managed Service Providers Saudi Arabia, supporting Enjaz's growth.",
+      alt_color: "Gain a competitive edge with Top IT Managed Service Providers Saudi Arabia, delivering results for Enjaz."
+    },
+    {
+      url: "pif.webp",
+      alt_dark: "Accelerate business growth with IT Staff Augmentation, ensuring seamless execution of IT initiatives for PIF.",
+      alt_color: "Strengthen digital transformation with IT Staffing Riyadh, offering specialized IT professionals for PIF."
+    },
+    {
+      url: "esports.webp",
+      alt_dark: "Scale esports development with IT Staff Augmentation Services Saudi Arabia, ensuring top talent for Saudi Esports.",
+      alt_color: "Drive gaming innovation with IT Staffing Agency Saudi Arabia, delivering skilled professionals for Saudi Esports."
+    },
+    {
+      url: "king_salman_IAir.webp",
+      alt_dark: "Enhance workforce efficiency with IT Staff Augmentation, providing expert talent for King Salman International Airport.",
+      alt_color: "Transform airport operations with IT Staffing Riyadh, ensuring seamless technology management for King Salman International Airport."
+    },
+  ];
 
 
 export default function FAQPage() {
@@ -183,7 +212,7 @@ ul.nextSibling.setAttribute('aria-hidden', 'true');
 })"
         className="w-full  dark:bg-opacity-70  -mt-10 mb-20 xs:p-2 sm:p-5 md:p-6 lg:p-7 xl:p-7 2xl:p-7 inline-flex flex-nowrap overflow-hidden 
    [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-100px),transparent_100%)]">
-
+{/* 
         <ul className="flex items-center justify-center md:justify-start [&_li]:mx-4 [&_img]:max-w-none animate-infinite-scroll">
             {banks.map((bank, i) => (
                 <li key={i} className="flex justify-center items-center  sm:basis-1/3 md:basis-1/4 lg:basis-1/5">
@@ -192,8 +221,10 @@ ul.nextSibling.setAttribute('aria-hidden', 'true');
                         alt={darkMode ? bank.alt_dark : bank.alt_color}
                         width={100}
                         height={80}
-                        // className="cursor-pointer w-24 sm:w-20 md:w-28 lg:w-36 xl:w-40 h-auto"
-                        className={`cursor-pointer  mr-0 ml-0 ${bank.url==='king_salman_IAir.webp'? "h-5 md:h-7 w-auto":"h-auto w-24 sm:w-20 md:w-28 lg:w-36 xl:w-40"}`}
+                        className={`cursor-pointer    mr-0 ml-0 
+                            ${bank.url==='king_salman_IAir.webp'? "h-5 md:h-7 w-auto" :
+                              bank.url === 'd360.webp' ? "h-20 md:h-20 lg:h-32  w-auto p-0":
+                              "h-auto w-24 sm:w-20 md:w-28 lg:w-36 xl:w-40 "}`}
                     />
                 </li>
             ))}
@@ -207,11 +238,84 @@ ul.nextSibling.setAttribute('aria-hidden', 'true');
                         alt={darkMode ? bank.alt_dark : bank.alt_color}
                         width={100}
                         height={80}
-                        // className="cursor-pointer w-24 sm:w-20 md:w-28 lg:w-36 xl:w-40 h-auto"
-                        className={`cursor-pointer  mr-0 ml-0 ${bank.url==='king_salman_IAir.webp'? "h-5 md:h-7 w-auto":"h-auto w-24 sm:w-20 md:w-28 lg:w-36 xl:w-40"}`}
+                        className={`cursor-pointer    mr-0 ml-0 
+                            ${bank.url==='king_salman_IAir.webp'? "h-5 md:h-7 w-auto" :
+                              bank.url === 'd360.webp' ? "h-20 md:h-20 lg:h-32  w-auto p-0":
+                              "h-auto w-24 sm:w-20 md:w-28 lg:w-36 xl:w-40 "}`}
                     />
                 </li>
             ))}
-        </ul>
+        </ul> */}
+
+<ul className="flex items-center justify-center md:justify-start [&_li]:mx-4 [&_img]:max-w-none animate-infinite-scroll" aria-hidden="true">
+  {banks.map((bank, i) => (
+    <li key={i} className="flex justify-center items-center sm:basis-1/3 md:basis-1/4 lg:basis-1/5">
+      <div className="logo-container">
+        <Image
+          src={
+            darkMode && 
+            bank.url !== "sami.webp" && 
+            bank.url !== "arab-national-bank-logo.webp" && 
+            bank.url !== "elite-elevators-logo.webp" && 
+            bank.url !== "nupco-logo.webp"
+              ? `taggedImages/Client-Logos-Dark/${bank.url}`
+              : `taggedImages/Client-Logos-Color/${bank.url}`
+          }
+          alt={darkMode ? bank.alt_dark : bank.alt_color}
+          width={150}
+          height={100}
+          className={`logo-image ${
+            bank.url === "king_salman_IAir.webp" ? "king-salman-logo h-8 md:h-10 w-auto" :
+            (bank.url === "elm.webp" || 
+             bank.url === "k2-partnering-solutions-logo.webp") ? "small-logo-mobile" :
+            (darkMode && (
+              bank.url === "arab-national-bank-logo.webp" || 
+              bank.url === "elite-elevators-logo.webp" || 
+              bank.url === "nupco-logo.webp" || 
+              bank.url === "sami.webp"
+            )) ? "invert-in-dark" : ""
+          }`}
+        />
+      </div>
+    </li>
+  ))}
+</ul>
+
+<ul className="flex items-center justify-center md:justify-start [&_li]:mx-4 [&_img]:max-w-none animate-infinite-scroll" aria-hidden="true">
+  {banks.map((bank, i) => (
+    <li key={i} className="flex justify-center items-center sm:basis-1/3 md:basis-1/4 lg:basis-1/5">
+      <div className="logo-container">
+        <Image
+          src={
+            darkMode && 
+            bank.url !== "sami.webp" && 
+            bank.url !== "k2-partnering-solutions-logo.webp" && 
+            bank.url !== "arab-national-bank-logo.webp" && 
+            bank.url !== "elite-elevators-logo.webp" && 
+            bank.url !== "nupco-logo.webp"
+              ? `taggedImages/Client-Logos-Dark/${bank.url}`
+              : `taggedImages/Client-Logos-Color/${bank.url}`
+          }
+          alt={darkMode ? bank.alt_dark : bank.alt_color}
+          width={150}
+          height={100}
+          className={`logo-image ${
+            bank.url === "king_salman_IAir.webp" ? "king-salman-logo h-8 md:h-10 w-auto" :
+            (bank.url === "elm.webp" || 
+             bank.url === "k2-partnering-solutions-logo.webp") ? "small-logo-mobile " :
+            (darkMode && (
+              bank.url === "arab-national-bank-logo.webp" || 
+              bank.url === "elite-elevators-logo.webp" || 
+              bank.url === "nupco-logo.webp" || 
+              bank.url === "sami.webp"
+            )) ? "invert-in-dark" : ""
+          }`}
+        />
+      </div>
+    </li>
+  ))}
+</ul>
+
+
     </div>
 }

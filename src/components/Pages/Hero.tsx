@@ -11,11 +11,10 @@ import { useEffect, useState } from 'react';
 import { useCallUsModalState } from '../CallUsContext';
 import CallUsModal from '../CallUsModal';
 import HomeIcon from '../HomeIcon';
-
 import { TypeAnimation } from 'react-type-animation';
+import ChatScreen from '../ChatSupport';
 import HomeIcon_Light from '../HomeIcon_Light';
 import WhatsappIcon_Light from '../WhatsappIcon_Light';
-import ChatScreen from '../ChatSupport';
 
 const TypingText = () => {
   return (
@@ -148,6 +147,41 @@ const HomePage = () => {
       alt_color: "IT Resource Augmentation Saudi Arabia provides scalable solutions to meet Nibav's project needs."
     },
     {
+      url: "d360.webp",
+      alt_dark: "Scale business growth with IT Staffing Agency Saudi Arabia, ensuring reliable IT talent for D360.",
+      alt_color: "Innovate digital solutions with IT Staffing Riyadh, securing top IT professionals for D360."
+    },
+    {
+      url: "sami.webp",
+      alt_dark: "Strengthen technology solutions with IT Staffing Riyadh, providing expert IT professionals for SAMI Advanced Electronics.",
+      alt_color: "Strengthen technology solutions with IT Staffing Riyadh, providing expert IT professionals for SAMI Advanced Electronics."
+    },
+    {
+      url: "arab-national-bank-logo.webp",
+      alt_dark: "Enhance financial operations with IT Staff Augmentation by providing expert IT professionals for Arab National Bank.",
+      alt_color: "Enhance financial operations with IT Staff Augmentation by providing expert IT professionals for Arab National Bank."
+    },
+    {
+      url: "elite-elevators-logo.webp",
+      alt_dark: "Elevate smart living with IT Staffing Agency Saudi Arabia, delivering top-tier IT talent for Elite Elevators.",
+      alt_color: "Elevate smart living with IT Staffing Agency Saudi Arabia, delivering top-tier IT talent for Elite Elevators."
+    },
+    {
+      url: "k2-partnering-solutions-logo.webp",
+      alt_dark: "Optimize business growth with IT Staff Augmentation, ensuring reliable IT expertise for K2 Partnering Solutions.",
+      alt_color: "Accelerate IT projects with IT Staffing Riyadh, providing skilled professionals for K2 Partnering Solutions."
+    },
+    {
+      url: "nupco-logo.webp",
+      alt_dark: "Enhance healthcare technology with IT Staffing Agency Saudi Arabia, delivering expert IT solutions for NUPCO.",
+      alt_color: "Enhance healthcare technology with IT Staffing Agency Saudi Arabia, delivering expert IT solutions for NUPCO."
+    },
+    {
+      url: "riyadh_airports.webp",
+      alt_dark: "Improve operational efficiency with IT Staff Augmentation Services Saudi Arabia, delivering top-tier IT solutions for Riyadh Airports.",
+      alt_color: "Optimize airport IT infrastructure with IT Staffing Agency Saudi Arabia, providing expert IT support for Riyadh Airports."
+    },
+    {
       url: "olam.webp",
       alt_dark: "Rely on the Best IT Staffing Agency Saudi Arabia to connect with exceptional talent for Olam's projects.",
       alt_color: "Trust the Best IT Staffing Agency Saudi Arabia for unmatched recruitment, securing top talent for Olam."
@@ -164,18 +198,18 @@ const HomePage = () => {
     },
     {
       url: "pif.webp",
-      alt_dark: "The Best IT Staffing Agency Saudi Arabia helps PIF access skilled IT experts, ensuring project success with the right talent.",
-      alt_color: "Partner with Top IT Staff Augmentation Services Saudi Arabia to hire exceptional IT professionals and drive PIF's projects forward."
+      alt_dark: "Accelerate business growth with IT Staff Augmentation, ensuring seamless execution of IT initiatives for PIF.",
+      alt_color: "Strengthen digital transformation with IT Staffing Riyadh, offering specialized IT professionals for PIF."
     },
     {
       url: "esports.webp",
-      alt_dark: "Trust the Best IT Contract Staffing Saudi Arabia to provide Saudi Esports with experienced professionals for smooth and successful project delivery.",
-      alt_color: "Choose the Top IT Managed Service Providers Saudi Arabia for Saudi Esports' IT hiring needs and build a strong, skilled workforce."
+      alt_dark: "Scale esports development with IT Staff Augmentation Services Saudi Arabia, ensuring top talent for Saudi Esports.",
+      alt_color: "Drive gaming innovation with IT Staffing Agency Saudi Arabia, delivering skilled professionals for Saudi Esports."
     },
     {
       url: "king_salman_IAir.webp",
-      alt_dark: "Count on the Best IT Staffing Agency Saudi Arabia to help King Salman International Airport recruit top IT talent and achieve operational excellence.",
-      alt_color: "With Top IT Staff Augmentation Services Saudi Arabia, King Salman International Airport can access industry-leading IT professionals to ensure business growth and success."
+      alt_dark: "Enhance workforce efficiency with IT Staff Augmentation, providing expert talent for King Salman International Airport.",
+      alt_color: "Transform airport operations with IT Staffing Riyadh, ensuring seamless technology management for King Salman International Airport."
     },
   ];
 
@@ -542,32 +576,72 @@ const HomePage = () => {
       ul.insertAdjacentHTML('afterend', ul.outerHTML);
       ul.nextSibling.setAttribute('aria-hidden', 'true');
     })"
-              className="w-full inline-flex flex-nowrap overflow-hidden h-14 lg:h-20
+              className="w-full inline-flex flex-nowrap overflow-hidden  max-h-14 sm:max-h-16 md:max-h-24
                [mask-image:_linear-gradient(to_right,transparent_0,_black_10%,_black_calc(100%-10%),transparent_100%)]">
 
-              <ul className="flex p-5 items-center justify-center md:justify-start [&_li]:mx-4 [&_img]:max-w-none animate-infinite-scroll">
+              <ul className="flex items-center justify-center md:justify-start [&_li]:mx-4 [&_img]:max-w-none animate-infinite-scroll" aria-hidden="true">
                 {banks.map((bank, i) => (
-                  <li key={i} className="flex justify-center items-center  sm:basis-1/3 md:basis-1/4 lg:basis-1/5">
-                    <Image
-                      src={darkMode ? `taggedImages/Client-Logos-Dark/${bank.url}` : `taggedImages/Client-Logos-Color/${bank.url}`}
-                      alt={darkMode ? bank.alt_dark : bank.alt_color}
-                      width={100}
-                      height={80}
-                      className={`cursor-pointer    mr-0 ml-0 ${bank.url==='king_salman_IAir.webp'? "h-5 md:h-7 w-auto":"h-auto w-24 sm:w-20 md:w-28 lg:w-36 xl:w-40"}`}
-                    />
+                  <li key={i} className="flex justify-center items-center sm:basis-1/3 md:basis-1/4 lg:basis-1/5">
+                    <div className="logo-container">
+                      <Image
+                        src={
+                          darkMode &&
+                            bank.url !== "sami.webp" &&
+                            bank.url !== "arab-national-bank-logo.webp" &&
+                            bank.url !== "elite-elevators-logo.webp" &&
+                            bank.url !== "nupco-logo.webp"
+                            ? `taggedImages/Client-Logos-Dark/${bank.url}`
+                            : `taggedImages/Client-Logos-Color/${bank.url}`
+                        }
+                        alt={darkMode ? bank.alt_dark : bank.alt_color}
+                        width={150}
+                        height={100}
+                        className={`logo-image ${bank.url === "king_salman_IAir.webp" ? "king-salman-logo h-8 md:h-10 w-auto" :
+                            (bank.url === "elm.webp" ||
+                              bank.url === "k2-partnering-solutions-logo.webp") ? "small-logo-mobile" :
+                              (darkMode && (
+                                bank.url === "arab-national-bank-logo.webp" ||
+                                bank.url === "elite-elevators-logo.webp" ||
+                                bank.url === "nupco-logo.webp" ||
+                                bank.url === "sami.webp"
+                              )) ? "invert-in-dark" : ""
+                          }`}
+                      />
+                    </div>
                   </li>
                 ))}
               </ul>
 
-              <ul className="flex p-5 items-center justify-center md:justify-start [&_li]:mx-4 [&_img]:max-w-none animate-infinite-scroll" aria-hidden="true">
+              <ul className="flex items-center justify-center md:justify-start [&_li]:mx-4 [&_img]:max-w-none animate-infinite-scroll" aria-hidden="true">
                 {banks.map((bank, i) => (
-                  <li key={i} className="flex  justify-center items-center  sm:basis-1/3 md:basis-1/4 lg:basis-1/5">
-                    <Image
-                      src={darkMode ? `taggedImages/Client-Logos-Dark/${bank.url}` : `taggedImages/Client-Logos-Color/${bank.url}`}
-                      alt={darkMode ? bank.alt_dark : bank.alt_color}
-                      width={100}
-                      height={80}
-                      className={`cursor-pointer  mr-0 ml-0 ${bank.url==='king_salman_IAir.webp'? "h-5 md:h-7 w-auto":"h-auto w-24   sm:w-20 md:w-28 lg:w-36 xl:w-40"}`}                    />
+                  <li key={i} className="flex justify-center items-center sm:basis-1/3 md:basis-1/4 lg:basis-1/5">
+                    <div className="logo-container">
+                      <Image
+                        src={
+                          darkMode &&
+                            bank.url !== "sami.webp" &&
+                            bank.url !== "k2-partnering-solutions-logo.webp" &&
+                            bank.url !== "arab-national-bank-logo.webp" &&
+                            bank.url !== "elite-elevators-logo.webp" &&
+                            bank.url !== "nupco-logo.webp"
+                            ? `taggedImages/Client-Logos-Dark/${bank.url}`
+                            : `taggedImages/Client-Logos-Color/${bank.url}`
+                        }
+                        alt={darkMode ? bank.alt_dark : bank.alt_color}
+                        width={150}
+                        height={100}
+                        className={`logo-image ${bank.url === "king_salman_IAir.webp" ? "king-salman-logo h-8 md:h-10 w-auto" :
+                            (bank.url === "elm.webp" ||
+                              bank.url === "k2-partnering-solutions-logo.webp") ? "small-logo-mobile " :
+                              (darkMode && (
+                                bank.url === "arab-national-bank-logo.webp" ||
+                                bank.url === "elite-elevators-logo.webp" ||
+                                bank.url === "nupco-logo.webp" ||
+                                bank.url === "sami.webp"
+                              )) ? "invert-in-dark" : ""
+                          }`}
+                      />
+                    </div>
                   </li>
                 ))}
               </ul>
