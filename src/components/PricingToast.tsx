@@ -36,7 +36,7 @@ const PricingToast = () => {
             dark:from-[#252525]
             ">
                 <div className='absolute top-2 right-2'>
-                <svg className="cursor-pointer" onClick={handleClose} width="20" height="20" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg aria-label='Close' className="cursor-pointer" onClick={handleClose} width="20" height="20" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M18 0.5C8.25 0.5 0.5 8.25 0.5 18C0.5 27.75 8.25 35.5 18 35.5C27.75 35.5 35.5 27.75 35.5 18C35.5 8.25 27.75 0.5 18 0.5ZM24.75 26.75L18 20L11.25 26.75L9.25 24.75L16 18L9.25 11.25L11.25 9.25L18 16L24.75 9.25L26.75 11.25L20 18L26.75 24.75L24.75 26.75Z" fill={darkMode ? 'white':'black'} fillOpacity="0.4" />
                 </svg>
                 </div>

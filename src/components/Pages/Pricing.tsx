@@ -283,9 +283,9 @@ const Pricing = () => {
                 <div className='p-3 m-auto rounded-full bg-orange-500 text-white w-fit flex gap-3 text-sm'>
                     Selected Technologies: <span className='font-semibold'>{techs.length}</span>
 
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-4">
-                        <path d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32l8.4-8.4Z" />
-                        <path d="M5.25 5.25a3 3 0 0 0-3 3v10.5a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3V13.5a.75.75 0 0 0-1.5 0v5.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5V8.25a1.5 1.5 0 0 1 1.5-1.5h5.25a.75.75 0 0 0 0-1.5H5.25Z" />
+                    <svg aria-label='Close-Techs' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-4">
+                        <path aria-label='Close-Techs' d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32l8.4-8.4Z" />
+                        <path aria-label='Close-Techs' d="M5.25 5.25a3 3 0 0 0-3 3v10.5a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3V13.5a.75.75 0 0 0-1.5 0v5.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5V8.25a1.5 1.5 0 0 1 1.5-1.5h5.25a.75.75 0 0 0 0-1.5H5.25Z" />
                     </svg>
 
                 </div>
@@ -317,6 +317,7 @@ const Pricing = () => {
                             <div className="absolute inset-0 bg-gradient-to-r from-[#EE7B22]  to-[#732A09] rounded-full"></div>
 
                             <button
+                            aria-label={category}
                                 key={category}
                                 onClick={() => {
                                     handleCategoryClick(category as keyof typeof technologies)
@@ -359,7 +360,7 @@ const Pricing = () => {
                         max-h-14 rounded-full bg-orange-500 md:bg-transparent lg:bg-transparent xl:bg-transparent 2xl:bg-transparent hover:bg-orange-500 hover:rounded-full justify-center align-middle'>
                             <PlusIcon darkMode={darkMode} className='size-10 invisible hidden md:inline-block lg:inline-block xl:inline-block 2xl:inline-block md:visible lg:visible xl:visible 2xl:visible group-hover:invisible group-hover:hidden' />
                             <p className={`visible md:invisible lg:invisible xl:invisible 2xl:invisible md:hidden lg:hidden xl:hidden 2xl:hidden group-hover:visible group-hover:inline-block text-white dark:text-white p-3 sm:p-1 md:p-2 lg:p-3 xl:p-3 2xl:p-3 text-center uppercase text-xs`}>Add Tech +</p>
-                        </div> : <div onClick={() => setModalOpen(true)} className='group h-fit text-nowrap border-2 text-black dark:text-white inline-block border-red-100
+                        </div> : <div aria-label='Add Tech +' onClick={() => setModalOpen(true)} className='group h-fit text-nowrap border-2 text-black dark:text-white inline-block border-red-100
                         dark:border-[rgba(94,94,94,0.78)]
                         max-h-14 rounded-full bg-orange-500 hover:rounded-full justify-center align-middle'>
                             <p className={` text-white dark:text-white p-3 sm:p-1 md:p-2 lg:p-3 xl:p-3 2xl:p-3 text-center uppercase text-xs`}>Add Tech +</p>
@@ -389,6 +390,7 @@ const Pricing = () => {
 
                                         <div className="relative flex items-center bg-white dark:bg-[rgba(128,128,128,0.3)] rounded-full px-1">
                                             <button
+                                            aria-label={`${tech} -`}
                                                 onClick={() => { handleDecreaseQuantity(selectedCategory, tech) }}
                                                 className="  rounded-full w-8 h-8 text-center p-0"
                                             >
@@ -403,6 +405,7 @@ const Pricing = () => {
                                             </span>
 
                                             { <button
+                                            aria-label={`${tech} +`}
                                             disabled={quantities[selectedCategory]?.[tech] > 149}
                                                 onClick={() => { handleIncreaseQuantity(selectedCategory, tech) }}
                                                 className={`rounded-full w-8 h-8 text-center ${quantities[selectedCategory]?.[tech] > 149 && 'text-gray-400'}`}
@@ -416,6 +419,7 @@ const Pricing = () => {
                                             }} className='px-2 py-1 bg-red-50 dark:bg-gray-700 text-red-600 rounded-r-full'>
 
                                                 <svg
+                                                    aria-label={`Remove-Tech-${tech}`}
                                                     className="cursor-pointer size-4"
                                                     width="20"
                                                     height="20"
@@ -445,7 +449,7 @@ const Pricing = () => {
                         <DurationRangeSelector />
 
                         {techs.length > 0 && <div className="pt-10 m-auto">
-                            <div onClick={() => setIsCallUsModalOpen({
+                            <div aria-label='Get Pricing' onClick={() => setIsCallUsModalOpen({
                                 isOpen: true,
                                 hasTechs: true,
                                 techLabels: techs,

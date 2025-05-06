@@ -22,8 +22,10 @@ const Footer = () => {
         register,
         handleSubmit,
         formState: { errors },
+        watch
     } = useForm<SimpleUserDetail>();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const {name,email,phone} = watch()
 
 
     useEffect(() => {
@@ -134,6 +136,7 @@ const Footer = () => {
                         <div className="flex flex-wrap gap-2 xs:text-sm justify-center lg:justify-start">
                             <div className="flex items-center gap-3">
                                 <svg
+                                aria-label="Phone to +966 560 85 85 96"
                                     className="xs:size-4"
                                     width="18"
                                     height="18"
@@ -142,6 +145,7 @@ const Footer = () => {
                                     xmlns="http://www.w3.org/2000/svg"
                                 >
                                     <path
+                                    aria-label="Phone to +966 560 85 85 96"
                                         d="M4.18 7.27L10.684 13.73C11.381 12.923 15.794 8.192 18 14.654C18 14.654 17.768 18 13.006 18C9.639 18 6.155 13.962 3.716 11.654C1.626 9.692 0 7.154 0 4.846C0 0.116 3.252 0 3.252 0C10.684 2.538 4.181 7.27 4.181 7.27"
                                         fill="white"
                                     />
@@ -150,6 +154,7 @@ const Footer = () => {
                             </div>
                             <div className="flex items-center gap-3">
                                 <svg
+                                aria-label="Phone to +91 883 888 56 83"
                                     className="xs:size-4"
                                     width="18"
                                     height="18"
@@ -158,6 +163,7 @@ const Footer = () => {
                                     xmlns="http://www.w3.org/2000/svg"
                                 >
                                     <path
+                                    aria-label="Phone to +91 883 888 56 83"
                                         d="M4.18 7.27L10.684 13.73C11.381 12.923 15.794 8.192 18 14.654C18 14.654 17.768 18 13.006 18C9.639 18 6.155 13.962 3.716 11.654C1.626 9.692 0 7.154 0 4.846C0 0.116 3.252 0 3.252 0C10.684 2.538 4.181 7.27 4.181 7.27"
                                         fill="white"
                                     />
@@ -170,6 +176,7 @@ const Footer = () => {
                         {/* Email */}
                         <div className="flex items-center gap-3 xs:justify-center sm:justify-center">
                             <svg
+                            aria-label="Email to sales@datasack.in"
                                 width="28"
                                 height="22"
                                 viewBox="0 0 28 22"
@@ -177,10 +184,12 @@ const Footer = () => {
                                 xmlns="http://www.w3.org/2000/svg"
                             >
                                 <path
+                                 aria-label="Email to sales@datasack.in"
                                     d="M27.3346 5.04675V17.6668C27.3347 18.687 26.9449 19.6688 26.2449 20.4111C25.545 21.1534 24.5878 21.6002 23.5693 21.6601L23.3346 21.6668H4.66797C3.64769 21.6668 2.66595 21.277 1.92362 20.577C1.18129 19.8771 0.734492 18.9199 0.674636 17.9014L0.667969 17.6668V5.04675L13.2613 13.4428L13.416 13.5308C13.5982 13.6198 13.7984 13.6661 14.0013 13.6661C14.2042 13.6661 14.4044 13.6198 14.5866 13.5308L14.7413 13.4428L27.3346 5.04675Z"
                                     fill="white"
                                 />
                                 <path
+                                 aria-label="Email to sales@datasack.in"
                                     d="M23.3351 0.333374C24.7751 0.333374 26.0377 1.09337 26.7417 2.23604L14.0017 10.7294L1.26172 2.23604C1.59611 1.69314 2.05544 1.23804 2.60142 0.908693C3.14739 0.579345 3.76419 0.38529 4.40039 0.342707L4.66839 0.333374H23.3351Z"
                                     fill="white"
                                 />
@@ -195,11 +204,11 @@ const Footer = () => {
 
                         <div className="space-y-5 text-center md:text-start  xs:items-center sm:items-center md:items-center lg:items-start">
                             <div className="flex items-center gap-5 xs:text-sm xs:flex-col sm:flex-col md:flex-col lg:flex-row brightness-150 ">
-                                <Image alt="Experience confidence with Top IT Managed Service Providers Saudi Arabia, delivering proactive solutions, symbolized by the Saudi flag" src={'taggedImages/saudiFlag.webp'} width={90} height={50} className="p-1 bg-orange-100 bg-opacity-20"/>
+                                <Image aria-label="Saudi-Flag" alt="Experience confidence with Top IT Managed Service Providers Saudi Arabia, delivering proactive solutions, symbolized by the Saudi flag" src={'taggedImages/saudiFlag.webp'} width={90} height={50} className="p-1 bg-orange-100 bg-opacity-20"/>
                                 <Link className="w-1/2" href={'https://maps.app.goo.gl/eZQvejPHJT51uLqF6'} target="_blank"><p >Building no: 2345, Ahmed AL Tamimi AL Malaz, Riyadh 12831, Saudi Arabia</p></Link>
                             </div>
                             <div className="flex items-center gap-5 xs:text-sm xs:flex-col sm:flex-col md:flex-col lg:flex-row brightness-125">
-                                <Image alt="indian-logo" src={'taggedImages/indianFlag.png'} width={90} height={50} className="p-1 bg-orange-100 bg-opacity-20"/>
+                                <Image aria-label="Indian-Flag" alt="indian-logo" src={'taggedImages/indianFlag.png'} width={90} height={50} className="p-1 bg-orange-100 bg-opacity-20"/>
                                 <Link className="w-1/2" href={'https://maps.app.goo.gl/sFRc86h6DGKqzm857?g_st=ac'} target="_blank"><p >No: 23, Kamarajapuram - East Karur, Tamilnadu 639002, India.</p></Link>
                             </div>
                         </div>
@@ -232,9 +241,10 @@ const Footer = () => {
                     <div className="relative dark:bg-[rgba(0,0,0,0.8)] bg-white bg-opacity-25 p-5 rounded-2xl space-y-6 h-full">
                         <h3 className="text-2xl font-bold text-center">Quick Enquiry</h3>
                         <form className="space-y-8" onSubmit={handleSubmit(onSubmit)}>
-                            <fieldset className="w-full m-auto h-auto border-2 border-gray-400 rounded-full px-5 py-1  focus:outline-none focus:border-orange-500">
-                                <legend className="px-2">Name</legend>
+                            <fieldset aria-label={`Name-${name}`} className="w-full m-auto h-auto border-2 border-gray-400 rounded-full px-5 py-1  focus:outline-none focus:border-orange-500">
+                                <legend aria-label={`Name-${name}`} className="px-2">Name</legend>
                                 <input
+                                aria-label={`Name-${name}`}
                                     placeholder="Enter Your Name"
                                     type="text"
                                     className="w-full outline-none rounded-full px-2 py-1 bg-transparent"
@@ -244,9 +254,10 @@ const Footer = () => {
                             </fieldset>
 
 
-                            <fieldset className="w-full m-auto h-auto border-2 border-gray-400 rounded-full px-5 py-1">
-                                <legend className="px-2">Phone Number</legend>
+                            <fieldset aria-label={`Phone-${phone}`} className="w-full m-auto h-auto border-2 border-gray-400 rounded-full px-5 py-1">
+                                <legend aria-label={`Phone-${phone}`} className="px-2">Phone Number</legend>
                                 <input
+                                aria-label={`Phone-${phone}`}
                                     placeholder="Enter Your Phone Number"
                                     type="number"
                                     className="w-full outline-none rounded-full px-2 py-1 bg-transparent"
@@ -256,9 +267,10 @@ const Footer = () => {
                                 {errors.phone && <p className="text-red-500 text-sm ml-2 p-1" >{errors.phone.message}</p>}
                             </fieldset>
 
-                            <fieldset className="w-full m-auto h-auto border-2 border-gray-400 rounded-full px-5 py-1">
-                                <legend className="px-2">Email</legend>
+                            <fieldset aria-label={`Email-${email}`} className="w-full m-auto h-auto border-2 border-gray-400 rounded-full px-5 py-1">
+                                <legend aria-label={`Email-${email}`} className="px-2">Email</legend>
                                 <input
+                                aria-label={`Email-${email}`}
                                     placeholder="Enter Your Email"
                                     type="email"
                                     className="w-full outline-none rounded-full px-2 py-1 bg-transparent"
@@ -280,8 +292,8 @@ const Footer = () => {
             </div>
 
             {/* bottom logo certification */}
-            <div className="absolute bottom-0 w-full text-center align-middle py-4 bg-black/60 text-white text-sm">
-                <Link className="inline-block" href={'https://www.datasack.in'} target="_blank"><Image src="taggedImages/logo.webp" alt="Transform your workforce with the Best IT Staffing Agency Saudi Arabia, providing innovative hiring solutions." width={120} height={30} className="inline-block"/></Link>
+            <div  className="absolute bottom-0 w-full text-center align-middle py-4 bg-black/60 text-white text-sm">
+                <Link aria-label="Datasack Solution Logo" className="inline-block" href={'https://www.datasack.in'} target="_blank"><Image src="taggedImages/logo.webp" alt="Transform your workforce with the Best IT Staffing Agency Saudi Arabia, providing innovative hiring solutions." width={120} height={30} className="inline-block"/></Link>
                 <p className="inline-block ml-4">ISO/IEC 27001:2022 CERTIFIED</p>
                 <p className="xs:block sm:block md:inline-block ml-4">&copy;2025</p>
             </div>

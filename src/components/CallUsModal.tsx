@@ -34,6 +34,7 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
         setError,
         clearErrors,
         formState: { errors },
+        watch
     } = useForm<FormData>({
         defaultValues:{
             industry:'Technology',
@@ -46,6 +47,8 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
     const [submitted, setSubmitted] = useState(false)
     const { darkMode, isCallUsModalOpen, setQuantities, quantities, duration } = useCallUsModalState()
     const [isLoading, setIsLoading] = useState(false)
+
+    const {email,name,date} = watch()
 
     const removeTech = (tech: string) => {
         setQuantities(prev => {
@@ -189,8 +192,9 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
                     </div>
 
                     <div>
-                        <label className="text-gray-600 dark:text-gray-300 text-sm">Enter Your Name</label>
+                        <label aria-label={`Name-${name}`} className="text-gray-600 dark:text-gray-300 text-sm">Enter Your Name</label>
                         <input
+                            aria-label={`Name-${name}`}
                             type="text"
                             placeholder="Enter Your Name"
                             {...register("name", { required: "Name is required" })}
@@ -202,6 +206,7 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
                     <div>
                         <label className="text-gray-600 dark:text-gray-300 text-sm">Corporate Email</label>
                         <input
+                        aria-label={`Email-${email}`}
                             type="email"
                             placeholder="Corporate Email"
                             {...register("email", {
@@ -213,7 +218,7 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
                         {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
                     </div>
 
-                    <div>
+                    <div aria-label="">
                         <label className="text-gray-600 dark:text-gray-300 text-sm">Phone No</label>
                         <Controller
                             name="phone"
@@ -224,11 +229,11 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
                                 validate: (value) => value.length > 2 || "Enter a valid phone number",
                             }}
                             render={({ field }) => (
-                                <PhoneInput
+                                <PhoneInput 
                                     country="sa"
                                     value={field.value}
-                                    // onChange={(phone) => setValue("phone", phone as string)}
-                                    onChange={(phone, data: CountryData) => {
+                                    onChange={(phone, data: CountryData,e) => {
+                                        e.target.ariaLabel=phone // usefull on track the user data
                                         const countryCodeLength = data.dialCode.length
                                         if (phone == '' || phone.length == countryCodeLength) {
                                             setError('phone', {
@@ -254,6 +259,7 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
                   {techs.length==0 &&  <div>
                         <label className="text-gray-600 dark:text-gray-300 text-sm">Preferred Date</label>
                         <input
+                        aria-label={`Date-${date}`}
                             type="date"
                             {...register("date", { required: techs.length==0 ? "Please select a date":false })}
                             className="w-full border min-h-11 text-black border-gray-300 dark:border-gray-600 bg-transparent rounded-full py-2 px-4 outline-none focus:ring-2 focus:ring-orange-500 dark:invert"
@@ -297,6 +303,7 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
 
                 <div className="w-full text-center">
                     <button
+                    aria-label="Submit Form"
                         type="submit"
                         className="w-fit p-5 bg-orange-500 text-white font-semibold py-3 rounded-full hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
                         disabled={isLoading}
@@ -342,12 +349,13 @@ const CustomIndustryDropDown: FunctionComponent<{
             </label>
 
             <div
+             aria-label={`Industry-${selectedIndustry}`}
                 className="w-full border border-gray-300 dark:border-gray-600 bg-transparent rounded-full py-2 px-4 cursor-pointer outline-none focus:ring-2 focus:ring-orange-500"
                 onClick={() => setIsOpen(!isOpen)}
             >
                 <div className="flex justify-between">
                     <div>{selectedIndustry || "Select an industry"}</div>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-5">
+                    <svg aria-label={`Industry-${selectedIndustry}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-5">
                         <path fillRule="evenodd" d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z" clipRule="evenodd" />
                     </svg>
                 </div>
@@ -357,6 +365,7 @@ const CustomIndustryDropDown: FunctionComponent<{
                 <ul className="absolute z-10 w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg mt-1 shadow-lg">
                     {industries.map((industry) => (
                         <li
+                        aria-label={`Industry-${industry}`}
                             key={industry}
                             onClick={() => handleSelect(industry)}
                             className="px-4 py-2 hover:bg-orange-500 hover:text-white cursor-pointer"
@@ -395,11 +404,11 @@ const HorizontalTechs: FunctionComponent<{
             speed: 500,
             variableWidth: true,
             slidesToScroll: 1,
-            nextArrow: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#F37318" className="size-6">
+            nextArrow: <svg aria-label="Next Slide" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#F37318" className="size-6">
                 <path fillRule="evenodd" d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clipRule="evenodd" />
             </svg>
             ,
-            prevArrow: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#F37318" className="size-6">
+            prevArrow: <svg aria-label="Previous Slide" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#F37318" className="size-6">
                 <path fillRule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z" clipRule="evenodd" />
             </svg>,
             responsive: [
@@ -440,13 +449,14 @@ const HorizontalTechs: FunctionComponent<{
                                 <div className="flex items-center bg-white
                 dark:bg-[rgba(128,128,128,1)]
                 rounded-full p-1 gap-1">
-                                    <span className="text-xs">{item}</span>
+                                    <span aria-label={item} className="text-xs">{item}</span>
 
                                     <span className="text-black dark:text-white text-xs rounded-full w-4 h-4 text-center justify-center bg-[rgba(238,123,34,0.14)] dark:bg-[rgba(255,255,255,0.17)]">
                                         {techQuantities[index]}
                                     </span>
 
                                     <svg
+                                        aria-label={`Remove-Tech-${item}`}
                                         onClick={() => removeTech(item)}
                                         className="cursor-pointer size-4"
                                         width="20"
@@ -456,6 +466,7 @@ const HorizontalTechs: FunctionComponent<{
                                         xmlns="http://www.w3.org/2000/svg"
                                     >
                                         <path
+                                        aria-label={`Remove-Tech-${item}`}
                                             d="M18 0.5C8.25 0.5 0.5 8.25 0.5 18C0.5 27.75 8.25 35.5 18 35.5C27.75 35.5 35.5 27.75 35.5 18C35.5 8.25 27.75 0.5 18 0.5ZM24.75 26.75L18 20L11.25 26.75L9.25 24.75L16 18L9.25 11.25L11.25 9.25L18 16L24.75 9.25L26.75 11.25L20 18L26.75 24.75L24.75 26.75Z"
                                             fill={darkMode ? 'white' : 'black'}
                                             fillOpacity="0.3"

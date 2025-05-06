@@ -285,7 +285,7 @@ const HomePage = () => {
 
 
       {/* side icons bar */}
-      <div className="
+      <div aria-label='SideBar' className="
       fixed
       hidden sm:block md:block lg:block xlg:block 2xl:block
       right-5 
@@ -299,7 +299,7 @@ const HomePage = () => {
       from-[rgba(238,123,34,0.7)] via-[rgba(238,123,34,0)] to-[rgba(238,123,34,0.3)]
       dark:from-[rgba(238,123,34,0.5)] dark:via-[rgba(238,123,34,0)] dark:to-[rgba(238,123,34,0.1)]
       rounded-3xl">
-        <div className="
+        <div aria-label='SideBar Elements' className="
         bg-white
         dark:bg-black
         dark:bg-opacity-30
@@ -347,7 +347,7 @@ const HomePage = () => {
       {/* header */}
       <div className={`fixed w-full bg-white bg-opacity-50 dark:bg-black  dark:bg-opacity-30 backdrop-blur-lg z-40 top-0 transition-transform duration-500 ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}>
         <div className='flex justify-between align-middle w-full max-h-16 md:max-h-20 bg-transparent'>
-          <Link href="https://www.datasack.in" target="_blank" className='my-auto pl-2' >
+          <Link aria-label='Datasack-Logo' href="https://www.datasack.in" target="_blank" className='my-auto pl-2' >
             <Image
               src="taggedImages/logo.webp"
               alt="Transform your workforce with the Best IT Staffing Agency Saudi Arabia, providing innovative hiring solutions"
@@ -357,16 +357,17 @@ const HomePage = () => {
             />
           </Link>
 
-          <div className='hidden text-sm sm:text-xs md:text-sm lg:text-lg xl:text-lg 2xl:text-lg w-fit sm:flex gap-14 text-purple-100 sm:text-blue-100 mr-2 justify-around align-middle p-5 m-auto'>
-            <div onClick={() => document.getElementById('pricing-section')?.scrollIntoView({ behavior: 'smooth' })
+          <div  className='hidden text-sm sm:text-xs md:text-sm lg:text-lg xl:text-lg 2xl:text-lg w-fit sm:flex gap-14 text-purple-100 sm:text-blue-100 mr-2 justify-around align-middle p-5 m-auto'>
+            <div aria-label='Get Pricing' onClick={() => document.getElementById('pricing-section')?.scrollIntoView({ behavior: 'smooth' })
             } className="text-gray-800 dark:text-white  py-1 cursor-pointer text-nowrap  hover:text-orange-500  p-2 uppercase font-semibold">
               Get Pricing
             </div>
-            <div onClick={() => document.getElementById('managed-services-section')?.scrollIntoView({ behavior: 'smooth' })
+            <div aria-label='Managed Services' onClick={() => document.getElementById('managed-services-section')?.scrollIntoView({ behavior: 'smooth' })
             } className="text-gray-800 dark:text-white  py-1 cursor-pointer text-nowrap hover:text-orange-500  p-2 uppercase font-semibold">
               Managed Services
             </div>
             <div
+            aria-label='Contact Us'
               onClick={() => setIsCallUsModalOpen({
                 isOpen: true,
                 hasTechs: false,
@@ -375,16 +376,16 @@ const HomePage = () => {
               })}
               className="flex items-center bg-orange-500 text-white text-nowrap font-semibold px-4 py-1 rounded-full hover:bg-orange-600 cursor-pointer "
             >
-              <svg className='animate-jiggle-infinity' width="16" height="16" style={{ marginRight: '0.5rem' }} viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4.18 7.27L10.684 13.73C11.381 12.923 15.794 8.192 18 14.654C18 14.654 17.768 18 13.006 18C9.639 18 6.155 13.962 3.716 11.654C1.626 9.692 0 7.154 0 4.846C0 0.116 3.252 0 3.252 0C10.684 2.538 4.181 7.27 4.181 7.27" fill="white" />
+              <svg aria-label='Contact Us' className='animate-jiggle-infinity' width="16" height="16" style={{ marginRight: '0.5rem' }} viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path aria-label='Contact Us' d="M4.18 7.27L10.684 13.73C11.381 12.923 15.794 8.192 18 14.654C18 14.654 17.768 18 13.006 18C9.639 18 6.155 13.962 3.716 11.654C1.626 9.692 0 7.154 0 4.846C0 0.116 3.252 0 3.252 0C10.684 2.538 4.181 7.27 4.181 7.27" fill="white" />
               </svg>
 
               Contact us
             </div>
           </div>
 
-          <div onClick={() => setIsMenuOpen(true)} className='flex sm:hidden md:hidden lg:hidden xl:hidden 2xl:hidden text-purple-100 sm:text-blue-100 mr-5 justify-around align-middle m-auto  h-full'>
-            <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <div aria-label='Menu Button' onClick={() => setIsMenuOpen(true)} className='flex sm:hidden md:hidden lg:hidden xl:hidden 2xl:hidden text-purple-100 sm:text-blue-100 mr-5 justify-around align-middle m-auto  h-full'>
+            <svg aria-label='Menu Button' width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path d="M20 17.5C20.3852 17.5002 20.7556 17.6486 21.0344 17.9144C21.3132 18.1802 21.479 18.5431 21.4975 18.9279C21.516 19.3127 21.3858 19.6898 21.1338 19.9812C20.8818 20.2726 20.5274 20.4558 20.144 20.493L20 20.5H4C3.61478 20.4998 3.24441 20.3514 2.96561 20.0856C2.68682 19.8198 2.52099 19.4569 2.50248 19.0721C2.48396 18.6873 2.61419 18.3102 2.86618 18.0188C3.11816 17.7274 3.47258 17.5442 3.856 17.507L4 17.5H20ZM20 10.5C20.3978 10.5 20.7794 10.658 21.0607 10.9393C21.342 11.2206 21.5 11.6022 21.5 12C21.5 12.3978 21.342 12.7794 21.0607 13.0607C20.7794 13.342 20.3978 13.5 20 13.5H4C3.60218 13.5 3.22064 13.342 2.93934 13.0607C2.65804 12.7794 2.5 12.3978 2.5 12C2.5 11.6022 2.65804 11.2206 2.93934 10.9393C3.22064 10.658 3.60218 10.5 4 10.5H20ZM20 3.5C20.3978 3.5 20.7794 3.65804 21.0607 3.93934C21.342 4.22064 21.5 4.60218 21.5 5C21.5 5.39782 21.342 5.77936 21.0607 6.06066C20.7794 6.34196 20.3978 6.5 20 6.5H4C3.60218 6.5 3.22064 6.34196 2.93934 6.06066C2.65804 5.77936 2.5 5.39782 2.5 5C2.5 4.60218 2.65804 4.22064 2.93934 3.93934C3.22064 3.65804 3.60218 3.5 4 3.5H20Z"
                 fill={darkMode ? 'white' : 'black'} />
             </svg>
@@ -402,6 +403,7 @@ const HomePage = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <button
+            aria-label='Close Menu'
               className="text-white flex align-middle font-semibold text-lg mb-5"
               onClick={() => setIsMenuOpen(false)}
             >
@@ -416,7 +418,7 @@ const HomePage = () => {
 
             </button>
             <nav className="flex flex-col gap-5 space-y-4 text-white">
-              <div onClick={() => {
+              <div aria-label='Get Pricing' onClick={() => {
                 setIsMenuOpen(false);
                 document.getElementById('pricing-section')?.scrollIntoView({
                   behavior: 'smooth'
@@ -426,7 +428,7 @@ const HomePage = () => {
                   Get Pricing
                 </span>
               </div>
-              <div onClick={() => {
+              <div aria-label='Managed Services' onClick={() => {
                 setIsMenuOpen(false);
                 document.getElementById('managed-services-section')?.scrollIntoView({
                   behavior: 'smooth'
@@ -436,7 +438,7 @@ const HomePage = () => {
                   Managed Services
                 </span>
               </div>
-              <div onClick={() => {
+              <div aria-label='Contact Us' onClick={() => {
                 setIsMenuOpen(false);
                 setIsCallUsModalOpen({
                   isOpen: true,
@@ -488,7 +490,7 @@ const HomePage = () => {
             <div className="rounded-full  animate-pulse w-full bg-[rgba(238,123,34,0.3)] drop-shadow-lg shadow-orange-900 flex p-1">
 
               <div className="rounded-full bg-[#EE7B22] w-3/12 h-full"></div>
-              <button className='m-auto text-gray-900 dark:text-white 
+              <button aria-label='Check out more about us' className='m-auto text-gray-900 dark:text-white 
           text-sm text-nowrap font-medium'
               >Check out more about us</button>
               {!darkMode && <RightArrow className='m-auto animate-slide-right' />}
@@ -497,7 +499,7 @@ const HomePage = () => {
 
           </Link>
 
-          <h1 className="
+          <h1 aria-label='Need Tech Talent Quickly' className="
             text-4xl
             sm:text-5xl 
             md:text-5xl 

@@ -100,7 +100,7 @@ const AnalyticsPage = () => {
                             return <div key={index} className="relative flex items-center justify-center p-[1.5px] rounded-full">
                                 <div className="absolute inset-0 bg-gradient-to-r from-[#EE7B22]  to-[#732A09] rounded-full"></div>
 
-                                <button key={index} onClick={() => { setContent(index) }}
+                                <button aria-label={analytic.title} key={index} onClick={() => { setContent(index) }}
                                     className={`p-2 
                                     relative
                                     w-full
@@ -176,7 +176,7 @@ const AnalyticsPage = () => {
 
             <Slider {...settings} ref={sliderRef} className="mb-6">
                 {steps.map((step) => (
-                    <div key={step.id} className="p-4">
+                    <div aria-label={step.title} key={step.id} className="p-4">
                         <h3 className="text-lg font-semibold">{`0${step.id}. ${step.title}`}</h3>
                         <p className="text-gray-400 mt-2">{step.description}</p>
                     </div>
@@ -204,6 +204,7 @@ const AnalyticsPage = () => {
                 </div>
 
                 <button
+                    aria-label="Next Slide"
                     onClick={() => sliderRef.current?.slickNext()}
                     className="p-2 bg-orange-500 rounded-full"
                 >
