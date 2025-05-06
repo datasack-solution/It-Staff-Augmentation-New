@@ -11,11 +11,12 @@
 
 //   // Fetch geolocation (country, city)
 //   useEffect(() => {
-//     fetch('https://ipapi.co/json/')
+//     // fetch('https://ipapi.co/json/')
+//     fetch('https://ipinfo.io/json?token=7b56f78de85d8e')
 //       .then(res => res.json())
 //       .then(data => {
 //         setGeoInfo({
-//           country: data.country_name || 'Unknown',
+//           country: data.country || 'Unknown',
 //           city: data.city || 'Unknown',
 //         });
 //       })
@@ -56,7 +57,7 @@
 
 //   // Send data before user leaves
 //   useEffect(() => {
-//     const handleBeforeUnload = () => {
+//     const handleBeforeUnload = (event:any) => {
 //       const sessionDuration = Date.now() - startTimeRef.current;
 
 //       const trackingData: TrackingData = {
@@ -74,12 +75,14 @@
 //         clickEvents,
 //       };
 
+
 //     // axios.post('http://localhost:4000/tracking',trackingData)
 //     const blob = new Blob([JSON.stringify(trackingData)], {
 //         type: 'application/json',
 //       });
   
-//       navigator.sendBeacon('https://it-augmentation-server.vercel.app/tracking', blob);
+//       // navigator.sendBeacon('https://it-augmentation-server.vercel.app/tracking', blob);
+//       navigator.sendBeacon('http://localhost:4000/tracking', blob);
 //     };
 
 //     window.addEventListener('beforeunload', handleBeforeUnload);
@@ -91,8 +94,18 @@
 
 // -------------
 
-
-
+function getCountryName(countryCode:string) {
+  try {
+    // Ensure the country code is uppercase and a string
+    const code = countryCode.toUpperCase();
+    const regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
+    const countryName = regionNames.of(code);
+    return countryName || 'Unknown Country';
+  } catch (error) {
+    console.error('Error resolving country name:', error);
+    return 'Unknown Country';
+  }
+}
 
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
@@ -103,7 +116,7 @@ export const useUserTracking = () => {
   const [clickEvents, setClickEvents] = useState<string[]>([]);
   const startTimeRef = useRef<number>(Date.now());
   const maxScrollRef = useRef<number>(0);
-  const [geoInfo, setGeoInfo] = useState({ country: 'Unknown', city: 'Unknown' });
+  const [geoInfo, setGeoInfo] = useState({ country: 'Unknown', city: 'Unknown', region: 'Unknown', location:'Unknown', postal: 'Unknown' });
   const hasSentRef = useRef(false);
 
   const isMobile = typeof window !== 'undefined' && /Mobi|Android|iPhone/i.test(navigator.userAgent);
@@ -115,8 +128,11 @@ export const useUserTracking = () => {
     const sessionDuration = Date.now() - startTimeRef.current;
 
     const trackingData: TrackingData = {
-      country: geoInfo.country,
+      country: getCountryName(geoInfo.country),
       city: geoInfo.city,
+      location: geoInfo.location,
+      postal: geoInfo.postal,
+      region: geoInfo.region,
       visitDate: new Date().toISOString(),
       page: router.pathname,
       browserInfo: {
@@ -138,19 +154,53 @@ export const useUserTracking = () => {
   };
 
   // Fetch geolocation (country, city)
-  useEffect(() => {
-    fetch('https://ipapi.co/json/')
-      .then(res => res.json())
-      .then(data => {
-        setGeoInfo({
-          country: data.country_name || 'Unknown',
-          city: data.city || 'Unknown',
+  // useEffect(() => {
+  //   fetch('https://ipapi.co/json/')
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       setGeoInfo({
+  //         country: data.country_name || 'Unknown',
+  //         city: data.city || 'Unknown',
+  //       });
+  //     })
+  //     .catch(() => {
+  //       setGeoInfo({ country: 'Unknown', city: 'Unknown' });
+  //     });
+  // }, []);
+
+
+  // ipinfo json data
+
+  // "ip": "103.171.108.59",
+  // "city": "Karur",
+  // "region": "Tamil Nadu",
+  // "country": "IN",
+  // "loc": "10.9577,78.0810",
+  // "org": "AS141525 Inet Communication Internet Service Provider",
+  // "postal": "639102",
+  // "timezone": "Asia/Kolkata"
+
+    // Fetch geolocation (country, city)
+    useEffect(() => {
+      // fetch('https://ipapi.co/json/')
+      fetch('https://ipinfo.io/json?token=7b56f78de85d8e')
+        .then(res => res.json())
+        .then(data => {
+          setGeoInfo({
+            country: data.country || 'Unknown',
+            city: data.city || 'Unknown',
+            location:data.loc || 'Unknown',
+            postal: data.postal || 'Unknown',
+            region:data.region || 'Unknown'
+          });
+        })
+        .catch(() => {
+          setGeoInfo({ country: 'Unknown', city: 'Unknown',location:'Unknown',
+            postal:'Unknown',
+            region:'Unknown' });
         });
-      })
-      .catch(() => {
-        setGeoInfo({ country: 'Unknown', city: 'Unknown' });
-      });
-  }, []);
+    }, []);
+
 
   // Track clicks
   useEffect(() => {
@@ -201,7 +251,7 @@ export const useUserTracking = () => {
       window.removeEventListener('beforeunload', handleBeforeUnload);
       document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
-  }, [clickEvents, geoInfo]);
+  }, [clickEvents,geoInfo]);
 
   // On mobile, trigger tracking after 30 seconds
   useEffect(() => {
