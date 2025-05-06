@@ -11,7 +11,6 @@ import PricingToast from "@/components/PricingToast"
 import { Fragment, useEffect } from "react"
 import Head from "next/head";
 
-
 // const geistSans = localFont({
 //   src: "./fonts/GeistVF.woff",
 //   variable: "--font-geist-sans",
@@ -123,7 +122,9 @@ export default function Home() {
 
     <div className="bg-white dark:bg-[#252525]">
       <PricingToast />
+      {/* <FullPageScaler designedHeight={900}> */}
       <HomePage />
+      {/* </FullPageScaler> */}
       <PricingPage />
       <BenefitsPage />
       <AnalyticsPage />

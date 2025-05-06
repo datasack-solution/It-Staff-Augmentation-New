@@ -234,14 +234,11 @@ const HomePage = () => {
         lg:opacity-70 
         xl:opacity-70 
         2xl:opacity-90
-        
         dark:opacity-40
         overflow-hidden
         "
         style={{
-          backgroundImage: `
-      url('taggedImages/bg.webp')
-    `}}
+          backgroundImage: "url('taggedImages/bg1.webp')", backgroundPosition:'center'}}
       />
 
       {/* chatbot float */}
@@ -563,7 +560,7 @@ const HomePage = () => {
             techQuantities: null
           })} className="px-6 py-3 animate-bounce-right bg-orange-500 dark:bg-opacity-70 rounded-full text-white font-semibold transition hover:bg-orange-600 flex m-auto gap-1 mt-10">
             <Star className='' />
-            <p className='text-sm  sm:text-sm md:text-lg lg:text-sm xl:text-lg'>Book For Demo</p>
+            <p className='text-sm  sm:text-sm md:text-lg lg:text-sm xl:text-lg'>Talk to an Expert</p>
           </button>
 
           <div className="my-2 md:my-10 lg:my-10 xl:my-10 2xl:my-10 align-middle m-auto bg-white dark:bg-black dark:bg-opacity-30 bg-opacity-50 rounded-3xl shadow-lg w-4/5 ">

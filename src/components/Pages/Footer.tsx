@@ -298,13 +298,13 @@ export default Footer
 const Logos = () => {
     return <div className="flex gap-5 align-middle">
         {/* linkedin */}
-        <a href="https://www.linkedin.com/company/data-sack/" target="_blank">
-            <svg className="size-8" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clipPath="url(#clip0_136_4097)">
-                    <path d="M29 0H3C1.35 0 0 1.35 0 3V29C0 30.65 1.35 32 3 32H29C30.65 32 32 30.65 32 29V3C32 1.35 30.65 0 29 0ZM12 26H8V12H12V26ZM10 10C9.46957 10 8.96086 9.78929 8.58579 9.41421C8.21071 9.03914 8 8.53043 8 8C8 7.46957 8.21071 6.96086 8.58579 6.58579C8.96086 6.21071 9.46957 6 10 6C10.5304 6 11.0391 6.21071 11.4142 6.58579C11.7893 6.96086 12 7.46957 12 8C12 8.53043 11.7893 9.03914 11.4142 9.41421C11.0391 9.78929 10.5304 10 10 10ZM26 26H22V18C22 17.4696 21.7893 16.9609 21.4142 16.5858C21.0391 16.2107 20.5304 16 20 16C19.4696 16 18.9609 16.2107 18.5858 16.5858C18.2107 16.9609 18 17.4696 18 18V26H14V12H18V14.482C18.824 13.35 20.088 12 21.5 12C23.988 12 26 14.238 26 17V26Z" fill="white" />
+        <a aria-label="linkedIn" href="https://www.linkedin.com/company/data-sack/" target="_blank">
+            <svg aria-label="linkedIn" className="size-8" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g aria-label="linkedIn" clipPath="url(#clip0_136_4097)">
+                    <path aria-label="linkedIn" d="M29 0H3C1.35 0 0 1.35 0 3V29C0 30.65 1.35 32 3 32H29C30.65 32 32 30.65 32 29V3C32 1.35 30.65 0 29 0ZM12 26H8V12H12V26ZM10 10C9.46957 10 8.96086 9.78929 8.58579 9.41421C8.21071 9.03914 8 8.53043 8 8C8 7.46957 8.21071 6.96086 8.58579 6.58579C8.96086 6.21071 9.46957 6 10 6C10.5304 6 11.0391 6.21071 11.4142 6.58579C11.7893 6.96086 12 7.46957 12 8C12 8.53043 11.7893 9.03914 11.4142 9.41421C11.0391 9.78929 10.5304 10 10 10ZM26 26H22V18C22 17.4696 21.7893 16.9609 21.4142 16.5858C21.0391 16.2107 20.5304 16 20 16C19.4696 16 18.9609 16.2107 18.5858 16.5858C18.2107 16.9609 18 17.4696 18 18V26H14V12H18V14.482C18.824 13.35 20.088 12 21.5 12C23.988 12 26 14.238 26 17V26Z" fill="white" />
                 </g>
                 <defs>
-                    <clipPath id="clip0_136_4097">
+                    <clipPath aria-label="linkedIn" id="clip0_136_4097">
                         <rect width="32" height="32" fill="white" />
                     </clipPath>
                 </defs>
@@ -312,22 +312,22 @@ const Logos = () => {
         </a>
 
         {/* insta */}
-        <a href="https://www.instagram.com/datasack" target="_blank">
-            <svg className="size-8" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M18.3333 1C22.0133 1 25 3.98667 25 7.66667V18.3333C25 22.0133 22.0133 25 18.3333 25H7.66667C3.98667 25 1 22.0133 1 18.3333V7.66667C1 3.98667 3.98667 1 7.66667 1H13H18.3333Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M13.0013 7.66663C15.948 7.66663 18.3346 10.0533 18.3346 13C18.3346 15.9466 15.948 18.3333 13.0013 18.3333C10.0546 18.3333 7.66797 15.9466 7.66797 13C7.66797 10.0533 10.0546 7.66663 13.0013 7.66663Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <a aria-label="instagram" href="https://www.instagram.com/datasack" target="_blank">
+            <svg aria-label="instagram" className="size-8" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path aria-label="instagram" d="M18.3333 1C22.0133 1 25 3.98667 25 7.66667V18.3333C25 22.0133 22.0133 25 18.3333 25H7.66667C3.98667 25 1 22.0133 1 18.3333V7.66667C1 3.98667 3.98667 1 7.66667 1H13H18.3333Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <path aria-label="instagram" d="M13.0013 7.66663C15.948 7.66663 18.3346 10.0533 18.3346 13C18.3346 15.9466 15.948 18.3333 13.0013 18.3333C10.0546 18.3333 7.66797 15.9466 7.66797 13C7.66797 10.0533 10.0546 7.66663 13.0013 7.66663Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
         </a>
 
         {/* facebook */}
-        <a href="https://www.facebook.com/DataSackSolutions" target="_blank">
-            <svg className="size-8" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M26.2016 0.599976H3.80156C2.04156 0.599976 0.601562 2.03998 0.601562 3.79998V26.2C0.601562 27.9616 2.04156 29.4 3.80156 29.4H15.0016V18.2H11.8016V14.24H15.0016V10.96C15.0016 7.49757 16.9408 5.06558 21.0272 5.06558L23.912 5.06878V9.23677H21.9968C20.4064 9.23677 19.8016 10.4304 19.8016 11.5376V14.2416H23.9104L23.0016 18.2H19.8016V29.4H26.2016C27.9616 29.4 29.4016 27.9616 29.4016 26.2V3.79998C29.4016 2.03998 27.9616 0.599976 26.2016 0.599976Z" fill="white" />
+        <a aria-label="facebook" href="https://www.facebook.com/DataSackSolutions" target="_blank">
+            <svg aria-label="facebook" className="size-8" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path aria-label="facebook" d="M26.2016 0.599976H3.80156C2.04156 0.599976 0.601562 2.03998 0.601562 3.79998V26.2C0.601562 27.9616 2.04156 29.4 3.80156 29.4H15.0016V18.2H11.8016V14.24H15.0016V10.96C15.0016 7.49757 16.9408 5.06558 21.0272 5.06558L23.912 5.06878V9.23677H21.9968C20.4064 9.23677 19.8016 10.4304 19.8016 11.5376V14.2416H23.9104L23.0016 18.2H19.8016V29.4H26.2016C27.9616 29.4 29.4016 27.9616 29.4016 26.2V3.79998C29.4016 2.03998 27.9616 0.599976 26.2016 0.599976Z" fill="white" />
             </svg>
         </a>
 
         {/* twitter */}
-        <a href="https://x.com/DataSack" target="_blank">
+        <a aria-label="twitter" href="https://x.com/DataSack" target="_blank">
             <svg className="size-8" width="41" height="32" viewBox="0 0 41 32" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                 <rect width="40.0985" height="32" fill="url(#pattern0_136_4113)" />
                 <defs>
@@ -340,22 +340,22 @@ const Logos = () => {
         </a>
 
         {/* youtube */}
-        <a href="https://youtube.com/@datasacksolutions?si=IbbfLrQ005AsttVn" target="_blank">
-            <svg className="size-8" width="30" height="24" viewBox="0 0 30 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <mask id="mask0_136_4102" style={{ maskType: 'luminance' }} maskUnits="userSpaceOnUse" x="0" y="0" width="30" height="24">
-                    <path d="M15.0013 1.33337C28.3346 1.33337 28.3346 1.33337 28.3346 12C28.3346 22.6667 28.3346 22.6667 15.0013 22.6667C1.66797 22.6667 1.66797 22.6667 1.66797 12C1.66797 1.33337 1.66797 1.33337 15.0013 1.33337Z" fill="white" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    <path d="M12.0391 6.66675L20.928 12.0001L12.0391 17.3334V6.66675Z" fill="black" />
+        <a aria-label="youtube" href="https://youtube.com/@datasacksolutions?si=IbbfLrQ005AsttVn" target="_blank">
+            <svg aria-label="facebook" className="size-8" width="30" height="24" viewBox="0 0 30 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <mask aria-label="facebook" id="mask0_136_4102" style={{ maskType: 'luminance' }} maskUnits="userSpaceOnUse" x="0" y="0" width="30" height="24">
+                    <path aria-label="facebook" d="M15.0013 1.33337C28.3346 1.33337 28.3346 1.33337 28.3346 12C28.3346 22.6667 28.3346 22.6667 15.0013 22.6667C1.66797 22.6667 1.66797 22.6667 1.66797 12C1.66797 1.33337 1.66797 1.33337 15.0013 1.33337Z" fill="white" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    <path aria-label="facebook" d="M12.0391 6.66675L20.928 12.0001L12.0391 17.3334V6.66675Z" fill="black" />
                 </mask>
                 <g mask="url(#mask0_136_4102)">
-                    <path d="M32.7782 -6.28601H-2.77734V30.2854H32.7782V-6.28601Z" fill="white" />
+                    <path aria-label="facebook" d="M32.7782 -6.28601H-2.77734V30.2854H32.7782V-6.28601Z" fill="white" />
                 </g>
             </svg>
         </a>
 
         {/* pinterest */}
-        <a href="https://in.pinterest.com/DataSack_Solutions/" target="_blank">
-            <svg className="size-8" width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-                <rect x="0.0976562" width="32" height="32" fill="url(#pattern0_136_4114)" />
+        <a aria-label="pinterest" href="https://in.pinterest.com/DataSack_Solutions/" target="_blank">
+            <svg aria-label="pinterest" className="size-8" width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+                <rect aria-label="pinterest" x="0.0976562" width="32" height="32" fill="url(#pattern0_136_4114)" />
                 <defs>
                     <pattern id="pattern0_136_4114" patternContentUnits="objectBoundingBox" width="1" height="1">
                         <use xlinkHref="#image0_136_4114" transform="scale(0.001)" />

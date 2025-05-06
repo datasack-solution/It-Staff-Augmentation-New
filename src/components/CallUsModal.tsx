@@ -39,6 +39,7 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
             industry:'Technology',
             time:new Date(new Date().setHours(10,0,0)).toLocaleTimeString(), //instead of showing ------, just show default time 10:00 am
             nda:true, //we don't need this on form
+            date: new Date().toLocaleDateString()
         }
     });
 
@@ -158,8 +159,8 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
         <div className={`bg-white dark:bg-[#252525] ${isLoading && 'blur-[3px]'} animate-flyinup w-full max-h-[600px] md:max-h-screen lg:max-h-screen xl:max-h-screen 2xl:max-h-screen  max-w-3xl mx-4 md:mx-0 p-6 rounded-lg shadow-lg relative overflow-auto`}>
             <button onClick={onConfirm} className="absolute top-4 right-4  hover:text-gray-600 " aria-label="Close Modal">
 
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="gray" className="size-6">
-  <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z" clipRule="evenodd" />
+            <svg aria-label="Close Form" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="gray" className="size-6">
+  <path aria-label="Close Form" fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z" clipRule="evenodd" />
 </svg>
 
             </button>
@@ -249,17 +250,18 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
                         {errors.phone && <p className="text-red-500 text-sm">{errors.phone.message}</p>}
                     </div>
 
-                    <div>
+
+                  {techs.length==0 &&  <div>
                         <label className="text-gray-600 dark:text-gray-300 text-sm">Preferred Date</label>
                         <input
                             type="date"
-                            {...register("date", { required: "Please select a date" })}
+                            {...register("date", { required: techs.length==0 ? "Please select a date":false })}
                             className="w-full border min-h-11 text-black border-gray-300 dark:border-gray-600 bg-transparent rounded-full py-2 px-4 outline-none focus:ring-2 focus:ring-orange-500 dark:invert"
                         />
                         {errors.date && <p className="text-red-500 text-sm">{errors.date.message}</p>}
-                    </div>
+                    </div>}
 
-                    <div>
+                    {techs.length==0 &&  <div>
                         <label className="text-gray-600 dark:text-gray-300 text-sm">Preferred Time</label>
                         <input
                             type="time"
@@ -267,7 +269,9 @@ const CallUsModal: FunctionComponent<AddTechModalProps> = ({
                             className="w-full border min-h-11 text-black border-gray-300 dark:border-gray-600 bg-transparent rounded-full py-2 px-4 outline-none focus:ring-2 focus:ring-orange-500 dark:invert"
                         />
                         {errors.time && <p className="text-red-500 text-sm">{errors.time.message}</p>}
-                    </div>
+                    </div>}
+
+
                 </div>
 
                 <div>

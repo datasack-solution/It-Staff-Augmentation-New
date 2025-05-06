@@ -7,37 +7,37 @@ import "slick-carousel/slick/slick.css";
 const manageServices = [
   {
     title: "Talent Sourcing",
-    description: "Our IT Staffing Riyadh specializes in recruiting skilled individuals, conducting interviews, and assessing qualifications.",
+    description: "DataSack, as an IT Staffing Riyadh, specializes in recruiting skilled individuals, conducting interviews, and assessing qualifications.",
     imageUrl: 'taggedImages/Managed Services/Talent Sourcing.webp',
     alt: "Opt for a full time contract employee to bridge skill gaps and optimize workforce performance."
   },
   {
     title: "Onboarding & Integration",
-    description: "Ensuring contracted resources understand your culture, goals, and expectations.",
+    description: "DataSack Solutions ensures that contracted resources understand your culture, goals, and expectations.",
     imageUrl: 'taggedImages/Managed Services/Onboarding & Integration.webp',
     alt: "Unlock efficiency through IT Team Augmentation Saudi Arabia, offering reliable staffing services."
   },
   {
     title: "Performance Monitoring",
-    description: "Tracking resource performance throughout the contract to meet your expectations.",
+    description: "DataSack Solutions tracks resource performance throughout the contract to meet your expectations.",
     imageUrl: 'taggedImages/Managed Services/Performance Monitoring.webp',
     alt: "Rely on IT Team Augmentation Saudi Arabia to bridge skill gaps and enhance team productivity."
   },
   {
     title: "Administrative Support",
-    description: "As one of the Top IT Managed Service Providers Saudi Arabia, we handle payroll, benefits, work permits, logistics, and HR tasks efficiently.",
+    description: "DataSack is one of the Top IT Managed Service Providers Saudi Arabia, We handle payroll, benefits, work permits, logistics, and HR tasks efficiently.",
     imageUrl: 'taggedImages/Managed Services/Administrative Support.webp',
     alt: "Trust IT Staffing Riyadh to deliver reliable and skilled IT resources for your business."
   },
   {
     title: "Problem Resolution",
-    description: "Addressing issues and resolving conflicts through Top IT Staff Augmentation Services Saudi Arabia to ensure smooth communication.",
+    description: "DataSack addresses issues and resolves conflicts through Top IT Staff Augmentation Services Saudi Arabia to ensure smooth communication.",
     imageUrl: 'taggedImages/Managed Services/Problem Resolution.webp',
     alt: "A full time contract employee offers the perfect blend of cost- efficiency and talent reliability."
   },
   {
     title: "Continuous Communication",
-    description: "Our IT Staffing Riyadh team maintains open communication with clients and contracted resources to promptly address issues and keep everyone aligned.",
+    description: "Our IT Staffing Riyadh team maintains open communication with clients and DataSack’s contracted resources to address issues and keep everyone aligned promptly.",
     imageUrl: 'taggedImages/Managed Services/Continuous Communication.webp',
     alt: "IT Staffing Riyadh provides premium staffing solutions for both short- term and long-term projects."
   }
@@ -122,12 +122,12 @@ const ManageServicePage = () => {
             <Image alt={manageServices[0].alt} src={manageServices[0].imageUrl} width={100} height={100} />
             <h2 className="text-lg font-semibold mb-4 md:text-sm lg:text-lg xl:text-xl 2xl:text-xl">1. Talent Sourcing</h2>
             <p className="text-gray-600 dark:text-gray-200 leading-relaxed text-justify md:text-sm lg:text-base xl:text-base 2xl:text-base">
-            Our IT Staffing Riyadh specializes in recruiting skilled individuals, conducting interviews, and assessing qualifications.
+            DataSack, as an IT Staffing Riyadh, specializes in recruiting skilled individuals, conducting interviews, and assessing qualifications.
             </p>
             <Image alt={manageServices[1].alt} src={manageServices[1].imageUrl} width={100} height={100} />
             <h2 className="text-lg font-semibold  mb-4 md:text-sm lg:text-lg xl:text-xl 2xl:text-xl">2. Onboarding & Integration</h2>
             <p className="text-gray-600 dark:text-gray-200 leading-relaxed text-justify md:text-sm lg:text-base xl:text-base 2xl:text-base">
-            Ensuring contracted resources understand your culture, goals, and expectations.
+            DataSack Solutions ensures that contracted resources understand your culture, goals, and expectations.
             </p>
           </div>
         </div>
@@ -139,11 +139,11 @@ const ManageServicePage = () => {
 
               <div className='relative p-[2px]'>
                 <div className="absolute inset-0 bg-gradient-to-r from-orange-400 via-transparent to-orange-400 rounded-3xl min-w-full"></div>
-                <div className="relative p-6 h-72  bg-white dark:bg-[#252525] dark:bg-opa  rounded-3xl shadow-md lg:w-80">
+                <div className="relative px-5 h-72  bg-white dark:bg-[#252525] dark:bg-opa  rounded-3xl shadow-md lg:w-80">
                   <Image alt={manageServices[2].alt} src={manageServices[2].imageUrl} width={100} height={100} className='m-auto' />
                   <h2 className="text-lg font-semibold mb-2 text-center md:text-sm lg:text-lg xl:text-xl 2xl:text-xl">3. Performance Monitoring</h2>
                   <p className="text-gray-600 dark:text-gray-200 leading-relaxed text-justify md:text-sm lg:text-base xl:text-base 2xl:text-base">
-                  Tracking resource performance throughout the contract to meet your expectations.
+                  DataSack Solutions tracks resource performance throughout the contract to meet your expectations.
                   </p>
                 </div>
               </div>
@@ -151,11 +151,11 @@ const ManageServicePage = () => {
 
               <div className='relative p-[2px]'>
                 <div className="absolute inset-0 bg-gradient-to-r from-orange-400 via-transparent to-orange-400 rounded-3xl min-w-full"></div>
-                <div className="relative p-6 h-72 bg-white dark:bg-[#252525] dark:bg-opa  rounded-3xl shadow-md lg:w-80">
+                <div className="relative px-5 h-72 bg-white dark:bg-[#252525] dark:bg-opa  rounded-3xl shadow-md lg:w-80">
                   <Image alt={manageServices[3].alt} src={manageServices[3].imageUrl} width={100} height={100} className='m-auto' />
-                  <h2 className="text-lg font-semibold mb-2 text-center md:text-sm lg:text-lg xl:text-xl 2xl:text-xl">4. Administrative Support</h2>
+                  <h2 className="text-lg font-semibold mb-1 text-center md:text-sm lg:text-lg xl:text-xl 2xl:text-xl">4. Administrative Support</h2>
                   <p className="text-gray-600 dark:text-gray-200 leading-relaxed text-justify md:text-sm lg:text-base xl:text-base 2xl:text-base">
-                    As one of the Top IT Managed Service Providers Saudi Arabia, we handle payroll, benefits, work permits, logistics, and HR tasks efficiently.
+                    DataSack is one of the Top IT Managed Service Providers Saudi Arabia, We handle payroll, benefits, work permits, logistics, and HR tasks efficiently.
                   </p>
                 </div>
               </div>
@@ -165,22 +165,22 @@ const ManageServicePage = () => {
             <div className="flex flex-col gap-5 ">
               <div className='relative p-[2px]'>
                 <div className="absolute inset-0 bg-gradient-to-r from-orange-400 via-transparent to-orange-400 rounded-3xl min-w-full"></div>
-                <div className="relative p-6  h-72 bg-white dark:bg-[#252525] dark:bg-opa  rounded-3xl shadow-md lg:w-80">
+                <div className="relative px-5 h-72 bg-white dark:bg-[#252525] dark:bg-opa  rounded-3xl shadow-md lg:w-80">
                   <Image alt={manageServices[4].alt} src={manageServices[4].imageUrl} width={100} height={100} className='m-auto' />
                   <h2 className="text-lg font-semibold mb-2 text-center md:text-sm lg:text-lg xl:text-xl 2xl:text-xl">5. Problem Resolution</h2>
                   <p className="text-gray-600 dark:text-gray-200 text-justify leading-relaxed md:text-sm lg:text-base xl:text-base 2xl:text-base">
-                    Addressing issues and resolving conflicts through Top IT Staff Augmentation Services Saudi Arabia to ensure smooth communication.
+                    DataSack addresses issues and resolves conflicts through Top IT Staff Augmentation Services Saudi Arabia to ensure smooth communication.
                   </p>
                 </div>
               </div>
 
               <div className='relative p-[2px]'>
                 <div className="absolute inset-0 bg-gradient-to-r from-orange-400 via-transparent to-orange-400 rounded-3xl min-w-full"></div>
-                <div className="relative py-2 px-5  h-80 bg-white dark:bg-[#252525] dark:bg-opa  rounded-3xl shadow-md lg:w-80">
+                <div className="relative px-5   h-80 bg-white dark:bg-[#252525] dark:bg-opa  rounded-3xl shadow-md lg:w-80">
                   <Image alt={manageServices[5].alt} src={manageServices[5].imageUrl} width={100} height={100} className='m-auto' />
-                  <h2 className="text-lg font-semibold mb-2 text-center md:text-sm lg:text-lg xl:text-xl 2xl:text-xl">6. Continuous Communication</h2>
+                  <h2 className="text-lg font-semibold mb-1 text-center md:text-sm lg:text-lg xl:text-xl 2xl:text-xl">6. Continuous Communication</h2>
                   <p className="text-gray-600 dark:text-gray-200 text-justify leading-relaxed md:text-sm lg:text-base xl:text-base 2xl:text-base">
-                    Our IT Staffing Riyadh team maintains open communication with clients and contracted resources to promptly address issues and keep everyone aligned.
+                    Our IT Staffing Riyadh team maintains open communication with clients and DataSack’s contracted resources to address issues and keep everyone aligned promptly.
                   </p>
                 </div>
               </div>
