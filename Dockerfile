@@ -1,6 +1,6 @@
 # Define the Node.js version
-ARG NODE_VERSION=18.0.0
-FROM node:${NODE_VERSION}-alpine
+FROM node:18.18.2-alpine
+# FROM node:${NODE_VERSION}-alpine
 
 # Set working directory
 WORKDIR /usr/src/app
