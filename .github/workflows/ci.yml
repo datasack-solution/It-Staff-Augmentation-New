@@ -41,7 +41,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      NODE_VERSION: 18.0.0
+      NODE_VERSION: 18.18.2
 
     steps:
       - name: 🧾 Checkout repository
