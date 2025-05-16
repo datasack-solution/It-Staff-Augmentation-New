@@ -1,18 +1,22 @@
+# Define the Node.js version
 ARG NODE_VERSION=18.0.0
 FROM node:${NODE_VERSION}-alpine
 
+# Set working directory
+WORKDIR /usr/src/app
 
-# create app directory
-WORKDIR /usr/src/app/itstaffaugmentation
-
+# Install dependencies
 COPY package*.json ./
-
 RUN npm install
 
-RUN npm build
+# Copy source code
+COPY . .
 
-COPY src/ ./src/
+# Build the Next.js app
+RUN npm run build
 
+# Expose the port your app runs on
 EXPOSE 8081
 
-CMD [ "node", "next start" ]
+# Start the Next.js server
+CMD ["npm", "start"]
