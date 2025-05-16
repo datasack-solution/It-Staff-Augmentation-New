@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "postexport": "node postExport.js",
-    "postbuild":"next-sitemap"
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
@@ -21,8 +21,8 @@
     "next": "^14.2.5",
     "next-sitemap": "^4.2.3",
     "next-transpile-modules": "^10.0.1",
-    "react": "19.0.0-rc-02c0e824-20241028",
-    "react-dom": "19.0.0-rc-02c0e824-20241028",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-hook-form": "^7.53.2",
     "react-phone-input-2": "^2.15.1",
     "react-slick": "^0.30.2",
