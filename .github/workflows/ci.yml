@@ -29,7 +29,7 @@
 #           tags: karthikrajadatasack/itstaffaugmentation:latest
 
 
-name: Deploy Next.js to Docker on Push
+name: CI Pipeline
 
 on:
   push:
