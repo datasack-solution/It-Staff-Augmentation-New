@@ -58,12 +58,28 @@ jobs:
       - name: 🔨 Build Next.js
         run: npm run build
 
-      - name: 🐳 Build Docker image
-        run: docker build -t itstaffaugmentation-app .
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ vars.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: 📤 Push Docker image to DockerHub (optional)
-        if: false  # Set to true if you want to push to DockerHub
-        run: |
-          echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-          docker tag itstaffaugmentation-app ${{ secrets.DOCKER_USERNAME }}/itstaffaugmentation-app:latest
-          docker push ${{ secrets.DOCKER_USERNAME }}/itstaffaugmentation-app:latest
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: karthikrajadatasack/itstaffaugmentation-app:latest
+
+      # - name: 🐳 Build Docker image
+      #   run: docker build -t itstaffaugmentation-app .
+
+      # - name: 📤 Push Docker image to DockerHub (optional)
+      #   if: false  # Set to true if you want to push to DockerHub
+      #   run: |
+      #     echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+      #     docker tag itstaffaugmentation-app ${{ secrets.DOCKER_USERNAME }}/itstaffaugmentation-app:latest
+      #     docker push ${{ secrets.DOCKER_USERNAME }}/itstaffaugmentation-app:latest
