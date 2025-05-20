@@ -22,7 +22,8 @@ jobs:
     - name: Log in to DockerHub
       run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ vars.DOCKER_USERNAME }}" --password-stdin
     - name: Pull Docker image
-      run: sudo docker pull karthikrajadatasack/itstaffaugmentation-app:latest
+      # run: sudo docker pull karthikrajadatasack/itstaffaugmentation-app:latest
+      run: docker pull docker.io/karthikrajadatasack/itstaffaugmentation-app:latest
     - name: Delete Old docker container
       run: sudo docker rm -f itstaffaugmentation-app-container || true
     - name: Run Docker Container
