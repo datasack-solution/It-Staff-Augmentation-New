@@ -12,7 +12,7 @@ export default withTM([
     unoptimized:true,
     domains: ['bunny-wp-pullzone-dgpgtislbk.b-cdn.net'], // Replace with your image domains
   },
-  output:'export',
+  // output:'export',
   // basePath: '', // Ensure no subdirectory prefix is added
   // assetPrefix: '', // Make asset paths relative
   assetPrefix: '', // Adjust assets for cPanel subdirectory
