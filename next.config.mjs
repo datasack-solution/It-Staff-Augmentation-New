@@ -13,8 +13,9 @@ export default withTM([
     domains: ['bunny-wp-pullzone-dgpgtislbk.b-cdn.net'], // Replace with your image domains
   },
   // output:'export',
-  // basePath: '', // Ensure no subdirectory prefix is added
-  // assetPrefix: '', // Make asset paths relative
-  assetPrefix: '', // Adjust assets for cPanel subdirectory
-  basePath: '',
+  basePath: '/itstaff', // Ensure no subdirectory prefix is added
+  assetPrefix: '/itstaff/', // Make asset paths relative
+  trailingSlash:true,
+  // assetPrefix: '', // Adjust assets for cPanel subdirectory
+  // basePath: '',
 });
