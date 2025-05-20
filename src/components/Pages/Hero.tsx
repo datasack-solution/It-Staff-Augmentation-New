@@ -360,7 +360,7 @@ const HomePage = () => {
           <div  className='hidden text-sm sm:text-xs md:text-sm lg:text-lg xl:text-lg 2xl:text-lg w-fit sm:flex gap-14 text-purple-100 sm:text-blue-100 mr-2 justify-around align-middle p-5 m-auto'>
             <div aria-label='Get Pricing' onClick={() => document.getElementById('pricing-section')?.scrollIntoView({ behavior: 'smooth' })
             } className="text-gray-800 dark:text-white  py-1 cursor-pointer text-nowrap  hover:text-orange-500  p-2 uppercase font-semibold">
-              Get Pricing
+              Pricing
             </div>
             <div aria-label='Managed Services' onClick={() => document.getElementById('managed-services-section')?.scrollIntoView({ behavior: 'smooth' })
             } className="text-gray-800 dark:text-white  py-1 cursor-pointer text-nowrap hover:text-orange-500  p-2 uppercase font-semibold">
