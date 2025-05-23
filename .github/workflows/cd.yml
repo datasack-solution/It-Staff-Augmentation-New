@@ -23,11 +23,11 @@ jobs:
       run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ vars.DOCKER_USERNAME }}" --password-stdin
     - name: Pull Docker image
       # run: sudo docker pull karthikrajadatasack/itstaffaugmentation-app:latest
-      run: docker pull docker.io/karthikrajadatasack/itstaffaugmentation-app:latest
+      run: docker pull docker.io/${{vars.DOCKER_USERNAME}}/itstaffaugmentation-app:latest
     - name: Delete Old docker container
       run: sudo docker rm -f itstaffaugmentation-app-container || true
     - name: Run Docker Container
-      run: sudo docker run -d -p 8081:8080 -e PORT=8080 --name itstaffaugmentation-app-container karthikrajadatasack/itstaffaugmentation-app
+      run: sudo docker run -d -p 8081:8080 -e PORT=8080 --name itstaffaugmentation-app-container ${{vars.DOCKER_USERNAME}}/itstaffaugmentation-app
       # after docker successfull run, need to clean the old images. called dangling images
     - name: Clean up dangling images 
       run: sudo docker image prune -f
