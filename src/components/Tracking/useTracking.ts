@@ -56,7 +56,6 @@ export const useUserTracking = () => {
     const TRACKING_API_URL = process.env.NODE_ENV == 'production' ? 'https://it-augmentation-server.vercel.app/tracking' : 'http://localhost:4000/tracking'
 
     navigator.sendBeacon(TRACKING_API_URL, blob);
-    alert("window closing!")
   };
 
 
