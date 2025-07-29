@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from "next/document";
+import Script from "next/script";
 
 export default function Document() {
   return (
@@ -16,6 +17,38 @@ export default function Document() {
                         `,
           }}
         />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "http://www.schema.org",
+            "@type": "ProfessionalService",
+            "name": "DataSack Solutions",
+            "url": "https://www.datasack.in/",
+            "logo": "https://bunny-wp-pullzone-dgpgtislbk.b-cdn.net/wp-content/uploads/2024/01/Datasack_tech_logo-web.png",
+            "image": "https://bunny-wp-pullzone-dgpgtislbk.b-cdn.net/wp-content/uploads/2024/01/Datasack_tech_logo-web.png",
+            "description": "DataSack Solutions delivers end-to-end services. from SAP, Temenos, and data to digital marketing and IT staffing that drives success.",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "District, Door No 1, Building No 2345, Ahmed Al Tamimi Al Malaz, Riyadh 12831, Saudi Arabia",
+              "addressLocality": "Riyadh",
+              "addressRegion": "Saudi Arabia",
+              "postalCode": "12831",
+              "addressCountry": "Saudi Arabia"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "24.6647",
+              "longitude": "46.7353"
+            },
+            "hasMap": "https://maps.app.goo.gl/u2K1GNmqe5ykpn8RA",
+            "openingHours": "Mo, Tu, We, Th, Su 09:30-05:30",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+966560858596",
+              "contactType": "Phone"
+            }
+          })
+        }} />
+
         {/* End Google Tag Manager */}
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />

@@ -1,100 +1,4 @@
-// import { useRouter } from 'next/router';
-// import { useEffect, useRef, useState } from 'react';
-// import { TrackingData } from './tracking';
-
-// export const useUserTracking = () => {
-//   const router = useRouter();
-//   const [clickEvents, setClickEvents] = useState<string[]>([]);
-//   const startTimeRef = useRef<number>(Date.now());
-//   const maxScrollRef = useRef<number>(0);
-//   const [geoInfo, setGeoInfo] = useState({ country: 'Unknown', city: 'Unknown' });
-
-//   // Fetch geolocation (country, city)
-//   useEffect(() => {
-//     // fetch('https://ipapi.co/json/')
-//     fetch('https://ipinfo.io/json?token=7b56f78de85d8e')
-//       .then(res => res.json())
-//       .then(data => {
-//         setGeoInfo({
-//           country: data.country || 'Unknown',
-//           city: data.city || 'Unknown',
-//         });
-//       })
-//       .catch(() => {
-//         setGeoInfo({ country: 'Unknown', city: 'Unknown' });
-//       });
-//   }, []);
-
-//   // Track clicks
-//   useEffect(() => {
-//     const handleClick = (e: MouseEvent) => {
-//       const target = e.target as HTMLElement;
-//       const label =
-//         target.getAttribute('aria-label') ||
-//         target.innerText?.trim() ||
-//         target.tagName;
-//       setClickEvents(prev => [...prev, label]);
-//     };
-
-//     window.addEventListener('click', handleClick);
-//     return () => window.removeEventListener('click', handleClick);
-//   }, []);
-
-//   // Track scroll depth
-//   useEffect(() => {
-//     const handleScroll = () => {
-//       const scrolled = window.scrollY + window.innerHeight;
-//       const total = document.body.scrollHeight;
-//       const percent = (scrolled / total) * 100;
-//       if (percent > maxScrollRef.current) {
-//         maxScrollRef.current = percent;
-//       }
-//     };
-
-//     window.addEventListener('scroll', handleScroll);
-//     return () => window.removeEventListener('scroll', handleScroll);
-//   }, []);
-
-//   // Send data before user leaves
-//   useEffect(() => {
-//     const handleBeforeUnload = (event:any) => {
-//       const sessionDuration = Date.now() - startTimeRef.current;
-
-//       const trackingData: TrackingData = {
-//         country: geoInfo.country,
-//         city: geoInfo.city,
-//         visitDate: new Date().toISOString(),
-//         page: router.pathname,
-//         browserInfo: {
-//           userAgent: navigator.userAgent,
-//           platform: navigator.platform,
-//           language: navigator.language,
-//         },
-//         scrollPercent: maxScrollRef.current,
-//         sessionDuration,
-//         clickEvents,
-//       };
-
-
-//     // axios.post('http://localhost:4000/tracking',trackingData)
-//     const blob = new Blob([JSON.stringify(trackingData)], {
-//         type: 'application/json',
-//       });
-  
-//       // navigator.sendBeacon('https://it-augmentation-server.vercel.app/tracking', blob);
-//       navigator.sendBeacon('http://localhost:4000/tracking', blob);
-//     };
-
-//     window.addEventListener('beforeunload', handleBeforeUnload);
-//     return () => window.removeEventListener('beforeunload', handleBeforeUnload);
-//   }, [clickEvents]);
-// };
-
-
-
-// -------------
-
-function getCountryName(countryCode:string) {
+function getCountryName(countryCode: string) {
   try {
     // Ensure the country code is uppercase and a string
     const code = countryCode.toUpperCase();
@@ -116,7 +20,7 @@ export const useUserTracking = () => {
   const [clickEvents, setClickEvents] = useState<string[]>([]);
   const startTimeRef = useRef<number>(Date.now());
   const maxScrollRef = useRef<number>(0);
-  const [geoInfo, setGeoInfo] = useState({ country: 'Unknown', city: 'Unknown', region: 'Unknown', location:'Unknown', postal: 'Unknown' });
+  const [geoInfo, setGeoInfo] = useState({ country: 'Unknown', city: 'Unknown', region: 'Unknown', location: 'Unknown', postal: 'Unknown' });
   const hasSentRef = useRef(false);
 
   const isMobile = typeof window !== 'undefined' && /Mobi|Android|iPhone/i.test(navigator.userAgent);
@@ -149,24 +53,10 @@ export const useUserTracking = () => {
       type: 'application/json',
     });
 
-    navigator.sendBeacon('https://it-augmentation-server.vercel.app/tracking', blob);
-    // navigator.sendBeacon('http://localhost:4000/tracking', blob);
-  };
+    const TRACKING_API_URL = process.env.NODE_ENV == 'production' ? 'https://it-augmentation-server.vercel.app/tracking' : 'http://localhost:4000/tracking'
 
-  // Fetch geolocation (country, city)
-  // useEffect(() => {
-  //   fetch('https://ipapi.co/json/')
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       setGeoInfo({
-  //         country: data.country_name || 'Unknown',
-  //         city: data.city || 'Unknown',
-  //       });
-  //     })
-  //     .catch(() => {
-  //       setGeoInfo({ country: 'Unknown', city: 'Unknown' });
-  //     });
-  // }, []);
+    navigator.sendBeacon(TRACKING_API_URL, blob);
+  };
 
 
   // ipinfo json data
@@ -180,26 +70,36 @@ export const useUserTracking = () => {
   // "postal": "639102",
   // "timezone": "Asia/Kolkata"
 
-    // Fetch geolocation (country, city)
-    useEffect(() => {
-      // fetch('https://ipapi.co/json/')
-      fetch('https://ipinfo.io/json?token=7b56f78de85d8e')
-        .then(res => res.json())
-        .then(data => {
-          setGeoInfo({
-            country: data.country || 'Unknown',
-            city: data.city || 'Unknown',
-            location:data.loc || 'Unknown',
-            postal: data.postal || 'Unknown',
-            region:data.region || 'Unknown'
-          });
-        })
-        .catch(() => {
-          setGeoInfo({ country: 'Unknown', city: 'Unknown',location:'Unknown',
-            postal:'Unknown',
-            region:'Unknown' });
+  // Fetch geolocation (country, city)
+  useEffect(() => {
+    // fetch('https://ipapi.co/json/')
+    fetch('https://ipinfo.io/json?token=7b56f78de85d8e')
+      .then(res => res.json())
+      .then(data => {
+        setGeoInfo({
+          country: data.country || 'Unknown',
+          city: data.city || 'Unknown',
+          location: data.loc || 'Unknown',
+          postal: data.postal || 'Unknown',
+          region: data.region || 'Unknown'
         });
-    }, []);
+      })
+      .catch(() => {
+        setGeoInfo({
+          country: 'Unknown', city: 'Unknown', location: 'Unknown',
+          postal: 'Unknown',
+          region: 'Unknown'
+        });
+      });
+    // Add the event listener
+    window.addEventListener('beforeunload', ()=>{});
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('beforeunload', sendTrackingData);
+    };
+
+  }, []);
 
 
   // Track clicks
@@ -251,7 +151,7 @@ export const useUserTracking = () => {
       window.removeEventListener('beforeunload', handleBeforeUnload);
       document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
-  }, [clickEvents,geoInfo]);
+  }, [clickEvents, geoInfo]);
 
   // On mobile, trigger tracking after 30 seconds
   useEffect(() => {
