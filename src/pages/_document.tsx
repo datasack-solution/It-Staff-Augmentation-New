@@ -8,14 +8,15 @@ export default function Document() {
         <script
           dangerouslySetInnerHTML={{
             __html: `
-                            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-                            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-                            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-                            })(window,document,'script','dataLayer','GTM-K5PX72CC');
+                  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                  })(window,document,'script','dataLayer','GTM-K5PX72CC');
                         `,
           }}
         />
+
         <script type="application/ld+json" dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "http://www.schema.org",
@@ -46,6 +47,67 @@ export default function Document() {
               "contactType": "Phone"
             }
           })
+        }} />
+
+
+        <script type="application/ld+json" dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "DataSack Solutions",
+            "alternateName": "DataSack Solutions",
+            "url": "https://www.datasack.in/",
+            "logo": "https://bunny-wp-pullzone-dgpgtislbk.b-cdn.net/wp-content/uploads/2024/01/Datasack_tech_logo-web.png",
+            "sameAs": [
+              "https://www.facebook.com/DataSackSolutions",
+              "https://www.instagram.com/datasack",
+              "https://youtube.com/@datasacksolutions?si=IbbfLrQ005AsttVn",
+              "https://www.linkedin.com/company/data-sack/",
+              "https://in.pinterest.com/DataSack_Solutions/",
+              "https://www.datasack.in/",
+              "https://x.com/DataSack"
+            ]
+          }
+          )
+        }} />
+
+        <script type="application/ld+json" dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org/",
+            "@type": "Product",
+            "name": "IT staffing",
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.8",
+              "ratingCount": "154",
+              "reviewCount": "104"
+            }
+          }
+          )
+        }} />
+
+        <script type="application/ld+json" dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Service",
+                "name": "IT staffing",
+                "description": "Expert IT staff augmentation & IT staffing with flexible contracts. Competitive Pricing. Reach Out Today!.",
+                "serviceType": "IT Recruitment",
+                "provider": "DataSack Solutions",
+                "areaServed": "Saudi Arabia",
+                "offers": {
+                  "@type": "Offer",
+                  "price": "",
+                  "url": "https://datasack.in/itstaffaugmentation/"
+                },
+                "availableChannel": "",
+                "termsOfService": "https://www.datasack.in/about-us/"
+              }
+            ]
+          }
+          )
         }} />
 
         {/* End Google Tag Manager */}
